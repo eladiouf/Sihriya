@@ -1,0 +1,92 @@
+package tong.sihriya.core;
+
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraftforge.common.util.INBTSerializable;
+
+import java.util.*;
+
+public class SchoolProgression implements INBTSerializable<CompoundTag> {
+    private final Map<String, Integer> schoolLevels = new HashMap<>();
+    private final Map<String, Integer> schoolXp = new HashMap<>();
+    private final Set<String> unlockedSchools = new HashSet<>();
+    private final Set<String> learnedSpells = new HashSet<>();
+    private String activeSchool = "";
+
+    public int getLevel(String schoolId) { return schoolLevels.getOrDefault(schoolId, 0); }
+    public int getXp(String schoolId) { return schoolXp.getOrDefault(schoolId, 0); }
+    public boolean isSchoolUnlocked(String schoolId) { return unlockedSchools.contains(schoolId); }
+    public boolean isSpellLearned(String spellId) { return learnedSpells.contains(spellId); }
+    public String getActiveSchool() { return activeSchool; }
+    public void setActiveSchool(String schoolId) { this.activeSchool = schoolId; }
+
+    public void unlockSchool(String schoolId) { unlockedSchools.add(schoolId); }
+    public void learnSpell(String spellId) { learnedSpells.add(spellId); }
+
+    public void addXp(String schoolId, int amount) {
+        int xp = schoolXp.getOrDefault(schoolId, 0) + amount;
+        int level = schoolLevels.getOrDefault(schoolId, 0);
+        while (level < 100) {
+            int needed = (level + 1) * (level + 1) * 10;
+            if (xp < needed) break;
+            xp -= needed;
+            level++;
+            schoolLevels.put(schoolId, level);
+        }
+        schoolXp.put(schoolId, xp);
+    }
+
+    public Set<String> getLearnedSpells() { return learnedSpells; }
+    public Set<String> getUnlockedSchools() { return unlockedSchools; }
+
+    public List<String> getSpellsForSchool(String schoolId) {
+        return learnedSpells.stream()
+            .filter(id -> id.startsWith(schoolId + "."))
+            .toList();
+    }
+
+    @Override
+    public CompoundTag serializeNBT() {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("ActiveSchool", activeSchool);
+        // Levels
+        ListTag lvlList = new ListTag();
+        for (var e : schoolLevels.entrySet()) {
+            CompoundTag entry = new CompoundTag();
+            entry.putString("School", e.getKey());
+            entry.putInt("Level", e.getValue());
+            entry.putInt("XP", schoolXp.getOrDefault(e.getKey(), 0));
+            lvlList.add(entry);
+        }
+        tag.put("SchoolLevels", lvlList);
+        // Unlocked schools
+        ListTag unlockedList = new ListTag();
+        for (String s : unlockedSchools) unlockedList.add(StringTag.valueOf(s));
+        tag.put("UnlockedSchools", unlockedList);
+        // Learned spells
+        ListTag spellsList = new ListTag();
+        for (String s : learnedSpells) spellsList.add(StringTag.valueOf(s));
+        tag.put("LearnedSpells", spellsList);
+        return tag;
+    }
+
+    @Override
+    public void deserializeNBT(CompoundTag tag) {
+        activeSchool = tag.getString("ActiveSchool");
+        schoolLevels.clear();
+        schoolXp.clear();
+        ListTag lvlList = tag.getList("SchoolLevels", 10);
+        for (int i = 0; i < lvlList.size(); i++) {
+            CompoundTag entry = lvlList.getCompound(i);
+            schoolLevels.put(entry.getString("School"), entry.getInt("Level"));
+            schoolXp.put(entry.getString("School"), entry.getInt("XP"));
+        }
+        unlockedSchools.clear();
+        ListTag unlockedList = tag.getList("UnlockedSchools", 8);
+        for (int i = 0; i < unlockedList.size(); i++) unlockedSchools.add(unlockedList.getString(i));
+        learnedSpells.clear();
+        ListTag spellsList = tag.getList("LearnedSpells", 8);
+        for (int i = 0; i < spellsList.size(); i++) learnedSpells.add(spellsList.getString(i));
+    }
+}

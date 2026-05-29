@@ -1,0 +1,189 @@
+[
+  {
+    "id": "fire.fireball",
+    "school": "fire",
+    "tier": 1,
+    "manaCost": 15,
+    "cooldown": 30,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 6.0, "scaling": 0.1, "duration": 0},
+      {"type": "burn", "baseValue": 2.0, "scaling": 0.05, "duration": 100}
+    ]
+  },
+  {
+    "id": "fire.fire_arc",
+    "school": "fire",
+    "tier": 2,
+    "manaCost": 25,
+    "cooldown": 60,
+    "type": "ZONE",
+    "effects": [
+      {"type": "damage", "baseValue": 10.0, "scaling": 0.15, "duration": 0},
+      {"type": "burn", "baseValue": 3.0, "scaling": 0.08, "duration": 200}
+    ]
+  },
+  {
+    "id": "fire.fire_wall",
+    "school": "fire",
+    "tier": 3,
+    "manaCost": 40,
+    "cooldown": 120,
+    "type": "ZONE",
+    "effects": [
+      {"type": "damage", "baseValue": 15.0, "scaling": 0.2, "duration": 0},
+      {"type": "burn", "baseValue": 5.0, "scaling": 0.1, "duration": 300}
+    ]
+  },
+  {
+    "id": "water.water_bolt",
+    "school": "water",
+    "tier": 1,
+    "manaCost": 12,
+    "cooldown": 25,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 4.0, "scaling": 0.08, "duration": 0},
+      {"type": "slow", "baseValue": 0.0, "scaling": 0.0, "duration": 60}
+    ]
+  },
+  {
+    "id": "water.water_heal",
+    "school": "water",
+    "tier": 2,
+    "manaCost": 30,
+    "cooldown": 100,
+    "type": "BUFF",
+    "effects": [
+      {"type": "heal", "baseValue": 8.0, "scaling": 0.15, "duration": 0}
+    ]
+  },
+  {
+    "id": "water.water_shield",
+    "school": "water",
+    "tier": 3,
+    "manaCost": 35,
+    "cooldown": 200,
+    "type": "BUFF",
+    "effects": [
+      {"type": "heal", "baseValue": 4.0, "scaling": 0.1, "duration": 0}
+    ]
+  },
+  {
+    "id": "wind.wind_gust",
+    "school": "wind",
+    "tier": 1,
+    "manaCost": 10,
+    "cooldown": 20,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 3.0, "scaling": 0.05, "duration": 0},
+      {"type": "knockback", "baseValue": 2.0, "scaling": 0.02, "duration": 0}
+    ]
+  },
+  {
+    "id": "wind.air_scooter",
+    "school": "wind",
+    "tier": 2,
+    "manaCost": 20,
+    "cooldown": 50,
+    "type": "BUFF",
+    "effects": [
+      {"type": "damage", "baseValue": 5.0, "scaling": 0.1, "duration": 0}
+    ]
+  },
+  {
+    "id": "wind.air_tornado",
+    "school": "wind",
+    "tier": 3,
+    "manaCost": 35,
+    "cooldown": 150,
+    "type": "ZONE",
+    "effects": [
+      {"type": "damage", "baseValue": 8.0, "scaling": 0.12, "duration": 0},
+      {"type": "knockback", "baseValue": 4.0, "scaling": 0.05, "duration": 0}
+    ]
+  },
+  {
+    "id": "earth.earth_spike",
+    "school": "earth",
+    "tier": 1,
+    "manaCost": 14,
+    "cooldown": 35,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 8.0, "scaling": 0.12, "duration": 0},
+      {"type": "stun", "baseValue": 0.0, "scaling": 0.0, "duration": 40}
+    ]
+  },
+  {
+    "id": "earth.earth_wall",
+    "school": "earth",
+    "tier": 2,
+    "manaCost": 25,
+    "cooldown": 80,
+    "type": "ZONE",
+    "effects": [
+      {"type": "damage", "baseValue": 6.0, "scaling": 0.1, "duration": 0},
+      {"type": "stun", "baseValue": 0.0, "scaling": 0.0, "duration": 60}
+    ]
+  },
+  {
+    "id": "earth.earth_armor",
+    "school": "earth",
+    "tier": 3,
+    "manaCost": 30,
+    "cooldown": 200,
+    "type": "BUFF",
+    "effects": [
+      {"type": "damage", "baseValue": 0.0, "scaling": 0.0, "duration": 0}
+    ]
+  },
+  {
+    "id": "lightning.lightning_bolt",
+    "school": "lightning",
+    "tier": 1,
+    "manaCost": 20,
+    "cooldown": 40,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 10.0, "scaling": 0.15, "duration": 0},
+      {"type": "chain", "baseValue": 3.0, "scaling": 0.05, "duration": 3}
+    ]
+  },
+  {
+    "id": "lightning.lightning_storm",
+    "school": "lightning",
+    "tier": 2,
+    "manaCost": 35,
+    "cooldown": 120,
+    "type": "ZONE",
+    "effects": [
+      {"type": "damage", "baseValue": 15.0, "scaling": 0.2, "duration": 0},
+      {"type": "chain", "baseValue": 5.0, "scaling": 0.08, "duration": 5}
+    ]
+  },
+  {
+    "id": "ice.ice_shard",
+    "school": "ice",
+    "tier": 1,
+    "manaCost": 16,
+    "cooldown": 30,
+    "type": "PROJECTILE",
+    "effects": [
+      {"type": "damage", "baseValue": 5.0, "scaling": 0.1, "duration": 0},
+      {"type": "freeze", "baseValue": 0.0, "scaling": 0.0, "duration": 80}
+    ]
+  },
+  {
+    "id": "ice.ice_shield",
+    "school": "ice",
+    "tier": 2,
+    "manaCost": 25,
+    "cooldown": 100,
+    "type": "BUFF",
+    "effects": [
+      {"type": "damage", "baseValue": 0.0, "scaling": 0.0, "duration": 0}
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "itemGroup.sihriya": "Sihriya Magic",
+  "key.sihriya.spell_wheel": "Open Spell Wheel",
+  "key.sihriya.meditate": "Meditate",
+  "key.sihriya.category": "Sihriya Magic",
+  "screen.sihriya.schools": "Magic Schools",
+  "sihriya.mana": "Mana",
+  "sihriya.school.fire": "Fire",
+  "sihriya.school.water": "Water",
+  "sihriya.school.wind": "Wind",
+  "sihriya.school.earth": "Earth",
+  "sihriya.school.lightning": "Lightning",
+  "sihriya.school.ice": "Ice",
+  "sihriya.spell.fireball": "Fireball",
+  "sihriya.spell.water_bolt": "Water Bolt",
+  "sihriya.spell.wind_gust": "Wind Gust",
+  "sihriya.spell.earth_spike": "Earth Spike",
+  "sihriya.spell.lightning_bolt": "Lightning Bolt",
+  "sihriya.spell.ice_shard": "Ice Shard"
+}

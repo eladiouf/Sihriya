@@ -1,0 +1,20 @@
+{
+  "itemGroup.sihriya": "Sihriya Magie",
+  "key.sihriya.spell_wheel": "Ouvrir la roue des sorts",
+  "key.sihriya.meditate": "Méditer",
+  "key.sihriya.category": "Sihriya Magie",
+  "screen.sihriya.schools": "Écoles de Magie",
+  "sihriya.mana": "Mana",
+  "sihriya.school.fire": "Feu",
+  "sihriya.school.water": "Eau",
+  "sihriya.school.wind": "Vent",
+  "sihriya.school.earth": "Terre",
+  "sihriya.school.lightning": "Foudre",
+  "sihriya.school.ice": "Glace",
+  "sihriya.spell.fireball": "Boule de Feu",
+  "sihriya.spell.water_bolt": "Flèche d'Eau",
+  "sihriya.spell.wind_gust": "Rafale de Vent",
+  "sihriya.spell.earth_spike": "Pique de Terre",
+  "sihriya.spell.lightning_bolt": "Éclair",
+  "sihriya.spell.ice_shard": "Éclat de Glace"
+}
