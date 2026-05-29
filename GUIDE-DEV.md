@@ -272,3 +272,15 @@ Le JAR se trouve dans `build/libs/sihriya-1.0.0.jar`.
 ---
 
 *Bon courage et bienvenue sur Sihriya !*
+
+---
+
+## ❓ Questions pour le développeur
+
+### Paliers de niveaux (25/50/75/100)
+Le guide mentionne des déblocages de sorts aux paliers 25, 50, 75, 100 (section 5). Mais dans le code actuel, je ne vois pas d'implémentation de ces paliers dans `SchoolProgression.java` ou `SpellCastHandler.java`. Est-ce que ce système est :
+- déjà codé mais ailleurs ?
+- prévu mais pas encore fait ?
+- une idée à garder pour plus tard ?
+
+Merci de clarifier pour qu'on sache si on doit l'intégrer dans la refonte addon Epic Fight.
