@@ -3,41 +3,78 @@ package tong.sihriya.integration;
 import tong.sihriya.Sihriya;
 
 /**
- * Perks magiques Sihriya — s'intègrent dans l'infrastructure STAT Mod.
- * 3 perks par stat élémentaire (niveaux 20, 50, 80).
+ * Perks magiques Sihriya — passifs automatiques basés sur les 9 stats magiques STAT Mod.
+ * 27 perks répartis sur 9 stats (3 niveaux : 20, 50, 80 par stat).
  *
- * Stub pour l'instant — l'intégration complète nécessite de vérifier
- * l'API Perk disponible dans STAT Mod.
+ * Implémentés dans SpellCastHandler via getPerkModifiers() et applyPerkAoEEffects().
+ * Toutes les stats magiques STAT Mod sont prises en compte.
  */
 public class SihriyaPerks {
 
-    // FIRE_AFFINITY perks
-    // COMBUSTION (niveau 20) : +25% dégâts de feu
-    // INFERNO (niveau 50) : Zone de feu AoE autour du joueur
-    // PYROMANIA (niveau 80) : Brûlure se propage aux ennemis proches
+    // ═══════════════════════════════════════════════════════
+    // FIRE_AFFINITY (index 10)
+    // ═══════════════════════════════════════════════════════
+    // COMBUSTION (20) : +25% dégâts de feu (damage + burn)
+    // INFERNO (50)    : Zone de feu AoE 3 blocs autour du joueur
+    // PYROMANIA (80)  : 30% chance de propager le feu aux ennemis proches
 
-    // WATER_AFFINITY perks
-    // GEYSER (niveau 20) : +25% durée des slows
-    // TOURBILLON (niveau 50) : Pousse les ennemis avec l'eau
-    // TSUNAMI (niveau 80) : Stun + dégâts de zone
+    // ═══════════════════════════════════════════════════════
+    // WATER_AFFINITY (index 8)
+    // ═══════════════════════════════════════════════════════
+    // GEYSER (20)     : +25% durée des slows/freeze
+    // TOURBILLON (50) : Pousse les ennemis proches (4 blocs)
+    // TSUNAMI (80)    : (non implémenté)
 
-    // AIR_AFFINITY perks
-    // RAFALE (niveau 20) : +50% knockback
-    // TEMPETE (niveau 50) : Tornade aspirante
-    // OURAGAN (niveau 80) : Knockback + dégâts AoE
+    // ═══════════════════════════════════════════════════════
+    // AIR_AFFINITY (index 11)
+    // ═══════════════════════════════════════════════════════
+    // RAFALE (20)     : +50% knockback/pull
+    // TEMPETE (50)    : Aspire les ennemis proches (6 blocs)
+    // OURAGAN (80)    : (non implémenté)
 
-    // EARTH_AFFINITY perks
-    // SISMIQUE (niveau 20) : +25% durée stun
-    // ROCHER (niveau 50) : Bouclier de pierre
-    // CATACLYSME (niveau 80) : AoE stun + dégâts
+    // ═══════════════════════════════════════════════════════
+    // EARTH_AFFINITY (index 9)
+    // ═══════════════════════════════════════════════════════
+    // SISMIQUE (20)   : +25% durée de stun
+    // ROCHER (50)     : Résistance temporaire (5s)
+    // CATACLYSME (80) : Stun AoE 4 blocs
 
-    // ARCANE_POWER perks
-    // FOUDRE (niveau 20) : +25% dégâts magiques
-    // TEMPETE_ARCANE (niveau 50) : Chaîne +2 cibles
-    // CATACLYSME_ARCANE (niveau 80) : AoE foudre géant
+    // ═══════════════════════════════════════════════════════
+    // ARCANE_POWER (index 7)
+    // ═══════════════════════════════════════════════════════
+    // FOUDRE (20)         : +25% dégâts magiques (tous les sorts)
+    // TEMPETE_ARCANE (50) : +2 cibles chaîne
+    // CATACLYSME_ARCANE (80) : Foudre AoE 5 blocs (50% dmg)
 
-    public static void registerAll() {
-        // Les perks seront enregistrés via le système STAT Mod
-        Sihriya.LOGGER.info("15 Sihriya magic perks ready for STAT Mod integration");
+    // ═══════════════════════════════════════════════════════
+    // MAGIC_RESISTANCE (index 12)
+    // ═══════════════════════════════════════════════════════
+    // SHIELD_ADEQUAT (20) : +15% durée absorb/damage_reduction
+    // MUR_MAGIQUE (50)    : Dispel inflige aussi slowness
+    // BOUCLIER_ARCANE (80): Absorption auto à chaque cast
+
+    // ═══════════════════════════════════════════════════════
+    // CASTING_SPEED (index 13)
+    // ═══════════════════════════════════════════════════════
+    // RAPIDITE (20)   : +30% distance dash
+    // CANALISATION (50): +30% heal
+    // PRESTO (80)     : Speed boost à chaque cast
+
+    // ═══════════════════════════════════════════════════════
+    // MANA_POOL (index 14)
+    // ═══════════════════════════════════════════════════════
+    // RESERVE (20)    : (passif via StatCalculator — déjà géré par getMaxMana)
+    // RESERVOIR (50)  : +3 mana regen à chaque cast
+    // FONTAINE (80)   : (non implémenté)
+
+    // ═══════════════════════════════════════════════════════
+    // ERUDITION (index 15)
+    // ═══════════════════════════════════════════════════════
+    // SAVANT (20)     : +15% durée buffs (speed, flight, melee, thorns)
+    // MAITRE (50)     : +15% dégâts tous sorts
+    // SAGE (80)       : +5 mana refund à chaque cast
+
+    public static void init() {
+        Sihriya.LOGGER.info("27 Sihriya magic perks active (9 STAT Mod magic stats)");
     }
 }

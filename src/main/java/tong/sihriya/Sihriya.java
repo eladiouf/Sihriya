@@ -3,11 +3,13 @@ package tong.sihriya;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tong.sihriya.client.SihriyaClientConfig;
 import tong.sihriya.command.SihriyaCommand;
 import tong.sihriya.data.DataLoader;
 import tong.sihriya.integration.EpicFightIntegration;
@@ -24,6 +26,8 @@ public class Sihriya {
     public Sihriya(FMLJavaModLoadingContext context) {
         var bus = context.getModEventBus();
         bus.addListener(this::commonSetup);
+        bus.addListener(SihriyaClientConfig::onLoadOrReload);
+        context.registerConfig(ModConfig.Type.CLIENT, SihriyaClientConfig.SPEC);
         tong.sihriya.core.ModEffects.EFFECTS.register(bus);
         SihriyaParticles.PARTICLES.register(bus);
         SihriyaEntities.ENTITIES.register(bus);

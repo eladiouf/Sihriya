@@ -8,7 +8,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import tong.sihriya.Sihriya;
 
 public class NetworkHandler {
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "2";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
         new ResourceLocation(Sihriya.MODID, "main"),
         () -> PROTOCOL_VERSION,
@@ -27,6 +27,8 @@ public class NetworkHandler {
             SchoolCastPacket::encode, SchoolCastPacket::decode, SchoolCastPacket::handle);
         CHANNEL.registerMessage(packetId++, SpellParticlePacket.class,
             SpellParticlePacket::encode, SpellParticlePacket::decode, SpellParticlePacket::handle);
+        CHANNEL.registerMessage(packetId++, CastResultPacket.class,
+            CastResultPacket::encode, CastResultPacket::decode, CastResultPacket::handle);
     }
 
     public static void sendToPlayer(Object packet, ServerPlayer player) {

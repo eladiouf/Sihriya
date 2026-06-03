@@ -8,6 +8,9 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tong.sihriya.Sihriya;
+import tong.sihriya.client.gui.GrimoireScreen;
+import tong.sihriya.client.gui.SihriyaNotifications;
+import tong.sihriya.client.gui.SihriyaUiSounds;
 import tong.sihriya.client.gui.SpellWheelScreen;
 import tong.sihriya.network.NetworkHandler;
 import tong.sihriya.network.SchoolCastPacket;
@@ -30,12 +33,24 @@ public class SchoolKeyHandler {
                 } else {
                     schoolId = KeyBindings.SCHOOL_IDS[i];
                 }
+                var reason = ClientSchoolData.getClientCastBlockReason(schoolId);
+                if (reason.isPresent()) {
+                    SihriyaNotifications.castBlocked(schoolId, reason.get());
+                    continue;
+                }
+                ClientSchoolData.noteCastRequest(schoolId);
                 NetworkHandler.CHANNEL.sendToServer(new SchoolCastPacket(schoolId));
             }
         }
 
         if (KeyBindings.SPELL_WHEEL.consumeClick()) {
+            SihriyaUiSounds.open();
             mc.setScreen(new SpellWheelScreen());
+        }
+
+        if (KeyBindings.GRIMOIRE.consumeClick()) {
+            SihriyaUiSounds.open();
+            mc.setScreen(new GrimoireScreen());
         }
     }
 }

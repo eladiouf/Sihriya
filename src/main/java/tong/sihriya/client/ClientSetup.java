@@ -11,7 +11,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import tong.sihriya.Sihriya;
+import tong.sihriya.client.gui.ActiveSpellHud;
 import tong.sihriya.client.gui.ManaOverlay;
+import tong.sihriya.client.gui.NotificationOverlay;
 import tong.sihriya.client.gui.SpellIconRenderer;
 import tong.sihriya.client.particle.SchoolGlowParticleProvider;
 import tong.sihriya.client.particle.magiccircle.MagicCircleRenderer;
@@ -39,6 +41,8 @@ public class ClientSetup {
     @SubscribeEvent
     public static void onRegisterOverlays(RegisterGuiOverlaysEvent event) {
         event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sihriya_mana", ManaOverlay.INSTANCE);
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sihriya_active_spell", ActiveSpellHud.INSTANCE);
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sihriya_notifications", NotificationOverlay.INSTANCE);
     }
 
     @SubscribeEvent

@@ -47,10 +47,8 @@ public class SchoolSyncPacket {
 
     public static void handle(SchoolSyncPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ClientSchoolData.activeSchool = packet.activeSchool;
-            ClientSchoolData.schoolLevels = packet.schoolLevels;
-            ClientSchoolData.unlockedSchools = packet.unlockedSchools;
-            ClientSchoolData.learnedSpells = packet.learnedSpells;
+            ClientSchoolData.applySync(packet.activeSchool, packet.schoolLevels,
+                packet.unlockedSchools, packet.learnedSpells);
         });
         ctx.get().setPacketHandled(true);
     }

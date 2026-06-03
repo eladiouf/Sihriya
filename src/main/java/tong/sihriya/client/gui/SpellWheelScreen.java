@@ -2,46 +2,30 @@ package tong.sihriya.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import org.joml.Matrix4f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.client.KeyBindings;
-import tong.sihriya.data.SpellRegistry;
+import tong.sihriya.client.ClientManaData;
+import tong.sihriya.data.SpellRegistry.SpellData;
 import tong.sihriya.network.NetworkHandler;
 import tong.sihriya.network.SchoolCastPacket;
-
-import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class SpellWheelScreen extends Screen {
 
     private static final int WHEEL_RADIUS = 80;
     private static final int ICON_SIZE = 32;
-
-    private static final List<String> SCHOOLS = List.of(
-        "fire", "water", "wind", "earth",
-        "lightning", "ice", "lava", "necromancy", "lumamancy"
-    );
-
-    private static final int[] COLORS = {
-        0xFFFF4500, 0xFF3399FF, 0xFF90EE90, 0xFF8B4513,
-        0xFFFFD700, 0xFFADD8E6, 0xFFFF2200, 0xFF8C14DC, 0xFFFFDC50
-    };
-
-    private static final String[] NAMES = {
-        "Feu", "Eau", "Vent", "Terre",
-        "Foudre", "Glace", "Lave", "Necromancie", "Lumiere"
-    };
+    private static final int DEAD_ZONE = 30;
 
     private int highlightedIndex = -1;
     private int cx, cy;
     private float alpha = 0f;
-    private boolean castOnClose = true;
 
     public SpellWheelScreen() {
         super(Component.empty());
@@ -55,11 +39,23 @@ public class SpellWheelScreen extends Screen {
 
     @Override
     public void tick() {
-        if (alpha < 1f) alpha = Math.min(1f, alpha + 0.1f);
+        if (ClientUiOptions.reducedMotion) {
+            alpha = 1f;
+        } else if (alpha < 1f) {
+            alpha = Math.min(1f, alpha + 0.1f);
+        }
 
         if (!KeyBindings.SPELL_WHEEL.isDown()) {
-            if (castOnClose && highlightedIndex >= 0) {
-                NetworkHandler.CHANNEL.sendToServer(new SchoolCastPacket(SCHOOLS.get(highlightedIndex)));
+            if (highlightedIndex >= 0 && canCastHighlightedSchool()) {
+                String school = getHighlightedSchool();
+                ClientSchoolData.noteCastRequest(school);
+                NetworkHandler.CHANNEL.sendToServer(new SchoolCastPacket(school));
+            } else if (highlightedIndex >= 0) {
+                String school = getHighlightedSchool();
+                ClientSchoolData.getClientCastBlockReason(school)
+                    .ifPresent(reason -> SihriyaNotifications.castBlocked(school, reason));
+            } else {
+                SihriyaUiSounds.close();
             }
             onClose();
         }
@@ -73,10 +69,10 @@ public class SpellWheelScreen extends Screen {
         float angle = (float) Math.toDegrees(Math.atan2(dy, dx)) + 90f;
         if (angle < 0) angle += 360f;
 
-        if (dist > 30) {
-            float sector = 360f / SCHOOLS.size();
+        if (dist > DEAD_ZONE) {
+            float sector = 360f / SihriyaUiData.SCHOOL_ORDER.size();
             highlightedIndex = (int) ((angle + sector / 2) % 360 / sector);
-            highlightedIndex = (9 - highlightedIndex + 2) % SCHOOLS.size();
+            highlightedIndex = (9 - highlightedIndex + 2) % SihriyaUiData.SCHOOL_ORDER.size();
         } else {
             highlightedIndex = -1;
         }
@@ -89,27 +85,34 @@ public class SpellWheelScreen extends Screen {
 
         // Draw school icons
         PoseStack pose = g.pose();
-        for (int i = 0; i < SCHOOLS.size(); i++) {
-            float deg = i * 360f / SCHOOLS.size() - 90f;
+        for (int i = 0; i < SihriyaUiData.SCHOOL_ORDER.size(); i++) {
+            String school = SihriyaUiData.SCHOOL_ORDER.get(i);
+            float deg = i * 360f / SihriyaUiData.SCHOOL_ORDER.size() - 90f;
             float rad = (float) Math.toRadians(deg);
             int ix = cx + (int)(Math.cos(rad) * WHEEL_RADIUS) - ICON_SIZE / 2;
             int iy = cy + (int)(Math.sin(rad) * WHEEL_RADIUS) - ICON_SIZE / 2;
 
             boolean hl = (i == highlightedIndex);
-            boolean unlocked = ClientSchoolData.isUnlocked(SCHOOLS.get(i));
-            float iconAlpha = unlocked ? alpha : 0.3f;
+            boolean unlocked = ClientSchoolData.isUnlocked(school);
+            var displaySpell = ClientSchoolData.getBestCastableSpell(school)
+                .or(() -> ClientSchoolData.getFirstSchoolSpell(school));
+            float iconAlpha = unlocked ? alpha : 0.28f;
 
-            var spells = SpellRegistry.getBySchool(SCHOOLS.get(i));
-            if (!spells.isEmpty()) {
+            if (displaySpell.isPresent()) {
                 if (hl) {
-                    drawGlowAt(g, ix + ICON_SIZE/2, iy + ICON_SIZE/2, ICON_SIZE + 10, COLORS[i]);
+                    drawGlowAt(g, ix + ICON_SIZE/2, iy + ICON_SIZE/2, ICON_SIZE + 10,
+                        unlocked ? SihriyaUiData.schoolColor(school) : 0xFF777777);
                 }
 
                 RenderSystem.enableBlend();
-                RenderSystem.setShaderColor(1, 1, 1, iconAlpha * (hl ? 1.2f : 1f));
-                SpellIconRenderer.renderIconScaled(g, spells.get(0), ix, iy, ICON_SIZE);
+                RenderSystem.setShaderColor(1, 1, 1, Math.min(1f, iconAlpha * (hl ? 1.2f : 1f)));
+                SpellIconRenderer.renderIconScaled(g, displaySpell.get(), ix, iy, ICON_SIZE);
                 RenderSystem.setShaderColor(1, 1, 1, 1);
                 RenderSystem.disableBlend();
+            }
+
+            if (!unlocked) {
+                drawLock(g, ix + ICON_SIZE - 9, iy + ICON_SIZE - 9);
             }
         }
 
@@ -117,23 +120,73 @@ public class SpellWheelScreen extends Screen {
         pose.pushPose();
         pose.translate(cx, cy, 0);
         if (highlightedIndex >= 0) {
-            String name = NAMES[highlightedIndex];
-            int w = font.width(name);
-            font.drawInBatch(name, -w/2f, WHEEL_RADIUS + ICON_SIZE + 16,
-                COLORS[highlightedIndex], true, pose.last().pose(), g.bufferSource(),
-                net.minecraft.client.gui.Font.DisplayMode.NORMAL, 0, 0xF000F0);
-            String hint = "Relache pour lancer";
-            int hw = font.width(hint);
-            font.drawInBatch(hint, -hw/2f, WHEEL_RADIUS + ICON_SIZE + 30,
-                0xAAAAAA, true, pose.last().pose(), g.bufferSource(),
-                net.minecraft.client.gui.Font.DisplayMode.NORMAL, 0, 0xF000F0);
+            renderSelectionText(g, pose);
         } else {
             String title = "Sihriya";
             int tw = font.width(title);
             font.drawInBatch(title, -tw/2f, -4, 0xFFFFFF, true, pose.last().pose(),
                 g.bufferSource(), net.minecraft.client.gui.Font.DisplayMode.NORMAL, 0, 0xF000F0);
+            String hint = I18n.get("screen.sihriya.wheel.cancel");
+            int hw = font.width(hint);
+            font.drawInBatch(hint, -hw / 2f, WHEEL_RADIUS + ICON_SIZE + 24, 0xAAAAAA, true,
+                pose.last().pose(), g.bufferSource(), net.minecraft.client.gui.Font.DisplayMode.NORMAL,
+                0, 0xF000F0);
         }
         pose.popPose();
+    }
+
+    private void renderSelectionText(GuiGraphics g, PoseStack pose) {
+        String school = getHighlightedSchool();
+        boolean unlocked = ClientSchoolData.isUnlocked(school);
+        int color = unlocked ? SihriyaUiData.schoolColor(school) : 0xFF888888;
+        String name = SihriyaUiData.schoolName(school);
+        drawCentered(g, pose, name, WHEEL_RADIUS + ICON_SIZE + 14, color);
+
+        if (!unlocked) {
+            drawCentered(g, pose, getRequirementText(school), WHEEL_RADIUS + ICON_SIZE + 28, 0xCCCCCC);
+            drawCentered(g, pose, I18n.get("screen.sihriya.wheel.locked"), WHEEL_RADIUS + ICON_SIZE + 42, 0xFF7777);
+            return;
+        }
+
+        var bestSpell = ClientSchoolData.getBestCastableSpell(school);
+        if (bestSpell.isEmpty()) {
+            drawCentered(g, pose, I18n.get("screen.sihriya.wheel.no_spell"), WHEEL_RADIUS + ICON_SIZE + 28, 0xFFAA66);
+            return;
+        }
+
+        SpellData spell = bestSpell.get();
+        String spellName = SihriyaUiData.spellName(spell);
+        String details = I18n.get("screen.sihriya.wheel.spell_details",
+            spell.tier, spell.manaCost, spell.cooldown / 20.0f);
+        boolean enoughMana = ClientManaData.mana >= spell.manaCost && !ClientManaData.locked;
+        drawCentered(g, pose, spellName, WHEEL_RADIUS + ICON_SIZE + 28, 0xFFFFFF);
+        drawCentered(g, pose, details, WHEEL_RADIUS + ICON_SIZE + 42, enoughMana ? 0xAAAAAA : 0xFF7777);
+    }
+
+    private void drawCentered(GuiGraphics g, PoseStack pose, String text, int y, int color) {
+        int w = font.width(text);
+        font.drawInBatch(text, -w / 2f, y, color, true, pose.last().pose(), g.bufferSource(),
+            net.minecraft.client.gui.Font.DisplayMode.NORMAL, 0, 0xF000F0);
+    }
+
+    private void drawLock(GuiGraphics g, int x, int y) {
+        g.fill(x + 2, y, x + 8, y + 2, 0xCCBBBBBB);
+        g.fill(x, y + 3, x + 10, y + 10, 0xCC222222);
+        g.fill(x + 3, y + 5, x + 7, y + 8, 0xCCBBBBBB);
+    }
+
+    private boolean canCastHighlightedSchool() {
+        if (highlightedIndex < 0) return false;
+        String school = getHighlightedSchool();
+        return ClientSchoolData.isUnlocked(school) && ClientSchoolData.getBestCastableSpell(school).isPresent();
+    }
+
+    private String getHighlightedSchool() {
+        return SihriyaUiData.SCHOOL_ORDER.get(highlightedIndex);
+    }
+
+    private String getRequirementText(String school) {
+        return SihriyaUiData.unlockRequirementText(school, I18n.get("screen.sihriya.wheel.locked"));
     }
 
     private void drawWheelRings(GuiGraphics g) {

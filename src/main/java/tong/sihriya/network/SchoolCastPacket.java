@@ -25,7 +25,9 @@ public class SchoolCastPacket {
         ctx.get().enqueueWork(() -> {
             var player = ctx.get().getSender();
             if (player != null) {
-                SpellCastHandler.castBySchool(player, packet.schoolId);
+                var result = SpellCastHandler.castBySchoolDetailed(player, packet.schoolId);
+                NetworkHandler.sendToPlayer(new CastResultPacket(result.success(), result.schoolId(),
+                    result.spellId(), result.reasonKey(), result.cooldownTicks()), player);
             }
         });
         ctx.get().setPacketHandled(true);
