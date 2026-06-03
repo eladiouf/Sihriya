@@ -48,5 +48,38 @@
       "schoolIds": ["water"],
       "levels": [50]
     }
+  },
+  {
+    "id": "lava",
+    "name": "Lave",
+    "starting": false,
+    "color": "FF6347",
+    "unlock": {
+      "type": "and",
+      "schoolIds": ["fire", "earth"],
+      "levels": [50, 50]
+    }
+  },
+  {
+    "id": "necromancy",
+    "name": "Nécromancie",
+    "starting": false,
+    "color": "800080",
+    "unlock": {
+      "type": "and",
+      "schoolIds": ["earth", "lightning"],
+      "levels": [50, 50]
+    }
+  },
+  {
+    "id": "lumamancy",
+    "name": "Lumagie",
+    "starting": false,
+    "color": "FFD700",
+    "unlock": {
+      "type": "and",
+      "schoolIds": ["water", "wind"],
+      "levels": [50, 50]
+    }
   }
 ]

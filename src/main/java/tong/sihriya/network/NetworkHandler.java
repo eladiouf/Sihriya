@@ -23,6 +23,10 @@ public class NetworkHandler {
             ManaSyncPacket::encode, ManaSyncPacket::decode, ManaSyncPacket::handle);
         CHANNEL.registerMessage(packetId++, SchoolSyncPacket.class,
             SchoolSyncPacket::encode, SchoolSyncPacket::decode, SchoolSyncPacket::handle);
+        CHANNEL.registerMessage(packetId++, SchoolCastPacket.class,
+            SchoolCastPacket::encode, SchoolCastPacket::decode, SchoolCastPacket::handle);
+        CHANNEL.registerMessage(packetId++, SpellParticlePacket.class,
+            SpellParticlePacket::encode, SpellParticlePacket::decode, SpellParticlePacket::handle);
     }
 
     public static void sendToPlayer(Object packet, ServerPlayer player) {

@@ -87,7 +87,8 @@ public class DataLoader extends SimplePreparableReloadListener<JsonObject> {
                         ));
                     }
                 }
-                SpellRegistry.register(new SpellData(id, school, tier, manaCost, cooldown, type, effects));
+                int castTime = obj.has("castTime") ? obj.get("castTime").getAsInt() : 20;
+                SpellRegistry.register(new SpellData(id, school, tier, manaCost, cooldown, castTime, type, effects));
             }
         } catch (Exception e) {
             Sihriya.LOGGER.error("Failed to load spells.json", e);
@@ -140,7 +141,7 @@ public class DataLoader extends SimplePreparableReloadListener<JsonObject> {
                 effects.add(new SpellEffect(parts[0], Float.parseFloat(parts[1]),
                     Float.parseFloat(parts[2]), Integer.parseInt(parts[3])));
             }
-            SpellRegistry.register(new SpellData(id, school, tier, manaCost, cooldown, type, effects));
+            SpellRegistry.register(new SpellData(id, school, tier, manaCost, cooldown, 20, type, effects));
         }
     }
 

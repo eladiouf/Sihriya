@@ -13,6 +13,7 @@ import tong.sihriya.network.NetworkHandler;
 @Mod.EventBusSubscriber(modid = Sihriya.MODID)
 public class MeditationHandler {
     private static final float MANA_PER_TICK = 0.5f;
+    private static final float PASSIVE_REGEN_RATE = 0.001f; // 0.1% du max mana par tick
     private static final int SLOWNESS_AMPLIFIER = 2;
 
     @SubscribeEvent
@@ -24,9 +25,13 @@ public class MeditationHandler {
             boolean wasLocked = mana.isLocked();
             long lockRemaining = mana.getLockRemainingMs();
 
-            // Méditation : sneak maintenu
+            // Regen passive : 0.1% du max mana par tick
+            float passiveRegen = mana.getMaxMana(serverPlayer) * PASSIVE_REGEN_RATE;
+            mana.regenMana(passiveRegen, serverPlayer);
+
+            // Méditation : sneak maintenu → regen rapide
             if (serverPlayer.isShiftKeyDown() && serverPlayer.getHealth() > 0) {
-                mana.regenMana(MANA_PER_TICK);
+                mana.regenMana(MANA_PER_TICK, serverPlayer);
                 if (serverPlayer.tickCount % 20 == 0) {
                     serverPlayer.addEffect(new MobEffectInstance(
                         MobEffects.MOVEMENT_SLOWDOWN, 40, SLOWNESS_AMPLIFIER, false, false, false));
@@ -35,8 +40,9 @@ public class MeditationHandler {
 
             // Sync toutes les 20 ticks
             if (serverPlayer.tickCount % 20 == 0) {
+                mana.clampMana(serverPlayer);
                 NetworkHandler.sendToPlayer(
-                    new ManaSyncPacket(mana.getMana(), mana.getMaxMana(),
+                    new ManaSyncPacket(mana.getMana(), mana.getMaxMana(serverPlayer),
                         mana.isLocked(), mana.getLockRemainingMs()),
                     serverPlayer);
             }
@@ -48,9 +54,9 @@ public class MeditationHandler {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
         if (event.wakeImmediately()) return;
         serverPlayer.getCapability(ManaProvider.MANA).ifPresent(mana -> {
-            mana.setMana(mana.getMaxMana());
+            mana.setMana(mana.getMaxMana(serverPlayer));
             NetworkHandler.sendToPlayer(
-                new ManaSyncPacket(mana.getMana(), mana.getMaxMana(), false, 0),
+                new ManaSyncPacket(mana.getMana(), mana.getMaxMana(serverPlayer), false, 0),
                 serverPlayer);
         });
     }

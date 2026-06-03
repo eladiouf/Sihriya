@@ -31,13 +31,15 @@ public class SpellRegistry {
         public final int tier;
         public final int manaCost;
         public final int cooldown; // ticks
+        public final int castTime; // ticks (0 = instant)
         public final SpellType type;
         public final List<SpellEffect> effects;
 
         public SpellData(String id, String school, int tier, int manaCost, int cooldown,
-                         SpellType type, List<SpellEffect> effects) {
+                         int castTime, SpellType type, List<SpellEffect> effects) {
             this.id = id; this.school = school; this.tier = tier;
             this.manaCost = manaCost; this.cooldown = cooldown;
+            this.castTime = castTime;
             this.type = type; this.effects = effects;
         }
     }

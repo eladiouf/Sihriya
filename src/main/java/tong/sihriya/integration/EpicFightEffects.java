@@ -10,15 +10,15 @@ import net.minecraftforge.fml.common.Mod;
 import tong.sihriya.Sihriya;
 import tong.sihriya.core.SchoolProgressionProvider;
 import tong.sihriya.data.SchoolRegistry;
+import tong.statmod.stats.StatType;
 
 /**
  * Ajoute des effets élémentaires aux attaques physiques (Epic Fight)
  * quand le joueur a une école active.
- * Ne remplace pas le système de sorts, les deux coexistent.
+ * Chance et intensité scale avec la stat STAT Mod correspondante.
  */
 @Mod.EventBusSubscriber(modid = Sihriya.MODID)
 public class EpicFightEffects {
-    private static final float EFFECT_CHANCE = 0.15f; // 15% chance on hit
 
     @SubscribeEvent
     public static void onPlayerAttack(LivingHurtEvent event) {
@@ -29,41 +29,50 @@ public class EpicFightEffects {
             String activeSchool = prog.getActiveSchool();
             if (activeSchool.isEmpty()) return;
             if (!prog.isSchoolUnlocked(activeSchool)) return;
-            if (player.getRandom().nextFloat() > EFFECT_CHANCE) return;
+
+            // Chance = niveau de la stat STAT Mod correspondante (max 100%)
+            StatType stat = STATModIntegration.schoolToStat(activeSchool);
+            int statLevel = stat != null ? STATModIntegration.getStatLevel(player, stat) : 0;
+            float chance = Math.min(1.0f, statLevel * 0.01f); // 1% par niveau
+
+            if (player.getRandom().nextFloat() > chance) return;
 
             int schoolLevel = prog.getLevel(activeSchool);
             int duration = 40 + schoolLevel;
 
+            // Intensité scale avec la stat (multiplie les effets)
+            float intensity = 1.0f + statLevel * 0.01f;
+
             switch (activeSchool) {
                 case "fire" -> {
-                    target.setRemainingFireTicks(duration * 2);
+                    target.setRemainingFireTicks((int)(duration * 2 * intensity));
                     target.hurt(player.damageSources().indirectMagic(player, player),
-                        schoolLevel * 0.1f);
+                        schoolLevel * 0.1f * intensity);
                 }
                 case "water" -> {
                     target.addEffect(new MobEffectInstance(
-                        MobEffects.MOVEMENT_SLOWDOWN, duration, 1));
+                        MobEffects.MOVEMENT_SLOWDOWN, (int)(duration * intensity), 1));
                 }
                 case "wind" -> {
                     var look = player.getLookAngle();
-                    target.knockback(0.5f + schoolLevel * 0.01f, -look.x, -look.z);
+                    target.knockback(0.5f + schoolLevel * 0.01f * intensity, -look.x, -look.z);
                 }
                 case "earth" -> {
                     target.addEffect(new MobEffectInstance(
-                        MobEffects.WEAKNESS, duration, Math.min(2, schoolLevel / 20)));
+                        MobEffects.WEAKNESS, (int)(duration * intensity), Math.min(2, schoolLevel / 20)));
                     target.addEffect(new MobEffectInstance(
-                        MobEffects.MOVEMENT_SLOWDOWN, duration / 2, 2));
+                        MobEffects.MOVEMENT_SLOWDOWN, (int)(duration / 2 * intensity), 2));
                 }
                 case "lightning" -> {
                     target.hurt(player.damageSources().lightningBolt(),
-                        schoolLevel * 0.15f);
+                        schoolLevel * 0.15f * intensity);
                     target.addEffect(new MobEffectInstance(
-                        MobEffects.WEAKNESS, duration / 2, 0));
+                        MobEffects.WEAKNESS, (int)(duration / 2 * intensity), 0));
                 }
                 case "ice" -> {
-                    target.setTicksFrozen(duration);
+                    target.setTicksFrozen((int)(duration * intensity));
                     target.addEffect(new MobEffectInstance(
-                        MobEffects.MOVEMENT_SLOWDOWN, duration, 2));
+                        MobEffects.MOVEMENT_SLOWDOWN, (int)(duration * intensity), 2));
                 }
             }
         });

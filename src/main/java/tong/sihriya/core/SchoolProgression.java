@@ -40,6 +40,14 @@ public class SchoolProgression implements INBTSerializable<CompoundTag> {
     public Set<String> getLearnedSpells() { return learnedSpells; }
     public Set<String> getUnlockedSchools() { return unlockedSchools; }
 
+    /** Retourne l'ID de l'école avec le niveau le plus élevé (pour le premier join). */
+    public String getHighestSchool() {
+        return schoolLevels.entrySet().stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse("");
+    }
+
     public List<String> getSpellsForSchool(String schoolId) {
         return learnedSpells.stream()
             .filter(id -> id.startsWith(schoolId + "."))

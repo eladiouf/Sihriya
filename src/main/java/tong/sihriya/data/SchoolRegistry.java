@@ -1,6 +1,7 @@
 package tong.sihriya.data;
 
 import tong.sihriya.Sihriya;
+import tong.sihriya.core.SchoolProgression;
 
 import java.util.*;
 
@@ -33,12 +34,26 @@ public class SchoolRegistry {
     }
 
     public static class UnlockCondition {
-        public final String type; // "level" or "or"
+        public final String type; // "level", "or", "and"
         public final String[] schoolIds;
         public final int[] levels;
 
         public UnlockCondition(String type, String[] schoolIds, int[] levels) {
             this.type = type; this.schoolIds = schoolIds; this.levels = levels;
+        }
+
+        public boolean isMet(SchoolProgression prog) {
+            if ("or".equals(type)) {
+                for (int i = 0; i < schoolIds.length; i++) {
+                    if (prog.getLevel(schoolIds[i]) >= levels[i]) return true;
+                }
+                return false;
+            } else { // "level" or "and"
+                for (int i = 0; i < schoolIds.length; i++) {
+                    if (prog.getLevel(schoolIds[i]) < levels[i]) return false;
+                }
+                return true;
+            }
         }
     }
 }

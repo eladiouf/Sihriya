@@ -24,9 +24,14 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
                 "${mod_id}" {
                     source sourceSets.main
+                }
+                "statmod" {
+                    source project(':STAT_MOD').sourceSets.main
                 }
             }
         }
@@ -59,8 +64,16 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    // Epic Fight (local JAR)
-    implementation fg.deobf("blank:epic-fight-20.14.17-mc1.20.1-forge:20.14.17")
+    // Epic Fight (local JAR — transitive=false pour éviter aaa_particles/nightfall/invincible/avalon)
+    implementation(fg.deobf("blank:epic-fight-20.14.17-mc1.20.1-forge:20.14.17")) {
+        transitive = false
+    }
+
+    // STAT Mod (sibling project)
+    implementation project(':STAT_MOD')
+
+    // Iron's Spells 'n Spellbooks (optional — compileOnly, détection runtime via Class.forName)
+    compileOnly fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:7907340")
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -103,4 +116,57 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+// Désactiver JarInJar — Epic Fight Nightfall embarque AAA Particles incompatible
+jarJar {
+    disable()
+}
+
+// Supprimer les dépendances embarquées incompatibles du cache deobf avant runClient
+tasks.register('cleanDeobfCache', Delete) {
+    doFirst {
+        def deobfBase = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        delete fileTree(deobfBase) {
+            include "aaa_particles-forge-1.20.1-2.2.1-beta.2/**"
+            include "epicfight-nightfall-3.3.3-all/**"
+            include "epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge/**"
+            include "epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge/**"
+        }
+        def deobfCurse = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        delete fileTree(deobfCurse) {
+            include "epicfight-nightfall-1307848/**"
+            include "epic-fight-avalon-1268823/**"
+        }
+    }
+}
+
+tasks.matching { it.name == 'runClient' }.configureEach {
+    dependsOn 'cleanDeobfCache'
+}
+
+// Supprimer les JARs incompatibles juste avant le lancement du jeu
+afterEvaluate {
+    tasks.findByName('runClient')?.doFirst {
+        def cacheDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        ['aaa_particles-forge-1.20.1-2.2.1-beta.2', 'epicfight-nightfall-3.3.3-all',
+         'epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge', 'epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge'].each {
+            def d = new File(cacheDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+        def curseDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        ['epic-fight-avalon-1268823'].each {
+            def d = new File(curseDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+    }
+    tasks.findByName('runServer')?.doFirst {
+        def cacheDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        ['aaa_particles-forge-1.20.1-2.2.1-beta.2', 'epicfight-nightfall-3.3.3-all',
+         'epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge', 'epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge'].each {
+            def d = new File(cacheDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+        def curseDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        ['epic-fight-avalon-1268823'].each {
+            def d = new File(curseDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+    }
 }

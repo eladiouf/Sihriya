@@ -10,7 +10,10 @@ import net.minecraftforge.fml.common.Mod;
 import tong.sihriya.Sihriya;
 import tong.sihriya.data.SpellRegistry;
 import tong.sihriya.data.SpellRegistry.*;
-import tong.sihriya.integration.SihriyaAPI;
+import tong.sihriya.integration.EpicFightIntegration;
+import tong.sihriya.integration.STATModIntegration;
+import tong.sihriya.network.NetworkHandler;
+import tong.sihriya.network.SpellParticlePacket;
 
 import java.util.*;
 
@@ -47,20 +50,62 @@ public class SpellCastHandler {
         var mana = manaOpt.get();
         if (!mana.consumeMana(spell.manaCost)) return false;
 
+        // Jouer l'animation de chant (côté serveur seulement)
+        if (!player.level().isClientSide) {
+            tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
+                tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CHANT);
+        }
+
+        // Jouer l'animation Epic Fight (legacy)
+        EpicFightIntegration.playSpellAnimation(player, spellId);
+
         // Exécuter les effets
         executeEffects(player, spell);
+
+        // Après l'exécution des effets, jouer l'animation de cast
+        if (!player.level().isClientSide) {
+            tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
+                tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST);
+        }
 
         // Cooldown
         playerCooldowns.put(spellId, now);
 
-        // XP
+        // XP école Sihriya (progression locale)
         prog.addXp(spell.school, 5);
 
-        // Check unlock conditions for advanced schools
-        checkSchoolUnlocks(player, prog);
+        // XP stats STAT Mod (MANA_POOL, CASTING_SPEED, stat d'affinité)
+        STATModIntegration.awardSpellXp(player, spell);
+
+        // Vérifier les paliers et déblocages
+        TierUnlockHandler.checkUnlocks(player, prog);
+
+        // Envoyer le packet de particules au client
+        NetworkHandler.sendToPlayer(new SpellParticlePacket(spellId, spell.school), player);
 
         Sihriya.LOGGER.debug("Player {} cast spell {}", player.getName().getString(), spellId);
         return true;
+    }
+
+    /** Cast le meilleur sort disponible pour une école (touché 1-6). */
+    public static void castBySchool(ServerPlayer player, String schoolId) {
+        var progOpt = player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).resolve();
+        if (progOpt.isEmpty()) return;
+        var prog = progOpt.get();
+
+        if (!prog.isSchoolUnlocked(schoolId)) return;
+
+        // Trouver les sorts appris de cette école, triés par tier décroissant
+        var spells = prog.getLearnedSpells().stream()
+            .map(SpellRegistry::get)
+            .filter(Objects::nonNull)
+            .filter(spell -> schoolId.equals(spell.school))
+            .sorted((a, b) -> Integer.compare(b.tier, a.tier))
+            .toList();
+
+        for (var spell : spells) {
+            if (castSpell(player, spell.id)) return;
+        }
     }
 
     private static void executeEffects(ServerPlayer player, SpellData spell) {
@@ -70,11 +115,11 @@ public class SpellCastHandler {
             schoolLevel = progOpt.get().getLevel(spell.school);
         }
 
-        // Bonus from STAT Mod
-        float statBonus = SihriyaAPI.getScalingBonus(player, spell.school);
+        // Multiplicateur de dégâts basé sur les stats STAT Mod
+        float statMultiplier = STATModIntegration.getDamageMultiplier(player, spell.school);
 
         for (SpellEffect effect : spell.effects) {
-            float value = effect.baseValue + (schoolLevel * effect.scaling) * (1 + statBonus);
+            float value = (effect.baseValue + (schoolLevel * effect.scaling)) * statMultiplier;
 
             switch (effect.type) {
                 case "damage" -> applyDamage(player, value);
@@ -85,6 +130,27 @@ public class SpellCastHandler {
                 case "freeze" -> applyFreeze(player, effect.duration);
                 case "chain" -> applyChain(player, value, effect.duration);
                 case "heal" -> applyHeal(player, value);
+                case "dash" -> applyDash(player, value);
+                case "absorb_lightning" -> applyAbsorbLightning(player, effect.duration);
+                case "blindness" -> applyBlindness(player, effect.duration);
+                case "poison" -> applyPoison(player, (int) value, effect.duration);
+                case "pull" -> applyPull(player, value);
+                case "fear" -> applyFear(player, effect.duration);
+                case "absorb" -> applyAbsorb(player, value, effect.duration);
+                case "dispel" -> applyDispel(player);
+                case "speed" -> applySpeed(player, value, effect.duration);
+                case "thorns" -> applyThorns(player, value, effect.duration);
+                case "vulnerability" -> applyVulnerability(player, value, effect.duration);
+                case "damage_reduction" -> applyDamageReduction(player, value, effect.duration);
+                case "projectile_deflect" -> applyProjectileDeflect(player, value, effect.duration);
+                case "flight" -> applyFlight(player, effect.duration);
+                case "melee_bonus" -> applyMeleeBonus(player, value, effect.duration);
+                case "melee_fire_bonus" -> applyMeleeFireBonus(player, value, effect.duration);
+                case "range_bonus" -> {} // passif, géré ailleurs
+                case "orbit_damage" -> {} // passif, géré ailleurs
+                case "summon" -> {} // TODO: invoquer des entités
+                case "wall" -> {} // TODO: créer des blocs
+                default -> Sihriya.LOGGER.debug("Unhandled effect type: {}", effect.type);
             }
         }
     }
@@ -92,7 +158,15 @@ public class SpellCastHandler {
     // Effect implementations (simplified)
     private static void applyDamage(ServerPlayer player, float amount) {
         var target = getTargetEntity(player);
-        if (target != null) target.hurt(player.damageSources().magic(), amount);
+        if (target != null) {
+            // Appliquer la résistance magique de la cible
+            float finalAmount = amount;
+            if (target instanceof net.minecraft.world.entity.player.Player targetPlayer) {
+                float resistance = STATModIntegration.getMagicResistance(targetPlayer);
+                finalAmount = amount * (1 - resistance);
+            }
+            target.hurt(player.damageSources().magic(), finalAmount);
+        }
     }
 
     private static void applyBurn(ServerPlayer player, int damage, int duration) {
@@ -153,6 +227,116 @@ public class SpellCastHandler {
         player.heal(amount);
     }
 
+    private static void applyDash(ServerPlayer player, float distance) {
+        Vec3 look = player.getLookAngle();
+        player.push(look.x * distance * 0.5, 0.15, look.z * distance * 0.5);
+        player.hurtMarked = true;
+    }
+
+    private static void applyAbsorbLightning(ServerPlayer player, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            tong.sihriya.core.ModEffects.LIGHTNING_ABSORPTION.get(), duration, 0));
+    }
+
+    private static void applyBlindness(ServerPlayer player, int duration) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.BLINDNESS, duration, 0));
+        }
+    }
+
+    private static void applyPoison(ServerPlayer player, int damage, int duration) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.POISON, duration, 1));
+        }
+    }
+
+    private static void applyPull(ServerPlayer player, float strength) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            Vec3 direction = player.position().subtract(target.position()).normalize();
+            target.push(direction.x * strength * 0.3, 0.1, direction.z * strength * 0.3);
+            target.hurtMarked = true;
+        }
+    }
+
+    private static void applyFear(ServerPlayer player, int duration) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN, duration, 3));
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.WEAKNESS, duration, 2));
+        }
+    }
+
+    private static void applyAbsorb(ServerPlayer player, float amount, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.ABSORPTION, duration, (int)(amount / 4)));
+    }
+
+    private static void applyDispel(ServerPlayer player) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            // Supprimer les effets positifs de la cible
+            var effects = new ArrayList<>(target.getActiveEffects());
+            for (var effect : effects) {
+                if (effect.getEffect().isBeneficial()) {
+                    target.removeEffect(effect.getEffect());
+                }
+            }
+        }
+    }
+
+    private static void applySpeed(ServerPlayer player, float multiplier, int duration) {
+        int amplifier = (int)(multiplier * 2);
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED, duration, Math.max(0, amplifier)));
+    }
+
+    private static void applyThorns(ServerPlayer player, float damage, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            tong.sihriya.core.ModEffects.THORNS_AURA.get(), duration, (int)(damage / 4)));
+    }
+
+    private static void applyVulnerability(ServerPlayer player, float multiplier, int duration) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.WEAKNESS, duration, (int)(multiplier * 4)));
+        }
+    }
+
+    private static void applyDamageReduction(ServerPlayer player, float amount, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE, duration, (int)(amount * 4)));
+    }
+
+    private static void applyProjectileDeflect(ServerPlayer player, float chance, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            tong.sihriya.core.ModEffects.PROJECTILE_SHIELD.get(), duration, 0));
+    }
+
+    private static void applyFlight(ServerPlayer player, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            tong.sihriya.core.ModEffects.MAGIC_FLIGHT.get(), duration, 0));
+    }
+
+    private static void applyMeleeBonus(ServerPlayer player, float amount, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DAMAGE_BOOST, duration, (int)(amount / 4)));
+    }
+
+    private static void applyMeleeFireBonus(ServerPlayer player, float amount, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DAMAGE_BOOST, duration, (int)(amount / 4)));
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.FIRE_RESISTANCE, duration, 0));
+    }
+
     private static LivingEntity getTargetEntity(ServerPlayer player) {
         var hitResult = player.pick(20.0, 1.0f, false);
         if (hitResult.getType() == net.minecraft.world.phys.HitResult.Type.ENTITY) {
@@ -162,38 +346,4 @@ public class SpellCastHandler {
         return null;
     }
 
-    private static void checkSchoolUnlocks(ServerPlayer player, SchoolProgression prog) {
-        for (var school : tong.sihriya.data.SchoolRegistry.getAll()) {
-            if (prog.isSchoolUnlocked(school.id)) continue;
-            if (school.unlock == null) continue;
-
-            boolean shouldUnlock = false;
-            if ("or".equals(school.unlock.type)) {
-                for (int i = 0; i < school.unlock.schoolIds.length; i++) {
-                    if (prog.getLevel(school.unlock.schoolIds[i]) >= school.unlock.levels[i]) {
-                        shouldUnlock = true;
-                        break;
-                    }
-                }
-            } else if ("level".equals(school.unlock.type)) {
-                if (school.unlock.schoolIds.length > 0 &&
-                    prog.getLevel(school.unlock.schoolIds[0]) >= school.unlock.levels[0]) {
-                    shouldUnlock = true;
-                }
-            }
-
-            if (shouldUnlock) {
-                prog.unlockSchool(school.id);
-                Sihriya.LOGGER.info("Player {} unlocked school: {}",
-                    player.getName().getString(), school.id);
-            }
-        }
-    }
-
-    // Epic Fight compatibility: add elemental effects on hit
-    @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event) {
-        if (!(event.getSource().getEntity() instanceof Player player)) return;
-        // Effects are applied through spell casting, not automatically on melee
-    }
 }

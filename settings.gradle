@@ -14,3 +14,7 @@ plugins {
 }
 
 rootProject.name = 'sihriya'
+
+// Include STAT Mod as a sub-project
+include ':STAT_MOD'
+project(':STAT_MOD').projectDir = file('../STAT_MOD')

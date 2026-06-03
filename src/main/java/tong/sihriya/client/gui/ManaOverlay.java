@@ -12,6 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tong.sihriya.Sihriya;
 import tong.sihriya.client.ClientManaData;
+import tong.sihriya.data.SpellRegistry;
 
 public class ManaOverlay implements IGuiOverlay {
     public static final ManaOverlay INSTANCE = new ManaOverlay();
@@ -53,6 +54,13 @@ public class ManaOverlay implements IGuiOverlay {
         if (locked) {
             String lockText = String.format("%.1fs", ClientManaData.lockRemaining / 1000.0);
             graphics.drawString(font, lockText, BAR_X + BAR_WIDTH + 4, BAR_Y, LOCK_COLOR);
+        }
+
+        // Test spell icon
+        var spark = SpellRegistry.get("fire.spark");
+        if (spark != null) {
+            SpellIconRenderer.renderIconScaled(graphics, spark, BAR_X + 5, BAR_Y + BAR_HEIGHT + 4, 16);
+            graphics.drawString(font, spark.id, BAR_X + 24, BAR_Y + BAR_HEIGHT + 6, 0xFFFFFF);
         }
     }
 }
