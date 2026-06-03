@@ -9,7 +9,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire"
+    "svg": "fire-flower"
   },
   "fire.dancing_embers": {
     "row": 0,
@@ -21,7 +21,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-shield"
+    "svg": "fire-extinguisher"
   },
   "fire.fire_piston_strike": {
     "row": 0,
@@ -57,7 +57,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-breath"
+    "svg": "torc"
   },
   "fire.spark": {
     "row": 0,
@@ -69,7 +69,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-punch"
+    "svg": "fire"
   },
   "fire.blazing_armor": {
     "row": 0,
@@ -81,7 +81,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-shrine"
+    "svg": "arm"
   },
   "fire.fiery_breath": {
     "row": 0,
@@ -105,7 +105,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-spell-cast"
+    "svg": "fire-gem"
   },
   "fire.fire_nova": {
     "row": 0,
@@ -129,7 +129,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-bottle"
+    "svg": "fire-shrine"
   },
   "fire.flying_ashes": {
     "row": 0,
@@ -141,7 +141,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-flower"
+    "svg": "fly"
   },
   "fire.minor_eruption": {
     "row": 0,
@@ -153,7 +153,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-silhouette"
+    "svg": "fire-iris"
   },
   "fire.wall_of_flames": {
     "row": 0,
@@ -165,7 +165,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "celebration-fire"
+    "svg": "flame"
   },
   "fire.ash_storm": {
     "row": 0,
@@ -177,7 +177,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "small-fire"
+    "svg": "dice-fire"
   },
   "fire.comet": {
     "row": 0,
@@ -189,7 +189,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-bomb"
+    "svg": "comet-spark"
   },
   "fire.dragons_breath": {
     "row": 0,
@@ -201,7 +201,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-dash"
+    "svg": "fire-spell-cast"
   },
   "fire.fire_wheel": {
     "row": 0,
@@ -213,7 +213,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-tail"
+    "svg": "eel"
   },
   "fire.furnace": {
     "row": 0,
@@ -225,7 +225,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-zone"
+    "svg": "furnace"
   },
   "fire.furnace_heart": {
     "row": 0,
@@ -237,7 +237,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-bowl"
+    "svg": "ace"
   },
   "fire.fusion": {
     "row": 0,
@@ -249,7 +249,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-iris"
+    "svg": "fire-shield"
   },
   "fire.infernal_pillar": {
     "row": 0,
@@ -261,7 +261,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-gem"
+    "svg": "fern"
   },
   "fire.infinite_brazier": {
     "row": 0,
@@ -273,7 +273,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-ace"
+    "svg": "celebration-fire"
   },
   "fire.meteor_shower": {
     "row": 0,
@@ -285,7 +285,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fire-axe"
+    "svg": "shower"
   },
   "fire.piercing_meteor": {
     "row": 0,
@@ -297,7 +297,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "firework-rocket"
+    "svg": "alien-fire"
   },
   "fire.summoned_phoenix": {
     "row": 0,
@@ -309,7 +309,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fireflake"
+    "svg": "summon"
   },
   "fire.apocalypse_ignited": {
     "row": 0,
@@ -321,7 +321,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "fireplace"
+    "svg": "fire-ace"
   },
   "fire.blazing_sun": {
     "row": 0,
@@ -333,7 +333,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "fire",
-    "svg": "wildfires"
+    "svg": "sun"
   },
   "water.air_bubble": {
     "row": 1,
@@ -345,7 +345,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water"
+    "svg": "water-splash"
   },
   "water.fog": {
     "row": 1,
@@ -369,7 +369,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-drop"
+    "svg": "water-bolt"
   },
   "water.sharp_drop": {
     "row": 1,
@@ -381,7 +381,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-splash"
+    "svg": "drop"
   },
   "water.walk_on_water": {
     "row": 1,
@@ -393,7 +393,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-bolt"
+    "svg": "walk"
   },
   "water.water_jet": {
     "row": 1,
@@ -405,7 +405,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-bottle"
+    "svg": "water"
   },
   "water.aquatic_purge": {
     "row": 1,
@@ -417,7 +417,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-diviner-stick"
+    "svg": "water-gallon"
   },
   "water.ascending_current": {
     "row": 1,
@@ -441,7 +441,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-fountain"
+    "svg": "crush"
   },
   "water.healing_rain": {
     "row": 1,
@@ -453,7 +453,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-gallon"
+    "svg": "healing"
   },
   "water.liquid_shield": {
     "row": 1,
@@ -465,7 +465,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-mill"
+    "svg": "shield"
   },
   "water.pressure_wave": {
     "row": 1,
@@ -477,7 +477,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-polo"
+    "svg": "water-gun"
   },
   "water.water_lace": {
     "row": 1,
@@ -489,7 +489,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-recycling"
+    "svg": "water-fountain"
   },
   "water.water_prison": {
     "row": 1,
@@ -501,7 +501,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-tank"
+    "svg": "water-drop"
   },
   "water.abyssal_well": {
     "row": 1,
@@ -513,7 +513,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-tower"
+    "svg": "well"
   },
   "water.deluge": {
     "row": 1,
@@ -537,7 +537,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "water-gun"
+    "svg": "manual-water-pump"
   },
   "water.liquid_blade": {
     "row": 1,
@@ -549,7 +549,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "mouth-watering"
+    "svg": "water-recycling"
   },
   "water.liquid_form": {
     "row": 1,
@@ -561,7 +561,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "waterfall"
+    "svg": "water-bottle"
   },
   "water.local_flood": {
     "row": 1,
@@ -573,7 +573,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "wave-crest"
+    "svg": "flood"
   },
   "water.maelstrom": {
     "row": 1,
@@ -585,7 +585,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "wave-strike"
+    "svg": "water-mill"
   },
   "water.water_mirror": {
     "row": 1,
@@ -597,7 +597,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "ice-shield"
+    "svg": "water-polo"
   },
   "water.black_tide": {
     "row": 1,
@@ -609,7 +609,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "big-wave"
+    "svg": "water-tank"
   },
   "water.evaporation": {
     "row": 1,
@@ -621,7 +621,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "bubble-field"
+    "svg": "water-tower"
   },
   "water.ice_armor": {
     "row": 1,
@@ -645,7 +645,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "droplet-splash"
+    "svg": "water-diviner-stick"
   },
   "water.eye_of_deluge": {
     "row": 1,
@@ -657,7 +657,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "ice-spell-cast"
+    "svg": "eye"
   },
   "water.primeval_deluge": {
     "row": 1,
@@ -669,7 +669,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "water",
-    "svg": "chemical-drop"
+    "svg": "plant-watering"
   },
   "wind.air_scissors": {
     "row": 2,
@@ -681,7 +681,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "wind-turbine"
+    "svg": "scissors"
   },
   "wind.air_shield": {
     "row": 2,
@@ -705,7 +705,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "wind-slap"
+    "svg": "wind-turbine"
   },
   "wind.protective_breath": {
     "row": 2,
@@ -717,7 +717,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "windy-stripes"
+    "svg": "heart-plus"
   },
   "wind.whisper": {
     "row": 2,
@@ -729,7 +729,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "windchimes"
+    "svg": "heart-shield"
   },
   "wind.wind_step": {
     "row": 2,
@@ -753,7 +753,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "windmill"
+    "svg": "wind-slap"
   },
   "wind.brief_flight": {
     "row": 2,
@@ -765,7 +765,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "windpump"
+    "svg": "windchimes"
   },
   "wind.enhanced_throw": {
     "row": 2,
@@ -777,7 +777,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "windsock"
+    "svg": "cloud"
   },
   "wind.minor_trombe": {
     "row": 2,
@@ -801,7 +801,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "feathered-wing"
+    "svg": "whip"
   },
   "wind.whirlwind": {
     "row": 2,
@@ -813,7 +813,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "wing-cloak"
+    "svg": "paper-windmill"
   },
   "wind.whistle": {
     "row": 2,
@@ -825,7 +825,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "feather-wound"
+    "svg": "whistle"
   },
   "wind.wind_feather": {
     "row": 2,
@@ -849,7 +849,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "heart-armor"
+    "svg": "air-man"
   },
   "wind.dust_storm": {
     "row": 2,
@@ -861,7 +861,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "spear-feather"
+    "svg": "windmill"
   },
   "wind.impaling_wind": {
     "row": 2,
@@ -873,7 +873,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "half-tornado"
+    "svg": "imp"
   },
   "wind.silent_gust": {
     "row": 2,
@@ -885,7 +885,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "tornado-discs"
+    "svg": "air-balloon"
   },
   "wind.storm_blades": {
     "row": 2,
@@ -897,7 +897,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "heart-shield"
+    "svg": "window"
   },
   "wind.wind_cage": {
     "row": 2,
@@ -909,7 +909,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "stomp-tornado"
+    "svg": "cage"
   },
   "wind.wind_circle": {
     "row": 2,
@@ -933,7 +933,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "pentarrows-tornado"
+    "svg": "window-bars"
   },
   "wind.air_vacuum": {
     "row": 2,
@@ -945,7 +945,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "fluffy-wing"
+    "svg": "circle-cage"
   },
   "wind.ascension": {
     "row": 2,
@@ -957,7 +957,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "spiky-wing"
+    "svg": "windsock"
   },
   "wind.hurricane": {
     "row": 2,
@@ -969,7 +969,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "liberty-wing"
+    "svg": "windpump"
   },
   "wind.wind_corridor": {
     "row": 2,
@@ -981,7 +981,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "plane-wing"
+    "svg": "cloud-download"
   },
   "wind.ether_breath": {
     "row": 2,
@@ -993,7 +993,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "bat-wing"
+    "svg": "sun-cloud"
   },
   "wind.eye_of_storm": {
     "row": 2,
@@ -1005,7 +1005,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "wind",
-    "svg": "tornado"
+    "svg": "windy-stripes"
   },
   "earth.blinding_dust": {
     "row": 3,
@@ -1017,7 +1017,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "earth-crack"
+    "svg": "boulder-dash"
   },
   "earth.clay_projectile": {
     "row": 3,
@@ -1029,7 +1029,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "earth-spit"
+    "svg": "mountain-climbing"
   },
   "earth.earth_sense": {
     "row": 3,
@@ -1041,7 +1041,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "earth-worm"
+    "svg": "mineral-heart"
   },
   "earth.rock_strike": {
     "row": 3,
@@ -1065,7 +1065,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-ball"
+    "svg": "earth-worm"
   },
   "earth.tremor": {
     "row": 3,
@@ -1077,7 +1077,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "diamond-ring"
+    "svg": "earth-africa-europe"
   },
   "earth.absorption": {
     "row": 3,
@@ -1089,7 +1089,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-bars"
+    "svg": "earth-spit"
   },
   "earth.rock_spike": {
     "row": 3,
@@ -1101,7 +1101,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-cluster"
+    "svg": "earth-asia-oceania"
   },
   "earth.sand_armor": {
     "row": 3,
@@ -1113,7 +1113,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-earrings"
+    "svg": "curling-stone"
   },
   "earth.shield_strike": {
     "row": 3,
@@ -1125,7 +1125,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-eye"
+    "svg": "diamond-hilt"
   },
   "earth.stone_roots": {
     "row": 3,
@@ -1137,7 +1137,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "big-diamond-ring"
+    "svg": "earth-crack"
   },
   "earth.stone_vise": {
     "row": 3,
@@ -1149,7 +1149,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-growth"
+    "svg": "cliff-crossing"
   },
   "earth.stone_wall": {
     "row": 3,
@@ -1161,7 +1161,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-wall"
+    "svg": "earth-america"
   },
   "earth.trench": {
     "row": 3,
@@ -1173,7 +1173,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "trench-body-armor"
+    "svg": "trench-assault"
   },
   "earth.avalanche": {
     "row": 3,
@@ -1185,7 +1185,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-shine"
+    "svg": "diamond-ring"
   },
   "earth.drill_through": {
     "row": 3,
@@ -1197,7 +1197,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-shrine"
+    "svg": "drill"
   },
   "earth.fissure": {
     "row": 3,
@@ -1209,7 +1209,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "crystal-wand"
+    "svg": "stone-wall"
   },
   "earth.fortress": {
     "row": 3,
@@ -1221,7 +1221,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "diamond-hard"
+    "svg": "locked-fortress"
   },
   "earth.rock_path": {
     "row": 3,
@@ -1233,7 +1233,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "diamond-hilt"
+    "svg": "diamond-trophy"
   },
   "earth.stone_golem": {
     "row": 3,
@@ -1245,7 +1245,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "diamond-trophy"
+    "svg": "crystal-eye"
   },
   "earth.stone_statue": {
     "row": 3,
@@ -1257,7 +1257,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "cut-diamond"
+    "svg": "mineral-pearls"
   },
   "earth.targeted_quake": {
     "row": 3,
@@ -1269,7 +1269,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-block"
+    "svg": "targeted"
   },
   "earth.earth_column": {
     "row": 3,
@@ -1281,7 +1281,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-bridge"
+    "svg": "mountain"
   },
   "earth.earth_magnet": {
     "row": 3,
@@ -1293,7 +1293,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-bust"
+    "svg": "magnet"
   },
   "earth.earthquake": {
     "row": 3,
@@ -1305,7 +1305,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-crafting"
+    "svg": "big-diamond-ring"
   },
   "earth.lithic_regen": {
     "row": 3,
@@ -1317,7 +1317,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-path"
+    "svg": "mountain-cave"
   },
   "earth.earth_mother_wrath": {
     "row": 3,
@@ -1329,7 +1329,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "diamond"
+    "svg": "crystal-earrings"
   },
   "earth.titan_awakening": {
     "row": 3,
@@ -1341,7 +1341,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "earth",
-    "svg": "stone-pile"
+    "svg": "diamond"
   },
   "lightning.antenna": {
     "row": 4,
@@ -1353,7 +1353,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-storm"
+    "svg": "ant"
   },
   "lightning.bouncing_spark": {
     "row": 4,
@@ -1365,7 +1365,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-arc"
+    "svg": "lightning-dissipation"
   },
   "lightning.discharge": {
     "row": 4,
@@ -1377,7 +1377,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-shield"
+    "svg": "disc"
   },
   "lightning.electric_arc": {
     "row": 4,
@@ -1389,7 +1389,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-bow"
+    "svg": "electric"
   },
   "lightning.electric_detection": {
     "row": 4,
@@ -1401,7 +1401,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "power-lightning"
+    "svg": "lightning-electron"
   },
   "lightning.static_charge": {
     "row": 4,
@@ -1413,7 +1413,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-branches"
+    "svg": "static"
   },
   "lightning.acceleration": {
     "row": 4,
@@ -1425,7 +1425,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-dissipation"
+    "svg": "rat"
   },
   "lightning.chain_lightning": {
     "row": 4,
@@ -1437,7 +1437,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-dome"
+    "svg": "lightning-storm"
   },
   "lightning.electro_muscle": {
     "row": 4,
@@ -1449,7 +1449,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-electron"
+    "svg": "lightning-mask"
   },
   "lightning.faraday_cage": {
     "row": 4,
@@ -1461,7 +1461,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-flame"
+    "svg": "lightning-helix"
   },
   "lightning.lightning_armor": {
     "row": 4,
@@ -1473,7 +1473,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-frequency"
+    "svg": "lightning-shield"
   },
   "lightning.lightning_link": {
     "row": 4,
@@ -1485,7 +1485,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-helix"
+    "svg": "lightning-frequency"
   },
   "lightning.paralysis": {
     "row": 4,
@@ -1497,7 +1497,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-mask"
+    "svg": "lightning-dome"
   },
   "lightning.underground_arc": {
     "row": 4,
@@ -1521,7 +1521,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-shadow"
+    "svg": "lightning-shout"
   },
   "lightning.electric_storm": {
     "row": 4,
@@ -1533,7 +1533,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-shout"
+    "svg": "lightning-flame"
   },
   "lightning.electrostatic_storm": {
     "row": 4,
@@ -1545,7 +1545,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-slashes"
+    "svg": "lightning-spanner"
   },
   "lightning.emp": {
     "row": 4,
@@ -1557,7 +1557,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-spanner"
+    "svg": "heavy-lightning"
   },
   "lightning.fan_arc": {
     "row": 4,
@@ -1569,7 +1569,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-tear"
+    "svg": "lightning-slashes"
   },
   "lightning.guided_lightning": {
     "row": 4,
@@ -1581,7 +1581,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-tree"
+    "svg": "lightning-arc"
   },
   "lightning.plasma_orb": {
     "row": 4,
@@ -1593,7 +1593,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "lightning-trio"
+    "svg": "lightning-shadow"
   },
   "lightning.surge": {
     "row": 4,
@@ -1605,7 +1605,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "chain-lightning"
+    "svg": "focused-lightning"
   },
   "lightning.conduit": {
     "row": 4,
@@ -1617,7 +1617,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "heavy-lightning"
+    "svg": "power-lightning"
   },
   "lightning.rainbow_arc": {
     "row": 4,
@@ -1629,7 +1629,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "focused-lightning"
+    "svg": "lightning-tear"
   },
   "lightning.storm_call": {
     "row": 4,
@@ -1641,7 +1641,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "sonic-lightning"
+    "svg": "lightning-bow"
   },
   "lightning.storm_heart": {
     "row": 4,
@@ -1653,7 +1653,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "plasma-bolt"
+    "svg": "lightning-tree"
   },
   "lightning.celestial_judgment": {
     "row": 4,
@@ -1665,7 +1665,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "thunder-skull"
+    "svg": "lightning-branches"
   },
   "lightning.wrath_of_zeus": {
     "row": 4,
@@ -1677,7 +1677,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lightning",
-    "svg": "bolt-cutter"
+    "svg": "lightning-trio"
   },
   "ice.frost_breath": {
     "row": 5,
@@ -1689,7 +1689,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "cold-heart"
+    "svg": "ice-cream-cone"
   },
   "ice.frozen_breath": {
     "row": 5,
@@ -1701,7 +1701,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "shard-sword"
+    "svg": "ice-spear"
   },
   "ice.ground_frost": {
     "row": 5,
@@ -1713,7 +1713,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "floating-crystal"
+    "svg": "ice-cube"
   },
   "ice.ice_arrow": {
     "row": 5,
@@ -1737,7 +1737,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "melting-ice-cube"
+    "svg": "hive"
   },
   "ice.slippery_ground": {
     "row": 5,
@@ -1749,7 +1749,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-cream-cone"
+    "svg": "ice-cream-scoop"
   },
   "ice.frost_armor": {
     "row": 5,
@@ -1761,7 +1761,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-cream-scoop"
+    "svg": "ice-shield"
   },
   "ice.frost_crystal": {
     "row": 5,
@@ -1773,7 +1773,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-cubes"
+    "svg": "police-badge"
   },
   "ice.frost_steps": {
     "row": 5,
@@ -1797,7 +1797,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-skate"
+    "svg": "ice-cubes"
   },
   "ice.ice_thorns": {
     "row": 5,
@@ -1809,7 +1809,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-spear"
+    "svg": "dice-shield"
   },
   "ice.iceberg_lance": {
     "row": 5,
@@ -1821,7 +1821,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-bomb"
+    "svg": "iceberg"
   },
   "ice.rapid_cooling": {
     "row": 5,
@@ -1833,7 +1833,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-cube"
+    "svg": "justice"
   },
   "ice.stalactites": {
     "row": 5,
@@ -1869,7 +1869,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "ice-pop"
+    "svg": "bowl-of-rice"
   },
   "ice.freeze": {
     "row": 5,
@@ -1881,7 +1881,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "frozen-ring"
+    "svg": "ice-pop"
   },
   "ice.frost_link": {
     "row": 5,
@@ -1893,7 +1893,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "frozen-arrow"
+    "svg": "tarot-11-justice"
   },
   "ice.frozen_heart": {
     "row": 5,
@@ -1917,7 +1917,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "polar-star"
+    "svg": "justice-star"
   },
   "ice.hail_wall": {
     "row": 5,
@@ -1929,7 +1929,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "icicles-aura"
+    "svg": "rice-cooker"
   },
   "ice.ice_wall": {
     "row": 5,
@@ -1941,7 +1941,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "circle-cage"
+    "svg": "ice-skate"
   },
   "ice.absolute_zero": {
     "row": 5,
@@ -1953,7 +1953,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "plain-circle"
+    "svg": "biceps"
   },
   "ice.diamond_prison": {
     "row": 5,
@@ -1965,7 +1965,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "arrow-cluster"
+    "svg": "death-juice"
   },
   "ice.frostbite_storm": {
     "row": 5,
@@ -1977,7 +1977,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "meeple-circle"
+    "svg": "ice-spell-cast"
   },
   "ice.glacial_avalanche": {
     "row": 5,
@@ -1989,7 +1989,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "swirl-ring"
+    "svg": "melting-ice-cube"
   },
   "ice.eternal_winter": {
     "row": 5,
@@ -2013,7 +2013,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "ice",
-    "svg": "crystalize"
+    "svg": "ice-bomb"
   },
   "lava.burning_puddle": {
     "row": 6,
@@ -2025,7 +2025,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "lava"
+    "svg": "burn"
   },
   "lava.heat_hindrance": {
     "row": 6,
@@ -2037,7 +2037,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "explosion-rays"
+    "svg": "spiky-explosion"
   },
   "lava.igneous_rock": {
     "row": 6,
@@ -2049,7 +2049,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "ion-cannon-blast"
+    "svg": "steam-blast"
   },
   "lava.lava_jet": {
     "row": 6,
@@ -2061,7 +2061,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "steam-blast"
+    "svg": "lava"
   },
   "lava.lava_splash": {
     "row": 6,
@@ -2073,7 +2073,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "spiky-explosion"
+    "svg": "splash"
   },
   "lava.magma_shield": {
     "row": 6,
@@ -2085,7 +2085,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "shield"
+    "svg": "balaclava"
   },
   "lava.lava_scar": {
     "row": 6,
@@ -2097,7 +2097,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "crowned-explosion"
+    "svg": "smoking-volcano"
   },
   "lava.lava_walk": {
     "row": 6,
@@ -2109,7 +2109,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "smoking-volcano"
+    "svg": "cross-shield"
   },
   "lava.magma_armor": {
     "row": 6,
@@ -2121,7 +2121,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "corner-explosion"
+    "svg": "armor-upgrade"
   },
   "lava.magma_bomb": {
     "row": 6,
@@ -2133,7 +2133,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "blast"
+    "svg": "bo"
   },
   "lava.slag_armor": {
     "row": 6,
@@ -2145,7 +2145,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "goo-explosion"
+    "svg": "fire-axe"
   },
   "lava.smoke_breath": {
     "row": 6,
@@ -2157,7 +2157,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "bright-explosion"
+    "svg": "fire-bomb"
   },
   "lava.volcanic_fissure": {
     "row": 6,
@@ -2169,7 +2169,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "mine-explosion"
+    "svg": "bright-explosion"
   },
   "lava.volcanic_tears": {
     "row": 6,
@@ -2181,7 +2181,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "volcano"
+    "svg": "ion-cannon-blast"
   },
   "lava.incandescent_ground": {
     "row": 6,
@@ -2193,7 +2193,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "ring-mould"
+    "svg": "explosion-rays"
   },
   "lava.lava_pit": {
     "row": 6,
@@ -2205,7 +2205,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "power-ring"
+    "svg": "fire-breath"
   },
   "lava.lava_rain": {
     "row": 6,
@@ -2217,7 +2217,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "ring-box"
+    "svg": "crowned-explosion"
   },
   "lava.magma_grenade": {
     "row": 6,
@@ -2229,7 +2229,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burning-round-shot"
+    "svg": "grenade"
   },
   "lava.magma_wall": {
     "row": 6,
@@ -2241,7 +2241,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "ring"
+    "svg": "corner-explosion"
   },
   "lava.magma_wave": {
     "row": 6,
@@ -2253,7 +2253,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burning-blobs"
+    "svg": "goo-explosion"
   },
   "lava.pyroclastic_flow": {
     "row": 6,
@@ -2265,7 +2265,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burning-dot"
+    "svg": "fire-bowl"
   },
   "lava.rock_fusion": {
     "row": 6,
@@ -2277,7 +2277,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burning-meteor"
+    "svg": "fire-bottle"
   },
   "lava.eruption": {
     "row": 6,
@@ -2301,7 +2301,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "shield-bash"
+    "svg": "fire-dash"
   },
   "lava.magmatic_form": {
     "row": 6,
@@ -2313,7 +2313,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "shield-bounces"
+    "svg": "heart-armor"
   },
   "lava.total_fusion": {
     "row": 6,
@@ -2325,7 +2325,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "shield-disabled"
+    "svg": "fire-punch"
   },
   "lava.cataclysmic_eruption": {
     "row": 6,
@@ -2337,7 +2337,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burning-skull"
+    "svg": "fire-silhouette"
   },
   "lava.volcanic_awakening": {
     "row": 6,
@@ -2349,7 +2349,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lava",
-    "svg": "burst-blob"
+    "svg": "mine-explosion"
   },
   "necromancy.broken_bones": {
     "row": 7,
@@ -2361,7 +2361,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "death-skull"
+    "svg": "skull-sabertooth"
   },
   "necromancy.death_touch": {
     "row": 7,
@@ -2373,7 +2373,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "evil-bat"
+    "svg": "death-skull"
   },
   "necromancy.death_veil": {
     "row": 7,
@@ -2385,7 +2385,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-shield"
+    "svg": "death-star"
   },
   "necromancy.drain_vital": {
     "row": 7,
@@ -2397,7 +2397,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-bolt"
+    "svg": "evil-bat"
   },
   "necromancy.empty_gaze": {
     "row": 7,
@@ -2409,7 +2409,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-crack"
+    "svg": "gaze"
   },
   "necromancy.putrid_hand": {
     "row": 7,
@@ -2421,7 +2421,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-crossed-bones"
+    "svg": "baseball-bat"
   },
   "necromancy.blood_ritual": {
     "row": 7,
@@ -2433,7 +2433,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "death-star"
+    "svg": "blood"
   },
   "necromancy.cold_fingers": {
     "row": 7,
@@ -2445,7 +2445,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-in-jar"
+    "svg": "bat-mask"
   },
   "necromancy.corrupted_resurrection": {
     "row": 7,
@@ -2457,7 +2457,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-mask"
+    "svg": "beast-eye"
   },
   "necromancy.grave_call": {
     "row": 7,
@@ -2469,7 +2469,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-ring"
+    "svg": "bat-leth"
   },
   "necromancy.lethal_curse": {
     "row": 7,
@@ -2481,7 +2481,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-sabertooth"
+    "svg": "skull-bolt"
   },
   "necromancy.soul_chains": {
     "row": 7,
@@ -2493,7 +2493,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "soul"
+    "svg": "spark-spirit"
   },
   "necromancy.soul_rend": {
     "row": 7,
@@ -2505,7 +2505,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-signet"
+    "svg": "soul"
   },
   "necromancy.suffering_transfer": {
     "row": 7,
@@ -2517,7 +2517,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-staff"
+    "svg": "ring"
   },
   "necromancy.army_of_dead": {
     "row": 7,
@@ -2529,7 +2529,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "skull-with-syringe"
+    "svg": "sauropod-skeleton"
   },
   "necromancy.decomposition": {
     "row": 7,
@@ -2541,7 +2541,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "alien-skull"
+    "svg": "bone-knife"
   },
   "necromancy.mark_of_sacrifice": {
     "row": 7,
@@ -2553,7 +2553,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "animal-skull"
+    "svg": "bottled-shadow"
   },
   "necromancy.rift": {
     "row": 7,
@@ -2565,7 +2565,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "broken-skull"
+    "svg": "skull-ring"
   },
   "necromancy.soul_corruption": {
     "row": 7,
@@ -2577,7 +2577,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "cracked-alien-skull"
+    "svg": "tarot-13-death"
   },
   "necromancy.spectral_knight": {
     "row": 7,
@@ -2589,7 +2589,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "daemon-skull"
+    "svg": "bat"
   },
   "necromancy.terror": {
     "row": 7,
@@ -2601,7 +2601,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "desert-skull"
+    "svg": "terror"
   },
   "necromancy.voices_of_dead": {
     "row": 7,
@@ -2613,7 +2613,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "dread-skull"
+    "svg": "bone-mace"
   },
   "necromancy.necropolis": {
     "row": 7,
@@ -2625,7 +2625,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "fanged-skull"
+    "svg": "cricket-bat"
   },
   "necromancy.shroud_of_shadows": {
     "row": 7,
@@ -2637,7 +2637,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "happy-skull"
+    "svg": "skull-shield"
   },
   "necromancy.soul_scythe": {
     "row": 7,
@@ -2649,7 +2649,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "harry-potter-skull"
+    "svg": "scythe"
   },
   "necromancy.the_void": {
     "row": 7,
@@ -2661,7 +2661,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "horned-skull"
+    "svg": "bubble-field"
   },
   "necromancy.hand_of_nox": {
     "row": 7,
@@ -2673,7 +2673,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "leaky-skull"
+    "svg": "hand"
   },
   "necromancy.macabre_dance": {
     "row": 7,
@@ -2685,7 +2685,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "necromancy",
-    "svg": "medal-skull"
+    "svg": "skull"
   },
   "lumamancy.blinding_ray": {
     "row": 8,
@@ -2697,7 +2697,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "beam-satellite"
+    "svg": "i-beam"
   },
   "lumamancy.glowing_wisp": {
     "row": 8,
@@ -2709,7 +2709,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-altar"
+    "svg": "falling-star"
   },
   "lumamancy.light_purification": {
     "row": 8,
@@ -2721,7 +2721,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-cycle"
+    "svg": "cat"
   },
   "lumamancy.light_shard": {
     "row": 8,
@@ -2733,7 +2733,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "beam-wake"
+    "svg": "crystal-shine"
   },
   "lumamancy.minor_blessing": {
     "row": 8,
@@ -2745,7 +2745,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-formation"
+    "svg": "flower-star"
   },
   "lumamancy.sacred_light": {
     "row": 8,
@@ -2757,7 +2757,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-medal"
+    "svg": "star"
   },
   "lumamancy.blessed_heal": {
     "row": 8,
@@ -2769,7 +2769,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-prominences"
+    "svg": "tarot-17-the-star"
   },
   "lumamancy.blessing": {
     "row": 8,
@@ -2781,7 +2781,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-pupil"
+    "svg": "sing"
   },
   "lumamancy.dazzling_flash": {
     "row": 8,
@@ -2793,7 +2793,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "beams-aura"
+    "svg": "icicles-aura"
   },
   "lumamancy.divine_shield": {
     "row": 8,
@@ -2805,7 +2805,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-satellites"
+    "svg": "north-star-shuriken"
   },
   "lumamancy.light_sword": {
     "row": 8,
@@ -2817,7 +2817,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-shuriken"
+    "svg": "polar-star"
   },
   "lumamancy.minor_purification": {
     "row": 8,
@@ -2829,7 +2829,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-skull"
+    "svg": "round-star"
   },
   "lumamancy.sacred_aura": {
     "row": 8,
@@ -2853,7 +2853,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "book-aura"
+    "svg": "ram"
   },
   "lumamancy.avenging_light": {
     "row": 8,
@@ -2865,7 +2865,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "ray-gun"
+    "svg": "manta-ray"
   },
   "lumamancy.greater_purification": {
     "row": 8,
@@ -2877,7 +2877,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "rear-aura"
+    "svg": "wall-light"
   },
   "lumamancy.healing_wave": {
     "row": 8,
@@ -2889,7 +2889,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-struck"
+    "svg": "beams-aura"
   },
   "lumamancy.holy_strike": {
     "row": 8,
@@ -2901,7 +2901,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-swirl"
+    "svg": "beam-satellite"
   },
   "lumamancy.minor_angel": {
     "row": 8,
@@ -2913,7 +2913,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "star-gate"
+    "svg": "crystal-shrine"
   },
   "lumamancy.pillar_of_light": {
     "row": 8,
@@ -2925,7 +2925,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "allied-star"
+    "svg": "pill"
   },
   "lumamancy.redemption": {
     "row": 8,
@@ -2937,7 +2937,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "barbed-star"
+    "svg": "sea-star"
   },
   "lumamancy.sanctuary": {
     "row": 8,
@@ -2949,7 +2949,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "beveled-star"
+    "svg": "slumbering-sanctuary"
   },
   "lumamancy.aura_of_purity": {
     "row": 8,
@@ -2961,7 +2961,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "dripping-star"
+    "svg": "seven-pointed-star"
   },
   "lumamancy.celestial_portal": {
     "row": 8,
@@ -2973,7 +2973,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "falling-star"
+    "svg": "portal"
   },
   "lumamancy.judgment": {
     "row": 8,
@@ -2985,7 +2985,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "flexible-star"
+    "svg": "book-aura"
   },
   "lumamancy.resurrection": {
     "row": 8,
@@ -2997,7 +2997,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "flower-star"
+    "svg": "star-shuriken"
   },
   "lumamancy.miracle_of_aelira": {
     "row": 8,
@@ -3009,7 +3009,7 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "moebius-star"
+    "svg": "star-skull"
   },
   "lumamancy.paradise_found": {
     "row": 8,
@@ -3021,6 +3021,6 @@
     "w": 0.03571428571428571,
     "h": 0.1111111111111111,
     "school": "lumamancy",
-    "svg": "ninja-star"
+    "svg": "heraldic-sun"
   }
 }

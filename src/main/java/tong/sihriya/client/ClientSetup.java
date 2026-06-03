@@ -33,6 +33,7 @@ public class ClientSetup {
         }
         event.register(KeyBindings.MEDITATE);
         event.register(KeyBindings.GRIMOIRE);
+        event.register(KeyBindings.SPELL_WHEEL);
     }
 
     @SubscribeEvent

@@ -16,6 +16,11 @@ import java.util.*;
 public class TierUnlockHandler {
     private static final int[] TIER_THRESHOLDS = {1, 25, 50, 75, 100};
 
+    public static int getUnlockLevel(int tier) {
+        if (tier < 1 || tier > 5) return 999;
+        return TIER_THRESHOLDS[tier - 1];
+    }
+
     /** Vérifie les déblocages pour un joueur. Appelé après chaque gain d'XP d'école. */
     public static void checkUnlocks(ServerPlayer player, SchoolProgression prog) {
         boolean changed = false;

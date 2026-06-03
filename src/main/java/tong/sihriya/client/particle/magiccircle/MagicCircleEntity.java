@@ -52,22 +52,44 @@ public class MagicCircleEntity extends Entity {
     }
 
     private void emitGlowParticles() {
-        if (random.nextInt(3) != 0) return;
         String school = getSchool();
         var particleType = SihriyaParticles.getForSchool(school);
-        Vec3[] points = CircleShape.circlePoints(animation.getRadius(), 8, animation.getRotation());
+
+        // Ring particles — always, more at peak
+        int ringCount = animation.getAlpha() > 0.8f ? 14 : 8;
+        Vec3[] points = CircleShape.circlePoints(animation.getRadius(), ringCount, animation.getRotationRunes());
         for (Vec3 p : points) {
             level().addParticle(particleType, false,
-                getX() + p.x, getY() + 0.1, getZ() + p.z,
-                0, 0, 0);
+                getX() + p.x, getY() + 0.15, getZ() + p.z,
+                0, 0.015, 0);
         }
-        // Extra sparkles
-        if (random.nextInt(5) == 0) {
+
+        // Orbiting inner particles — rotating faster
+        Vec3[] innerPoints = CircleShape.circlePoints(
+            animation.getRadius() * 0.6f, 6, animation.getRotationGeometry());
+        for (Vec3 p : innerPoints) {
+            level().addParticle(particleType, false,
+                getX() + p.x, getY() + 0.3, getZ() + p.z,
+                0, 0.025, 0);
+        }
+
+        // Random inner sparkles
+        int sparkleCount = 2 + random.nextInt(4);
+        for (int i = 0; i < sparkleCount; i++) {
             double sx = (random.nextDouble() - 0.5) * animation.getRadius() * 2;
             double sz = (random.nextDouble() - 0.5) * animation.getRadius() * 2;
             level().addParticle(particleType, false,
-                getX() + sx, getY() + 0.3 + random.nextDouble(),
-                getZ() + sz, 0, 0.01, 0);
+                getX() + sx, getY() + 0.2 + random.nextDouble() * 0.6,
+                getZ() + sz, 0, 0.02, 0);
+        }
+
+        // Ascending glow motes
+        if (random.nextFloat() < 0.4f) {
+            double ax = (random.nextDouble() - 0.5) * animation.getRadius() * 1.5;
+            double az = (random.nextDouble() - 0.5) * animation.getRadius() * 1.5;
+            level().addParticle(particleType, false,
+                getX() + ax, getY() + 0.1, getZ() + az,
+                0, 0.04 + random.nextDouble() * 0.04, 0);
         }
     }
 

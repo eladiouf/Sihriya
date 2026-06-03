@@ -1,1 +1,5 @@
-{ "textures": [ "sihriya:glow_spark" ] }
+﻿{
+  "textures": [
+    "sihriya:glow_spark_lightning"
+  ]
+}
