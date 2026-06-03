@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import tong.sihriya.client.ClientManaData;
+import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.client.ClientSchoolData;
 
 @OnlyIn(Dist.CLIENT)
@@ -32,11 +32,10 @@ public class ManaOverlay implements IGuiOverlay {
         if (mc.player == null || mc.options.hideGui) return;
         if (!ClientUiOptions.showManaHud) return;
 
-        float mana = ClientManaData.mana;
-        float maxMana = ClientManaData.maxMana;
-        updateDisplayedMana(mana);
-        float fill = maxMana > 0 ? Math.min(1f, displayedMana / maxMana) : 0;
-        boolean locked = ClientManaData.locked;
+        float mana = ClientSchoolData.mana;
+        float maxMana = ClientSchoolData.maxMana;
+        float fill = maxMana > 0 ? Math.min(1f, mana / maxMana) : 0;
+        boolean locked = ClientSchoolData.manaBlocked;
         boolean lowMana = fill <= 0.25f && !locked;
 
         int width = ClientUiOptions.compactHud ? 74 : W;
@@ -85,8 +84,8 @@ public class ManaOverlay implements IGuiOverlay {
         }
 
         // Lock timer
-        if (locked && ClientManaData.lockRemaining > 0) {
-            String lock = String.format("%.1fs", ClientManaData.lockRemaining / 1000.0);
+        if (locked && ClientSchoolData.manaBlockRemainingMs > 0) {
+            String lock = String.format("%.1fs", ClientSchoolData.manaBlockRemainingMs / 1000.0);
             g.drawString(font, lock, X + width + 4, Y, 0xFFFF4444);
         }
     }

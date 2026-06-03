@@ -17,6 +17,16 @@ public class ClientSchoolData {
     public static long lastRequestedAtMs = 0;
     public static long lastRequestedCooldownMs = 0;
 
+    // Unified mana — driven by STAT Mod MANA_POOL stat
+    public static float mana = 50;
+    public static float maxMana = 50;
+    public static boolean manaBlocked = false;
+    public static long manaBlockRemainingMs = 0;
+
+    public static float getManaPercent() {
+        return maxMana > 0 ? Math.min(1f, mana / maxMana) : 0;
+    }
+
     public static boolean isUnlocked(String school) {
         return unlockedSchools.contains(school);
     }
@@ -89,8 +99,8 @@ public class ClientSchoolData {
         if (!isUnlocked(school)) return Optional.of("notification.sihriya.cast_locked");
         var spellOpt = getBestCastableSpell(school);
         if (spellOpt.isEmpty()) return Optional.of("notification.sihriya.cast_no_spell");
-        if (tong.sihriya.client.ClientManaData.locked) return Optional.of("notification.sihriya.cast_mana_locked");
-        if (tong.sihriya.client.ClientManaData.mana < spellOpt.get().manaCost) {
+        if (manaBlocked) return Optional.of("notification.sihriya.cast_mana_locked");
+        if (mana < spellOpt.get().manaCost) {
             return Optional.of("notification.sihriya.cast_no_mana");
         }
         return Optional.empty();

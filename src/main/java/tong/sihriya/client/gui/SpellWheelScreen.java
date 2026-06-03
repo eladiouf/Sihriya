@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.client.KeyBindings;
-import tong.sihriya.client.ClientManaData;
+import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.data.SpellRegistry.SpellData;
 import tong.sihriya.network.NetworkHandler;
 import tong.sihriya.network.SchoolCastPacket;
@@ -158,7 +158,7 @@ public class SpellWheelScreen extends Screen {
         String spellName = SihriyaUiData.spellName(spell);
         String details = I18n.get("screen.sihriya.wheel.spell_details",
             spell.tier, spell.manaCost, spell.cooldown / 20.0f);
-        boolean enoughMana = ClientManaData.mana >= spell.manaCost && !ClientManaData.locked;
+        boolean enoughMana = ClientSchoolData.mana >= spell.manaCost && !ClientSchoolData.manaBlocked;
         drawCentered(g, pose, spellName, WHEEL_RADIUS + ICON_SIZE + 28, 0xFFFFFF);
         drawCentered(g, pose, details, WHEEL_RADIUS + ICON_SIZE + 42, enoughMana ? 0xAAAAAA : 0xFF7777);
     }

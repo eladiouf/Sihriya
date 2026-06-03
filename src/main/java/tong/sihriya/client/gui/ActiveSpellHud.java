@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import tong.sihriya.client.ClientManaData;
+import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.client.ClientSchoolData;
 import tong.sihriya.data.SpellRegistry.SpellData;
 
@@ -32,7 +32,7 @@ public class ActiveSpellHud implements IGuiOverlay {
 
         boolean coolingDown = ClientSchoolData.hasVisibleCastHud();
         float progress = coolingDown ? ClientSchoolData.getLastRequestedCooldownProgress() : 1f;
-        boolean enoughMana = ClientManaData.mana >= spell.manaCost && !ClientManaData.locked;
+        boolean enoughMana = ClientSchoolData.mana >= spell.manaCost && !ClientSchoolData.manaBlocked;
 
         int width = ClientUiOptions.compactHud ? 50 : W;
         int x = sw - width - 10;
