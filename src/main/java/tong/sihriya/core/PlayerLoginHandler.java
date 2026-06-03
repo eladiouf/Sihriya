@@ -27,10 +27,9 @@ public class PlayerLoginHandler {
         });
 
         serverPlayer.getCapability(ManaProvider.MANA).ifPresent(mana -> {
-            mana.clampMana(serverPlayer);
             NetworkHandler.sendToPlayer(
-                new ManaSyncPacket(mana.getMana(), mana.getMaxMana(serverPlayer),
-                    mana.isLocked(), mana.getLockRemainingMs()),
+                new ManaSyncPacket(mana.getMana(serverPlayer), mana.getMaxMana(serverPlayer),
+                    mana.isLocked(serverPlayer), mana.getLockRemainingMs(serverPlayer)),
                 serverPlayer);
         });
     }

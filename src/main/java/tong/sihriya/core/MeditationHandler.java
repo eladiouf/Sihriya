@@ -13,7 +13,7 @@ import tong.sihriya.network.NetworkHandler;
 @Mod.EventBusSubscriber(modid = Sihriya.MODID)
 public class MeditationHandler {
     private static final float MANA_PER_TICK = 0.5f;
-    private static final float PASSIVE_REGEN_RATE = 0.001f; // 0.1% du max mana par tick
+    private static final float PASSIVE_REGEN_RATE = 0.001f;
     private static final int SLOWNESS_AMPLIFIER = 2;
 
     @SubscribeEvent
@@ -22,28 +22,24 @@ public class MeditationHandler {
         if (!(event.player instanceof ServerPlayer serverPlayer)) return;
 
         serverPlayer.getCapability(ManaProvider.MANA).ifPresent(mana -> {
-            boolean wasLocked = mana.isLocked();
-            long lockRemaining = mana.getLockRemainingMs();
+            boolean wasLocked = mana.isLocked(serverPlayer);
+            long lockRemaining = mana.getLockRemainingMs(serverPlayer);
 
-            // Regen passive : 0.1% du max mana par tick
             float passiveRegen = mana.getMaxMana(serverPlayer) * PASSIVE_REGEN_RATE;
-            mana.regenMana(passiveRegen, serverPlayer);
+            mana.regenMana(serverPlayer, passiveRegen);
 
-            // Méditation : sneak maintenu → regen rapide
             if (serverPlayer.isShiftKeyDown() && serverPlayer.getHealth() > 0) {
-                mana.regenMana(MANA_PER_TICK, serverPlayer);
+                mana.regenMana(serverPlayer, MANA_PER_TICK);
                 if (serverPlayer.tickCount % 20 == 0) {
                     serverPlayer.addEffect(new MobEffectInstance(
                         MobEffects.MOVEMENT_SLOWDOWN, 40, SLOWNESS_AMPLIFIER, false, false, false));
                 }
             }
 
-            // Sync toutes les 20 ticks
             if (serverPlayer.tickCount % 20 == 0) {
-                mana.clampMana(serverPlayer);
                 NetworkHandler.sendToPlayer(
-                    new ManaSyncPacket(mana.getMana(), mana.getMaxMana(serverPlayer),
-                        mana.isLocked(), mana.getLockRemainingMs()),
+                    new ManaSyncPacket(mana.getMana(serverPlayer), mana.getMaxMana(serverPlayer),
+                        mana.isLocked(serverPlayer), mana.getLockRemainingMs(serverPlayer)),
                     serverPlayer);
             }
         });
@@ -54,9 +50,9 @@ public class MeditationHandler {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
         if (event.wakeImmediately()) return;
         serverPlayer.getCapability(ManaProvider.MANA).ifPresent(mana -> {
-            mana.setMana(mana.getMaxMana(serverPlayer));
+            mana.setMana(serverPlayer, mana.getMaxMana(serverPlayer));
             NetworkHandler.sendToPlayer(
-                new ManaSyncPacket(mana.getMana(), mana.getMaxMana(serverPlayer), false, 0),
+                new ManaSyncPacket(mana.getMana(serverPlayer), mana.getMaxMana(serverPlayer), false, 0),
                 serverPlayer);
         });
     }

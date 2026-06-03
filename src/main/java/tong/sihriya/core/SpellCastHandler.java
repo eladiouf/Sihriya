@@ -55,8 +55,8 @@ public class SpellCastHandler {
         var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
         if (manaOpt.isEmpty()) return CastResult.fail(spell.school, spell.id, "notification.sihriya.cast_no_mana");
         var mana = manaOpt.get();
-        if (!mana.consumeMana(spell.manaCost)) {
-            String reason = mana.isLocked() ? "notification.sihriya.cast_mana_locked" : "notification.sihriya.cast_no_mana";
+        if (!mana.consumeMana(player, spell.manaCost)) {
+            String reason = mana.isLocked(player) ? "notification.sihriya.cast_mana_locked" : "notification.sihriya.cast_no_mana";
             return CastResult.fail(spell.school, spell.id, reason);
         }
 
@@ -611,7 +611,13 @@ public class SpellCastHandler {
         // SAGE (Erudition 80): Small mana refund on cast
         if (eruditionLvl >= 80) {
             var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
-            manaOpt.ifPresent(m -> m.regenMana(5, player));
+            manaOpt.ifPresent(m -> m.regenMana(player, 5));
+        }
+
+        // RESERVOIR (Mana Pool 50): Small regen each cast
+        if (manaPoolLvl >= 50) {
+            var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
+            manaOpt.ifPresent(m -> m.regenMana(player, 3));
         }
 
         // RESERVOIR (Mana Pool 50): Max mana > 80 grants small regen each cast

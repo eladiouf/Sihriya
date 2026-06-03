@@ -31,7 +31,7 @@ public class EffectHandlers {
                 float absorbed = event.getAmount();
                 event.setCanceled(true);
                 player.getCapability(ManaProvider.MANA).ifPresent(mana -> {
-                    mana.regenMana(absorbed * 0.5f, player);
+                    mana.regenMana(player, absorbed * 0.5f);
                 });
             }
         }
