@@ -44,7 +44,12 @@ minecraft {
             args '--nogui'
         }
         gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
+            property 'forge.enabledGameTestNamespaces', "${mod_id},minecraft"
+            mods {
+                "${mod_id}" {
+                    source sourceSets.test
+                }
+            }
         }
         data {
             workingDirectory project.file('run-data')
@@ -64,8 +69,10 @@ repositories {
 
 def verificationRunDirName = 'run-clean'
 def verificationClientRunDirName = 'run-client-clean'
+def gameTestRunDirName = 'run-gametest'
 def defaultForgeServerPort = '25565'
 def verificationForgeServerPort = '25566'
+def gameTestStructuresSourceDir = file('src/test/resources/gameteststructures')
 def animationRegistrySourceFile = file('src/main/java/tong/sihriya/animation/SihriyaAnimations.java')
 def animationResourcePrefix = "assets/${mod_id}/animmodels/animations/".toString()
 def registeredAnimationRelativePaths = providers.provider {
@@ -225,6 +232,36 @@ tasks.register('prepareClientSmokeRun') {
 
 tasks.matching { it.name in ['prepareRunClient', 'prepareRunClientCompile'] }.configureEach {
     dependsOn 'prepareClientSmokeRun'
+}
+
+tasks.register('prepareGameTestRun') {
+    group = 'verification'
+    description = 'Prepares a clean GameTest run directory with the required structure templates.'
+
+    doLast {
+        def runDirName = (findProperty('forgeRunDir') ?: 'run').toString()
+        if (runDirName != gameTestRunDirName && runDirName != 'run') {
+            return
+        }
+
+        def runDir = file(runDirName)
+        def gameTestStructuresDir = new File(runDir, 'gameteststructures')
+        if (!gameTestStructuresSourceDir.isDirectory()) {
+            return
+        }
+
+        mkdir(runDir)
+        mkdir(gameTestStructuresDir)
+
+        copy {
+            from gameTestStructuresSourceDir
+            into gameTestStructuresDir
+        }
+    }
+}
+
+tasks.matching { it.name == 'runGameTestServer' }.configureEach {
+    dependsOn 'prepareGameTestRun'
 }
 
 tasks.register('validateVerificationServerLog') {
@@ -1269,6 +1306,8 @@ tasks.register('validateSihriyaPackaging') {
         requireText(buildFile.text, "workingDirectory project.file(findProperty('forgeRunDir') ?: 'run')", 'Sihriya build run configuration')
         requireText(buildFile.text, "tasks.register('prepareVerificationRun')", 'Sihriya verification run preparation')
         requireText(buildFile.text, "tasks.register('prepareClientSmokeRun')", 'Sihriya client smoke run preparation')
+        requireText(buildFile.text, "tasks.register('prepareGameTestRun')", 'Sihriya GameTest run preparation')
+        requireText(buildFile.text, "tasks.matching { it.name == 'runGameTestServer' }.configureEach", 'Sihriya GameTest run preparation')
         requireText(buildFile.text, "tasks.register('prepareReleaseSmokeBundle')", 'Sihriya release smoke bundle preparation')
         requireText(buildFile.text, "tasks.register('validateVerificationServerLog')", 'Sihriya verification run preparation')
         requireText(buildFile.text, "tasks.register('validateClientSmokeLog')", 'Sihriya client smoke validation')
@@ -1278,6 +1317,7 @@ tasks.register('validateSihriyaPackaging') {
         requireText(buildFile.text, "verificationForgeServerPort = '25566'", 'Sihriya verification run preparation')
         requireText(buildFile.text, "gradle/run-defaults/defaultconfigs", 'Sihriya verification run preparation')
         requireText(buildFile.text, "gradle/run-defaults/config", 'Sihriya client smoke run preparation')
+        requireText(buildFile.text, "src/test/resources/gameteststructures", 'Sihriya GameTest run preparation')
         requireText(buildFile.text, 'allowedWarningPatterns = [', 'Sihriya verification run preparation')
         requireText(buildFile.text, "Verification log contains unexpected warning", 'Sihriya verification run preparation')
 
@@ -1396,6 +1436,7 @@ tasks.register('validateSihriyaPackaging') {
                 'Proven now',
                 'Tolerated upstream debt',
                 'Not yet fully proven',
+                'runGameTestServer -PforgeRunDir=run-gametest --no-daemon',
                 'validateClientAnimationPackaging',
                 'validateClientSmokeLog',
                 'validateVerificationServerLog',
@@ -1408,6 +1449,21 @@ tasks.register('validateSihriyaPackaging') {
                 requireText(proReadinessAudit.text, required, 'Sihriya pro readiness audit')
             }
         }
+
+        def runtimeGameTestFile = file('src/test/java/tong/sihriya/gametest/SihriyaRuntimeGameTests.java')
+        requireFile(runtimeGameTestFile, 'Sihriya runtime GameTest')
+        if (runtimeGameTestFile.isFile()) {
+            [
+                'GameTest(templateNamespace = "minecraft", template = "empty"',
+                'ProgressionUnlockRules.unlockLevelForTier(2)',
+                'fire.fire_nova',
+                'fire.flame_dance'
+            ].each { required ->
+                requireText(runtimeGameTestFile.text, required, 'Sihriya runtime GameTest')
+            }
+        }
+        requireFile(file('src/test/resources/gameteststructures/empty.snbt'), 'Sihriya GameTest structure template')
+
         def projectileFile = file('src/main/java/tong/sihriya/projectile/SpellProjectile.java')
         requireFile(projectileFile, 'Sihriya spell projectile entity')
         if (projectileFile.isFile()) {

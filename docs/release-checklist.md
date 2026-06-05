@@ -17,6 +17,7 @@ Use this checklist before publishing or handing off a Sihriya build.
 - Run `.\gradlew.bat validateReleaseArtifacts`
 - Run `.\gradlew.bat validateStandaloneReleaseServerSmoke`
 - Run `.\gradlew.bat validateStandaloneReleaseClientSmoke`
+- Run `.\gradlew.bat runGameTestServer -PforgeRunDir=run-gametest --no-daemon`
 - Run `.\gradlew.bat :test --tests tong.sihriya.core.SchoolProgressionMigrationTest`
 - Run `..\STAT_MOD\gradlew.bat test --tests tong.statmod.migration.LegacyCapabilityMigrationTest`
 - Run `.\gradlew.bat runClient -PforgeRunDir=run-client-clean --no-daemon`
@@ -33,6 +34,8 @@ Use this checklist before publishing or handing off a Sihriya build.
   - `[statmod/]: STAT Mod loaded!`
   - `[sihriya/]: Sihriya chargé avec Epic Fight + STAT Mod !`
   - `OpenAL initialized`
+- Confirm `run-gametest/logs/latest.log` contains:
+  - `All 1 required tests passed :)`
 
 ## Dependency verification
 

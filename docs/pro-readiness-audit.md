@@ -13,6 +13,7 @@ It is intentionally strict. A green build is evidence, not a blanket claim that 
 - `prepareStatModReleaseJar` proves the release bundle stages a merged STAT Mod jar that keeps the reobfuscated classes and the asset/data resources needed at runtime
 - `validateStandaloneReleaseServerSmoke` proves the staged release-smoke bundle plus mandatory local Epic Fight runtime jars can boot in a standalone Forge server install
 - `validateStandaloneReleaseClientSmoke` proves the staged release-smoke bundle plus mandatory local Epic Fight runtime jars can boot in a standalone Forge client install when a local asset cache is available
+- `runGameTestServer -PforgeRunDir=run-gametest --no-daemon` proves the runtime gameplay smoke suite boots on a clean GameTest server and passes against the live registry data
 - `validateSihriyaContent` proves the current content contract:
   - 9 schools
   - 252 spells
@@ -94,7 +95,7 @@ The following items are not yet proven strongly enough to call the whole mod ful
 
 1. Gameplay workflow validation
    - spell casting, progression unlocks, mana loop, and STAT Mod interplay are now covered by direct gameplay-flow rules tests
-   - they are still not yet proven by a true end-to-end runtime gameplay smoke suite
+   - a true end-to-end runtime gameplay smoke suite is now present, but it is still narrow and should not be treated as complete gameplay coverage
 
 2. Upgrade/migration confidence
    - save sanitation exists

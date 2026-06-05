@@ -87,6 +87,7 @@ Standalone release-client smoke:
 
 ```powershell
 .\gradlew.bat validateStandaloneReleaseClientSmoke
+.\gradlew.bat runGameTestServer -PforgeRunDir=run-gametest --no-daemon
 ```
 
 The verification run uses an isolated `run-clean` directory with:
@@ -105,6 +106,8 @@ The client smoke run uses an isolated `run-client-clean` directory with:
 `validateStandaloneReleaseServerSmoke` installs a standalone Forge server under `build/standalone-server`, injects the staged release bundle plus the mandatory local Epic Fight runtime jars from `libs/` / `../STAT_MOD/libs`, and verifies the boot reaches `Done` plus `STAT Mod ready on server`.
 
 `validateStandaloneReleaseClientSmoke` installs a standalone Forge client under `build/standalone-client`, injects the staged release bundle plus the mandatory local Epic Fight runtime jars from `libs/` / `../STAT_MOD/libs`, reuses the local ForgeGradle asset cache by default, and verifies the boot reaches `Setting user: Dev`, `STAT Mod loaded!`, `Sihriya chargé avec Epic Fight + STAT Mod !`, and `OpenAL initialized`.
+
+`runGameTestServer -PforgeRunDir=run-gametest --no-daemon` runs the runtime gameplay smoke suite against a clean GameTest server boot. The current suite proves the live school/spell flow, unlock evaluation, and ranked spell selection against the real registry data.
 
 ## CI
 
