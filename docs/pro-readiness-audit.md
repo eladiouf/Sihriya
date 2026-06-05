@@ -70,6 +70,7 @@ Current source/build evidence covers at least these areas:
 - progression save sanitation
 - representative legacy NBT migration fixtures across Sihriya school progression and STAT Mod player capability managers
 - immutable registry and client-cache views
+- a measurable gameplay-rule performance budget for unlock and spell-selection evaluation
 - verification-run preparation with stable server defaults
 - clean client-smoke preparation with stable config defaults
 - documented warning baseline and release checklist
@@ -102,7 +103,8 @@ The following items are not yet proven strongly enough to call the whole mod ful
 
 3. Performance envelope
    - several memory/state leaks and static-state accumulations were addressed
-   - no explicit performance budget or regression threshold is currently enforced
+   - a core gameplay-rule performance budget is now enforced for unlock and spell-selection evaluation
+   - a broader end-to-end runtime performance envelope is still not fully characterized
 
 ## Current conclusion
 
@@ -114,4 +116,4 @@ Current state is materially closer to a professional mod than the starting state
 
 But the evidence still supports this narrower claim:
 
-> The mod now has strong server-side, standalone-server, standalone-client, and client-boot verification baselines plus significantly improved packaging/runtime hygiene, but it is not yet fully proven as a complete “pro” release across gameplay smoke, migration, and performance characterization.
+> The mod now has strong server-side, standalone-server, standalone-client, and client-boot verification baselines plus significantly improved packaging/runtime hygiene, with explicit gameplay-flow and core gameplay-rule performance budgets, but it is not yet fully proven as a complete “pro” release across runtime gameplay smoke, migration, and full performance characterization.

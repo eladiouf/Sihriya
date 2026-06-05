@@ -97,6 +97,20 @@ tasks.named('test', Test).configure {
     useJUnitPlatform()
 }
 
+tasks.register('validateGameplayPerformanceBudget', Test) {
+    group = 'verification'
+    description = 'Checks core gameplay rule evaluation stays within a fixed performance budget.'
+    useJUnitPlatform()
+    filter {
+        includeTestsMatching 'tong.sihriya.core.GameplayPerformanceBudgetTest'
+    }
+    shouldRunAfter tasks.named('test')
+}
+
+tasks.named('check') {
+    dependsOn 'validateGameplayPerformanceBudget'
+}
+
 tasks.register('prepareVerificationRun') {
     group = 'verification'
     description = 'Prepares a dedicated-server verification run directory with stable defaults.'
@@ -543,6 +557,7 @@ tasks.register('validateReleaseArtifacts') {
             def entries = collectEntries(sihriyaJar)
             [
                 'META-INF/mods.toml',
+                'tong/sihriya/Sihriya.class',
                 'pack.mcmeta',
                 'data/sihriya/schools.json',
                 'data/sihriya/spells.json',
@@ -658,6 +673,8 @@ tasks.register('validateStandaloneReleaseClientSmoke') {
 }
 
 tasks.named('jar', Jar).configure {
+    dependsOn classes
+    from(sourceSets.main.output)
     manifest {
         attributes([
                 'Specification-Title'     : mod_id,
