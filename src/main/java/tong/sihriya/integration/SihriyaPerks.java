@@ -6,7 +6,7 @@ import tong.sihriya.Sihriya;
  * Perks magiques Sihriya — passifs automatiques basés sur les 9 stats magiques STAT Mod.
  * 27 perks répartis sur 9 stats (3 niveaux : 20, 50, 80 par stat).
  *
- * Implémentés dans SpellCastHandler via getPerkModifiers() et applyPerkAoEEffects().
+ * Implémentés dans SpellCastHandler via PerkModifierRules et PerkCastRules.
  * Toutes les stats magiques STAT Mod sont prises en compte.
  */
 public class SihriyaPerks {
@@ -23,14 +23,14 @@ public class SihriyaPerks {
     // ═══════════════════════════════════════════════════════
     // GEYSER (20)     : +25% durée des slows/freeze
     // TOURBILLON (50) : Pousse les ennemis proches (4 blocs)
-    // TSUNAMI (80)    : (non implémenté)
+    // TSUNAMI (80)    : Slow AoE 6 blocs après le tourbillon
 
     // ═══════════════════════════════════════════════════════
     // AIR_AFFINITY (index 11)
     // ═══════════════════════════════════════════════════════
     // RAFALE (20)     : +50% knockback/pull
     // TEMPETE (50)    : Aspire les ennemis proches (6 blocs)
-    // OURAGAN (80)    : (non implémenté)
+    // OURAGAN (80)    : Projection verticale des ennemis proches
 
     // ═══════════════════════════════════════════════════════
     // EARTH_AFFINITY (index 9)
@@ -65,7 +65,7 @@ public class SihriyaPerks {
     // ═══════════════════════════════════════════════════════
     // RESERVE (20)    : (passif via StatCalculator — déjà géré par getMaxMana)
     // RESERVOIR (50)  : +3 mana regen à chaque cast
-    // FONTAINE (80)   : (non implémenté)
+    // FONTAINE (80)   : +8 mana regen à chaque cast
 
     // ═══════════════════════════════════════════════════════
     // ERUDITION (index 15)

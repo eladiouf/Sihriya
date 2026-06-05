@@ -17,20 +17,37 @@ public class PlayerLoginHandler {
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        syncPlayer(serverPlayer);
+    }
 
-        serverPlayer.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).ifPresent(prog -> {
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+            syncPlayer(serverPlayer);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+            syncPlayer(serverPlayer);
+        }
+    }
+
+    public static void syncPlayer(ServerPlayer player) {
+        player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).ifPresent(prog -> {
             // First join: give starting school + spells
             if (prog.getUnlockedSchools().isEmpty()) {
-                initStartingSchools(serverPlayer, prog);
+                initStartingSchools(player, prog);
             }
-            syncSchools(serverPlayer, prog);
+            syncSchools(player, prog);
         });
 
-        serverPlayer.getCapability(ManaProvider.MANA).ifPresent(mana -> {
+        player.getCapability(ManaProvider.MANA).ifPresent(mana -> {
             NetworkHandler.sendToPlayer(
-                new ManaSyncPacket(mana.getMana(serverPlayer), mana.getMaxMana(serverPlayer),
-                    mana.isLocked(serverPlayer), mana.getLockRemainingMs(serverPlayer)),
-                serverPlayer);
+                new ManaSyncPacket(mana.getMana(player), mana.getMaxMana(player),
+                    mana.isLocked(player), mana.getLockRemainingMs(player)),
+                player);
         });
     }
 

@@ -2,7 +2,6 @@ package tong.sihriya.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
-import tong.sihriya.client.ClientSchoolData;
 
 import java.util.function.Supplier;
 
@@ -30,10 +29,7 @@ public class ManaSyncPacket {
 
     public static void handle(ManaSyncPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ClientSchoolData.mana = packet.mana;
-            ClientSchoolData.maxMana = packet.maxMana;
-            ClientSchoolData.manaBlocked = packet.locked;
-            ClientSchoolData.manaBlockRemainingMs = packet.lockRemaining;
+            ClientPacketBridge.handleManaSync(packet.mana, packet.maxMana, packet.locked, packet.lockRemaining);
         });
         ctx.get().setPacketHandled(true);
     }

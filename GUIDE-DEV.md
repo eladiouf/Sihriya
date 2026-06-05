@@ -29,6 +29,9 @@ STAT_MOD/
 **Epic Fight** : 20.14.17 (obligatoire, JAR local dans `libs/`)
 **STAT Mod** : 1.0.0+ (obligatoire, source dans `../STAT_MOD/`)
 
+**Contenu actuel** : 9 écoles et 252 sorts data-driven, soit 28 sorts par école
+répartis en T1/T2/T3/T4/T5 = 6/8/8/4/2.
+
 ---
 
 ## 2. Architecture du code

@@ -1,0 +1,18 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "Sihriya Epic Fight data fixes"
+  },
+  "filter": {
+    "block": [
+      {
+        "namespace": "efn",
+        "path": "capabilities/weapons/scythe\\.json"
+      },
+      {
+        "namespace": "epicfight",
+        "path": "capabilities/weapons/_diamond_greatsword\\.json"
+      }
+    ]
+  }
+}

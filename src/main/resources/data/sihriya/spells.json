@@ -999,7 +999,7 @@
         "type": "wall",
         "baseValue": 200.0,
         "scaling": 2.0,
-        "duration": -1
+        "duration": 600
       }
     ]
   },
@@ -1721,7 +1721,7 @@
         "type": "wall",
         "baseValue": 250.0,
         "scaling": 2.5,
-        "duration": -1
+        "duration": 700
       }
     ]
   },
@@ -3387,7 +3387,14 @@
     "cooldown": 20,
     "castTime": 0,
     "type": "BUFF",
-    "effects": []
+    "effects": [
+      {
+        "type": "speed",
+        "baseValue": 0.35,
+        "scaling": 0.01,
+        "duration": 200
+      }
+    ]
   },
   {
     "id": "wind.air_scissors",
@@ -3695,7 +3702,14 @@
     "cooldown": 100,
     "castTime": 20,
     "type": "BUFF",
-    "effects": []
+    "effects": [
+      {
+        "type": "damage_reduction",
+        "baseValue": 0.2,
+        "scaling": 0.01,
+        "duration": 240
+      }
+    ]
   },
   {
     "id": "earth.blinding_dust",
@@ -4003,7 +4017,14 @@
     "cooldown": 100,
     "castTime": 10,
     "type": "BUFF",
-    "effects": []
+    "effects": [
+      {
+        "type": "speed",
+        "baseValue": 0.25,
+        "scaling": 0.01,
+        "duration": 200
+      }
+    ]
   },
   {
     "id": "lightning.lightning_link",
@@ -4030,7 +4051,14 @@
     "cooldown": 300,
     "castTime": 15,
     "type": "BUFF",
-    "effects": []
+    "effects": [
+      {
+        "type": "projectile_deflect",
+        "baseValue": 1.0,
+        "scaling": 0,
+        "duration": 300
+      }
+    ]
   },
   {
     "id": "lightning.electro_muscle",
@@ -4332,7 +4360,14 @@
     "cooldown": 100,
     "castTime": 5,
     "type": "ZONE",
-    "effects": []
+    "effects": [
+      {
+        "type": "slow",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 120
+      }
+    ]
   },
   {
     "id": "ice.ice_thorns",
@@ -4444,7 +4479,7 @@
         "type": "stun",
         "baseValue": 0,
         "scaling": 0,
-        "duration": -1
+        "duration": 240
       }
     ]
   },
@@ -4869,7 +4904,14 @@
     "cooldown": 200,
     "castTime": 10,
     "type": "BUFF",
-    "effects": []
+    "effects": [
+      {
+        "type": "absorb",
+        "baseValue": 6.0,
+        "scaling": 0.08,
+        "duration": 240
+      }
+    ]
   },
   {
     "id": "necromancy.grave_call",

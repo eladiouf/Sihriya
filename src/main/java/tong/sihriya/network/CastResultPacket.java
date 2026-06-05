@@ -2,9 +2,6 @@ package tong.sihriya.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
-import tong.sihriya.client.ClientSchoolData;
-import tong.sihriya.client.gui.SihriyaNotifications;
-import tong.sihriya.client.gui.SihriyaUiSounds;
 
 import java.util.function.Supplier;
 
@@ -25,25 +22,26 @@ public class CastResultPacket {
 
     public static void encode(CastResultPacket packet, FriendlyByteBuf buf) {
         buf.writeBoolean(packet.success);
-        buf.writeUtf(packet.schoolId);
-        buf.writeUtf(packet.spellId);
-        buf.writeUtf(packet.reasonKey);
+        buf.writeUtf(packet.schoolId, NetworkInputRules.MAX_SCHOOL_ID_LENGTH);
+        buf.writeUtf(packet.spellId, NetworkInputRules.MAX_SPELL_ID_LENGTH);
+        buf.writeUtf(packet.reasonKey, NetworkInputRules.MAX_REASON_KEY_LENGTH);
         buf.writeInt(packet.cooldownTicks);
     }
 
     public static CastResultPacket decode(FriendlyByteBuf buf) {
-        return new CastResultPacket(buf.readBoolean(), buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readInt());
+        return new CastResultPacket(
+            buf.readBoolean(),
+            buf.readUtf(NetworkInputRules.MAX_SCHOOL_ID_LENGTH),
+            buf.readUtf(NetworkInputRules.MAX_SPELL_ID_LENGTH),
+            buf.readUtf(NetworkInputRules.MAX_REASON_KEY_LENGTH),
+            buf.readInt()
+        );
     }
 
     public static void handle(CastResultPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            if (packet.success) {
-                ClientSchoolData.noteServerCastSuccess(packet.schoolId, packet.spellId, packet.cooldownTicks);
-                SihriyaUiSounds.success();
-            } else {
-                SihriyaNotifications.castBlocked(packet.schoolId, packet.reasonKey);
-                ClientSchoolData.clearPendingCast();
-            }
+            ClientPacketBridge.handleCastResult(packet.success, packet.schoolId, packet.spellId,
+                packet.reasonKey, packet.cooldownTicks);
         });
         ctx.get().setPacketHandled(true);
     }

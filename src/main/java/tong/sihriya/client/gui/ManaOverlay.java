@@ -67,7 +67,7 @@ public class ManaOverlay implements IGuiOverlay {
 
         // Label
         Font font = mc.font;
-        String active = ClientSchoolData.activeSchool;
+        String active = ClientSchoolData.getActiveSchool();
         String label;
         if (locked) {
             label = I18n.get("hud.sihriya.mana_locked");

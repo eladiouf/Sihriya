@@ -13,7 +13,7 @@ public class SpellRegistry {
     }
 
     public static SpellData get(String id) { return SPELLS.get(id); }
-    public static Collection<SpellData> getAll() { return SPELLS.values(); }
+    public static Collection<SpellData> getAll() { return List.copyOf(SPELLS.values()); }
 
     public static List<SpellData> getBySchool(String schoolId) {
         return SPELLS.values().stream().filter(s -> s.school.equals(schoolId)).toList();
@@ -40,7 +40,7 @@ public class SpellRegistry {
             this.id = id; this.school = school; this.tier = tier;
             this.manaCost = manaCost; this.cooldown = cooldown;
             this.castTime = castTime;
-            this.type = type; this.effects = effects;
+            this.type = type; this.effects = List.copyOf(effects);
         }
     }
 

@@ -22,10 +22,10 @@ public class CapabilityHandler {
     public static void attachCaps(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             event.addCapability(
-                new ResourceLocation(Sihriya.MODID, "mana"),
+                ResourceLocation.fromNamespaceAndPath(Sihriya.MODID, "mana"),
                 new ManaProvider());
             event.addCapability(
-                new ResourceLocation(Sihriya.MODID, "school_progression"),
+                ResourceLocation.fromNamespaceAndPath(Sihriya.MODID, "school_progression"),
                 new SchoolProgressionProvider());
         }
     }

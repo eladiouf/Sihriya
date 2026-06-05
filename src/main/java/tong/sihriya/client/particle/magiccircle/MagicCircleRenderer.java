@@ -7,9 +7,11 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 import tong.sihriya.Sihriya;
+import tong.sihriya.magiccircle.MagicCircleEntity;
 
 import java.util.Map;
 
@@ -27,8 +29,6 @@ public class MagicCircleRenderer extends EntityRenderer<MagicCircleEntity> {
     );
 
     private static ResourceLocation tex(String school, int layer) {
-        String prefix = "textures/magiccircle/" + school + "_";
-        // lumamancy uses lumagie files
         String base = school.equals("lumamancy") ? "lumagie" : school;
         return ResourceLocation.fromNamespaceAndPath(Sihriya.MODID,
             "textures/magiccircle/" + base + "_" + layer + ".png");
@@ -49,19 +49,20 @@ public class MagicCircleRenderer extends EntityRenderer<MagicCircleEntity> {
         if (alpha <= 0.001f) return;
 
         float s = anim.getRadius() / 3.0f;
+        int overlay = OverlayTexture.NO_OVERLAY;
 
-        renderLayer(stack, buffer, rgb, alpha, s,
+        renderLayer(stack, buffer, rgb, alpha, s, overlay,
             tex(school, 0), anim.getRotationRunes());
-        renderLayer(stack, buffer, rgb, alpha, s,
+        renderLayer(stack, buffer, rgb, alpha, s, overlay,
             tex(school, 1), anim.getRotationSymbols());
-        renderLayer(stack, buffer, rgb, alpha, s,
+        renderLayer(stack, buffer, rgb, alpha, s, overlay,
             tex(school, 2), anim.getRotationGeometry());
-        renderLayer(stack, buffer, rgb, alpha, s,
+        renderLayer(stack, buffer, rgb, alpha, s, overlay,
             tex(school, 3), anim.getRotationCenter());
     }
 
     private void renderLayer(PoseStack stack, MultiBufferSource buffer,
-                             float[] rgb, float alpha, float scale,
+                             float[] rgb, float alpha, float scale, int overlay,
                              ResourceLocation tex, float rotation) {
         if (tex == null) return;
 
@@ -70,14 +71,14 @@ public class MagicCircleRenderer extends EntityRenderer<MagicCircleEntity> {
         stack.mulPose(Axis.YP.rotationDegrees(rotation));
         stack.scale(scale, 1.0f, scale);
 
-        RenderType renderType = SihriyaRenderTypes.magicCircleGlow(tex);
+        RenderType renderType = RenderType.entityTranslucent(tex);
         VertexConsumer consumer = buffer.getBuffer(renderType);
         Matrix4f matrix = stack.last().pose();
 
-        consumer.vertex(matrix, -1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 0).endVertex();
-        consumer.vertex(matrix, -1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 1).endVertex();
-        consumer.vertex(matrix,  1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 1).endVertex();
-        consumer.vertex(matrix,  1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 0).endVertex();
+        consumer.vertex(matrix, -1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 0).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix, -1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 1).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix,  1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 1).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix,  1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 0).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
 
         stack.popPose();
     }

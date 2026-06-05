@@ -101,15 +101,17 @@ public final class SihriyaUiData {
         if (data == null || data.unlock == null) return lockedFallback;
 
         String joiner = "or".equals(data.unlock.type) ? " / " : " + ";
+        String[] requiredSchoolIds = data.unlock.schoolIds();
+        int[] requiredLevels = data.unlock.levels();
         StringBuilder text = new StringBuilder();
-        for (int i = 0; i < data.unlock.schoolIds.length; i++) {
+        for (int i = 0; i < requiredSchoolIds.length; i++) {
             if (i > 0) text.append(joiner);
-            String requiredSchool = data.unlock.schoolIds[i];
+            String requiredSchool = requiredSchoolIds[i];
             text.append(schoolName(requiredSchool))
                 .append(' ')
                 .append(ClientSchoolData.getLevel(requiredSchool))
                 .append('/')
-                .append(data.unlock.levels[i]);
+                .append(requiredLevels[i]);
         }
         return text.toString();
     }

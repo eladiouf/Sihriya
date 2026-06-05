@@ -37,8 +37,8 @@ public class SihriyaAnimationPlayer {
         if (accessor.get() instanceof StaticAnimation) {
             @SuppressWarnings("unchecked")
             var typedAccessor = (AnimationAccessor<? extends StaticAnimation>) accessor;
-            patch.playAnimationSynchronized(typedAccessor, 0);
-            Sihriya.LOGGER.info(">> playAnimationSynchronized called for {}", animName);
+            patch.playAnimationSynchronized(typedAccessor, 3);
+            Sihriya.LOGGER.info(">> playAnimationSynchronized called for {} (modifyTime=3)", animName);
         } else {
             Sihriya.LOGGER.warn("Animation {} is not a StaticAnimation, got {}", animName, accessor.get().getClass());
         }

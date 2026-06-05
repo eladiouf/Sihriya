@@ -3,7 +3,7 @@ package tong.sihriya.client.particle;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import tong.sihriya.client.particle.magiccircle.MagicCircleEntity;
+import tong.sihriya.magiccircle.MagicCircleEntity;
 import tong.sihriya.registry.SihriyaEntities;
 import tong.sihriya.registry.SihriyaParticles;
 
@@ -17,7 +17,7 @@ public class SpellParticleHelper {
         MagicCircleEntity circle = new MagicCircleEntity(
             SihriyaEntities.MAGIC_CIRCLE.get(), caster.level(), schoolId, duration
         );
-        circle.setPos(caster.getX(), caster.getY(), caster.getZ());
+        circle.setPos(caster.getX(), caster.getY() + 0.5, caster.getZ());
         caster.level().addFreshEntity(circle);
     }
 

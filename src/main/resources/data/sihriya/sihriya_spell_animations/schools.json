@@ -50,38 +50,260 @@
       "cast_animation": "CASTING_TWO_HAND_ASCENSION",
       "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
+    "earth.earth_mother_wrath": {
+      "cast_animation": "ANIM_EARTH_EARTH_MOTHER_WRATH"
+    },
+    "earth.titan_awakening": {
+      "cast_animation": "ANIM_EARTH_TITAN_AWAKENING"
+    },
+    "fire.apocalypse_ignited": {
+      "cast_animation": "ANIM_FIRE_APOCALYPSE_IGNITED"
+    },
+    "fire.ash_storm": {
+      "cast_animation": "ANIM_FIRE_ASH_STORM"
+    },
+    "fire.blazing_armor": {
+      "cast_animation": "ANIM_FIRE_BLAZING_ARMOR"
+    },
+    "fire.blazing_sun": {
+      "cast_animation": "ANIM_FIRE_BLAZING_SUN"
+    },
+    "fire.brands_mark": {
+      "cast_animation": "ANIM_FIRE_BRANDS_MARK"
+    },
+    "fire.comet": {
+      "cast_animation": "ANIM_FIRE_COMET"
+    },
+    "fire.dancing_embers": {
+      "cast_animation": "ANIM_FIRE_DANCING_EMBERS"
+    },
+    "fire.fire_lance": {
+      "cast_animation": "ANIM_FIRE_FIRE_LANCE"
+    },
+    "fire.fire_nova": {
+      "cast_animation": "ANIM_FIRE_FIRE_NOVA"
+    },
+    "fire.fire_wheel": {
+      "cast_animation": "ANIM_FIRE_FIRE_WHEEL"
+    },
+    "fire.fireball": {
+      "cast_animation": "ANIM_FIRE_FIREBALL"
+    },
+    "fire.flame_dance": {
+      "cast_animation": "ANIM_FIRE_FLAME_DANCE"
+    },
+    "fire.flying_ashes": {
+      "cast_animation": "ANIM_FIRE_FLYING_ASHES"
+    },
+    "fire.furnace": {
+      "cast_animation": "ANIM_FIRE_FURNACE"
+    },
+    "fire.furnace_heart": {
+      "cast_animation": "ANIM_FIRE_FURNACE_HEART"
+    },
+    "fire.fusion": {
+      "cast_animation": "ANIM_FIRE_FUSION"
+    },
+    "fire.infernal_pillar": {
+      "cast_animation": "ANIM_FIRE_INFERNAL_PILLAR"
+    },
+    "fire.infinite_brazier": {
+      "cast_animation": "ANIM_INFINITE_BRAZIER"
+    },
+    "fire.living_torch": {
+      "cast_animation": "ANIM_FIRE_LIVING_TORCH"
+    },
+    "fire.meteor_shower": {
+      "cast_animation": "ANIM_FIRE_METEOR_SHOWER"
+    },
+    "fire.minor_eruption": {
+      "cast_animation": "ANIM_FIRE_MINOR_ERUPTION"
+    },
+    "fire.piercing_meteor": {
+      "cast_animation": "ANIM_FIRE_PIERCING_METEOR"
+    },
+    "fire.fire_piston_strike": {
+      "cast_animation": "ANIM_FIRE_PISTON_STRIKE"
+    },
     "fire.spark": {
       "cast_animation": "FIRE_SPARK"
     },
-    "fire.blazing_sun": {
-      "cast_animation": "BLADE_RUSH_COMBO3"
+    "fire.summoned_phoenix": {
+      "cast_animation": "ANIM_FIRE_SUMMONED_PHOENIX"
     },
-    "fire.meteor_shower": {
-      "cast_animation": "STEEL_WHIRLWIND"
+    "fire.wall_of_flames": {
+      "cast_animation": "ANIM_WALL_OF_FLAMES"
     },
-    "water.tidal_wave": {
-      "cast_animation": "TSUNAMI"
-    },
-    "wind.eye_of_storm": {
-      "cast_animation": "STEEL_WHIRLWIND"
-    },
-    "earth.titan_awakening": {
-      "cast_animation": "DEMOLITION_LEAP"
-    },
-    "lightning.celestial_judgment": {
-      "cast_animation": "WRATHFUL_LIGHTING"
+    "ice.eternal_winter": {
+      "cast_animation": "ANIM_ICE_ETERNAL_WINTER"
     },
     "ice.ice_age": {
-      "cast_animation": "TSUNAMI"
+      "cast_animation": "ANIM_ICE_ICE_AGE"
+    },
+    "lava.cataclysmic_eruption": {
+      "cast_animation": "ANIM_LAVA_CATACLYSMIC_ERUPTION"
     },
     "lava.volcanic_awakening": {
-      "cast_animation": "DEMOLITION_LEAP"
+      "cast_animation": "ANIM_LAVA_VOLCANIC_AWAKENING"
     },
-    "necromancy.the_void": {
-      "cast_animation": "CASTING_TWO_HAND_BACK"
+    "lightning.celestial_judgment": {
+      "cast_animation": "ANIM_LIGHTNING_CELESTIAL_JUDGMENT"
+    },
+    "lightning.rainbow_arc": {
+      "cast_animation": "ANIM_LIGHTNING_RAINBOW_ARC"
+    },
+    "lightning.static_charge": {
+      "cast_animation": "ANIM_LIGHTNING_STATIC_CHARGE"
+    },
+    "lightning.storm_heart": {
+      "cast_animation": "ANIM_LIGHTNING_STORM_HEART"
+    },
+    "lightning.wrath_of_zeus": {
+      "cast_animation": "ANIM_LIGHTNING_WRATH_OF_ZEUS"
+    },
+    "lumamancy.celestial_portal": {
+      "cast_animation": "ANIM_LUMAMANCY_CELESTIAL_PORTAL"
+    },
+    "lumamancy.minor_angel": {
+      "cast_animation": "ANIM_LUMAMANCY_MINOR_ANGEL"
+    },
+    "lumamancy.miracle_of_aelira": {
+      "cast_animation": "ANIM_LUMAMANCY_MIRACLE_OF_AELIRA"
     },
     "lumamancy.paradise_found": {
-      "cast_animation": "CASTING_TWO_HAND_ASCENSION"
+      "cast_animation": "ANIM_LUMAMANCY_PARADISE_FOUND"
+    },
+    "lumamancy.resurrection": {
+      "cast_animation": "ANIM_LUMAMANCY_RESURRECTION"
+    },
+    "lumamancy.sanctuary": {
+      "cast_animation": "ANIM_LUMAMANCY_SANCTUARY"
+    },
+    "necromancy.army_of_dead": {
+      "cast_animation": "ANIM_NECROMANCY_ARMY_OF_DEAD"
+    },
+    "necromancy.blood_ritual": {
+      "cast_animation": "ANIM_NECROMANCY_BLOOD_RITUAL"
+    },
+    "necromancy.corrupted_resurrection": {
+      "cast_animation": "ANIM_NECROMANCY_CORRUPTED_RESURRECTION"
+    },
+    "necromancy.hand_of_nox": {
+      "cast_animation": "ANIM_NECROMANCY_HAND_OF_NOX"
+    },
+    "necromancy.macabre_dance": {
+      "cast_animation": "ANIM_NECROMANCY_MACABRE_DANCE"
+    },
+    "necromancy.necropolis": {
+      "cast_animation": "ANIM_NECROMANCY_NECROPOLIS"
+    },
+    "necromancy.soul_scythe": {
+      "cast_animation": "ANIM_NECROMANCY_SOUL_SCYTHE"
+    },
+    "necromancy.spectral_knight": {
+      "cast_animation": "ANIM_NECROMANCY_SPECTRAL_KNIGHT"
+    },
+    "water.abyssal_well": {
+      "cast_animation": "ANIM_WATER_ABYSSAL_WELL"
+    },
+    "water.air_bubble": {
+      "cast_animation": "ANIM_WATER_AIR_BUBBLE"
+    },
+    "water.aquatic_purge": {
+      "cast_animation": "ANIM_WATER_AQUATIC_PURGE"
+    },
+    "water.ascending_current": {
+      "cast_animation": "ANIM_WATER_ASCENDING_CURRENT"
+    },
+    "water.crushing_wave": {
+      "cast_animation": "ANIM_WATER_CRUSHING_WAVE"
+    },
+    "water.eye_of_deluge": {
+      "cast_animation": "ANIM_WATER_EYE_OF_DELUGE"
+    },
+    "water.fog": {
+      "cast_animation": "ANIM_WATER_FOG"
+    },
+    "water.healing_rain": {
+      "cast_animation": "ANIM_WATER_HEALING_RAIN"
+    },
+    "water.holy_water": {
+      "cast_animation": "ANIM_WATER_HOLY_WATER"
+    },
+    "water.liquid_blade": {
+      "cast_animation": "ANIM_WATER_LIQUID_BLADE"
+    },
+    "water.liquid_shield": {
+      "cast_animation": "ANIM_WATER_LIQUID_SHIELD"
+    },
+    "water.maelstrom": {
+      "cast_animation": "ANIM_WATER_MAELSTROM"
+    },
+    "water.pressure_wave": {
+      "cast_animation": "ANIM_WATER_PRESSURE_WAVE"
+    },
+    "water.primeval_deluge": {
+      "cast_animation": "ANIM_WATER_PRIMEVAL_DELUGE"
+    },
+    "water.sharp_drop": {
+      "cast_animation": "ANIM_WATER_SHARP_DROP"
+    },
+    "water.walk_on_water": {
+      "cast_animation": "ANIM_WATER_WALK_ON_WATER"
+    },
+    "water.water_jet": {
+      "cast_animation": "ANIM_WATER_WATER_JET"
+    },
+    "water.water_lace": {
+      "cast_animation": "ANIM_WATER_WATER_LACE"
+    },
+    "water.water_prison": {
+      "cast_animation": "ANIM_WATER_WATER_PRISON"
+    },
+    "wind.air_scissors": {
+      "cast_animation": "ANIM_WIND_AIR_SCISSORS"
+    },
+    "wind.air_vacuum": {
+      "cast_animation": "ANIM_WIND_AIR_VACUUM"
+    },
+    "wind.ascension": {
+      "cast_animation": "ANIM_WIND_ASCENSION"
+    },
+    "wind.brief_flight": {
+      "cast_animation": "ANIM_WIND_BRIEF_FLIGHT"
+    },
+    "wind.ether_breath": {
+      "cast_animation": "ANIM_WIND_ETHER_BREATH"
+    },
+    "wind.eye_of_storm": {
+      "cast_animation": "ANIM_WIND_EYE_OF_STORM"
+    },
+    "wind.gust": {
+      "cast_animation": "ANIM_WIND_GUST"
+    },
+    "wind.hurricane": {
+      "cast_animation": "ANIM_WIND_HURRICANE"
+    },
+    "wind.impaling_wind": {
+      "cast_animation": "ANIM_WIND_IMPALING_WIND"
+    },
+    "wind.protective_breath": {
+      "cast_animation": "ANIM_WIND_PROTECTIVE_BREATH"
+    },
+    "wind.silent_gust": {
+      "cast_animation": "ANIM_WIND_SILENT_GUST"
+    },
+    "wind.storm_blades": {
+      "cast_animation": "ANIM_STORM_BLADES"
+    },
+    "wind.whisper": {
+      "cast_animation": "ANIM_WIND_WHISPER"
+    },
+    "wind.wind_circle": {
+      "cast_animation": "ANIM_WIND_WIND_CIRCLE"
+    },
+    "wind.wind_step": {
+      "cast_animation": "ANIM_WIND_WIND_STEP"
     }
   }
 }

@@ -4,6 +4,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraftforge.common.util.INBTSerializable;
+import tong.sihriya.data.SchoolRegistry;
+import tong.sihriya.data.SpellRegistry;
 
 import java.util.*;
 
@@ -37,8 +39,8 @@ public class SchoolProgression implements INBTSerializable<CompoundTag> {
         schoolXp.put(schoolId, xp);
     }
 
-    public Set<String> getLearnedSpells() { return learnedSpells; }
-    public Set<String> getUnlockedSchools() { return unlockedSchools; }
+    public Set<String> getLearnedSpells() { return Set.copyOf(learnedSpells); }
+    public Set<String> getUnlockedSchools() { return Set.copyOf(unlockedSchools); }
 
     /** Retourne l'ID de l'école avec le niveau le plus élevé (pour le premier join). */
     public String getHighestSchool() {
@@ -81,20 +83,45 @@ public class SchoolProgression implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(CompoundTag tag) {
-        activeSchool = tag.getString("ActiveSchool");
-        schoolLevels.clear();
-        schoolXp.clear();
+        Map<String, Integer> loadedLevels = new HashMap<>();
+        Map<String, Integer> loadedXp = new HashMap<>();
         ListTag lvlList = tag.getList("SchoolLevels", 10);
         for (int i = 0; i < lvlList.size(); i++) {
             CompoundTag entry = lvlList.getCompound(i);
-            schoolLevels.put(entry.getString("School"), entry.getInt("Level"));
-            schoolXp.put(entry.getString("School"), entry.getInt("XP"));
+            String schoolId = entry.getString("School");
+            loadedLevels.put(schoolId, entry.getInt("Level"));
+            loadedXp.put(schoolId, entry.getInt("XP"));
         }
-        unlockedSchools.clear();
+        Set<String> loadedUnlocked = new HashSet<>();
         ListTag unlockedList = tag.getList("UnlockedSchools", 8);
-        for (int i = 0; i < unlockedList.size(); i++) unlockedSchools.add(unlockedList.getString(i));
-        learnedSpells.clear();
+        for (int i = 0; i < unlockedList.size(); i++) loadedUnlocked.add(unlockedList.getString(i));
+        Set<String> loadedSpells = new HashSet<>();
         ListTag spellsList = tag.getList("LearnedSpells", 8);
-        for (int i = 0; i < spellsList.size(); i++) learnedSpells.add(spellsList.getString(i));
+        for (int i = 0; i < spellsList.size(); i++) loadedSpells.add(spellsList.getString(i));
+
+        var sanitized = ProgressionStateRules.sanitize(
+            new ProgressionStateRules.StoredState(
+                tag.getString("ActiveSchool"),
+                loadedLevels,
+                loadedXp,
+                loadedUnlocked,
+                loadedSpells
+            ),
+            id -> SchoolRegistry.get(id) != null,
+            spellId -> {
+                var spell = SpellRegistry.get(spellId);
+                return spell == null ? null : spell.school;
+            }
+        );
+
+        activeSchool = sanitized.activeSchool();
+        schoolLevels.clear();
+        schoolLevels.putAll(sanitized.schoolLevels());
+        schoolXp.clear();
+        schoolXp.putAll(sanitized.schoolXp());
+        unlockedSchools.clear();
+        unlockedSchools.addAll(sanitized.unlockedSchools());
+        learnedSpells.clear();
+        learnedSpells.addAll(sanitized.learnedSpells());
     }
 }

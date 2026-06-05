@@ -60,7 +60,9 @@ public class ManaManager implements INBTSerializable<CompoundTag> {
 
     public long getLockRemainingMs(Player player) {
         var stats = getStats(player);
-        return stats != null ? stats.getManaBlockRemainingMs() : 0;
+        return stats != null
+            ? ManaInteropRules.remainingManaLockMs(stats.getManaBlockRemainingTicks())
+            : 0;
     }
 
     @Override

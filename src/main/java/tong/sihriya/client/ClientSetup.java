@@ -17,6 +17,7 @@ import tong.sihriya.client.gui.NotificationOverlay;
 import tong.sihriya.client.gui.SpellIconRenderer;
 import tong.sihriya.client.particle.SchoolGlowParticleProvider;
 import tong.sihriya.client.particle.magiccircle.MagicCircleRenderer;
+import tong.sihriya.client.projectile.SpellProjectileRenderer;
 import tong.sihriya.registry.SihriyaEntities;
 import tong.sihriya.registry.SihriyaParticles;
 
@@ -24,6 +25,7 @@ import tong.sihriya.registry.SihriyaParticles;
 public class ClientSetup {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+        ClientPacketHandlers.register();
         event.enqueueWork(SpellIconRenderer::init);
         MinecraftForge.EVENT_BUS.register(ManaOverlay.INSTANCE);
     }
@@ -70,5 +72,6 @@ public class ClientSetup {
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(SihriyaEntities.MAGIC_CIRCLE.get(), MagicCircleRenderer::new);
+        event.registerEntityRenderer(SihriyaEntities.SPELL_PROJECTILE.get(), SpellProjectileRenderer::new);
     }
 }

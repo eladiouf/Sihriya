@@ -2,7 +2,7 @@ package tong.sihriya.client.gui;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tong.sihriya.client.SihriyaClientConfig;
+import tong.sihriya.config.SihriyaClientConfig;
 
 @OnlyIn(Dist.CLIENT)
 public final class ClientUiOptions {
@@ -40,7 +40,8 @@ public final class ClientUiOptions {
             case 6 -> alternateColors = !alternateColors;
             default -> {}
         }
-        SihriyaClientConfig.saveFromOptions();
+        SihriyaClientConfig.saveUiOptions(showManaHud, showActiveSpellHud, showNotifications,
+            compactHud, reducedMotion, uiSounds, alternateColors);
     }
 
     public static void loadFromConfig() {

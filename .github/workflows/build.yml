@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Gradle build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Sihriya
+        uses: actions/checkout@v4
+        with:
+          path: workspace/SIHRIYA
+
+      - name: Checkout STAT Mod sibling
+        if: ${{ vars.STAT_MOD_REPOSITORY != '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.STAT_MOD_REPOSITORY }}
+          path: workspace/STAT_MOD
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+
+      - name: Verify sibling project layout
+        shell: pwsh
+        run: |
+          $sibling = Join-Path $env:GITHUB_WORKSPACE "workspace\STAT_MOD"
+          if (-not (Test-Path -LiteralPath (Join-Path $sibling "build.gradle"))) {
+            Write-Error "STAT_MOD sibling project is required at workspace\STAT_MOD. Set repository variable STAT_MOD_REPOSITORY to the owner/repo that contains STAT Mod, or use a repository layout that checks it out beside SIHRIYA."
+          }
+
+      - name: Build
+        working-directory: workspace/SIHRIYA
+        shell: pwsh
+        run: .\gradlew.bat build --no-daemon

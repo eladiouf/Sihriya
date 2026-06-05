@@ -1,21 +1,27 @@
 package tong.sihriya.core;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tong.sihriya.Sihriya;
+import tong.sihriya.data.SchoolRegistry;
 import tong.sihriya.data.SpellRegistry;
 import tong.sihriya.data.SpellRegistry.*;
 import tong.sihriya.integration.EpicFightIntegration;
 import tong.sihriya.integration.STATModIntegration;
 import tong.sihriya.network.NetworkHandler;
+import tong.sihriya.network.NetworkInputRules;
 import tong.sihriya.network.SpellParticlePacket;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Gère l'exécution des sorts côté serveur.
@@ -23,7 +29,7 @@ import java.util.*;
  */
 @Mod.EventBusSubscriber(modid = Sihriya.MODID)
 public class SpellCastHandler {
-    private static final Map<UUID, Map<String, Long>> cooldowns = new HashMap<>();
+    private static final SpellCooldownTracker COOLDOWNS = new SpellCooldownTracker();
 
     public static boolean castSpell(ServerPlayer player, String spellId) {
         return castSpellDetailed(player, spellId).success();
@@ -43,11 +49,9 @@ public class SpellCastHandler {
         if (!prog.isSchoolUnlocked(spell.school)) return CastResult.fail(spell.school, spell.id, "notification.sihriya.cast_locked");
 
         // Vérifier le cooldown
-        var playerCooldowns = cooldowns.computeIfAbsent(player.getUUID(), k -> new HashMap<>());
         long now = System.currentTimeMillis();
-        Long lastCast = playerCooldowns.get(spellId);
-        if (lastCast != null && (now - lastCast) < spell.cooldown * 50L) {
-            int remainingTicks = (int) Math.ceil((spell.cooldown * 50L - (now - lastCast)) / 50.0);
+        int remainingTicks = COOLDOWNS.remainingCooldownTicks(player.getUUID(), spellId, spell.cooldown, now);
+        if (remainingTicks > 0) {
             return CastResult.fail(spell.school, spell.id, "notification.sihriya.cast_cooldown", remainingTicks);
         }
 
@@ -60,26 +64,17 @@ public class SpellCastHandler {
             return CastResult.fail(spell.school, spell.id, reason);
         }
 
-        // Jouer l'animation de chant (côté serveur seulement)
-        if (!player.level().isClientSide) {
-            tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
-                tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CHANT);
-        }
-
-        // Jouer l'animation Epic Fight (legacy)
-        EpicFightIntegration.playSpellAnimation(player, spellId);
-
-        // Exécuter les effets
-        executeEffects(player, spell);
-
-        // Après l'exécution des effets, jouer l'animation de cast
+        // Jouer l'animation de cast (une seule animation, avec blending)
         if (!player.level().isClientSide) {
             tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
                 tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST);
         }
 
+        // Exécuter les effets
+        executeEffects(player, spell);
+
         // Cooldown
-        playerCooldowns.put(spellId, now);
+        COOLDOWNS.recordCast(player.getUUID(), spellId, now);
 
         // XP école Sihriya (progression locale)
         prog.addXp(spell.school, 5);
@@ -97,6 +92,11 @@ public class SpellCastHandler {
         return CastResult.success(spell.school, spell.id, spell.cooldown);
     }
 
+    @SubscribeEvent
+    public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        COOLDOWNS.clearPlayer(event.getEntity().getUUID());
+    }
+
     /** Cast le meilleur sort disponible pour une école (touché 1-6). */
     public static void castBySchool(ServerPlayer player, String schoolId) {
         var progOpt = player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).resolve();
@@ -105,13 +105,8 @@ public class SpellCastHandler {
 
         if (!prog.isSchoolUnlocked(schoolId)) return;
 
-        // Trouver les sorts appris de cette école, triés par tier décroissant
-        var spells = prog.getLearnedSpells().stream()
-            .map(SpellRegistry::get)
-            .filter(Objects::nonNull)
-            .filter(spell -> schoolId.equals(spell.school))
-            .sorted((a, b) -> Integer.compare(b.tier, a.tier))
-            .toList();
+        var spells = SpellSelectionRules.rankedCastCandidates(
+            SpellRegistry.getAll(), prog.getLearnedSpells(), schoolId);
 
         for (var spell : spells) {
             if (castSpell(player, spell.id)) return;
@@ -119,18 +114,18 @@ public class SpellCastHandler {
     }
 
     public static CastResult castBySchoolDetailed(ServerPlayer player, String schoolId) {
+        if (!NetworkInputRules.isValidSchoolId(schoolId, id -> SchoolRegistry.get(id) != null)) {
+            return CastResult.fail("", "", "notification.sihriya.cast_no_spell");
+        }
+
         var progOpt = player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).resolve();
         if (progOpt.isEmpty()) return CastResult.fail(schoolId, "", "notification.sihriya.cast_no_spell");
         var prog = progOpt.get();
 
         if (!prog.isSchoolUnlocked(schoolId)) return CastResult.fail(schoolId, "", "notification.sihriya.cast_locked");
 
-        var spells = prog.getLearnedSpells().stream()
-            .map(SpellRegistry::get)
-            .filter(Objects::nonNull)
-            .filter(spell -> schoolId.equals(spell.school))
-            .sorted((a, b) -> Integer.compare(b.tier, a.tier))
-            .toList();
+        var spells = SpellSelectionRules.rankedCastCandidates(
+            SpellRegistry.getAll(), prog.getLearnedSpells(), schoolId);
 
         if (spells.isEmpty()) return CastResult.fail(schoolId, "", "notification.sihriya.cast_no_spell");
 
@@ -166,8 +161,10 @@ public class SpellCastHandler {
 
         float statMultiplier = STATModIntegration.getDamageMultiplier(player, spell.school);
 
+        float strongestEffectValue = 0;
         for (SpellEffect effect : spell.effects) {
             float value = (effect.baseValue + (schoolLevel * effect.scaling)) * statMultiplier;
+            strongestEffectValue = Math.max(strongestEffectValue, value);
             int duration = effect.duration;
 
             // Apply perk bonuses
@@ -177,7 +174,13 @@ public class SpellCastHandler {
             int extraTargets = perkMod.extraTargets();
 
             switch (effect.type) {
-                case "damage" -> applyDamage(player, value);
+                case "damage" -> {
+                    if (spell.type == SpellType.PROJECTILE) {
+                        spawnProjectile(player, spell.school, value, spell.id);
+                        continue;
+                    }
+                    applyDamageWithParticles(player, value, spell.school);
+                }
                 case "burn" -> { applyBurn(player, (int) value, duration); applyPerkBurnSpread(player, spell.school); }
                 case "slow" -> applySlow(player, duration);
                 case "knockback" -> applyKnockback(player, value);
@@ -201,15 +204,77 @@ public class SpellCastHandler {
                 case "flight" -> applyFlight(player, duration);
                 case "melee_bonus" -> applyMeleeBonus(player, value, duration);
                 case "melee_fire_bonus" -> applyMeleeFireBonus(player, value, duration);
-                case "range_bonus" -> {}
-                case "orbit_damage" -> {}
+                case "range_bonus" -> applyRangeBonus(player, value, duration);
+                case "orbit_damage" -> applyOrbitDamageAura(player, value, duration);
                 case "summon" -> applySummon(player, spell.school, (int) value, duration);
                 case "wall" -> applyWall(player, spell.school, (int) value, duration);
                 default -> Sihriya.LOGGER.debug("Unhandled effect type: {}", effect.type);
             }
 
-            // Perk AoE effects after spell execution
-            applyPerkAoEEffects(player, spell.school, value);
+        }
+        applyPerkCastEffects(player, spell.school, strongestEffectValue);
+
+        spawnSpellVisuals(player, spell);
+    }
+
+    private static void spawnSpellVisuals(ServerPlayer player, SpellData spell) {
+        var particleType = tong.sihriya.registry.SihriyaParticles.getForSchool(spell.school);
+        var level = player.level();
+        var target = getTargetEntity(player);
+        var pos = target != null ? target.position() : player.position().add(player.getLookAngle().scale(3));
+        net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket packet;
+
+        switch (spell.type) {
+            case ZONE -> {
+                for (int i = 0; i < 15; i++) {
+                    double angle = i * (Math.PI * 2 / 15);
+                    packet = new net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket(
+                        particleType, true,
+                        pos.x + Math.cos(angle) * 2.5, pos.y + 0.3, pos.z + Math.sin(angle) * 2.5,
+                        0f, 0.02f, 0f, 0.01f, 1);
+                    broadcastPacket(level, packet);
+                }
+            }
+            case BUFF -> {
+                for (int i = 0; i < 12; i++) {
+                    double angle = i * (Math.PI * 2 / 12);
+                    packet = new net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket(
+                        particleType, true,
+                        player.getX() + Math.cos(angle) * 1.5, player.getY() + 0.8 + Math.sin(i * 0.5) * 0.5,
+                        player.getZ() + Math.sin(angle) * 1.5,
+                        0f, 0.01f, 0f, 0.01f, 1);
+                    broadcastPacket(level, packet);
+                }
+            }
+            case SUMMON -> {
+                for (int i = 0; i < 20; i++) {
+                    double angle = i * (Math.PI * 2 / 20);
+                    packet = new net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket(
+                        particleType, true,
+                        player.getX() + Math.cos(angle) * 2, player.getY() + 0.2, player.getZ() + Math.sin(angle) * 2,
+                        0f, 0.05f, 0f, 0.02f, 1);
+                    broadcastPacket(level, packet);
+                }
+                for (int i = 0; i < 8; i++) {
+                    packet = new net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket(
+                        particleType, true,
+                        player.getX() + (level.random.nextDouble() - 0.5) * 2, player.getY() + level.random.nextDouble() * 1.5,
+                        player.getZ() + (level.random.nextDouble() - 0.5) * 2,
+                        0f, 0.05f, 0f, 0.02f, 1);
+                    broadcastPacket(level, packet);
+                }
+            }
+            default -> {}
+        }
+    }
+
+    private static void broadcastPacket(net.minecraft.world.level.Level level,
+                                         net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket packet) {
+        var server = level.getServer();
+        if (server != null) {
+            for (var p : server.getPlayerList().getPlayers()) {
+                p.connection.send(packet);
+            }
         }
     }
 
@@ -217,7 +282,6 @@ public class SpellCastHandler {
     private static void applyDamage(ServerPlayer player, float amount) {
         var target = getTargetEntity(player);
         if (target != null) {
-            // Appliquer la résistance magique de la cible
             float finalAmount = amount;
             if (target instanceof net.minecraft.world.entity.player.Player targetPlayer) {
                 float resistance = STATModIntegration.getMagicResistance(targetPlayer);
@@ -225,6 +289,34 @@ public class SpellCastHandler {
             }
             target.hurt(player.damageSources().magic(), finalAmount);
         }
+    }
+
+    private static void applyDamageWithParticles(ServerPlayer player, float amount, String schoolId) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            float finalAmount = amount;
+            if (target instanceof net.minecraft.world.entity.player.Player targetPlayer) {
+                float resistance = STATModIntegration.getMagicResistance(targetPlayer);
+                finalAmount = amount * (1 - resistance);
+            }
+            target.hurt(player.damageSources().magic(), finalAmount);
+
+            var particleType = tong.sihriya.registry.SihriyaParticles.getForSchool(schoolId);
+            var packet = new net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket(
+                particleType, true,
+                target.getX(), target.getY() + 0.8, target.getZ(),
+                0.5f, 0.3f, 0.5f, 0.02f, 12);
+            broadcastPacket(player.level(), packet);
+        }
+    }
+
+    private static void spawnProjectile(ServerPlayer player, String schoolId, float damage, String spellId) {
+        var projectile = new tong.sihriya.projectile.SpellProjectile(
+            player.level(), player, damage, schoolId, spellId);
+        var look = player.getLookAngle();
+        projectile.setPos(player.getX() + look.x * 1.5, player.getEyeY() - 0.3, player.getZ() + look.z * 1.5);
+        projectile.shoot(look.x, look.y, look.z, 2.0f, 0.5f);
+        player.level().addFreshEntity(projectile);
     }
 
     private static void applyBurn(ServerPlayer player, int damage, int duration) {
@@ -396,17 +488,72 @@ public class SpellCastHandler {
     }
 
     private static LivingEntity getTargetEntity(ServerPlayer player) {
-        var hitResult = player.pick(20.0, 1.0f, false);
-        if (hitResult.getType() == net.minecraft.world.phys.HitResult.Type.ENTITY) {
-            var entityHit = ((net.minecraft.world.phys.EntityHitResult) hitResult).getEntity();
-            if (entityHit instanceof LivingEntity living) return living;
+        double range = getDirectTargetRange(player);
+        Vec3 start = player.getEyePosition();
+        Vec3 look = player.getViewVector(1.0f);
+        Vec3 end = start.add(look.scale(range));
+
+        var level = player.level();
+        var blockHit = level.clip(new ClipContext(
+            start,
+            end,
+            ClipContext.Block.COLLIDER,
+            ClipContext.Fluid.NONE,
+            player
+        ));
+        if (blockHit.getType() != HitResult.Type.MISS) {
+            end = blockHit.getLocation();
         }
-        return null;
+
+        var searchBox = player.getBoundingBox().expandTowards(end.subtract(start)).inflate(1.0);
+        var entityHit = ProjectileUtil.getEntityHitResult(
+            level,
+            player,
+            start,
+            end,
+            searchBox,
+            SpellCastHandler::isValidDirectTarget
+        );
+        if (entityHit == null) return null;
+
+        Entity entity = entityHit.getEntity();
+        return entity instanceof LivingEntity living ? living : null;
+    }
+
+    private static boolean isValidDirectTarget(Entity entity) {
+        return entity instanceof LivingEntity living
+            && living.isAlive()
+            && !living.isSpectator()
+            && living.isPickable();
+    }
+
+    private static double getDirectTargetRange(ServerPlayer player) {
+        var effect = player.getEffect(ModEffects.RANGE_EXTENSION.get());
+        double multiplier = effect == null
+            ? 1.0
+            : SpellEffectRules.rangeMultiplierFromAmplifier(effect.getAmplifier());
+        return 20.0 * multiplier;
+    }
+
+    private static void applyRangeBonus(ServerPlayer player, float bonus, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.RANGE_EXTENSION.get(),
+            Math.max(1, duration),
+            SpellEffectRules.rangeBonusAmplifier(bonus)
+        ));
+    }
+
+    private static void applyOrbitDamageAura(ServerPlayer player, float damage, int duration) {
+        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.ORBIT_DAMAGE_AURA.get(),
+            Math.max(20, duration),
+            SpellEffectRules.orbitDamageAmplifier(damage)
+        ));
     }
 
     private static void applySummon(ServerPlayer player, String school, int count, int duration) {
-        if (count <= 0) count = 1;
-        if (duration <= 0) duration = 600;
+        int summonCount = TemporaryEffectRules.clampSummonCount(count);
+        int summonDuration = TemporaryEffectRules.clampSummonDuration(duration);
 
         net.minecraft.world.entity.EntityType<?> entityType = switch (school) {
             case "fire" -> net.minecraft.world.entity.EntityType.BLAZE;
@@ -420,8 +567,8 @@ public class SpellCastHandler {
             default -> net.minecraft.world.entity.EntityType.ZOMBIE;
         };
 
-        for (int i = 0; i < Math.min(count, 30); i++) {
-            double angle = (2 * Math.PI * i) / count;
+        for (int i = 0; i < summonCount; i++) {
+            double angle = TemporaryEffectRules.summonAngle(i, summonCount);
             double dx = Math.cos(angle) * 2.5;
             double dz = Math.sin(angle) * 2.5;
             double spawnX = player.getX() + dx;
@@ -433,20 +580,18 @@ public class SpellCastHandler {
                 entity.moveTo(spawnX, spawnY, spawnZ,
                     player.getRandom().nextFloat() * 360f, 0f);
                 if (entity instanceof LivingEntity living) {
-                    living.addTag("sihriya_summon");
-                    living.setPersistenceRequired();
-                    // Set the summon's target to the caster's target
+                    living.addTag(TemporaryEffectRules.TEMPORARY_SUMMON_TAG);
+                    living.addTag(TemporaryEffectRules.SUMMON_CASTER_TAG_PREFIX + player.getUUID());
                     var target = getTargetEntity(player);
                     if (target != null && living instanceof net.minecraft.world.entity.Mob mob) {
                         mob.setTarget(target);
+                        mob.setCanPickUpLoot(false);
                     }
                 }
                 player.level().addFreshEntity(entity);
 
-                // Schedule removal after duration
-                int finalDuration = duration;
                 player.getServer().tell(new net.minecraft.server.TickTask(
-                    player.getServer().getTickCount() + finalDuration,
+                    player.getServer().getTickCount() + summonDuration,
                     () -> {
                         if (entity.isAlive()) {
                             entity.discard();
@@ -457,63 +602,21 @@ public class SpellCastHandler {
         }
     }
 
-    private record PerkMod(float damageMult, float durationMult, int extraTargets) {
-        static final PerkMod NONE = new PerkMod(1f, 1f, 0);
+    private static PerkModifierRules.Modifier getPerkModifiers(ServerPlayer player, String school, String effectType) {
+        return PerkModifierRules.modifierFor(readPerkLevels(player), school, effectType);
     }
 
-    private static PerkMod getPerkModifiers(ServerPlayer player, String school, String effectType) {
-        float dmg = 1f, dur = 1f;
-        int extraTargets = 0;
-
-        int fireLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.FIRE_AFFINITY);
-        int waterLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.WATER_AFFINITY);
-        int airLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.AIR_AFFINITY);
-        int earthLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.EARTH_AFFINITY);
-        int arcaneLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ARCANE_POWER);
-        int magicResLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MAGIC_RESISTANCE);
-        int castSpeedLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.CASTING_SPEED);
-        int eruditionLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ERUDITION);
-
-        // ── AFFINITY PERKS ──
-        switch (school) {
-            case "fire", "lava" -> {
-                if (fireLvl >= 20 && (effectType.equals("burn") || effectType.equals("damage"))) dmg = 1.25f;
-            }
-            case "water" -> {
-                if (waterLvl >= 20 && (effectType.equals("slow") || effectType.equals("freeze"))) dur = 1.25f;
-            }
-            case "wind" -> {
-                if (airLvl >= 20 && (effectType.equals("knockback") || effectType.equals("pull"))) dmg = 1.5f;
-            }
-            case "earth" -> {
-                if (earthLvl >= 20 && effectType.equals("stun")) dur = 1.25f;
-            }
-        }
-
-        // ── ARCANE_POWER perks ──
-        if (arcaneLvl >= 20) dmg *= 1.25f;
-        if (arcaneLvl >= 50 && effectType.equals("chain")) extraTargets = 2;
-
-        // ── MAGIC_RESISTANCE perks ──
-        // SHIELD_ADEQUAT (20): +15% damage reduction on absorb/damage_reduction spells
-        if (magicResLvl >= 20 && (effectType.equals("absorb") || effectType.equals("damage_reduction"))) dur += 0.15f;
-        // MUR_MAGIQUE (50): dispel also applies slowness to target
-        if (magicResLvl >= 50 && effectType.equals("dispel")) extraTargets = 1;
-
-        // ── CASTING_SPEED perks ──
-        // RAPIDITE (20): dash distance +30%
-        if (castSpeedLvl >= 20 && effectType.equals("dash")) dmg = 1.3f;
-        // CANALISATION (50): heal +30%
-        if (castSpeedLvl >= 50 && effectType.equals("heal")) dmg = 1.3f;
-
-        // ── ERUDITION perks ──
-        // SAVANT (20): +15% duration on buff spells (speed, flight, melee_bonus, thorns)
-        if (eruditionLvl >= 20 && (effectType.equals("speed") || effectType.equals("flight")
-            || effectType.equals("melee_bonus") || effectType.equals("thorns"))) dur = 1.15f;
-        // MAITRE (50): +15% damage on all spells
-        if (eruditionLvl >= 50) dmg *= 1.15f;
-
-        return new PerkMod(dmg, dur, extraTargets);
+    private static PerkModifierRules.StatLevels readPerkLevels(ServerPlayer player) {
+        return new PerkModifierRules.StatLevels(
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.FIRE_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.WATER_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.AIR_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.EARTH_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ARCANE_POWER),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MAGIC_RESISTANCE),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.CASTING_SPEED),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ERUDITION)
+        );
     }
 
     private static void applyPerkBurnSpread(ServerPlayer player, String school) {
@@ -528,111 +631,76 @@ public class SpellCastHandler {
         }
     }
 
-    private static void applyPerkAoEEffects(ServerPlayer player, String school, float value) {
-        int fireLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.FIRE_AFFINITY);
-        int waterLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.WATER_AFFINITY);
-        int airLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.AIR_AFFINITY);
-        int earthLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.EARTH_AFFINITY);
-        int arcaneLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ARCANE_POWER);
-        int magicResLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MAGIC_RESISTANCE);
-        int castSpeedLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.CASTING_SPEED);
-        int manaPoolLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MANA_POOL);
-        int eruditionLvl = STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ERUDITION);
-
-        // INFERNO (Fire 50): Fire AoE
-        if (fireLvl >= 50 && school.equals("fire")) {
-            var nearby = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(3),
-                e -> e != player && e.isAlive());
-            for (var e : nearby) e.setRemainingFireTicks(80);
-        }
-        // PYROMANIA (Fire 80): Burn spread
-        if (fireLvl >= 80 && school.equals("fire")) {
-            applyPerkBurnSpread(player, school);
-        }
-
-        // TOURBILLON (Water 50): Push enemies
-        if (waterLvl >= 50 && school.equals("water")) {
-            var nearby = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4),
-                e -> e != player && e.isAlive());
-            for (var e : nearby) {
-                Vec3 dir = e.position().subtract(player.position()).normalize();
-                e.push(dir.x * 0.8, 0.3, dir.z * 0.8);
-                e.hurtMarked = true;
+    private static void applyPerkCastEffects(ServerPlayer player, String school, float value) {
+        for (var action : PerkCastRules.actionsFor(readCastPerkLevels(player), school)) {
+            switch (action.type()) {
+                case FIRE_AOE -> nearbyEnemies(player, action.radius())
+                    .forEach(e -> e.setRemainingFireTicks(action.duration()));
+                case FIRE_SPREAD -> applyPerkBurnSpread(player, school);
+                case WATER_PUSH -> nearbyEnemies(player, action.radius()).forEach(e -> {
+                    Vec3 dir = e.position().subtract(player.position()).normalize();
+                    e.push(dir.x * action.strength(), 0.3, dir.z * action.strength());
+                    e.hurtMarked = true;
+                });
+                case TSUNAMI_SLOW -> nearbyEnemies(player, action.radius()).forEach(e ->
+                    e.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                        net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,
+                        action.duration(), action.amplifier())));
+                case WIND_PULL -> nearbyEnemies(player, action.radius()).forEach(e -> {
+                    Vec3 dir = player.position().subtract(e.position()).normalize();
+                    e.push(dir.x * action.strength(), 0.1, dir.z * action.strength());
+                    e.hurtMarked = true;
+                });
+                case HURRICANE_LIFT -> nearbyEnemies(player, action.radius()).forEach(e -> {
+                    Vec3 dir = player.position().subtract(e.position()).normalize();
+                    e.push(dir.x * 0.25, action.strength(), dir.z * 0.25);
+                    e.hurtMarked = true;
+                });
+                case EARTH_RESISTANCE -> player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                    net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE,
+                    action.duration(), action.amplifier()));
+                case EARTH_AOE_STUN -> nearbyEnemies(player, action.radius()).forEach(e ->
+                    e.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                        net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,
+                        action.duration(), action.amplifier())));
+                case ARCANE_AOE_DAMAGE -> nearbyEnemies(player, action.radius())
+                    .forEach(e -> e.hurt(player.damageSources().magic(), value * action.strength()));
+                case MAGIC_RESISTANCE_ABSORB -> player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                    net.minecraft.world.effect.MobEffects.ABSORPTION,
+                    action.duration(), action.amplifier()));
+                case CASTING_SPEED_BOOST -> player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                    net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED,
+                    action.duration(), action.amplifier()));
+                case ERUDITION_REFUND, MANA_REFUND -> player.getCapability(ManaProvider.MANA).resolve()
+                    .ifPresent(m -> m.regenMana(player, action.manaRefund()));
             }
-        }
-
-        // TEMPETE (Wind 50): Pull enemies
-        if (airLvl >= 50 && school.equals("wind")) {
-            var nearby = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(6),
-                e -> e != player && e.isAlive());
-            for (var e : nearby) {
-                Vec3 dir = player.position().subtract(e.position()).normalize();
-                e.push(dir.x * 0.6, 0.1, dir.z * 0.6);
-                e.hurtMarked = true;
-            }
-        }
-
-        // ROCHER (Earth 50): Absorption
-        if (earthLvl >= 50 && school.equals("earth")) {
-            player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
-                net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE, 100, 0));
-        }
-        // CATACLYSME (Earth 80): AoE stun
-        if (earthLvl >= 80 && school.equals("earth")) {
-            var nearby = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4),
-                e -> e != player && e.isAlive());
-            for (var e : nearby) {
-                e.addEffect(new net.minecraft.world.effect.MobEffectInstance(
-                    net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN, 60, 3));
-            }
-        }
-
-        // CATACLYSME_ARCANE (Arcane 80): AoE lightning
-        if (arcaneLvl >= 80) {
-            var nearby = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(5),
-                e -> e != player && e.isAlive());
-            for (var e : nearby) {
-                e.hurt(player.damageSources().magic(), value * 0.5f);
-            }
-        }
-
-        // BOUCLIER_ARCANE (Magic Res 80): Self-absorb on any cast
-        if (magicResLvl >= 80) {
-            player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
-                net.minecraft.world.effect.MobEffects.ABSORPTION, 200, 0));
-        }
-
-        // PRESTO (Casting 80): Speed boost on any cast
-        if (castSpeedLvl >= 80) {
-            player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
-                net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED, 80, 0));
-        }
-
-        // SAGE (Erudition 80): Small mana refund on cast
-        if (eruditionLvl >= 80) {
-            var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
-            manaOpt.ifPresent(m -> m.regenMana(player, 5));
-        }
-
-        // RESERVOIR (Mana Pool 50): Small regen each cast
-        if (manaPoolLvl >= 50) {
-            var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
-            manaOpt.ifPresent(m -> m.regenMana(player, 3));
-        }
-
-        // RESERVOIR (Mana Pool 50): Max mana > 80 grants small regen each cast
-        if (manaPoolLvl >= 50) {
-            var manaOpt = player.getCapability(ManaProvider.MANA).resolve();
-            manaOpt.ifPresent(m -> m.regenMana(3, player));
         }
     }
 
+    private static List<LivingEntity> nearbyEnemies(ServerPlayer player, double radius) {
+        return player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius),
+            e -> e != player && e.isAlive());
+    }
+
+    private static PerkCastRules.StatLevels readCastPerkLevels(ServerPlayer player) {
+        return new PerkCastRules.StatLevels(
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.FIRE_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.WATER_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.AIR_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.EARTH_AFFINITY),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ARCANE_POWER),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MAGIC_RESISTANCE),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.CASTING_SPEED),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.MANA_POOL),
+            STATModIntegration.getStatLevel(player, tong.statmod.stats.StatType.ERUDITION)
+        );
+    }
+
     private static void applyWall(ServerPlayer player, String school, int durability, int duration) {
-        if (duration <= 0) duration = 1200; // 1 min default
+        int wallDuration = TemporaryEffectRules.clampWallDuration(duration);
         Vec3 look = player.getLookAngle();
         Vec3 right = new Vec3(-look.z, 0, look.x).normalize();
 
-        // Build a semicircular wall in front of the caster (5 blocks wide, 3 high)
         int width = 5;
         int height = 3;
         net.minecraft.world.level.block.state.BlockState blockState =
@@ -665,9 +733,8 @@ public class SpellCastHandler {
             }
         }
 
-        // Schedule removal after duration
         player.getServer().tell(new net.minecraft.server.TickTask(
-            player.getServer().getTickCount() + duration,
+            player.getServer().getTickCount() + wallDuration,
             () -> {
                 for (var bp : placedBlocks) {
                     if (level.getBlockState(bp).getBlock() == blockState.getBlock()) {

@@ -21,7 +21,7 @@ public class SpellAnimationManager {
         return REGISTRY.containsKey(spellId);
     }
 
-    /** Charge les animations par défaut (stub — les vraies animations viendront des assets Blender) */
+    /** Charge les animations génériques utilisées comme fallback quand un sort n'a pas de mapping dédié. */
     public static void registerDefaults() {
         registerGeneric("PROJECTILE", "cast_projectile", 15, "flame");
         registerGeneric("ZONE", "cast_zone", 25, "spell");
@@ -31,9 +31,8 @@ public class SpellAnimationManager {
     }
 
     private static void registerGeneric(String type, String animPath, int duration, String particle) {
-        ResourceLocation id = new ResourceLocation(Sihriya.MODID, animPath);
-        // Enregistrer un stub pour chaque type de sort
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Sihriya.MODID, animPath);
         REGISTRY.put(type, new SpellAnimation(id, type, duration, particle));
-        Sihriya.LOGGER.debug("Animation stub registered for type: {}", type);
+        Sihriya.LOGGER.debug("Fallback animation registered for type: {}", type);
     }
 }

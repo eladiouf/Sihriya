@@ -14,7 +14,7 @@ public class SchoolRegistry {
     }
 
     public static SchoolData get(String id) { return SCHOOLS.get(id); }
-    public static Collection<SchoolData> getAll() { return SCHOOLS.values(); }
+    public static Collection<SchoolData> getAll() { return List.copyOf(SCHOOLS.values()); }
     public static List<SchoolData> getStartingSchools() {
         return SCHOOLS.values().stream().filter(s -> s.starting).toList();
     }
@@ -35,11 +35,21 @@ public class SchoolRegistry {
 
     public static class UnlockCondition {
         public final String type; // "level", "or", "and"
-        public final String[] schoolIds;
-        public final int[] levels;
+        private final String[] schoolIds;
+        private final int[] levels;
 
         public UnlockCondition(String type, String[] schoolIds, int[] levels) {
-            this.type = type; this.schoolIds = schoolIds; this.levels = levels;
+            this.type = type;
+            this.schoolIds = schoolIds.clone();
+            this.levels = levels.clone();
+        }
+
+        public String[] schoolIds() {
+            return schoolIds.clone();
+        }
+
+        public int[] levels() {
+            return levels.clone();
         }
 
         public boolean isMet(SchoolProgression prog) {

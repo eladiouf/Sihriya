@@ -35,7 +35,7 @@ public class GrimoireScreen extends Screen {
         panelH = Math.min(280, height - 24);
         panelX = (width - panelW) / 2;
         panelY = (height - panelH) / 2;
-        selectedSchool = Math.max(0, SihriyaUiData.SCHOOL_ORDER.indexOf(ClientSchoolData.activeSchool));
+        selectedSchool = Math.max(0, SihriyaUiData.SCHOOL_ORDER.indexOf(ClientSchoolData.getActiveSchool()));
         scroll = 0;
         selectFirstVisibleSpell();
     }
@@ -101,10 +101,10 @@ public class GrimoireScreen extends Screen {
         int barX = panelX + panelW - 152;
         int barY = y + 2;
         int barW = 88;
-        int level = Math.max(0, Math.min(100, ClientSchoolData.getLevel(school)));
+        int lvl = Math.max(0, Math.min(100, ClientSchoolData.getLevel(school)));
         g.fill(barX, barY, barX + barW, barY + 5, 0xFF0B0910);
-        g.fill(barX, barY, barX + (barW * level / 100), barY + 5, color);
-        g.drawString(font, level + "/100", barX + barW + 6, barY - 2, 0xFFB8B0C0, false);
+        g.fill(barX, barY, barX + (barW * lvl / 100), barY + 5, color);
+        g.drawString(font, lvl + "/100", barX + barW + 6, barY - 2, 0xFFB8B0C0, false);
     }
 
     private void drawFilters(GuiGraphics g, int mouseX, int mouseY) {
@@ -149,7 +149,7 @@ public class GrimoireScreen extends Screen {
             SpellData spell = spells.get(start + i);
             int y = listY + i * rowH;
             boolean selected = selectedSpell != null && selectedSpell.id.equals(spell.id);
-            boolean learned = ClientSchoolData.learnedSpells.contains(spell.id);
+            boolean learned = ClientSchoolData.isSpellLearned(spell.id);
             boolean castable = ClientSchoolData.canCast(spell);
             int bg = selected ? 0x663366FF : mouseX >= listX && mouseX <= listX + listW && mouseY >= y && mouseY < y + rowH ? 0x33333333 : 0;
             if (bg != 0) g.fill(listX - 2, y - 1, listX + listW - 2, y + rowH - 1, bg);
@@ -181,6 +181,8 @@ public class GrimoireScreen extends Screen {
         g.fill(barX - 1, barY - 1, barX + 3, barY + barH + 1, 0xFF2B2830);
         g.fill(barX, handleY, barX + 2, handleY + handleH, 0xFF5A4964);
     }
+
+    private void drawSpellDetails(GuiGraphics g) {
         int x = panelX + 176;
         int y = getListY();
         int w = panelW - 188;
@@ -200,7 +202,7 @@ public class GrimoireScreen extends Screen {
         drawDetail(g, x, line, I18n.get("screen.sihriya.grimoire.mana"), String.valueOf(selectedSpell.manaCost)); line += 12;
         drawDetail(g, x, line, I18n.get("screen.sihriya.grimoire.cooldown"), String.format("%.1fs", selectedSpell.cooldown / 20.0f)); line += 16;
 
-        boolean learned = ClientSchoolData.learnedSpells.contains(selectedSpell.id);
+        boolean learned = ClientSchoolData.isSpellLearned(selectedSpell.id);
         boolean castable = ClientSchoolData.canCast(selectedSpell);
         String status = castable
             ? I18n.get("screen.sihriya.grimoire.castable")
@@ -316,7 +318,7 @@ public class GrimoireScreen extends Screen {
     }
 
     private boolean matchesStatusFilter(SpellData spell) {
-        boolean learned = ClientSchoolData.learnedSpells.contains(spell.id);
+        boolean learned = ClientSchoolData.isSpellLearned(spell.id);
         boolean castable = ClientSchoolData.canCast(spell);
         return switch (statusFilter) {
             case 1 -> castable;

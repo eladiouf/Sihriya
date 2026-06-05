@@ -70,8 +70,9 @@ public class ActiveSpellHud implements IGuiOverlay {
         if (ClientSchoolData.hasVisibleCastHud()) {
             return ClientSchoolData.getLastRequestedSpell().orElse(null);
         }
-        if (!ClientSchoolData.activeSchool.isEmpty()) {
-            return ClientSchoolData.getBestCastableSpell(ClientSchoolData.activeSchool).orElse(null);
+        String activeSchool = ClientSchoolData.getActiveSchool();
+        if (!activeSchool.isEmpty()) {
+            return ClientSchoolData.getBestCastableSpell(activeSchool).orElse(null);
         }
         return null;
     }

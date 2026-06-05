@@ -36,6 +36,14 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> MAGIC_FLIGHT =
         EFFECTS.register("magic_flight", () -> new MagicFlightEffect());
 
+    /** Augmente la portée des sorts ciblés. */
+    public static final RegistryObject<MobEffect> RANGE_EXTENSION =
+        EFFECTS.register("range_extension", () -> new RangeExtensionEffect());
+
+    /** Inflige périodiquement des dégâts aux ennemis proches. */
+    public static final RegistryObject<MobEffect> ORBIT_DAMAGE_AURA =
+        EFFECTS.register("orbit_damage_aura", () -> new OrbitDamageAuraEffect());
+
     // --- Implémentations ---
 
     private static class LightningAbsorptionEffect extends MobEffect {
@@ -88,15 +96,54 @@ public class ModEffects {
         public void removeAttributeModifiers(LivingEntity entity, net.minecraft.world.entity.ai.attributes.AttributeMap attributeMap, int amplifier) {
             super.removeAttributeModifiers(entity, attributeMap, amplifier);
             if (entity instanceof Player player) {
-                player.getAbilities().mayfly = false;
-                player.getAbilities().flying = false;
-                player.onUpdateAbilities();
+                if (SpellEffectRules.shouldRevokeMagicFlight(player.isCreative(), player.isSpectator())) {
+                    player.getAbilities().mayfly = false;
+                    player.getAbilities().flying = false;
+                    player.onUpdateAbilities();
+                }
             }
         }
 
         @Override
         public boolean isDurationEffectTick(int duration, int amplifier) {
             return true; // tick chaque frame pour maintenir mayfly
+        }
+    }
+
+    private static class RangeExtensionEffect extends MobEffect {
+        protected RangeExtensionEffect() {
+            super(MobEffectCategory.BENEFICIAL, 0x99DDFF);
+        }
+
+        @Override
+        public boolean isDurationEffectTick(int duration, int amplifier) {
+            return false;
+        }
+    }
+
+    private static class OrbitDamageAuraEffect extends MobEffect {
+        protected OrbitDamageAuraEffect() {
+            super(MobEffectCategory.BENEFICIAL, 0xFFAA33);
+        }
+
+        @Override
+        public void applyEffectTick(LivingEntity entity, int amplifier) {
+            if (!(entity instanceof Player player) || player.level().isClientSide) return;
+
+            float damage = SpellEffectRules.orbitDamageFromAmplifier(amplifier);
+            if (damage <= 0) return;
+
+            var nearby = player.level().getEntitiesOfClass(LivingEntity.class,
+                player.getBoundingBox().inflate(3.5),
+                target -> target != player && target.isAlive());
+            for (var target : nearby) {
+                target.hurt(player.damageSources().magic(), damage);
+            }
+        }
+
+        @Override
+        public boolean isDurationEffectTick(int duration, int amplifier) {
+            return duration % 20 == 0;
         }
     }
 }

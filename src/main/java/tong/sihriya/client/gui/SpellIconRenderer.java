@@ -10,7 +10,7 @@ import tong.sihriya.data.SpellRegistry.SpellData;
 import java.util.*;
 
 public class SpellIconRenderer {
-    public static final ResourceLocation ATLAS = new ResourceLocation(Sihriya.MODID, "gui/spell_icons.png");
+    public static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath(Sihriya.MODID, "gui/spell_icons.png");
     public static final int ICON_SIZE = 32;
     public static final int COLS = 28;
     public static final int ROWS = 9;

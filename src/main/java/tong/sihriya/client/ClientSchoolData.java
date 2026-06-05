@@ -8,10 +8,10 @@ import tong.sihriya.core.TierUnlockHandler;
 import java.util.*;
 
 public class ClientSchoolData {
-    public static String activeSchool = "";
-    public static Map<String, Integer> schoolLevels = new HashMap<>();
-    public static Set<String> unlockedSchools = new HashSet<>();
-    public static Set<String> learnedSpells = new HashSet<>();
+    private static String activeSchool = "";
+    private static Map<String, Integer> schoolLevels = new HashMap<>();
+    private static Set<String> unlockedSchools = new HashSet<>();
+    private static Set<String> learnedSpells = new HashSet<>();
     public static String lastRequestedSchool = "";
     public static String lastRequestedSpellId = "";
     public static long lastRequestedAtMs = 0;
@@ -31,12 +31,20 @@ public class ClientSchoolData {
         return unlockedSchools.contains(school);
     }
 
+    public static String getActiveSchool() {
+        return activeSchool;
+    }
+
     public static int getLevel(String school) {
         return schoolLevels.getOrDefault(school, 0);
     }
 
+    public static boolean isSpellLearned(String spellId) {
+        return learnedSpells.contains(spellId);
+    }
+
     public static boolean canCast(SpellData spell) {
-        if (!learnedSpells.contains(spell.id)) return false;
+        if (!isSpellLearned(spell.id)) return false;
         int tier = spell.tier;
         int level = getLevel(spell.school);
         return TierUnlockHandler.getUnlockLevel(tier) <= level;
@@ -141,9 +149,9 @@ public class ClientSchoolData {
         }
 
         activeSchool = active;
-        schoolLevels = levels;
-        unlockedSchools = unlocked;
-        learnedSpells = spells;
+        schoolLevels = new HashMap<>(levels);
+        unlockedSchools = new HashSet<>(unlocked);
+        learnedSpells = new HashSet<>(spells);
 
         for (String school : newSchools) {
             SihriyaNotifications.schoolUnlocked(school);

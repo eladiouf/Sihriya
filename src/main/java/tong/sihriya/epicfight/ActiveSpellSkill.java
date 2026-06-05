@@ -34,7 +34,7 @@ public class ActiveSpellSkill extends Skill {
         var manaOpt = player.getCapability(tong.sihriya.core.ManaProvider.MANA).resolve();
         if (manaOpt.isEmpty()) return false;
 
-        return !manaOpt.get().isLocked() && manaOpt.get().getMana() >= spell.manaCost;
+        return !manaOpt.get().isLocked(player) && manaOpt.get().getMana(player) >= spell.manaCost;
     }
 
     @Override
