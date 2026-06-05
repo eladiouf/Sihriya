@@ -17,6 +17,8 @@ Use this checklist before publishing or handing off a Sihriya build.
 - Run `.\gradlew.bat validateReleaseArtifacts`
 - Run `.\gradlew.bat validateStandaloneReleaseServerSmoke`
 - Run `.\gradlew.bat validateStandaloneReleaseClientSmoke`
+- Run `.\gradlew.bat :test --tests tong.sihriya.core.SchoolProgressionMigrationTest`
+- Run `..\STAT_MOD\gradlew.bat test --tests tong.statmod.migration.LegacyCapabilityMigrationTest`
 - Run `.\gradlew.bat runClient -PforgeRunDir=run-client-clean --no-daemon`
 - Run `.\gradlew.bat runServer -PforgeRunDir=run-clean --no-daemon`
 - Confirm `run-client-clean/logs/latest.log` contains:

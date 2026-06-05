@@ -1,0 +1,10 @@
+{
+  ActiveSchool: "legacy_shadow",
+  SchoolLevels: [
+    {School: "migration_fire", Level: 12, XP: 55},
+    {School: "legacy_shadow", Level: 999, XP: 9999},
+    {School: "migration_water", Level: -5, XP: -10}
+  ],
+  UnlockedSchools: ["migration_fire", "legacy_shadow"],
+  LearnedSpells: ["migration_fire.spark", "legacy_shadow.hex", "migration_water.wave"]
+}

@@ -67,6 +67,7 @@ Current source/build evidence covers at least these areas:
 - temporary summon/wall safety rules
 - cooldown tracker cleanup
 - progression save sanitation
+- representative legacy NBT migration fixtures across Sihriya school progression and STAT Mod player capability managers
 - immutable registry and client-cache views
 - verification-run preparation with stable server defaults
 - clean client-smoke preparation with stable config defaults
@@ -95,7 +96,8 @@ The following items are not yet proven strongly enough to call the whole mod ful
 
 2. Upgrade/migration confidence
    - save sanitation exists
-   - real-world upgrade testing from older live player/server data is not yet proven
+   - representative legacy NBT fixtures are now covered for Sihriya school progression and STAT Mod player capability managers
+   - real-world upgrade testing from older live player/server data is still not yet proven
 
 3. Performance envelope
    - several memory/state leaks and static-state accumulations were addressed
