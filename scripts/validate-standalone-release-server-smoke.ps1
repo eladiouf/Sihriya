@@ -107,7 +107,8 @@ $standaloneModsDir = Join-Path $standaloneDir 'mods'
 foreach ($jarName in $runtimeDependencyNames) {
     $candidatePaths = @(
         (Join-Path $projectRoot "libs/$jarName"),
-        (Join-Path $projectRoot "../STAT_MOD/libs/$jarName")
+        (Join-Path $projectRoot "../STAT_MOD/libs/$jarName"),
+        (Join-Path $projectRoot "../statmod-push/libs/$jarName")
     )
     $resolvedDependency = $candidatePaths | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1
     if (-not $resolvedDependency) {

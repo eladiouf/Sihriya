@@ -10,6 +10,7 @@ It is intentionally strict. A green build is evidence, not a blanket claim that 
 
 - `.\gradlew.bat build` succeeds for the current `SIHRIYA + STAT_MOD` workspace
 - `validateReleaseArtifacts` proves the current reobfuscated jars and staged release-smoke bundle contain the expected runtime payloads
+- `prepareStatModReleaseJar` proves the release bundle stages a merged STAT Mod jar that keeps the reobfuscated classes and the asset/data resources needed at runtime
 - `validateStandaloneReleaseServerSmoke` proves the staged release-smoke bundle plus mandatory local Epic Fight runtime jars can boot in a standalone Forge server install
 - `validateStandaloneReleaseClientSmoke` proves the staged release-smoke bundle plus mandatory local Epic Fight runtime jars can boot in a standalone Forge client install when a local asset cache is available
 - `validateSihriyaContent` proves the current content contract:
@@ -91,8 +92,8 @@ The current authoritative client-smoke baseline is documented in `docs/client-sm
 The following items are not yet proven strongly enough to call the whole mod fully “pro” without reservation:
 
 1. Gameplay workflow validation
-   - spell casting, progression unlocks, mana loop, and STAT Mod interplay are covered indirectly by code/tests
-   - they are not yet all proven by an explicit end-to-end gameplay smoke suite
+   - spell casting, progression unlocks, mana loop, and STAT Mod interplay are now covered by direct gameplay-flow rules tests
+   - they are still not yet proven by a true end-to-end runtime gameplay smoke suite
 
 2. Upgrade/migration confidence
    - save sanitation exists

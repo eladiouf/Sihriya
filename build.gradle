@@ -7,6 +7,8 @@ plugins {
 }
 
 import groovy.json.JsonSlurper
+import org.gradle.api.file.DuplicatesStrategy
+import org.gradle.api.tasks.bundling.Zip
 
 version = mod_version
 group = mod_group_id
@@ -82,7 +84,7 @@ dependencies {
         transitive = false
     }
 
-    // STAT Mod (sibling project) - compile against sibling jar and load it as a regular runtime mod
+    // STAT Mod (sibling project) - compile against the sibling project and load it as a regular runtime mod
     implementation project(':STAT_MOD')
 
     // Iron's Spells 'n Spellbooks (optional — compileOnly, détection runtime via Class.forName)
@@ -417,10 +419,30 @@ tasks.register('validateClientAnimationPackaging') {
     }
 }
 
+tasks.register('prepareStatModReleaseJar', Zip) {
+    group = 'verification'
+    description = 'Merges the reobfuscated STAT Mod classes with the source jar resources into a single release jar.'
+    dependsOn ':STAT_MOD:jar', ':STAT_MOD:reobfJar'
+
+    def statModJarName = project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()
+    archiveFileName.set(statModJarName)
+    destinationDirectory.set(layout.buildDirectory.dir('statmod-release'))
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    includeEmptyDirs = false
+
+    from({ zipTree(project(':STAT_MOD').file('build/reobfJar/output.jar')) })
+    from({ zipTree(project(':STAT_MOD').file("build/libs/${statModJarName}")) }) {
+        exclude '**/*.class'
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
+}
+
 tasks.register('prepareReleaseSmokeBundle') {
     group = 'verification'
     description = 'Stages the built Sihriya and STAT Mod jars plus stable defaults into a standalone release-smoke bundle.'
-    dependsOn 'reobfJar', ':STAT_MOD:reobfJar'
+    dependsOn 'reobfJar', 'prepareStatModReleaseJar'
 
     doLast {
         def bundleDir = file("$buildDir/release-smoke")
@@ -428,7 +450,7 @@ tasks.register('prepareReleaseSmokeBundle') {
         def configDir = new File(bundleDir, 'config')
         def defaultConfigsDir = new File(bundleDir, 'defaultconfigs')
         def sihriyaJarFile = file("$buildDir/reobfJar/output.jar")
-        def statModJarFile = project(':STAT_MOD').file('build/reobfJar/output.jar')
+        def statModJarFile = file("$buildDir/statmod-release/${project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()}")
         def sihriyaBundleJarName = tasks.named('jar', Jar).get().archiveFileName.get()
         def statModBundleJarName = project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()
         delete(bundleDir)
@@ -460,7 +482,7 @@ tasks.register('prepareReleaseSmokeBundle') {
 
 mods/
   - ${sihriyaBundleJarName} (from build/reobfJar/output.jar)
-  - ${statModBundleJarName} (from ../STAT_MOD/build/reobfJar/output.jar)
+                - ${statModBundleJarName} (from merged STAT Mod release jar)
 
 config/
   - stable client/common defaults captured from verification runs
@@ -479,7 +501,7 @@ tasks.register('validateReleaseArtifacts') {
     doLast {
         def errors = []
         def sihriyaJar = file("$buildDir/reobfJar/output.jar")
-        def statModJar = project(':STAT_MOD').file('build/reobfJar/output.jar')
+        def statModJar = file("$buildDir/statmod-release/${project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()}")
         def sihriyaBundleJarName = tasks.named('jar', Jar).get().archiveFileName.get()
         def statModBundleJarName = project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()
         def bundleDir = file("$buildDir/release-smoke")
