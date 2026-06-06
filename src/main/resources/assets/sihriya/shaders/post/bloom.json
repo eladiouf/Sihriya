@@ -1,0 +1,74 @@
+{
+    "targets": [
+        "brightPass",
+        "blurHorizontal1",
+        "blurVertical1",
+        "blurHorizontal2",
+        "blurVertical2"
+    ],
+    "passes": [
+        {
+            "name": "bright",
+            "intarget": "minecraft:main",
+            "outtarget": "brightPass",
+            "auxtargets": [],
+            "uniforms": [
+                { "name": "BrightThreshold", "values": [0.6] },
+                { "name": "BrightMultiplier", "values": [1.5] }
+            ]
+        },
+        {
+            "name": "blur",
+            "intarget": "brightPass",
+            "outtarget": "blurHorizontal1",
+            "auxtargets": [],
+            "uniforms": [
+                { "name": "BlurDir", "values": [1.0, 0.0] },
+                { "name": "Radius", "values": [4.0] }
+            ]
+        },
+        {
+            "name": "blur",
+            "intarget": "blurHorizontal1",
+            "outtarget": "blurVertical1",
+            "auxtargets": [],
+            "uniforms": [
+                { "name": "BlurDir", "values": [0.0, 1.0] },
+                { "name": "Radius", "values": [4.0] }
+            ]
+        },
+        {
+            "name": "blur",
+            "intarget": "blurVertical1",
+            "outtarget": "blurHorizontal2",
+            "auxtargets": [],
+            "uniforms": [
+                { "name": "BlurDir", "values": [1.0, 0.0] },
+                { "name": "Radius", "values": [2.0] }
+            ]
+        },
+        {
+            "name": "blur",
+            "intarget": "blurHorizontal2",
+            "outtarget": "blurVertical2",
+            "auxtargets": [],
+            "uniforms": [
+                { "name": "BlurDir", "values": [0.0, 1.0] },
+                { "name": "Radius", "values": [2.0] }
+            ]
+        },
+        {
+            "name": "combine",
+            "intarget": "minecraft:main",
+            "outtarget": "minecraft:main",
+            "auxtargets": [
+                { "name": "Aux1", "type": "previous" },
+                { "name": "Aux2", "type": "previous" },
+                { "name": "Aux3", "type": "previous" }
+            ],
+            "uniforms": [
+                { "name": "BloomIntensity", "values": [0.8] }
+            ]
+        }
+    ]
+}

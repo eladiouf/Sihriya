@@ -1,0 +1,12 @@
+{
+  "school": "lumamancy",
+  "defaults": {
+    "projectile": { "scale": 1.1, "glowIntensity": 2.0, "color1": [1.0, 0.85, 0.4], "color2": [1.0, 0.95, 0.6], "trail": { "particlesPerTick": 4, "particleLifetime": 10, "spread": 0.05 } },
+    "impact": { "burst": { "count": 30, "speed": 0.6 }, "shockwaveRings": 2 },
+    "beam": { "radius": 0.3, "glowIntensity": 2.0, "color1": [1.0, 0.85, 0.4], "color2": [1.0, 0.95, 0.6] }
+  },
+  "overrides": {
+    "lumamancy.holy_ray": { "beam": { "radius": 0.5, "glowIntensity": 3.0 } },
+    "lumamancy.blessing": { "impact": { "burst": { "count": 40, "speed": 0.4 } } }
+  }
+}

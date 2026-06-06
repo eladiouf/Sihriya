@@ -1,0 +1,1273 @@
+[05Jun2026 14:16:38.027] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\El Hadji\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.20, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412]
+[05Jun2026 14:16:38.033] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[05Jun2026 14:16:38.060] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
+[05Jun2026 14:16:38.076] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[05Jun2026 14:16:38.095] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
+[05Jun2026 14:16:38.108] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[05Jun2026 14:16:38.114] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean
+[05Jun2026 14:16:38.115] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\mods
+[05Jun2026 14:16:38.115] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config
+[05Jun2026 14:16:38.115] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\fml.toml
+[05Jun2026 14:16:38.160] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: 
+[05Jun2026 14:16:38.167] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[05Jun2026 14:16:38.502] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[05Jun2026 14:16:38.960] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[05Jun2026 14:16:39.136] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
+[05Jun2026 14:16:39.137] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[05Jun2026 14:16:39.137] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
+[05Jun2026 14:16:39.138] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
+[05Jun2026 14:16:39.138] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[05Jun2026 14:16:39.139] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 1.0
+[05Jun2026 14:16:39.140] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 1.0 loading
+[05Jun2026 14:16:39.140] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 10.0.9+10.0.9+main.dcd20f30
+[05Jun2026 14:16:39.140] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Requesting CoreMods to not apply the fix for ASMAPI.findFirstInstructionBefore by default
+[05Jun2026 14:16:39.141] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
+[05Jun2026 14:16:39.141] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 6.2.33
+[05Jun2026 14:16:39.142] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[05Jun2026 14:16:39.143] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/]: CoreMods will preserve legacy behavior of ASMAPI.findFirstInstructionBefore for backwards-compatibility
+[05Jun2026 14:16:39.143] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 5.2.4
+[05Jun2026 14:16:39.144] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 7.0.1+7.0.1+master.d2b38bf6
+[05Jun2026 14:16:39.144] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 5
+[05Jun2026 14:16:39.144] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[05Jun2026 14:16:39.146] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[05Jun2026 14:16:39.151] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[05Jun2026 14:16:39.152] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
+[05Jun2026 14:16:39.169] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@3e92efc3
+[05Jun2026 14:16:39.192] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/El%20Hadji/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[05Jun2026 14:16:39.197] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
+[05Jun2026 14:16:39.198] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[05Jun2026 14:16:39.200] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[05Jun2026 14:16:39.201] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[05Jun2026 14:16:39.202] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[05Jun2026 14:16:39.202] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[05Jun2026 14:16:39.206] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
+[05Jun2026 14:16:39.206] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[05Jun2026 14:16:39.206] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
+[05Jun2026 14:16:39.207] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean
+[05Jun2026 14:16:39.207] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\mods
+[05Jun2026 14:16:39.208] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config
+[05Jun2026 14:16:39.208] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\fml.toml
+[05Jun2026 14:16:39.208] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
+[05Jun2026 14:16:39.225] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing ModFile
+[05Jun2026 14:16:39.231] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
+[05Jun2026 14:16:39.233] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using forgeclientuserdev as launch service
+[05Jun2026 14:16:39.253] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : VersionInfo[forgeVersion=47.4.20, mcVersion=1.20.1, mcpVersion=20230612.114412, forgeGroup=net.minecraftforge]
+[05Jun2026 14:16:39.256] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[05Jun2026 14:16:39.257] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
+[05Jun2026 14:16:39.259] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
+[05Jun2026 14:16:39.259] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[05Jun2026 14:16:39.260] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
+[05Jun2026 14:16:39.261] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
+[05Jun2026 14:16:39.261] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[05Jun2026 14:16:39.262] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
+[05Jun2026 14:16:39.279] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
+[05Jun2026 14:16:39.285] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null)
+[05Jun2026 14:16:39.286] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Dependency Locators : (JarInJar:null)
+[05Jun2026 14:16:39.294] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Got mod coordinates sihriya%%C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main;sihriya%%C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\classes\java\main from env
+[05Jun2026 14:16:39.295] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{sihriya=[C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main, C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\classes\java\main]}]
+[05Jun2026 14:16:39.327] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce GTX 1080/PCIe/SSE2 GL version 4.6.0 NVIDIA 581.80, NVIDIA Corporation
+[05Jun2026 14:16:39.546] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar with {minecraft} mods - versions {1.20.1}
+[05Jun2026 14:16:39.552] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.20\c354b21002937b393c4f86163a98dccdf1d51e72\javafmllanguage-1.20.1-47.4.20.jar
+[05Jun2026 14:16:39.553] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.20\c354b21002937b393c4f86163a98dccdf1d51e72\javafmllanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 14:16:39.557] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.20\865d75f8c18329ddb31db5856701ab86609108b5\lowcodelanguage-1.20.1-47.4.20.jar
+[05Jun2026 14:16:39.557] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.20\865d75f8c18329ddb31db5856701ab86609108b5\lowcodelanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 14:16:39.561] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.20\af599930362212ae937e392709f49047e6abbbf\mclanguage-1.20.1-47.4.20.jar
+[05Jun2026 14:16:39.561] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.20\af599930362212ae937e392709f49047e6abbbf\mclanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 14:16:39.566] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.20\e8cc697c69f3911e76caa2f005d9486597cd7448\fmlcore-1.20.1-47.4.20.jar
+[05Jun2026 14:16:39.566] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.20\e8cc697c69f3911e76caa2f005d9486597cd7448\fmlcore-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 14:16:39.571] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main
+[05Jun2026 14:16:39.592] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {sihriya} mods - versions {1.0.0}
+[05Jun2026 14:16:39.593] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[05Jun2026 14:16:39.598] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {47.4.20}
+[05Jun2026 14:16:39.619] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\Downloads\STAT_MOD\STAT_MOD\build\libs\statmod-1.0.0.jar
+[05Jun2026 14:16:39.623] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file statmod-1.0.0.jar with {statmod} mods - versions {1.0.0}
+[05Jun2026 14:16:39.629] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\forge_gradle\deobf_dependencies\blank\epic-fight-20.14.17-mc1.20.1-forge\20.14.17_mapped_parchment_2023.09.03-1.20.1\epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar
+[05Jun2026 14:16:39.630] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar with {epicfight} mods - versions {20.14.17}
+[05Jun2026 14:16:39.633] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\Downloads\STAT_MOD\STAT_MOD\build\libs\statmod-1.0.0.jar
+[05Jun2026 14:16:39.636] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file statmod-1.0.0.jar with {statmod} mods - versions {1.0.0}
+[05Jun2026 14:16:39.641] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\forge_gradle\deobf_dependencies\blank\epic-fight-20.14.17-mc1.20.1-forge\20.14.17_mapped_parchment_2023.09.03-1.20.1\epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar
+[05Jun2026 14:16:39.643] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar with {epicfight} mods - versions {20.14.17}
+[05Jun2026 14:16:39.649] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid statmod, selecting most recent based on version data
+[05Jun2026 14:16:39.650] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file statmod-1.0.0.jar for modid statmod with version 1.0.0
+[05Jun2026 14:16:39.650] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid epicfight, selecting most recent based on version data
+[05Jun2026 14:16:39.650] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar for modid epicfight with version 20.14.17
+[05Jun2026 14:16:39.657] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.658] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from statmod-1.0.0.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.658] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from , it does not contain dependency information.
+[05Jun2026 14:16:39.659] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from main, it does not contain dependency information.
+[05Jun2026 14:16:39.659] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.659] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclanguage-1.20.1-47.4.20.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.660] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from javafmllanguage-1.20.1-47.4.20.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.660] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from fmlcore-1.20.1-47.4.20.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.660] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from lowcodelanguage-1.20.1-47.4.20.jar, it does not contain dependency information.
+[05Jun2026 14:16:39.699] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[05Jun2026 14:16:39.702] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar with {minecraft} mods - versions {1.20.1}
+[05Jun2026 14:16:39.704] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\El Hadji\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1\forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=minecraft, acceptedVersions=1]]
+[05Jun2026 14:16:39.705] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\Downloads\STAT_MOD\STAT_MOD\build\libs\statmod-1.0.0.jar
+[05Jun2026 14:16:39.707] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file statmod-1.0.0.jar with {statmod} mods - versions {1.0.0}
+[05Jun2026 14:16:39.707] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\El Hadji\Downloads\STAT_MOD\STAT_MOD\build\libs\statmod-1.0.0.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[05Jun2026 14:16:39.708] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[05Jun2026 14:16:39.709] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {47.4.20}
+[05Jun2026 14:16:39.709] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file / with languages [LanguageSpec[languageName=javafml, acceptedVersions=[24,]]]
+[05Jun2026 14:16:39.765] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_method with Javascript path coremods/field_to_method.js
+[05Jun2026 14:16:39.765] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_instanceof with Javascript path coremods/field_to_instanceof.js
+[05Jun2026 14:16:39.765] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod add_bouncer_method with Javascript path coremods/add_bouncer_method.js
+[05Jun2026 14:16:39.765] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod method_redirector with Javascript path coremods/method_redirector.js
+[05Jun2026 14:16:39.766] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_method.js
+[05Jun2026 14:16:39.766] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_instanceof.js
+[05Jun2026 14:16:39.766] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/add_bouncer_method.js
+[05Jun2026 14:16:39.766] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/method_redirector.js
+[05Jun2026 14:16:39.766] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main
+[05Jun2026 14:16:39.768] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {sihriya} mods - versions {1.0.0}
+[05Jun2026 14:16:39.769] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[05Jun2026 14:16:39.769] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\El Hadji\.gradle\caches\forge_gradle\deobf_dependencies\blank\epic-fight-20.14.17-mc1.20.1-forge\20.14.17_mapped_parchment_2023.09.03-1.20.1\epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar
+[05Jun2026 14:16:39.771] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar with {epicfight} mods - versions {20.14.17}
+[05Jun2026 14:16:39.771] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\El Hadji\.gradle\caches\forge_gradle\deobf_dependencies\blank\epic-fight-20.14.17-mc1.20.1-forge\20.14.17_mapped_parchment_2023.09.03-1.20.1\epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[05Jun2026 14:16:39.773] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
+[05Jun2026 14:16:39.787] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 3 language providers
+[05Jun2026 14:16:39.789] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1.0
+[05Jun2026 14:16:39.790] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider lowcodefml, version 47
+[05Jun2026 14:16:39.790] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider javafml, version 47
+[05Jun2026 14:16:39.797] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Configured system mods: [minecraft, forge]
+[05Jun2026 14:16:39.798] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: minecraft
+[05Jun2026 14:16:39.798] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: forge
+[05Jun2026 14:16:39.801] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 17 mod requirements (9 mandatory, 8 optional)
+[05Jun2026 14:16:39.803] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 0 mod requirements missing (0 mandatory, 0 optional)
+[05Jun2026 14:16:40.490] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 34318 method mappings from methods.csv
+[05Jun2026 14:16:40.538] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 31014 field mappings from fields.csv
+[05Jun2026 14:16:40.609] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading transformers
+[05Jun2026 14:16:40.610] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service mixin
+[05Jun2026 14:16:40.611] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service mixin
+[05Jun2026 14:16:40.612] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service fml
+[05Jun2026 14:16:40.612] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading coremod transformers
+[05Jun2026 14:16:40.612] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_method.js
+[05Jun2026 14:16:40.850] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[05Jun2026 14:16:40.850] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_instanceof.js
+[05Jun2026 14:16:40.941] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[05Jun2026 14:16:40.941] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/add_bouncer_method.js
+[05Jun2026 14:16:40.997] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[05Jun2026 14:16:40.998] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/method_redirector.js
+[05Jun2026 14:16:41.072] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[05Jun2026 14:16:41.088] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@56928e17 to Target : CLASS {Lnet/minecraft/world/level/biome/Biome;} {} {V}
+[05Jun2026 14:16:41.090] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@12ad1b2a to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/Structure;} {} {V}
+[05Jun2026 14:16:41.090] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@3134153d to Target : CLASS {Lnet/minecraft/world/effect/MobEffectInstance;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@767599a7 to Target : CLASS {Lnet/minecraft/world/level/block/LiquidBlock;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@5f5effb0 to Target : CLASS {Lnet/minecraft/world/item/BucketItem;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@25d0cb3a to Target : CLASS {Lnet/minecraft/world/level/block/StairBlock;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@345cbf40 to Target : CLASS {Lnet/minecraft/world/level/block/FlowerPotBlock;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6e3eb0cd to Target : CLASS {Lnet/minecraft/world/item/ItemStack;} {} {V}
+[05Jun2026 14:16:41.091] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@463561c5 to Target : CLASS {Lnet/minecraft/network/play/client/CClientSettingsPacket;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/monster/Spider;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/monster/ZombieVillager;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/SwampHutPiece;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/server/commands/RaidCommand;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/animal/horse/SkeletonTrapGoal;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/NaturalSpawner;} {} {V}
+[05Jun2026 14:16:41.092] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/server/commands/SummonCommand;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$OceanMonumentPiece;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/monster/Strider;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/monster/Zombie;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/npc/CatSpawner;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/PhantomSpawner;} {} {V}
+[05Jun2026 14:16:41.093] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/EntityType;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/ai/village/VillageSiege;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/animal/frog/Tadpole;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/npc/Villager;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/entity/raid/Raid;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@659feb22 to Target : CLASS {Lnet/minecraft/world/level/levelgen/PatrolSpawner;} {} {V}
+[05Jun2026 14:16:41.094] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service fml
+[05Jun2026 14:16:41.705] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[05Jun2026 14:16:41.706] [main/DEBUG] [mixin/]: Processing launch tasks for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[05Jun2026 14:16:41.706] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(minecraft)
+[05Jun2026 14:16:41.706] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(minecraft)
+[05Jun2026 14:16:41.706] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(minecraft)
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(minecraft)
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(minecraft)
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(statmod)
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(statmod)
+[05Jun2026 14:16:41.707] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(statmod)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(statmod)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(statmod)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(statmod)]
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(forge)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(forge)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(forge)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(forge)
+[05Jun2026 14:16:41.708] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(forge)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(sihriya)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(sihriya)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(sihriya)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(sihriya)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(sihriya)
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(sihriya)]
+[05Jun2026 14:16:41.709] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(epicfight)
+[05Jun2026 14:16:41.710] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(epicfight)
+[05Jun2026 14:16:41.710] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(epicfight)
+[05Jun2026 14:16:41.710] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(epicfight)
+[05Jun2026 14:16:41.710] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(epicfight)
+[05Jun2026 14:16:41.710] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(epicfight)]
+[05Jun2026 14:16:41.711] [main/DEBUG] [mixin/]: Registering mixin config: mixins.epicfight.json
+[05Jun2026 14:16:41.737] [main/DEBUG] [mixin/]: Compatibility level JAVA_17 specified by mixins.epicfight.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[05Jun2026 14:16:41.744] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[05Jun2026 14:16:41.744] [main/DEBUG] [mixin/]: inject() running with 6 agents
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(statmod)]
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(sihriya)]
+[05Jun2026 14:16:41.745] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(epicfight)]
+[05Jun2026 14:16:41.746] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\El Hadji\.gradle\caches\forge_gradle\assets, --assetIndex, 5]
+[05Jun2026 14:16:42.052] [main/DEBUG] [mixin/]: Error cleaning class output directory: .mixin.out
+[05Jun2026 14:16:42.054] [main/DEBUG] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[05Jun2026 14:16:42.055] [main/DEBUG] [mixin/]: Selecting config mixins.epicfight.json
+[05Jun2026 14:16:42.344] [main/INFO] [mixin/]: Remapping refMap mixins.epicfight.refmap.json using C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA/build/createSrgToMcp/output.srg
+[05Jun2026 14:16:42.345] [main/DEBUG] [mixin/]: Preparing mixins.epicfight.json (39)
+[05Jun2026 14:16:42.651] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomModelPart (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomModelPart)
+[05Jun2026 14:16:42.651] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomModelPart was not found mixins.epicfight.json:skinlayers.MixinCustomModelPart
+[05Jun2026 14:16:42.654] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomizableCube (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomizableCube)
+[05Jun2026 14:16:42.654] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomizableCube was not found mixins.epicfight.json:skinlayers.MixinCustomizableCubeWrapper$SkinLayer3DMixinCustomModelCube
+[05Jun2026 14:16:42.657] [main/WARN] [mixin/]: Error loading class: de/teamlapen/vampirism/client/renderer/entity/layers/VampirePlayerHeadLayer (java.lang.ClassNotFoundException: de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer)
+[05Jun2026 14:16:42.657] [main/WARN] [mixin/]: @Mixin target de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer was not found mixins.epicfight.json:teamlapen.MixinVampirePlayerHeadLayer
+[05Jun2026 14:16:42.660] [main/WARN] [mixin/]: Error loading class: de/teamlapen/werewolves/client/render/layer/HumanWerewolfLayer (java.lang.ClassNotFoundException: de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer)
+[05Jun2026 14:16:42.660] [main/WARN] [mixin/]: @Mixin target de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer was not found mixins.epicfight.json:teamlapen.MixinHumanWerewolfLayer
+[05Jun2026 14:16:42.681] [main/DEBUG] [mixin/]: Registering new injector for @Inject with org.spongepowered.asm.mixin.injection.struct.CallbackInjectionInfo
+[05Jun2026 14:16:42.687] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArg with org.spongepowered.asm.mixin.injection.struct.ModifyArgInjectionInfo
+[05Jun2026 14:16:42.689] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArgs with org.spongepowered.asm.mixin.injection.struct.ModifyArgsInjectionInfo
+[05Jun2026 14:16:42.738] [main/DEBUG] [mixin/]: Registering new injector for @Redirect with org.spongepowered.asm.mixin.injection.struct.RedirectInjectionInfo
+[05Jun2026 14:16:42.740] [main/DEBUG] [mixin/]: Registering new injector for @ModifyVariable with org.spongepowered.asm.mixin.injection.struct.ModifyVariableInjectionInfo
+[05Jun2026 14:16:42.742] [main/DEBUG] [mixin/]: Registering new injector for @ModifyConstant with org.spongepowered.asm.mixin.injection.struct.ModifyConstantInjectionInfo
+[05Jun2026 14:16:42.785] [main/DEBUG] [mixin/]: Prepared 35 mixins in 0.729 sec (20.8ms avg) (0ms load, 0ms transform, 0ms plugin)
+[05Jun2026 14:16:42.820] [main/DEBUG] [mixin/]: Mixing client.MixinMinecraft from mixins.epicfight.json into net.minecraft.client.Minecraft
+[05Jun2026 14:16:43.641] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[05Jun2026 14:16:43.645] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[05Jun2026 14:16:43.645] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[05Jun2026 14:16:43.819] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1
+[05Jun2026 14:16:44.173] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.architecture.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1
+[05Jun2026 14:16:45.058] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinEntity from mixins.epicfight.json into net.minecraft.world.entity.Entity
+[05Jun2026 14:16:45.059] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$setOnGroundWithKnownMovement$1(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V to md51c695$lambda$epicfight$setOnGroundWithKnownMovement$1$0 in mixins.epicfight.json:common.MixinEntity
+[05Jun2026 14:16:45.060] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$lerpMotion$0(Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V to md51c695$lambda$lerpMotion$0$1 in mixins.epicfight.json:common.MixinEntity
+[05Jun2026 14:16:45.204] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinLivingEntity from mixins.epicfight.json into net.minecraft.world.entity.LivingEntity
+[05Jun2026 14:16:45.205] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$constructor$0(Lnet/minecraft/world/entity/LivingEntity;Lyesman/epicfight/world/capabilities/entitypatch/HurtableEntityPatch;)V to md51c695$lambda$epicfight$constructor$0$0 in mixins.epicfight.json:common.MixinLivingEntity
+[05Jun2026 14:16:45.277] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/EntityType
+[05Jun2026 14:16:45.733] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinPlayer from mixins.epicfight.json into net.minecraft.world.entity.player.Player
+[05Jun2026 14:16:45.834] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/EntityType
+[05Jun2026 14:16:46.248] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/LiquidBlock
+[05Jun2026 14:16:46.321] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/StairBlock
+[05Jun2026 14:16:46.416] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/FlowerPotBlock
+[05Jun2026 14:16:46.936] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinProjectile from mixins.epicfight.json into net.minecraft.world.entity.projectile.Projectile
+[05Jun2026 14:16:46.955] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinMob from mixins.epicfight.json into net.minecraft.world.entity.Mob
+[05Jun2026 14:16:47.024] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/ItemStack
+[05Jun2026 14:16:47.086] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinWitherBoss from mixins.epicfight.json into net.minecraft.world.entity.boss.wither.WitherBoss
+[05Jun2026 14:16:47.088] [pool-4-thread-1/DEBUG] [mixin/]: Renaming @Unique method getAmbientSound()Lnet/minecraft/sounds/SoundEvent; to md51c695$getAmbientSound$0 in mixins.epicfight.json:common.MixinWitherBoss
+[05Jun2026 14:16:47.121] [pool-4-thread-1/WARN] [mixin/]: @Final field nextHeadUpdate:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[05Jun2026 14:16:47.122] [pool-4-thread-1/WARN] [mixin/]: @Final field idleHeadUpdates:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[05Jun2026 14:16:47.712] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/animal/frog/Tadpole
+[05Jun2026 14:16:47.754] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/BucketItem
+[05Jun2026 14:16:48.434] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Spider
+[05Jun2026 14:16:48.498] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Zombie
+[05Jun2026 14:16:48.502] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 142 milliseconds
+[05Jun2026 14:16:48.527] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/ZombieVillager
+[05Jun2026 14:16:48.543] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinRangedAttackGoal from mixins.epicfight.json into net.minecraft.world.entity.ai.goal.RangedAttackGoal
+[05Jun2026 14:16:48.545] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$tick$0(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V to md51c695$lambda$epicfight$tick$0$0 in mixins.epicfight.json:common.MixinRangedAttackGoal
+[05Jun2026 14:16:48.554] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinThrownTrident from mixins.epicfight.json into net.minecraft.world.entity.projectile.ThrownTrident
+[05Jun2026 14:16:48.608] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal
+[05Jun2026 14:16:48.669] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinRangedBowAttackGoal from mixins.epicfight.json into net.minecraft.world.entity.ai.goal.RangedBowAttackGoal
+[05Jun2026 14:16:48.669] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$tick$0(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V to md51c695$lambda$epicfight$tick$0$0 in mixins.epicfight.json:common.MixinRangedBowAttackGoal
+[05Jun2026 14:16:48.738] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinRangedCrossbowAttackGoal from mixins.epicfight.json into net.minecraft.world.entity.ai.goal.RangedCrossbowAttackGoal
+[05Jun2026 14:16:48.738] [pool-4-thread-1/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$tick$0(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V to md51c695$lambda$epicfight$tick$0$0 in mixins.epicfight.json:common.MixinRangedCrossbowAttackGoal
+[05Jun2026 14:16:48.798] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/animal/horse/SkeletonTrapGoal
+[05Jun2026 14:16:48.826] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Strider
+[05Jun2026 14:16:48.908] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 14:16:48.909] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 14:16:48.909] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 14:16:48.909] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 14:16:48.980] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/npc/Villager
+[05Jun2026 14:16:49.058] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/effect/MobEffectInstance
+[05Jun2026 14:16:49.092] [pool-4-thread-1/DEBUG] [mixin/]: Mixing common.MixinServerGamePacketListenerImpl from mixins.epicfight.json into net.minecraft.server.network.ServerGamePacketListenerImpl
+[05Jun2026 14:16:49.271] [pool-4-thread-1/DEBUG] [mixin/]: Mixing client.MixinInventory from mixins.epicfight.json into net.minecraft.world.entity.player.Inventory
+[05Jun2026 14:16:49.679] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/Structure
+[05Jun2026 14:16:49.724] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece
+[05Jun2026 14:16:49.738] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/SwampHutPiece
+[05Jun2026 14:16:49.748] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$OceanMonumentPiece
+[05Jun2026 14:16:49.772] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece
+[05Jun2026 14:16:49.905] [pool-4-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/biome/Biome
+[05Jun2026 14:16:50.120] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Creating vanilla freeze snapshot
+[05Jun2026 14:16:50.125] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.133] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:fluid Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.134] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:item Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.141] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:mob_effect Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.141] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.146] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:potion Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.147] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:enchantment Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.147] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.147] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.148] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:particle_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.148] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:menu Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.148] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:painting_variant Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.148] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.148] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_serializer Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.149] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:attribute Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.149] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:stat_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.149] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:command_argument_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.149] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:villager_profession Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.149] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:point_of_interest_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.150] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:memory_module_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.151] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sensor_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.151] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:schedule Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.151] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:activity Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.151] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/carver Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.151] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/feature Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.152] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:chunk_status Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.152] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/block_state_provider_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.152] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/foliage_placer_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.152] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/tree_decorator_type Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.152] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/biome Sync: VANILLA -> ACTIVE
+[05Jun2026 14:16:50.158] [pool-4-thread-1/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Vanilla freeze snapshot created
+[05Jun2026 14:16:50.183] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
+[05Jun2026 14:16:50.184] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 17
+[05Jun2026 14:16:50.186] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.theUnsafe: available
+[05Jun2026 14:16:50.187] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.copyMemory: available
+[05Jun2026 14:16:50.187] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.storeFence: available
+[05Jun2026 14:16:50.188] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Buffer.address: available
+[05Jun2026 14:16:50.188] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent0$5.run(PlatformDependent0.java:288) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at java.security.AccessController.doPrivileged(AccessController.java:318) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:282) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:333) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:88) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.ConstantPool.<init>(ConstantPool.java:34) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.AttributeKey$1.<init>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.AttributeKey.<clinit>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at net.minecraftforge.network.NetworkConstants.<clinit>(NetworkConstants.java:34) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
+	at net.minecraftforge.network.NetworkHooks.init(NetworkHooks.java:52) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
+	at net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:62) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.main.Main.lambda$main$0(Main.java:151) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?]
+	at java.lang.Thread.run(Thread.java:840) ~[?:?]
+[05Jun2026 14:16:50.190] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Bits.unaligned: available, true
+[05Jun2026 14:16:50.191] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$7 (in module io.netty.common) cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to module io.netty.common
+	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:392) ~[?:?]
+	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:674) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:561) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0$7.run(PlatformDependent0.java:410) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at java.security.AccessController.doPrivileged(AccessController.java:318) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:401) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:333) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:88) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.ConstantPool.<init>(ConstantPool.java:34) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.AttributeKey$1.<init>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at io.netty.util.AttributeKey.<clinit>(AttributeKey.java:27) ~[netty-common-4.1.82.Final.jar%23151!/:4.1.82.Final]
+	at net.minecraftforge.network.NetworkConstants.<clinit>(NetworkConstants.java:34) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
+	at net.minecraftforge.network.NetworkHooks.init(NetworkHooks.java:52) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
+	at net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:62) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at net.minecraft.client.main.Main.lambda$main$0(Main.java:151) ~[forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?]
+	at java.lang.Thread.run(Thread.java:840) ~[?:?]
+[05Jun2026 14:16:50.192] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, int): unavailable
+[05Jun2026 14:16:50.192] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: sun.misc.Unsafe: available
+[05Jun2026 14:16:50.193] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 4253024256 bytes (maybe)
+[05Jun2026 14:16:50.193] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: C:\Users\ELHADJ~1\AppData\Local\Temp (java.io.tmpdir)
+[05Jun2026 14:16:50.193] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
+[05Jun2026 14:16:50.194] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: Platform: Windows
+[05Jun2026 14:16:50.194] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes
+[05Jun2026 14:16:50.195] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.uninitializedArrayAllocationThreshold: -1
+[05Jun2026 14:16:50.196] [pool-4-thread-1/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available
+[05Jun2026 14:16:50.196] [pool-4-thread-1/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
+[05Jun2026 14:16:50.298] [pool-4-thread-1/DEBUG] [net.minecraftforge.network.NetworkHooks/]: Loading Network data for FML net version: FML3
+[05Jun2026 14:16:50.337] [Render thread/DEBUG] [mixin/]: Mixing client.MixinBufferBuilder from mixins.epicfight.json into com.mojang.blaze3d.vertex.BufferBuilder
+[05Jun2026 14:16:50.446] [Render thread/DEBUG] [mixin/]: Mixing client.MixinGui from mixins.epicfight.json into net.minecraft.client.gui.Gui
+[05Jun2026 14:16:50.446] [Render thread/DEBUG] [mixin/]: Renaming synthetic method lambda$epicfight$renderCrosshair$0(Lorg/apache/commons/lang3/mutable/MutableBoolean;Lyesman/epicfight/client/world/capabilites/entitypatch/player/LocalPlayerPatch;)V to md51c695$lambda$epicfight$renderCrosshair$0$0 in mixins.epicfight.json:client.MixinGui
+[05Jun2026 14:16:50.479] [Render thread/DEBUG] [mixin/]: Mixing client.MixinAbstractContainerEventHandler from mixins.epicfight.json into net.minecraft.client.gui.components.events.AbstractContainerEventHandler
+[05Jun2026 14:16:50.490] [Render thread/DEBUG] [mixin/]: Mixing client.MixinClientLevel from mixins.epicfight.json into net.minecraft.client.multiplayer.ClientLevel
+[05Jun2026 14:16:50.511] [Render thread/DEBUG] [mixin/]: Mixing client.MixinLocalPlayer from mixins.epicfight.json into net.minecraft.client.player.LocalPlayer
+[05Jun2026 14:16:50.595] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/El%20Hadji/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[05Jun2026 14:16:50.596] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/El%20Hadji/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[05Jun2026 14:16:50.616] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[05Jun2026 14:16:50.621] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[05Jun2026 14:16:50.626] [Render thread/DEBUG] [mixin/]: Mixing client.MixinOptions from mixins.epicfight.json into net.minecraft.client.Options
+[05Jun2026 14:16:50.706] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[05Jun2026 14:16:50.785] [Render thread/DEBUG] [mixin/]: Mixing client.MixinMouseHandler from mixins.epicfight.json into net.minecraft.client.MouseHandler
+[05Jun2026 14:16:50.802] [Render thread/DEBUG] [mixin/]: Mixing client.MixinKeyboardHandler from mixins.epicfight.json into net.minecraft.client.KeyboardHandler
+[05Jun2026 14:16:50.911] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 6434
+[05Jun2026 14:16:50.932] [Render thread/DEBUG] [net.minecraftforge.fml.ModWorkManager/LOADING]: Using 12 threads for parallel mod-loading
+[05Jun2026 14:16:50.944] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1 - got cpw.mods.cl.ModuleClassLoader@30331109
+[05Jun2026 14:16:50.945] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for tong.statmod.STATMod
+[05Jun2026 14:16:50.949] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1 - got cpw.mods.cl.ModuleClassLoader@30331109
+[05Jun2026 14:16:50.949] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.minecraftforge.common.ForgeMod
+[05Jun2026 14:16:50.951] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1 - got cpw.mods.cl.ModuleClassLoader@30331109
+[05Jun2026 14:16:50.951] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for tong.sihriya.Sihriya
+[05Jun2026 14:16:50.953] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@6d8796c1 - got cpw.mods.cl.ModuleClassLoader@30331109
+[05Jun2026 14:16:50.953] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for yesman.epicfight.main.EpicFightMod
+[05Jun2026 14:16:50.988] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Forge Version package package net.minecraftforge.versions.forge, Forge, version 47.4 from cpw.mods.modlauncher.TransformingClassLoader@6d8796c1
+[05Jun2026 14:16:50.989] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge version 47.4.20
+[05Jun2026 14:16:50.989] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge spec 47.4
+[05Jun2026 14:16:50.989] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge group net.minecraftforge
+[05Jun2026 14:16:50.990] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: MCP Version package package net.minecraftforge.versions.mcp, Minecraft, version 1.20.1 from cpw.mods.modlauncher.TransformingClassLoader@6d8796c1
+[05Jun2026 14:16:50.990] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MC version information 1.20.1
+[05Jun2026 14:16:50.990] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MCP version information 20230612.114412
+[05Jun2026 14:16:50.990] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.20, for MC 1.20.1 with MCP 20230612.114412
+[05Jun2026 14:16:50.990] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.20 Initialized
+[05Jun2026 14:16:50.997] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file statmod-common.toml for statmod tracking
+[05Jun2026 14:16:50.997] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file sihriya-client.toml for sihriya tracking
+[05Jun2026 14:16:51.006] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class tong.statmod.skills.StatModSkillCategories in skill_category
+[05Jun2026 14:16:51.007] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class tong.statmod.skills.StatModSkillSlots in skill_slot
+[05Jun2026 14:16:51.018] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file epicfight-client.toml for epicfight tracking
+[05Jun2026 14:16:51.020] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for sihriya
+[05Jun2026 14:16:51.024] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.animation.SihriyaAnimations to MOD
+[05Jun2026 14:16:51.033] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.client.ClientConfigEvents to MOD
+[05Jun2026 14:16:51.037] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file epicfight-common.toml for epicfight tracking
+[05Jun2026 14:16:51.038] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.client.ClientSetup to MOD
+[05Jun2026 14:16:51.055] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinParticleEngine from mixins.epicfight.json into net.minecraft.client.particle.ParticleEngine
+[05Jun2026 14:16:51.063] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for statmod
+[05Jun2026 14:16:51.064] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.thirst.ThirstHandler to FORGE
+[05Jun2026 14:16:51.068] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-client.toml for forge tracking
+[05Jun2026 14:16:51.068] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-server.toml for forge tracking
+[05Jun2026 14:16:51.068] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.ModLoadingContext/]: Attempted to register an empty config for type COMMON on mod forge
+[05Jun2026 14:16:51.070] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.client.SchoolKeyHandler to FORGE
+[05Jun2026 14:16:51.071] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.RandomEvents to FORGE
+[05Jun2026 14:16:51.075] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.MobScalingHandler to FORGE
+[05Jun2026 14:16:51.077] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.CapabilityHandler to FORGE
+[05Jun2026 14:16:51.078] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.DayLengthHandler to FORGE
+[05Jun2026 14:16:51.078] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.BossLootHandler to FORGE
+[05Jun2026 14:16:51.080] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.api.animation.LivingMotions in living_motion
+[05Jun2026 14:16:51.081] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.world.AutoSaveHandler to FORGE
+[05Jun2026 14:16:51.081] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.skill.SkillCategories in skill_category
+[05Jun2026 14:16:51.082] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.skill.SkillSlots in skill_slot
+[05Jun2026 14:16:51.083] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.weapon.WeaponXPHandler to FORGE
+[05Jun2026 14:16:51.083] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.EffectHandlers to FORGE
+[05Jun2026 14:16:51.083] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.world.capabilities.item.CapabilityItem$Styles in style
+[05Jun2026 14:16:51.084] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.world.capabilities.item.CapabilityItem$WeaponCategories in weapon_category
+[05Jun2026 14:16:51.086] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.stats.StatPassiveEffects to FORGE
+[05Jun2026 14:16:51.086] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.world.capabilities.entitypatch.Factions in faction
+[05Jun2026 14:16:51.087] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.MeditationHandler to FORGE
+[05Jun2026 14:16:51.087] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.network.EntityPairingPacketTypes in entity_pairing_packet_type
+[05Jun2026 14:16:51.088] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for forge
+[05Jun2026 14:16:51.088] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.api.client.input.action.EpicFightInputAction in input_action
+[05Jun2026 14:16:51.089] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$CommonHandler to MOD
+[05Jun2026 14:16:51.089] [modloading-worker-0/DEBUG] [epicfight/]: Registered Extendable Enum class yesman.epicfight.api.client.input.action.MinecraftInputAction in input_action
+[05Jun2026 14:16:51.090] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.ModEffects to MOD
+[05Jun2026 14:16:51.091] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.PlayerLoginHandler to FORGE
+[05Jun2026 14:16:51.091] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$ColorRegisterHandler to MOD
+[05Jun2026 14:16:51.092] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.stats.StatEffectApplier to FORGE
+[05Jun2026 14:16:51.096] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.STATMod$LoginHandler to FORGE
+[05Jun2026 14:16:51.097] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.SpellCastHandler to FORGE
+[05Jun2026 14:16:51.097] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.model.data.ModelDataManager to FORGE
+[05Jun2026 14:16:51.098] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.skills.SkillUnlockHandler to FORGE
+[05Jun2026 14:16:51.099] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ForgeHooksClient$ClientEvents to MOD
+[05Jun2026 14:16:51.100] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.skills.SkillRequirementHandler to FORGE
+[05Jun2026 14:16:51.102] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.skills.SkillRegistry to MOD
+[05Jun2026 14:16:51.105] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.core.TierUnlockHandler to FORGE
+[05Jun2026 14:16:51.108] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.epicfight.EpicFightAliasSkillRegistry to MOD
+[05Jun2026 14:16:51.109] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ClientForgeMod to MOD
+[05Jun2026 14:16:51.110] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.epicfight.SkillMappingManager to FORGE
+[05Jun2026 14:16:51.113] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.epicfight.StatPassthroughHandler to FORGE
+[05Jun2026 14:16:51.114] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.progression.NonCombatXPHandler to FORGE
+[05Jun2026 14:16:51.115] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.sihriya.integration.EpicFightEffects to FORGE
+[05Jun2026 14:16:51.122] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.progression.CombatXPHandler to FORGE
+[05Jun2026 14:16:51.123] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.perks.PerkTickHandler to FORGE
+[05Jun2026 14:16:51.126] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.perks.PerkStatusHandler to FORGE
+[05Jun2026 14:16:51.127] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.perks.PerkItemHandler to FORGE
+[05Jun2026 14:16:51.130] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.perks.PerkDamageHandler to FORGE
+[05Jun2026 14:16:51.136] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.integration.ModCompatHandler to FORGE
+[05Jun2026 14:16:51.141] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for epicfight
+[05Jun2026 14:16:51.142] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes to MOD
+[05Jun2026 14:16:51.145] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.main.EpicFightMod$ClientModEvents to MOD
+[05Jun2026 14:16:51.145] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.fatigue.FatigueHandler to FORGE
+[05Jun2026 14:16:51.147] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.gameasset.EpicFightSkills to MOD
+[05Jun2026 14:16:51.148] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.fatigue.FatigueEffects to FORGE
+[05Jun2026 14:16:51.150] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.Config to MOD
+[05Jun2026 14:16:51.150] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.combat.DeathMessageHandler to FORGE
+[05Jun2026 14:16:51.151] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.StatModKeyMappings to MOD
+[05Jun2026 14:16:51.152] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.notification.LevelUpToast to FORGE
+[05Jun2026 14:16:51.153] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.gameasset.Animations to MOD
+[05Jun2026 14:16:51.153] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.hud.overlays.SurvivalOverlay to FORGE
+[05Jun2026 14:16:51.157] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.hud.overlays.GlobalLevelOverlay to FORGE
+[05Jun2026 14:16:51.159] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.hud.HUDManager to MOD
+[05Jun2026 14:16:51.160] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.hud.HUDManager$VanillaBarHider to FORGE
+[05Jun2026 14:16:51.164] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.hud.HUDManager$CombatFeedbackLayer to FORGE
+[05Jun2026 14:16:51.166] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.ClientSetup to MOD
+[05Jun2026 14:16:51.169] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.client.ClassArtsKeyHandler to FORGE
+[05Jun2026 14:16:51.170] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.challenge.DailyChallenge to FORGE
+[05Jun2026 14:16:51.171] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.capability.ManaTickHandler to FORGE
+[05Jun2026 14:16:51.173] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing tong.statmod.capability.CapabilityHandler to FORGE
+[05Jun2026 14:16:51.181] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.events.WorldEvents to FORGE
+[05Jun2026 14:16:51.189] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.events.WorldEvents$WorldEventsClient to FORGE
+[05Jun2026 14:16:51.191] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.events.PlayerEvents to FORGE
+[05Jun2026 14:16:51.202] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.events.EntityEvents to FORGE
+[05Jun2026 14:16:51.217] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.events.CapabilityEvents to FORGE
+[05Jun2026 14:16:51.218] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.data.loot.EpicFightLootTables to FORGE
+[05Jun2026 14:16:51.219] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.config.CommonConfig to MOD
+[05Jun2026 14:16:51.219] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.config.ClientConfig to MOD
+[05Jun2026 14:16:51.220] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.renderer.EpicFightShaders to MOD
+[05Jun2026 14:16:51.223] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.input.EpicFightKeyMappings to MOD
+[05Jun2026 14:16:51.227] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.events.engine.RenderEngine$Events to FORGE
+[05Jun2026 14:16:51.235] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinEntityRenderer from mixins.epicfight.json into net.minecraft.client.renderer.entity.EntityRenderer
+[05Jun2026 14:16:51.251] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinEnderDragonRenderer from mixins.epicfight.json into net.minecraft.client.renderer.entity.EnderDragonRenderer
+[05Jun2026 14:16:51.271] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinLivingEntityRenderer from mixins.epicfight.json into net.minecraft.client.renderer.entity.LivingEntityRenderer
+[05Jun2026 14:16:51.310] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinLevelRenderer from mixins.epicfight.json into net.minecraft.client.renderer.LevelRenderer
+[05Jun2026 14:16:51.368] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinCamera from mixins.epicfight.json into net.minecraft.client.Camera
+[05Jun2026 14:16:51.375] [modloading-worker-0/DEBUG] [mixin/]: Mixing client.MixinGameRenderer from mixins.epicfight.json into net.minecraft.client.renderer.GameRenderer
+[05Jun2026 14:16:51.390] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.events.engine.ControlEngine$Events to FORGE
+[05Jun2026 14:16:51.400] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.events.ClientModBusEvent to MOD
+[05Jun2026 14:16:51.412] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing yesman.epicfight.client.events.ClientEvents to FORGE
+[05Jun2026 14:16:51.422] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue CONSTRUCT: 9 jobs
+[05Jun2026 14:16:51.424] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.api.animation.LivingMotions
+[05Jun2026 14:16:51.424] [Render thread/DEBUG] [epicfight/]: All enums are loaded: living_motion [ALL, INACTION, IDLE, CONFRONT, ANGRY, FLOAT, WALK, RUN, SWIM, FLY, SNEAK, KNEEL, FALL, SIT, MOUNT, DEATH, CHASE, SPELLCAST, JUMP, CELEBRATE, LANDING_RECOVERY, CREATIVE_FLY, CREATIVE_IDLE, SLEEP, DIGGING, ADMIRE, CLIMB, DRINK, EAT, NONE, AIM, BLOCK, BLOCK_SHIELD, RELOAD, SHOT, SPECTATE]
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.skill.SkillCategories
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: Loaded enums in class tong.statmod.skills.StatModSkillCategories
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: All enums are loaded: skill_category [BASIC_ATTACK, DODGE, PASSIVE, WEAPON_PASSIVE, WEAPON_INNATE, GUARD, KNOCKDOWN_WAKEUP, MOVER, IDENTITY, CLASS_ARTS]
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.skill.SkillSlots
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: Loaded enums in class tong.statmod.skills.StatModSkillSlots
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: All enums are loaded: skill_slot [BASIC_ATTACK, DODGE, PASSIVE1, PASSIVE2, PASSIVE3, WEAPON_PASSIVE, WEAPON_INNATE, GUARD, KNOCKDOWN_WAKEUP, MOVER, IDENTITY, CLASS_ARTS]
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.world.capabilities.item.CapabilityItem$Styles
+[05Jun2026 14:16:51.425] [Render thread/DEBUG] [epicfight/]: All enums are loaded: style [COMMON, ONE_HAND, TWO_HAND, MOUNT, RANGED, SHEATH, OCHS]
+[05Jun2026 14:16:51.426] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.world.capabilities.item.CapabilityItem$WeaponCategories
+[05Jun2026 14:16:51.426] [Render thread/DEBUG] [epicfight/]: All enums are loaded: weapon_category [NOT_WEAPON, AXE, FIST, GREATSWORD, HOE, PICKAXE, SHOVEL, SWORD, UCHIGATANA, SPEAR, TACHI, TRIDENT, LONGSWORD, DAGGER, SHIELD, CROSSBOW, BOW]
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.world.capabilities.entitypatch.Factions
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: All enums are loaded: faction [NEUTRAL, UNDEAD, BLAZE, ENDERMAN, ILLAGER, PIGLINS, WITHER, VILLAGER, ZOMBIFIED_PIGLIN]
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.network.EntityPairingPacketTypes
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: All enums are loaded: entity_pairing_packet_type [ADRENALINE_ACTIVATED, BONEBREAKER_BEGIN, BONEBREAKER_MAX_STACK, BONEBREAKER_CLEAR, STAMINA_PILLAGER_BODY_ASHES, EMERGENCY_ESCAPE_ACTIVATED, ENDERMAN_RAGE, FLASH_WHITE, PIGLIN_BABY_SPAWN, SET_BOSS_EVENT_OWNER, TECHNICIAN_ACTIVATED, TRIDENT_THROWN, VENGEANCE_OVERLAY, VENGEANCE_TARGET_CANCEL, ZOMBIE_SPAWN]
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.api.client.input.action.EpicFightInputAction
+[05Jun2026 14:16:51.428] [Render thread/DEBUG] [epicfight/]: Loaded enums in class yesman.epicfight.api.client.input.action.MinecraftInputAction
+[05Jun2026 14:16:51.429] [Render thread/DEBUG] [epicfight/]: All enums are loaded: input_action [ATTACK, MOBILITY, GUARD, DODGE, LOCK_ON, LOCK_ON_SHIFT_LEFT, LOCK_ON_SHIFT_RIGHT, LOCK_ON_SHIFT_FREELY, SWITCH_MODE, WEAPON_INNATE_SKILL, WEAPON_INNATE_SKILL_TOOLTIP, OPEN_SKILL_SCREEN, OPEN_CONFIG_SCREEN, SWITCH_VANILLA_MODEL_DEBUGGING, JUMP, ATTACK_DESTROY, USE, SWAP_OFF_HAND, DROP, TOGGLE_PERSPECTIVE, MOVE_FORWARD, MOVE_BACKWARD, MOVE_LEFT, MOVE_RIGHT, SPRINT, SNEAK]
+[05Jun2026 14:16:51.429] [Render thread/INFO] [sihriya/]: SihriyaAnimations.registerAnimations called, creating builder
+[05Jun2026 14:16:51.482] [Render thread/INFO] [sihriya/]: SihriyaAnimations.build() called
+[05Jun2026 14:16:51.483] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 60.95 ms
+[05Jun2026 14:16:51.515] [Render thread/DEBUG] [net.minecraftforge.registries.ObjectHolderRegistry/REGISTRIES]: Processing ObjectHolder annotations
+[05Jun2026 14:16:51.538] [Render thread/DEBUG] [net.minecraftforge.registries.ObjectHolderRegistry/REGISTRIES]: Found 4041 ObjectHolder annotations
+[05Jun2026 14:16:51.543] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/energy/IEnergyStorage;
+[05Jun2026 14:16:51.545] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandler;
+[05Jun2026 14:16:51.545] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandlerItem;
+[05Jun2026 14:16:51.545] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/items/IItemHandler;
+[05Jun2026 14:16:51.548] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Unfreezing vanilla registries
+[05Jun2026 14:16:51.552] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:sound_event
+[05Jun2026 14:16:51.555] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:sound_event
+[05Jun2026 14:16:51.556] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:fluid
+[05Jun2026 14:16:51.557] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:fluid
+[05Jun2026 14:16:51.560] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block
+[05Jun2026 14:16:51.563] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block
+[05Jun2026 14:16:51.564] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:attribute
+[05Jun2026 14:16:51.565] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:attribute
+[05Jun2026 14:16:51.567] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:mob_effect
+[05Jun2026 14:16:51.568] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:mob_effect
+[05Jun2026 14:16:51.575] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:particle_type
+[05Jun2026 14:16:51.576] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:particle_type
+[05Jun2026 14:16:51.584] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:item
+[05Jun2026 14:16:51.587] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:item
+[05Jun2026 14:16:51.599] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:entity_type
+[05Jun2026 14:16:51.600] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:entity_type
+[05Jun2026 14:16:51.600] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:sensor_type
+[05Jun2026 14:16:51.601] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:sensor_type
+[05Jun2026 14:16:51.601] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:memory_module_type
+[05Jun2026 14:16:51.601] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:memory_module_type
+[05Jun2026 14:16:51.602] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:potion
+[05Jun2026 14:16:51.603] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:potion
+[05Jun2026 14:16:51.603] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:game_event
+[05Jun2026 14:16:51.603] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:game_event
+[05Jun2026 14:16:51.603] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:enchantment
+[05Jun2026 14:16:51.604] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:enchantment
+[05Jun2026 14:16:51.607] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block_entity_type
+[05Jun2026 14:16:51.608] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block_entity_type
+[05Jun2026 14:16:51.608] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:painting_variant
+[05Jun2026 14:16:51.608] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:painting_variant
+[05Jun2026 14:16:51.609] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:stat_type
+[05Jun2026 14:16:51.609] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:stat_type
+[05Jun2026 14:16:51.609] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:custom_stat
+[05Jun2026 14:16:51.609] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:custom_stat
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:chunk_status
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:chunk_status
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:rule_test
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:rule_test
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:rule_block_entity_modifier
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:rule_block_entity_modifier
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:pos_rule_test
+[05Jun2026 14:16:51.610] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:pos_rule_test
+[05Jun2026 14:16:51.611] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:menu
+[05Jun2026 14:16:51.611] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:menu
+[05Jun2026 14:16:51.611] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:recipe_type
+[05Jun2026 14:16:51.611] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:recipe_type
+[05Jun2026 14:16:51.624] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:recipe_serializer
+[05Jun2026 14:16:51.625] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:recipe_serializer
+[05Jun2026 14:16:51.625] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:position_source_type
+[05Jun2026 14:16:51.626] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:position_source_type
+[05Jun2026 14:16:51.630] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:command_argument_type
+[05Jun2026 14:16:51.631] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:command_argument_type
+[05Jun2026 14:16:51.632] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:villager_type
+[05Jun2026 14:16:51.632] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:villager_type
+[05Jun2026 14:16:51.633] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:villager_profession
+[05Jun2026 14:16:51.634] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:villager_profession
+[05Jun2026 14:16:51.634] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:point_of_interest_type
+[05Jun2026 14:16:51.635] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:point_of_interest_type
+[05Jun2026 14:16:51.635] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:schedule
+[05Jun2026 14:16:51.635] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:schedule
+[05Jun2026 14:16:51.635] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:activity
+[05Jun2026 14:16:51.635] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:activity
+[05Jun2026 14:16:51.636] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_pool_entry_type
+[05Jun2026 14:16:51.636] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_pool_entry_type
+[05Jun2026 14:16:51.636] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_function_type
+[05Jun2026 14:16:51.636] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_function_type
+[05Jun2026 14:16:51.639] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_condition_type
+[05Jun2026 14:16:51.640] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_condition_type
+[05Jun2026 14:16:51.640] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_number_provider_type
+[05Jun2026 14:16:51.640] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_number_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_nbt_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_nbt_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:loot_score_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:loot_score_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:float_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:float_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:int_provider_type
+[05Jun2026 14:16:51.641] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:int_provider_type
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:height_provider_type
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:height_provider_type
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:block_predicate_type
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:block_predicate_type
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/carver
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/carver
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/feature
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/feature
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_processor
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_processor
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_placement
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_placement
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_piece
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_piece
+[05Jun2026 14:16:51.642] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/placement_modifier_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/placement_modifier_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/block_state_provider_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/block_state_provider_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/foliage_placer_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/foliage_placer_type
+[05Jun2026 14:16:51.643] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/trunk_placer_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/trunk_placer_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/root_placer_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/root_placer_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/tree_decorator_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/tree_decorator_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/feature_size_type
+[05Jun2026 14:16:51.644] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/feature_size_type
+[05Jun2026 14:16:51.645] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/biome_source
+[05Jun2026 14:16:51.645] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/biome_source
+[05Jun2026 14:16:51.645] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/chunk_generator
+[05Jun2026 14:16:51.646] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/chunk_generator
+[05Jun2026 14:16:51.646] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/material_condition
+[05Jun2026 14:16:51.647] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/material_condition
+[05Jun2026 14:16:51.647] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/material_rule
+[05Jun2026 14:16:51.648] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/material_rule
+[05Jun2026 14:16:51.648] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/density_function_type
+[05Jun2026 14:16:51.649] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/density_function_type
+[05Jun2026 14:16:51.649] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/structure_pool_element
+[05Jun2026 14:16:51.650] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/structure_pool_element
+[05Jun2026 14:16:51.650] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:cat_variant
+[05Jun2026 14:16:51.650] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:cat_variant
+[05Jun2026 14:16:51.650] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:frog_variant
+[05Jun2026 14:16:51.650] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:frog_variant
+[05Jun2026 14:16:51.651] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:banner_pattern
+[05Jun2026 14:16:51.651] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:banner_pattern
+[05Jun2026 14:16:51.651] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:instrument
+[05Jun2026 14:16:51.651] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:instrument
+[05Jun2026 14:16:51.652] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:decorated_pot_patterns
+[05Jun2026 14:16:51.652] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:decorated_pot_patterns
+[05Jun2026 14:16:51.654] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:creative_mode_tab
+[05Jun2026 14:16:51.654] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:creative_mode_tab
+[05Jun2026 14:16:51.675] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: epicfight:conditions
+[05Jun2026 14:16:51.676] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: epicfight:conditions
+[05Jun2026 14:16:51.701] [Render thread/INFO] [statmod/]: Registered 60 Epic Fight skills for STAT Mod
+[05Jun2026 14:16:51.768] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: epicfight:skill
+[05Jun2026 14:16:51.768] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: epicfight:skill
+[05Jun2026 14:16:51.769] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: epicfight:skill_data_keys
+[05Jun2026 14:16:51.771] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: epicfight:skill_data_keys
+[05Jun2026 14:16:51.772] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: epicfight:synched_animation_variable_keys
+[05Jun2026 14:16:51.772] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: epicfight:synched_animation_variable_keys
+[05Jun2026 14:16:51.780] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:biome_modifier_serializers
+[05Jun2026 14:16:51.781] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:biome_modifier_serializers
+[05Jun2026 14:16:51.782] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:display_contexts
+[05Jun2026 14:16:51.783] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:display_contexts
+[05Jun2026 14:16:51.783] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:entity_data_serializers
+[05Jun2026 14:16:51.784] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:entity_data_serializers
+[05Jun2026 14:16:51.795] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:fluid_type
+[05Jun2026 14:16:51.795] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:fluid_type
+[05Jun2026 14:16:51.798] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:global_loot_modifier_serializers
+[05Jun2026 14:16:51.799] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:global_loot_modifier_serializers
+[05Jun2026 14:16:51.805] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:holder_set_type
+[05Jun2026 14:16:51.806] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:holder_set_type
+[05Jun2026 14:16:51.807] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: forge:structure_modifier_serializers
+[05Jun2026 14:16:51.808] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: forge:structure_modifier_serializers
+[05Jun2026 14:16:51.808] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Applying holder lookups: minecraft:worldgen/biome
+[05Jun2026 14:16:51.808] [Render thread/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Holder lookups applied: minecraft:worldgen/biome
+[05Jun2026 14:16:51.859] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.player.Player from class yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:51.881] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 14:16:52.008] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:statmod for mod file C:\Users\El Hadji\Downloads\STAT_MOD\STAT_MOD\build\libs\statmod-1.0.0.jar
+[05Jun2026 14:16:52.008] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:forge for mod file /
+[05Jun2026 14:16:52.015] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:sihriya for mod file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\build\resources\main
+[05Jun2026 14:16:52.015] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:epicfight for mod file C:\Users\El Hadji\.gradle\caches\forge_gradle\deobf_dependencies\blank\epic-fight-20.14.17-mc1.20.1-forge\20.14.17_mapped_parchment_2023.09.03-1.20.1\epic-fight-20.14.17-mc1.20.1-forge-20.14.17_mapped_parchment_2023.09.03-1.20.1.jar
+[05Jun2026 14:16:52.302] [Render thread/DEBUG] [mixin/]: Mixing client.MixinCompositeRenderType from mixins.epicfight.json into net.minecraft.client.renderer.RenderType$CompositeRenderType
+[05Jun2026 14:16:52.462] [Render thread/DEBUG] [mixin/]: Mixing client.MixinLightTexture from mixins.epicfight.json into net.minecraft.client.renderer.LightTexture
+[05Jun2026 14:16:52.619] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [sihriya]
+[05Jun2026 14:16:52.697] [Render thread/DEBUG] [mixin/]: Mixing client.MixinAgeableListModel from mixins.epicfight.json into net.minecraft.client.model.AgeableListModel
+[05Jun2026 14:16:52.810] [Render thread/DEBUG] [mixin/]: Mixing client.MixinThrownTridentRenderer from mixins.epicfight.json into net.minecraft.client.renderer.entity.ThrownTridentRenderer
+[05Jun2026 14:16:53.320] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
+[05Jun2026 14:16:53.334] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type CLIENT
+[05Jun2026 14:16:53.336] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\sihriya-client.toml
+[05Jun2026 14:16:53.345] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\sihriya-client.toml
+[05Jun2026 14:16:53.391] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\sihriya-client.toml for changes
+[05Jun2026 14:16:53.406] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-client.toml
+[05Jun2026 14:16:53.419] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-client.toml
+[05Jun2026 14:16:53.420] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-client.toml for changes
+[05Jun2026 14:16:53.460] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
+[05Jun2026 14:16:53.592] [Worker-Main-6/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
+[05Jun2026 14:16:53.801] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: supported
+[05Jun2026 14:16:53.802] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server status: Failed at initializing Authentication provider: java.lang.ClassNotFoundException: yesman.epicfight.epicskins.user.AuthenticationHelperImpl
+[05Jun2026 14:16:53.804] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\forge-client.toml
+[05Jun2026 14:16:53.819] [Thread-3/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file epicfight-client.toml changed, sending notifies
+[05Jun2026 14:16:53.821] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\forge-client.toml
+[05Jun2026 14:16:53.821] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
+[05Jun2026 14:16:53.823] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\forge-client.toml for changes
+[05Jun2026 14:16:53.825] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-client.toml
+[05Jun2026 14:16:53.828] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type COMMON
+[05Jun2026 14:16:53.829] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\statmod-common.toml
+[05Jun2026 14:16:53.829] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: supported
+[05Jun2026 14:16:53.829] [Thread-3/INFO] [epicfight/]: Epic Fight web server status: Failed at initializing Authentication provider: java.lang.ClassNotFoundException: yesman.epicfight.epicskins.user.AuthenticationHelperImpl
+[05Jun2026 14:16:53.844] [Thread-3/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-client.toml changed, sending notifies
+[05Jun2026 14:16:53.846] [Thread-3/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
+[05Jun2026 14:16:53.886] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\statmod-common.toml
+[05Jun2026 14:16:53.887] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\statmod-common.toml for changes
+[05Jun2026 14:16:53.889] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-common.toml
+[05Jun2026 14:16:53.905] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-common.toml
+[05Jun2026 14:16:53.906] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-client-clean\config\epicfight-common.toml for changes
+[05Jun2026 14:16:53.954] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[05Jun2026 14:16:53.989] [Worker-Main-3/INFO] [statmod/]: Registered 23 stats across 5 categories
+[05Jun2026 14:16:53.989] [Worker-Main-3/DEBUG] [statmod/]:   COMBAT: 7 stats
+[05Jun2026 14:16:53.989] [Worker-Main-3/DEBUG] [statmod/]:   MAGIC: 9 stats
+[05Jun2026 14:16:53.989] [Worker-Main-3/DEBUG] [statmod/]:   SURVIVAL: 2 stats
+[05Jun2026 14:16:53.989] [Worker-Main-3/DEBUG] [statmod/]:   CRAFTING: 3 stats
+[05Jun2026 14:16:53.989] [Worker-Main-3/DEBUG] [statmod/]:   MENTAL: 2 stats
+[05Jun2026 14:16:53.989] [Worker-Main-3/INFO] [statmod/]: Stat scaling formulas initialized
+[05Jun2026 14:16:53.990] [Worker-Main-3/INFO] [statmod/]:   XP curve: (level+1)*40 — Level 100 requires 4040 XP
+[05Jun2026 14:16:53.992] [Worker-Main-3/INFO] [statmod/]:   Damage bonus range: 0% - 20%
+[05Jun2026 14:16:53.993] [Worker-Main-3/INFO] [statmod/]: Epic Fight detected — deep integration enabled
+[05Jun2026 14:16:53.996] [Worker-Main-3/INFO] [statmod/]: Epic Parcool not detected — STAT integration disabled
+[05Jun2026 14:16:54.017] [Worker-Main-3/INFO] [statmod/]: Registered stat requirements for 176 skills
+[05Jun2026 14:16:54.020] [Worker-Main-3/INFO] [statmod/]: Loaded plugin: kubejs (priority=900)
+[05Jun2026 14:16:54.024] [Worker-Main-3/INFO] [statmod/]: Plugin system ready — 1 plugins loaded
+[05Jun2026 14:16:54.057] [Worker-Main-3/INFO] [statmod/]: [COMPAT] Epic Fight detected
+[05Jun2026 14:16:54.058] [Worker-Main-3/INFO] [statmod/]: [COMPAT] Loaded 2 other mods — no known attribute conflicts detected
+[05Jun2026 14:16:54.058] [Worker-Main-3/INFO] [statmod/]: Mod compat:(0 compatible mods)
+[05Jun2026 14:16:54.059] [Worker-Main-3/INFO] [statmod/]: === STAT Mod Diagnostic ===
+[05Jun2026 14:16:54.059] [Worker-Main-3/INFO] [statmod/]:   Minecraft: 1.20.1
+[05Jun2026 14:16:54.059] [Worker-Main-3/INFO] [statmod/]:   Forge: 47.4.20
+[05Jun2026 14:16:54.059] [Worker-Main-3/INFO] [statmod/]:   Stats: 23 registered
+[05Jun2026 14:16:54.059] [Worker-Main-3/INFO] [statmod/]:   Skills: 60 registered via SkillBuildEvent
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]:   Perks: 42 defined
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]:   Commands: /statmod [list|get|set|xp|reset|backup|restore|preset|profile|benchmark|top|respec|party]
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]:   Config: 30 values configurable
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]:   Network: 8 packet types registered
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]:   Plugin API: 1 plugins loaded
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]: ==============================
+[05Jun2026 14:16:54.060] [Worker-Main-3/INFO] [statmod/]: STAT Mod loaded!
+[05Jun2026 14:16:54.063] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue COMMON_SETUP: 12 jobs
+[05Jun2026 14:16:54.081] [Render thread/DEBUG] [sihriya/]: Registered school: fire
+[05Jun2026 14:16:54.081] [Render thread/DEBUG] [sihriya/]: Registered school: water
+[05Jun2026 14:16:54.081] [Render thread/DEBUG] [sihriya/]: Registered school: wind
+[05Jun2026 14:16:54.081] [Render thread/DEBUG] [sihriya/]: Registered school: earth
+[05Jun2026 14:16:54.083] [Render thread/DEBUG] [sihriya/]: Registered school: lightning
+[05Jun2026 14:16:54.083] [Render thread/DEBUG] [sihriya/]: Registered school: ice
+[05Jun2026 14:16:54.083] [Render thread/DEBUG] [sihriya/]: Registered school: lava
+[05Jun2026 14:16:54.083] [Render thread/DEBUG] [sihriya/]: Registered school: necromancy
+[05Jun2026 14:16:54.083] [Render thread/DEBUG] [sihriya/]: Registered school: lumamancy
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.spark
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.living_torch
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fireball
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.wall_of_flames
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fiery_breath
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fire_nova
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.blazing_armor
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.comet
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.infernal_pillar
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.ash_storm
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fusion
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.summoned_phoenix
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.meteor_shower
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.blazing_sun
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.water_jet
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.walk_on_water
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.air_bubble
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.liquid_shield
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.crushing_wave
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.water_prison
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.healing_rain
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.maelstrom
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.deluge
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.geysers
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.liquid_form
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.tidal_wave
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.ice_armor
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: water.eye_of_deluge
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.gust
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_step
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.air_shield
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.whistle
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.air_blade
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.brief_flight
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.whirlwind
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.dust_storm
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_speed
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_cage
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.storm_blades
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.hurricane
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.ascension
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.eye_of_storm
+[05Jun2026 14:16:54.100] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.rock_strike
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_skin
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.tremor
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_wall
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.rock_spike
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_roots
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.absorption
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.fortress
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.avalanche
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.fissure
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_golem
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.earthquake
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.earth_column
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.titan_awakening
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electric_arc
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.discharge
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.antenna
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.chain_lightning
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.lightning_armor
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.acceleration
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.paralysis
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electric_storm
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.surge
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.emp
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.guided_lightning
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.storm_call
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.conduit
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.celestial_judgment
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frost_breath
+[05Jun2026 14:16:54.102] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ice_arrow
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.slippery_ground
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ice_prison
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frost_armor
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.stalactites
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frost_steps
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.blizzard
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.freeze
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ice_wall
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frozen_heart
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frostbite_storm
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.glacial_avalanche
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ice_age
+[05Jun2026 14:16:54.103] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_jet
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.burning_puddle
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_shield
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.volcanic_fissure
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_bomb
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_armor
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_walk
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_wall
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_rain
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.incandescent_ground
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_wave
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.eruption
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magmatic_form
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.volcanic_awakening
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.drain_vital
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.death_touch
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.death_veil
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.corrupted_resurrection
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.lethal_curse
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.soul_rend
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.soul_chains
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.army_of_dead
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.soul_corruption
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.rift
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.terror
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.the_void
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.shroud_of_shadows
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.hand_of_nox
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.light_shard
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.sacred_light
+[05Jun2026 14:16:54.104] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.light_purification
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.sacred_aura
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.blessed_heal
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.divine_shield
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.blessing
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.greater_purification
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.healing_wave
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.holy_strike
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.sanctuary
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.resurrection
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.judgment
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.miracle_of_aelira
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.dancing_embers
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fire_piston_strike
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.brands_mark
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.flying_ashes
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fire_lance
+[05Jun2026 14:16:54.105] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.minor_eruption
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.flame_dance
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.furnace
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.dragons_breath
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.fire_wheel
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.furnace_heart
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.piercing_meteor
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.infinite_brazier
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: fire.apocalypse_ignited
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: water.sharp_drop
+[05Jun2026 14:16:54.117] [Render thread/DEBUG] [sihriya/]: Registered spell: water.fog
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.holy_water
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.ascending_current
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.water_lace
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.aquatic_purge
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.pressure_wave
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.abyssal_well
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.water_mirror
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.liquid_blade
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.local_flood
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.black_tide
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.evaporation
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: water.primeval_deluge
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.whisper
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.air_scissors
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.protective_breath
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.minor_trombe
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_feather
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.enhanced_throw
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.whip_strike
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.silent_gust
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_circle
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.impaling_wind
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.brutal_ascension
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.air_vacuum
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.wind_corridor
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: wind.ether_breath
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.clay_projectile
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.earth_sense
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.blinding_dust
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_vise
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.trench
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.sand_armor
+[05Jun2026 14:16:54.119] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.shield_strike
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.rock_path
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.targeted_quake
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.stone_statue
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.drill_through
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.earth_magnet
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.lithic_regen
+[05Jun2026 14:16:54.120] [Render thread/DEBUG] [sihriya/]: Registered spell: earth.earth_mother_wrath
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.bouncing_spark
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.static_charge
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electric_detection
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.lightning_link
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.faraday_cage
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electro_muscle
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.underground_arc
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.plasma_orb
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electric_conversion
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.fan_arc
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.electrostatic_storm
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.rainbow_arc
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.storm_heart
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lightning.wrath_of_zeus
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.shiver
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ground_frost
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frozen_breath
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frost_crystal
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.iceberg_lance
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.rapid_cooling
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.ice_thorns
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.cold_room
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.hail_wall
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frost_link
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.frozen_heart_v2
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.diamond_prison
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.absolute_zero
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: ice.eternal_winter
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_splash
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.igneous_rock
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.heat_hindrance
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.volcanic_tears
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_scar
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.slag_armor
+[05Jun2026 14:16:54.125] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.smoke_breath
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.rock_fusion
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.pyroclastic_flow
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_grenade
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.lava_pit
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.magma_heart
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.total_fusion
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lava.cataclysmic_eruption
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.broken_bones
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.empty_gaze
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.putrid_hand
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.suffering_transfer
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.grave_call
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.cold_fingers
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.blood_ritual
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.spectral_knight
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.decomposition
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.voices_of_dead
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.mark_of_sacrifice
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.soul_scythe
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.necropolis
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: necromancy.macabre_dance
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.blinding_ray
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.glowing_wisp
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.minor_blessing
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.light_sword
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.sacred_rampart
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.minor_purification
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.dazzling_flash
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.pillar_of_light
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.minor_angel
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.redemption
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.avenging_light
+[05Jun2026 14:16:54.126] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.celestial_portal
+[05Jun2026 14:16:54.127] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.aura_of_purity
+[05Jun2026 14:16:54.127] [Render thread/DEBUG] [sihriya/]: Registered spell: lumamancy.paradise_found
+[05Jun2026 14:16:54.127] [Render thread/INFO] [sihriya/]: Loaded 9 schools and 252 spells
+[05Jun2026 14:16:54.139] [Render thread/INFO] [sihriya/]: STAT Mod détecté et intégré !
+[05Jun2026 14:16:54.142] [Render thread/DEBUG] [sihriya/]: Fallback animation registered for type: PROJECTILE
+[05Jun2026 14:16:54.143] [Render thread/DEBUG] [sihriya/]: Fallback animation registered for type: ZONE
+[05Jun2026 14:16:54.143] [Render thread/DEBUG] [sihriya/]: Fallback animation registered for type: BUFF
+[05Jun2026 14:16:54.143] [Render thread/DEBUG] [sihriya/]: Fallback animation registered for type: SUMMON
+[05Jun2026 14:16:54.143] [Render thread/DEBUG] [sihriya/]: Fallback animation registered for type: ULTIMATE
+[05Jun2026 14:16:54.143] [Render thread/INFO] [sihriya/]: Epic Fight détecté et intégré !
+[05Jun2026 14:16:54.144] [Render thread/INFO] [sihriya/]: Iron's Spells 'n Spellbooks non détecté. Compatibilité désactivée.
+[05Jun2026 14:16:54.144] [Render thread/INFO] [sihriya/]: Sihriya chargé avec Epic Fight + STAT Mod !
+[05Jun2026 14:16:54.255] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 191.3 ms
+[05Jun2026 14:16:54.274] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue SIDED_SETUP: 5 jobs
+[05Jun2026 14:16:54.279] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] OpenGL Version: 4.6.0 NVIDIA 581.80
+[05Jun2026 14:16:54.280] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] Compute Shader: Supported
+[05Jun2026 14:16:54.300] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 25.46 ms
+[05Jun2026 14:16:54.505] [Forge Version Check/DEBUG] [net.minecraftforge.fml.VersionChecker/]: [forge] Received version check data:
+{
+  "homepage": "https://files.minecraftforge.net/net/minecraftforge/forge/",
+  "promos": {
+    "1.1-latest": "1.3.4.29",
+    "1.2.3-latest": "1.4.1.64",
+    "1.2.4-latest": "2.0.0.68",
+    "1.2.5-latest": "3.4.9.171",
+    "1.3.2-latest": "4.3.5.318",
+    "1.4.0-latest": "5.0.0.326",
+    "1.4.1-latest": "6.0.0.329",
+    "1.4.2-latest": "6.0.1.355",
+    "1.4.3-latest": "6.2.1.358",
+    "1.4.4-latest": "6.3.0.378",
+    "1.4.5-latest": "6.4.2.448",
+    "1.4.6-latest": "6.5.0.489",
+    "1.4.7-latest": "6.6.2.534",
+    "1.5-latest": "7.7.0.598",
+    "1.5.1-latest": "7.7.2.682",
+    "1.5.2-latest": "7.8.1.738",
+    "1.5.2-recommended": "7.8.1.738",
+    "1.6.1-latest": "8.9.0.775",
+    "1.6.2-latest": "9.10.1.871",
+    "1.6.2-recommended": "9.10.1.871",
+    "1.6.3-latest": "9.11.0.878",
+    "1.6.4-latest": "9.11.1.1345",
+    "1.6.4-recommended": "9.11.1.1345",
+    "1.7.2-latest": "10.12.2.1161",
+    "1.7.2-recommended": "10.12.2.1161",
+    "1.7.10-latest": "10.13.4.1614",
+    "1.7.10-recommended": "10.13.4.1614",
+    "1.8-latest": "11.14.4.1577",
+    "1.8-recommended": "11.14.4.1563",
+    "1.8.8-latest": "11.15.0.1655",
+    "1.8.9-latest": "11.15.1.2318",
+    "1.8.9-recommended": "11.15.1.2318",
+    "1.9-latest": "12.16.1.1938",
+    "1.9-recommended": "12.16.1.1887",
+    "1.9.4-latest": "12.17.0.2317",
+    "1.9.4-recommended": "12.17.0.2317",
+    "1.10-latest": "12.18.0.2000",
+    "1.10.2-latest": "12.18.3.2511",
+    "1.10.2-recommended": "12.18.3.2511",
+    "1.11-latest": "13.19.1.2199",
+    "1.11-recommended": "13.19.1.2189",
+    "1.11.2-latest": "13.20.1.2588",
+    "1.11.2-recommended": "13.20.1.2588",
+    "1.12-latest": "14.21.1.2443",
+    "1.12-recommended": "14.21.1.2387",
+    "1.12.1-latest": "14.22.1.2485",
+    "1.12.1-recommended": "14.22.1.2478",
+    "1.12.2-latest": "14.23.5.2864",
+    "1.12.2-recommended": "14.23.5.2859",
+    "1.13.2-latest": "25.0.223",
+    "1.14.2-latest": "26.0.63",
+    "1.14.3-latest": "27.0.60",
+    "1.14.4-latest": "28.2.30",
+    "1.14.4-recommended": "28.2.26",
+    "1.15-latest": "29.0.4",
+    "1.15.1-latest": "30.0.51",
+    "1.15.2-latest": "31.2.60",
+    "1.15.2-recommended": "31.2.57",
+    "1.16.1-latest": "32.0.108",
+    "1.16.2-latest": "33.0.61",
+    "1.16.3-latest": "34.1.42",
+    "1.16.3-recommended": "34.1.0",
+    "1.16.4-latest": "35.1.37",
+    "1.16.4-recommended": "35.1.4",
+    "1.16.5-latest": "36.2.42",
+    "1.16.5-recommended": "36.2.34",
+    "1.17.1-latest": "37.1.1",
+    "1.17.1-recommended": "37.1.1",
+    "1.18-latest": "38.0.17",
+    "1.18.1-latest": "39.1.2",
+    "1.18.1-recommended": "39.1.0",
+    "1.18.2-recommended": "40.3.0",
+    "1.18.2-latest": "40.3.12",
+    "1.19-latest": "41.1.0",
+    "1.19-recommended": "41.1.0",
+    "1.19.1-latest": "42.0.9",
+    "1.19.2-recommended": "43.5.0",
+    "1.19.2-latest": "43.5.2",
+    "1.19.3-latest": "44.1.23",
+    "1.19.3-recommended": "44.1.0",
+    "1.19.4-recommended": "45.4.0",
+    "1.19.4-latest": "45.4.3",
+    "1.20-latest": "46.0.14",
+    "1.20.1-recommended": "47.4.10",
+    "1.20.1-latest": "47.4.20",
+    "1.20.2-latest": "48.1.0",
+    "1.20.2-recommended": "48.1.0",
+    "1.20.3-latest": "49.0.2",
+    "1.20.4-latest": "49.2.7",
+    "1.20.4-recommended": "49.2.0",
+    "1.20.6-latest": "50.2.8",
+    "1.20.6-recommended": "50.2.0",
+    "1.21-latest": "51.0.33",
+    "1.21.1-latest": "52.1.14",
+    "1.21.1-recommended": "52.1.0",
+    "1.21.3-latest": "53.1.10",
+    "1.21.3-recommended": "53.1.0",
+    "1.21.4-latest": "54.1.16",
+    "1.21.4-recommended": "54.1.14",
+    "1.21.5-latest": "55.1.10",
+    "1.21.5-recommended": "55.1.0",
+    "1.21.6-latest": "56.0.9",
+    "1.21.7-latest": "57.0.3",
+    "1.21.8-latest": "58.1.18",
+    "1.21.8-recommended": "58.1.0",
+    "1.21.9-latest": "59.0.5",
+    "1.21.10-latest": "60.1.9",
+    "1.21.10-recommended": "60.1.0",
+    "1.21.11-latest": "61.1.8",
+    "1.21.11-recommended": "61.1.0",
+    "26.1-latest": "62.0.9",
+    "26.1.1-latest": "63.0.2",
+    "26.1.2-latest": "64.0.8"
+  }
+}
+[05Jun2026 14:16:54.508] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: AHEAD Current: 47.4.20 Target: null
+[05Jun2026 14:16:55.598] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: Freezing registries
+[05Jun2026 14:16:55.599] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.604] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:fluid Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.605] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:item Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.610] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:mob_effect Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.611] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.618] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:potion Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.618] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:enchantment Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.618] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.619] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.619] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:particle_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.620] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:menu Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.620] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:painting_variant Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.620] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.621] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:recipe_serializer Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.621] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:attribute Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.621] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:stat_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.621] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:command_argument_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.622] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:villager_profession Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.622] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:point_of_interest_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.624] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:memory_module_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.625] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:sensor_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.626] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:schedule Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.626] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:activity Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.627] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/carver Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.627] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/feature Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.627] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:chunk_status Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/block_state_provider_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/foliage_placer_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/tree_decorator_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:worldgen/biome Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:entity_data_serializers Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:global_loot_modifier_serializers Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.628] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:biome_modifier_serializers Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.629] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:fluid_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.629] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:structure_modifier_serializers Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.629] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:holder_set_type Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.629] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry forge:display_contexts Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.629] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry epicfight:skill Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.630] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry epicfight:conditions Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.630] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry epicfight:skill_data_keys Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:55.630] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry epicfight:synched_animation_variable_keys Sync: FROZEN -> ACTIVE
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for statmod:parry
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for statmod:guard_fortress
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for statmod:guard_iron_wall
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:combo_counter, epicfight:basic_attack_active] for epicfight:basic_attack
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:guard
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:last_active, epicfight:parry_motion_counter, epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:parrying
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:impact_guard
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:stacks, epicfight:resisting_damage_type] for epicfight:adaptive_skin
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record] for epicfight:adrenaline_fiend
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:stacks, epicfight:entity_id] for epicfight:bonebreaker
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:entity_id] for epicfight:vengeance
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:fall_distance, epicfight:slam_protect_next_fall] for epicfight:meteor_slam
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:stacks] for epicfight:revelation
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall] for epicfight:demolition_leap
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:jump_count, epicfight:slam_protect_next_fall, epicfight:jump_key_pressed_last_tick] for epicfight:phantom_ascent
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:last_hit_count] for epicfight:grasping_spire
+[05Jun2026 14:16:56.390] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu_passive
+[05Jun2026 14:16:56.391] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu
+[05Jun2026 14:16:56.391] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:combo_counter] for epicfight:blade_rush
+[05Jun2026 14:16:56.391] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:thrown_trident_entity_id] for epicfight:everlasting_allegiance
+[05Jun2026 14:16:56.391] [modloading-worker-0/DEBUG] [net.minecraftforge.registries.GameData/REGISTRIES]: All registries frozen
+[05Jun2026 14:16:56.433] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 7357
+[05Jun2026 14:16:56.454] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[05Jun2026 14:16:56.454] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[05Jun2026 14:16:56.756] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Haut-parleurs (Realtek(R) Audio)
+[05Jun2026 14:16:56.756] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[05Jun2026 14:16:56.863] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[05Jun2026 14:16:56.871] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[05Jun2026 14:16:56.871] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[05Jun2026 14:16:56.872] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[05Jun2026 14:16:56.874] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[05Jun2026 14:16:56.878] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[05Jun2026 14:16:56.880] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[05Jun2026 14:16:56.880] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[05Jun2026 14:16:56.881] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[05Jun2026 14:16:56.967] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[05Jun2026 14:16:56.972] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[05Jun2026 14:16:56.987] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[05Jun2026 14:16:57.045] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[05Jun2026 14:16:57.139] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x0 minecraft:textures/atlas/particles.png-atlas
+[05Jun2026 14:16:57.149] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[05Jun2026 14:16:57.149] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas

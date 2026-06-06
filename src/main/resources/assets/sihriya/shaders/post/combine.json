@@ -1,0 +1,16 @@
+{
+    "targets": ["brightPass", "blurVertical1", "blurVertical2"],
+    "passes": [{
+        "name": "combine",
+        "intarget": "minecraft:main",
+        "outtarget": "minecraft:main",
+        "auxtargets": [
+            { "name": "Aux1", "type": "previous" },
+            { "name": "Aux2", "type": "previous" },
+            { "name": "Aux3", "type": "previous" }
+        ],
+        "uniforms": [
+            { "name": "BloomIntensity", "values": [0.8] }
+        ]
+    }]
+}

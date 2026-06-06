@@ -1,0 +1,12 @@
+{
+  "school": "necromancy",
+  "defaults": {
+    "projectile": { "scale": 1.0, "glowIntensity": 1.6, "color1": [0.55, 0.0, 0.75], "color2": [0.75, 0.3, 1.0], "trail": { "particlesPerTick": 3, "particleLifetime": 15 } },
+    "impact": { "burst": { "count": 20, "speed": 0.5 }, "shockwaveRings": 1 },
+    "beam": { "radius": 0.3, "glowIntensity": 1.6, "color1": [0.55, 0.0, 0.75], "color2": [0.75, 0.3, 1.0] }
+  },
+  "overrides": {
+    "necromancy.soul_drain": { "beam": { "radius": 0.4, "glowIntensity": 2.0 } },
+    "necromancy.summon": { "impact": { "burst": { "count": 30, "speed": 0.6 } } }
+  }
+}

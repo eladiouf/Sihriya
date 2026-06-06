@@ -1,0 +1,69 @@
+package tong.sihriya.data;
+
+import tong.sihriya.Sihriya;
+import tong.sihriya.core.SchoolProgression;
+
+import java.util.*;
+
+public class SchoolRegistry {
+    private static final Map<String, SchoolData> SCHOOLS = new LinkedHashMap<>();
+
+    public static void register(SchoolData school) {
+        SCHOOLS.put(school.id, school);
+        Sihriya.LOGGER.debug("Registered school: {}", school.id);
+    }
+
+    public static SchoolData get(String id) { return SCHOOLS.get(id); }
+    public static Collection<SchoolData> getAll() { return List.copyOf(SCHOOLS.values()); }
+    public static List<SchoolData> getStartingSchools() {
+        return SCHOOLS.values().stream().filter(s -> s.starting).toList();
+    }
+    public static int size() { return SCHOOLS.size(); }
+
+    public static class SchoolData {
+        public final String id;
+        public final String name;
+        public final boolean starting;
+        public final String color;
+        public final UnlockCondition unlock;
+
+        public SchoolData(String id, String name, boolean starting, String color, UnlockCondition unlock) {
+            this.id = id; this.name = name; this.starting = starting;
+            this.color = color; this.unlock = unlock;
+        }
+    }
+
+    public static class UnlockCondition {
+        public final String type; // "level", "or", "and"
+        private final String[] schoolIds;
+        private final int[] levels;
+
+        public UnlockCondition(String type, String[] schoolIds, int[] levels) {
+            this.type = type;
+            this.schoolIds = schoolIds.clone();
+            this.levels = levels.clone();
+        }
+
+        public String[] schoolIds() {
+            return schoolIds.clone();
+        }
+
+        public int[] levels() {
+            return levels.clone();
+        }
+
+        public boolean isMet(SchoolProgression prog) {
+            if ("or".equals(type)) {
+                for (int i = 0; i < schoolIds.length; i++) {
+                    if (prog.getLevel(schoolIds[i]) >= levels[i]) return true;
+                }
+                return false;
+            } else { // "level" or "and"
+                for (int i = 0; i < schoolIds.length; i++) {
+                    if (prog.getLevel(schoolIds[i]) < levels[i]) return false;
+                }
+                return true;
+            }
+        }
+    }
+}

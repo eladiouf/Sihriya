@@ -1,0 +1,13 @@
+{
+    "targets": [],
+    "passes": [{
+        "name": "bright",
+        "intarget": "minecraft:main",
+        "outtarget": "minecraft:main",
+        "auxtargets": [],
+        "uniforms": [
+            { "name": "BrightThreshold", "values": [0.6] },
+            { "name": "BrightMultiplier", "values": [1.5] }
+        ]
+    }]
+}

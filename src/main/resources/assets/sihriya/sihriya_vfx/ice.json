@@ -1,0 +1,12 @@
+{
+  "school": "ice",
+  "defaults": {
+    "projectile": { "scale": 1.0, "glowIntensity": 1.4, "color1": [0.5, 0.8, 1.0], "color2": [0.75, 0.9, 1.0], "trail": { "particlesPerTick": 3, "particleLifetime": 12, "spread": 0.08 } },
+    "impact": { "burst": { "count": 25, "speed": 0.5 }, "shockwaveRings": 2 },
+    "beam": { "radius": 0.3, "glowIntensity": 1.4, "color1": [0.5, 0.8, 1.0], "color2": [0.75, 0.9, 1.0] }
+  },
+  "overrides": {
+    "ice.storm": { "impact": { "burst": { "count": 45, "speed": 0.7 }, "shockwaveRings": 3 } },
+    "ice.shard": { "projectile": { "scale": 0.7, "glowIntensity": 1.8 } }
+  }
+}

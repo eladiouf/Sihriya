@@ -1,0 +1,17 @@
+
+[ui]
+	#Show the Sihriya mana HUD.
+	showManaHud = true
+	#Show the active spell/cooldown HUD.
+	showActiveSpellHud = true
+	#Show Sihriya unlock and cast feedback notifications.
+	showNotifications = true
+	#Use compact HUD panels.
+	compactHud = false
+	#Reduce UI animations.
+	reducedMotion = false
+	#Play Sihriya UI feedback sounds.
+	uiSounds = true
+	#Use alternate high-distinction school colors.
+	alternateColors = false
+

@@ -1,0 +1,8 @@
+{
+    "vertex": "sihriya_glow",
+    "fragment": "sihriya_glow",
+    "samplers": [
+        { "name": "Sampler0" }
+    ],
+    "attributes": [ "Position", "Color", "UV0", "UV1", "UV2", "Normal" ]
+}

@@ -1,0 +1,11 @@
+{
+  "school": "wind",
+  "defaults": {
+    "projectile": { "scale": 0.9, "glowIntensity": 1.2, "color1": [0.8, 0.85, 1.0], "color2": [0.95, 0.95, 1.0], "trail": { "particlesPerTick": 4, "particleLifetime": 8, "spread": 0.15 } },
+    "impact": { "burst": { "count": 15, "speed": 0.7 }, "shockwaveRings": 2 },
+    "beam": { "radius": 0.2, "glowIntensity": 1.2, "color1": [0.8, 0.85, 1.0], "color2": [0.95, 0.95, 1.0] }
+  },
+  "overrides": {
+    "wind.tornado": { "impact": { "burst": { "count": 40, "speed": 0.9 }, "shockwaveRings": 3 } }
+  }
+}

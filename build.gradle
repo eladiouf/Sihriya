@@ -1,0 +1,1595 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+}
+
+import groovy.json.JsonSlurper
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file(findProperty('forgeRunDir') ?: 'run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+        server {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+        data {
+            workingDirectory project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    flatDir { dir 'libs' }
+    maven { name = 'ParchmentMC'; url = 'https://maven.parchmentmc.org' }
+    maven { url "https://cursemaven.com"; content { includeGroup "curse.maven" } }
+    maven { name = "Modrinth"; url = "https://api.modrinth.com/maven"; content { includeGroup "maven.modrinth" } }
+}
+
+def verificationRunDirName = 'run-clean'
+def verificationClientRunDirName = 'run-client-clean'
+def defaultForgeServerPort = '25565'
+def verificationForgeServerPort = '25566'
+def animationRegistrySourceFile = file('src/main/java/tong/sihriya/animation/SihriyaAnimations.java')
+def animationResourcePrefix = "assets/${mod_id}/animmodels/animations/".toString()
+def registeredAnimationRelativePaths = providers.provider {
+    if (!animationRegistrySourceFile.isFile()) {
+        return [] as Set
+    }
+    ((animationRegistrySourceFile.text =~ /register\(builder,\s*"[^"]+",\s*"([^"]+)"/)
+        .collect { "${it[1].replace('\\', '/')}.json".toString() } as Set)
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Epic Fight (local JAR — transitive=false pour éviter aaa_particles/nightfall/invincible/avalon)
+    implementation(fg.deobf("blank:epic-fight-20.14.17-mc1.20.1-forge:20.14.17")) {
+        transitive = false
+    }
+
+    // STAT Mod (sibling project) - compile against sibling jar and load it as a regular runtime mod
+    implementation project(':STAT_MOD')
+
+    // Iron's Spells 'n Spellbooks (optional — compileOnly, détection runtime via Class.forName)
+    compileOnly fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:7907340")
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
+
+tasks.register('prepareVerificationRun') {
+    group = 'verification'
+    description = 'Prepares a dedicated-server verification run directory with stable defaults.'
+
+    doLast {
+        def runDirName = (findProperty('forgeRunDir') ?: 'run').toString()
+        def runDir = file(runDirName)
+        def defaultConfigsDir = new File(runDir, 'defaultconfigs')
+        def serverPort = (findProperty('forgeServerPort')
+            ?: (runDirName == verificationRunDirName ? verificationForgeServerPort : defaultForgeServerPort)).toString()
+
+        mkdir(runDir)
+        mkdir(defaultConfigsDir)
+
+        def eulaFile = new File(runDir, 'eula.txt')
+        eulaFile.text = """#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).
+eula=true
+"""
+
+        def serverPropertiesFile = new File(runDir, 'server.properties')
+        serverPropertiesFile.text = """allow-flight=false
+allow-nether=true
+broadcast-console-to-ops=true
+broadcast-rcon-to-ops=true
+difficulty=easy
+enable-command-block=false
+enable-jmx-monitoring=false
+enable-query=false
+enable-rcon=false
+enable-status=true
+enforce-secure-profile=true
+enforce-whitelist=false
+entity-broadcast-range-percentage=100
+force-gamemode=false
+function-permission-level=2
+gamemode=survival
+generate-structures=true
+generator-settings={}
+hardcore=false
+hide-online-players=false
+initial-disabled-packs=
+initial-enabled-packs=vanilla
+level-name=world
+level-seed=
+level-type=minecraft\\:normal
+max-chained-neighbor-updates=1000000
+max-players=20
+max-tick-time=60000
+max-world-size=29999984
+motd=Sihriya Verification Server
+network-compression-threshold=256
+online-mode=true
+op-permission-level=4
+player-idle-timeout=0
+prevent-proxy-connections=false
+pvp=true
+query.port=${serverPort}
+rate-limit=0
+rcon.password=
+rcon.port=25575
+require-resource-pack=false
+resource-pack=
+resource-pack-prompt=
+resource-pack-sha1=
+server-ip=
+server-port=${serverPort}
+simulation-distance=10
+spawn-animals=true
+spawn-monsters=true
+spawn-npcs=true
+spawn-protection=16
+sync-chunk-writes=true
+text-filtering-config=
+use-native-transport=true
+view-distance=10
+white-list=false
+"""
+
+        copy {
+            from file('gradle/run-defaults/defaultconfigs')
+            into defaultConfigsDir
+        }
+    }
+}
+
+tasks.matching { it.name in ['prepareRunServer', 'prepareRunServerCompile'] }.configureEach {
+    dependsOn 'prepareVerificationRun'
+}
+
+tasks.register('prepareClientSmokeRun') {
+    group = 'verification'
+    description = 'Prepares a clean client smoke-test run directory with stable config defaults.'
+
+    doLast {
+        def runDirName = (findProperty('forgeRunDir') ?: 'run').toString()
+        if (runDirName != verificationClientRunDirName) {
+            return
+        }
+
+        def runDir = file(runDirName)
+        def configDir = new File(runDir, 'config')
+
+        mkdir(runDir)
+        mkdir(configDir)
+
+        copy {
+            from file('gradle/run-defaults/config')
+            into configDir
+        }
+    }
+}
+
+tasks.matching { it.name in ['prepareRunClient', 'prepareRunClientCompile'] }.configureEach {
+    dependsOn 'prepareClientSmokeRun'
+}
+
+tasks.register('validateVerificationServerLog') {
+    group = 'verification'
+    description = 'Validates that the dedicated-server verification boot log stays free of known local regressions.'
+
+    doLast {
+        def runDirName = (findProperty('forgeRunDir') ?: verificationRunDirName).toString()
+        def logFile = file("${runDirName}/logs/latest.log")
+        if (!logFile.isFile()) {
+            throw new GradleException("Verification server log not found: ${project.relativePath(logFile)}")
+        }
+
+        def logText = logFile.text
+        def requiredMarkers = [
+            'DedicatedServer/]: Done',
+            '[statmod/]: STAT Mod ready on server'
+        ]
+        def forbiddenMarkers = [
+            'Missing data pack mod:',
+            'InputConstants$Key',
+            'Configuration file .\\world\\serverconfig',
+            'Incorrect key ',
+            'Currently, statmod is not installed',
+            'Found 2 mods for first modid statmod',
+            'FAILED TO BIND TO PORT',
+            'Address already in use: bind',
+            'Failed to load eula.txt',
+            'Encountered an unexpected exception',
+            'Failed to start the minecraft server'
+        ]
+        def allowedWarningPatterns = [
+            ~/Mod file .*javafmllanguage-1\.20\.1-47\.4\.20\.jar is missing mods\.toml file/,
+            ~/Mod file .*lowcodelanguage-1\.20\.1-47\.4\.20\.jar is missing mods\.toml file/,
+            ~/Mod file .*mclanguage-1\.20\.1-47\.4\.20\.jar is missing mods\.toml file/,
+            ~/Mod file .*fmlcore-1\.20\.1-47\.4\.20\.jar is missing mods\.toml file/,
+            ~/@Final field nextHeadUpdate:\[I in mixins\.epicfight\.json:common\.MixinWitherBoss should be final/,
+            ~/@Final field idleHeadUpdates:\[I in mixins\.epicfight\.json:common\.MixinWitherBoss should be final/,
+            ~/defineId called for: class net\.minecraft\.world\.entity\.LivingEntity from class yesman\.epicfight\.world\.capabilities\.entitypatch\.LivingEntityPatch/,
+            ~/defineId called for: class net\.minecraft\.world\.entity\.player\.Player from class yesman\.epicfight\.world\.capabilities\.entitypatch\.player\.PlayerPatch/,
+            ~/defineId called for: class net\.minecraft\.world\.entity\.boss\.wither\.WitherBoss from class yesman\.epicfight\.world\.capabilities\.entitypatch\.boss\.WitherPatch/,
+            ~/Assets URL 'union:.*\/assets\/\.mcassetsroot' uses unexpected schema/,
+            ~/Assets URL 'union:.*\/data\/\.mcassetsroot' uses unexpected schema/
+        ]
+
+        def errors = []
+        requiredMarkers.each { marker ->
+            if (!logText.contains(marker)) {
+                errors << "Missing required log marker: ${marker}"
+            }
+        }
+        forbiddenMarkers.each { marker ->
+            if (logText.contains(marker)) {
+                errors << "Verification log contains forbidden marker: ${marker}"
+            }
+        }
+        logText.eachLine { line ->
+            if (line.contains('[WARN]')) {
+                def message = line.replaceFirst(/^.*?\]: /, '')
+                if (!allowedWarningPatterns.any { pattern -> message ==~ pattern }) {
+                    errors << "Verification log contains unexpected warning: ${message}"
+                }
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            throw new GradleException("Verification server log validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        println "Verification server log validation passed for ${project.relativePath(logFile)}."
+    }
+}
+
+tasks.register('validateClientSmokeLog') {
+    group = 'verification'
+    description = 'Validates that the clean client smoke boot stays free of known local regressions.'
+
+    doLast {
+        def runDirName = (findProperty('forgeRunDir') ?: verificationClientRunDirName).toString()
+        def logFile = file("${runDirName}/logs/latest.log")
+        if (!logFile.isFile()) {
+            throw new GradleException("Client smoke log not found: ${project.relativePath(logFile)}")
+        }
+
+        def logText = logFile.text
+        def requiredMarkers = [
+            'Setting user: Dev',
+            '[statmod/]: STAT Mod loaded!',
+            '[sihriya/]: Sihriya chargé avec Epic Fight + STAT Mod !',
+            'OpenAL initialized'
+        ]
+        def forbiddenMarkers = [
+            'Invalid path in pack',
+            'Datapack animation reading failed',
+            'Unable to load model',
+            'Missing textures in model statmod:class_arts#inventory',
+            'is not correct. Correcting',
+            'Missing data pack mod:',
+            'InputConstants$Key',
+            'Encountered an unexpected exception',
+            'Crash report saved to',
+            'Failed to start the minecraft',
+            'No constructor information has provided'
+        ]
+        def allowedWarningPatterns = [
+            ~/Error loading class: dev\/tr7zw\/skinlayers\/versionless\/render\/CustomModelPart \(java\.lang\.ClassNotFoundException: dev\.tr7zw\.skinlayers\.versionless\.render\.CustomModelPart\)/,
+            ~/Error loading class: dev\/tr7zw\/skinlayers\/versionless\/render\/CustomizableCube \(java\.lang\.ClassNotFoundException: dev\.tr7zw\.skinlayers\.versionless\.render\.CustomizableCube\)/,
+            ~/Error loading class: de\/teamlapen\/vampirism\/client\/renderer\/entity\/layers\/VampirePlayerHeadLayer \(java\.lang\.ClassNotFoundException: de\.teamlapen\.vampirism\.client\.renderer\.entity\.layers\.VampirePlayerHeadLayer\)/,
+            ~/Error loading class: de\/teamlapen\/werewolves\/client\/render\/layer\/HumanWerewolfLayer \(java\.lang\.ClassNotFoundException: de\.teamlapen\.werewolves\.client\.render\.layer\.HumanWerewolfLayer\)/
+        ]
+
+        def errors = []
+        requiredMarkers.each { marker ->
+            if (!logText.contains(marker)) {
+                errors << "Missing required client log marker: ${marker}"
+            }
+        }
+        forbiddenMarkers.each { marker ->
+            if (logText.contains(marker)) {
+                errors << "Client smoke log contains forbidden marker: ${marker}"
+            }
+        }
+        logText.eachLine { line ->
+            if (line.contains('[WARN]')) {
+                def message = line.replaceFirst(/^.*?\]: /, '')
+                if (!allowedWarningPatterns.any { pattern -> message ==~ pattern }) {
+                    errors << "Client smoke log contains unexpected warning: ${message}"
+                }
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            throw new GradleException("Client smoke log validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        println "Client smoke log validation passed for ${project.relativePath(logFile)}."
+    }
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+    doLast {
+        def packagedBase = file("$destinationDir/${animationResourcePrefix}")
+        if (!packagedBase.isDirectory()) {
+            return
+        }
+        delete(packagedBase)
+        def sourceBase = file("src/main/resources/${animationResourcePrefix}")
+        registeredAnimationRelativePaths.get().each { relativePath ->
+            def sourceFile = new File(sourceBase, relativePath.replace('/' as char, File.separatorChar))
+            if (sourceFile.isFile()) {
+                copy {
+                    from sourceFile
+                    into new File(packagedBase, relativePath.substring(0, Math.max(relativePath.lastIndexOf('/'), 0)))
+                }
+            }
+        }
+    }
+}
+
+tasks.register('validateClientAnimationPackaging') {
+    group = 'verification'
+    description = 'Validates that packaged client animation resources only ship registered Epic Fight animation payloads.'
+    dependsOn 'processResources'
+
+    doLast {
+        def packagedBase = file("$buildDir/resources/main/assets/${mod_id}/animmodels/animations")
+        if (!packagedBase.isDirectory()) {
+            throw new GradleException("Packaged animation directory not found: ${project.relativePath(packagedBase)}")
+        }
+
+        def registeredPaths = registeredAnimationRelativePaths.get() as Set
+        def packagedPaths = (fileTree(packagedBase).matching { include '**/*.json' }.files.collect { resource ->
+            resource.path.substring(packagedBase.path.length() + 1).replace(File.separatorChar, '/' as char)
+        } as Set)
+
+        def invalidPackagedPaths = packagedPaths.findAll { path ->
+            path.split('/').any { segment -> !(segment ==~ /[a-z0-9._-]+/) }
+        }
+        def unexpectedPaths = packagedPaths.findAll { !(it in registeredPaths) }
+        def errors = []
+        if (packagedPaths.isEmpty()) {
+            errors << 'Packaged animation resources are unexpectedly empty'
+        }
+        if (!invalidPackagedPaths.isEmpty()) {
+            errors << "Packaged animation resources contain invalid resource paths, sample: ${invalidPackagedPaths.take(10)}"
+        }
+        if (!unexpectedPaths.isEmpty()) {
+            errors << "Packaged animation resources contain unregistered payloads, sample: ${unexpectedPaths.take(10)}"
+        }
+        if (!errors.isEmpty()) {
+            throw new GradleException("Client animation packaging validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        println "Client animation packaging validation passed with ${packagedPaths.size()} packaged animation payloads."
+    }
+}
+
+tasks.register('prepareReleaseSmokeBundle') {
+    group = 'verification'
+    description = 'Stages the built Sihriya and STAT Mod jars plus stable defaults into a standalone release-smoke bundle.'
+    dependsOn 'reobfJar', ':STAT_MOD:reobfJar'
+
+    doLast {
+        def bundleDir = file("$buildDir/release-smoke")
+        def modsDir = new File(bundleDir, 'mods')
+        def configDir = new File(bundleDir, 'config')
+        def defaultConfigsDir = new File(bundleDir, 'defaultconfigs')
+        def sihriyaJarFile = file("$buildDir/reobfJar/output.jar")
+        def statModJarFile = project(':STAT_MOD').file('build/reobfJar/output.jar')
+        def sihriyaBundleJarName = tasks.named('jar', Jar).get().archiveFileName.get()
+        def statModBundleJarName = project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()
+        delete(bundleDir)
+        mkdir(modsDir)
+        mkdir(configDir)
+        mkdir(defaultConfigsDir)
+
+        copy {
+            from sihriyaJarFile
+            into modsDir
+            rename { sihriyaBundleJarName }
+        }
+        copy {
+            from statModJarFile
+            into modsDir
+            rename { statModBundleJarName }
+        }
+        copy {
+            from file('gradle/run-defaults/config')
+            into configDir
+        }
+        copy {
+            from file('gradle/run-defaults/defaultconfigs')
+            into defaultConfigsDir
+        }
+
+        def readme = new File(bundleDir, 'README-release-smoke.txt')
+        readme.text = """Release smoke bundle for Sihriya verification
+
+mods/
+  - ${sihriyaBundleJarName} (from build/reobfJar/output.jar)
+  - ${statModBundleJarName} (from ../STAT_MOD/build/reobfJar/output.jar)
+
+config/
+  - stable client/common defaults captured from verification runs
+
+defaultconfigs/
+  - stable dedicated-server defaults captured from verification runs
+"""
+    }
+}
+
+tasks.register('validateReleaseArtifacts') {
+    group = 'verification'
+    description = 'Validates the built Sihriya and STAT Mod jars and the staged release-smoke bundle.'
+    dependsOn 'prepareReleaseSmokeBundle'
+
+    doLast {
+        def errors = []
+        def sihriyaJar = file("$buildDir/reobfJar/output.jar")
+        def statModJar = project(':STAT_MOD').file('build/reobfJar/output.jar')
+        def sihriyaBundleJarName = tasks.named('jar', Jar).get().archiveFileName.get()
+        def statModBundleJarName = project(':STAT_MOD').tasks.named('jar', Jar).get().archiveFileName.get()
+        def bundleDir = file("$buildDir/release-smoke")
+        def bundleModsDir = new File(bundleDir, 'mods')
+        def bundledSihriyaJar = new File(bundleModsDir, sihriyaBundleJarName)
+        def bundledStatModJar = new File(bundleModsDir, statModBundleJarName)
+
+        def collectEntries = { File jarFile ->
+            def zip = new java.util.zip.ZipFile(jarFile)
+            try {
+                zip.entries().collect { it.name } as Set
+            } finally {
+                zip.close()
+            }
+        }
+
+        def sameFileContent = { File left, File right ->
+            if (!left.isFile() || !right.isFile() || left.length() != right.length()) {
+                return false
+            }
+            left.bytes == right.bytes
+        }
+
+        def requireJarEntry = { Set entries, String entry, String label ->
+            if (!(entry in entries)) {
+                errors << "${label} is missing required entry: ${entry}"
+            }
+        }
+
+        def forbidJarEntryPrefix = { Set entries, String prefix, String label ->
+            if (entries.any { it.startsWith(prefix) }) {
+                errors << "${label} contains forbidden entry prefix: ${prefix}"
+            }
+        }
+
+        if (!sihriyaJar.isFile()) {
+            errors << "Missing built Sihriya jar: ${project.relativePath(sihriyaJar)}"
+        } else {
+            def entries = collectEntries(sihriyaJar)
+            [
+                'META-INF/mods.toml',
+                'pack.mcmeta',
+                'data/sihriya/schools.json',
+                'data/sihriya/spells.json',
+                'data/sihriya/sihriya_spell_animations/schools.json',
+                'packs/sihriya_epicfight_data_fixes/pack.mcmeta'
+            ].each { entry ->
+                requireJarEntry(entries, entry, 'Sihriya release jar')
+            }
+            forbidJarEntryPrefix(entries, 'assets/sihriya/animmodels/animations/Battle-Arts/', 'Sihriya release jar')
+            forbidJarEntryPrefix(entries, 'assets/sihriya/animmodels/animations/spells/Breath_Loop.json', 'Sihriya release jar')
+            forbidJarEntryPrefix(entries, 'assets/sihriya/animmodels/animations/spells/breath_preparation.json', 'Sihriya release jar')
+
+            def animationEntries = entries.findAll { it.startsWith('assets/sihriya/animmodels/animations/') && it.endsWith('.json') }
+            if (animationEntries.size() != 154) {
+                errors << "Sihriya release jar must package exactly 154 animation payload json files, found ${animationEntries.size()}"
+            }
+        }
+
+        if (!statModJar.isFile()) {
+            errors << "Missing built STAT Mod jar: ${project.relativePath(statModJar)}"
+        } else {
+            def entries = collectEntries(statModJar)
+            [
+                'META-INF/mods.toml',
+                'assets/statmod/models/item/class_arts.json',
+                'assets/statmod/models/item/stat_scroll.json',
+                'assets/statmod/models/item/perk_tome.json',
+                'assets/statmod/models/item/mastery_crystal.json',
+                'data/forge/loot_modifiers/global_loot_modifiers.json'
+            ].each { entry ->
+                requireJarEntry(entries, entry, 'STAT Mod release jar')
+            }
+        }
+
+        if (!bundleModsDir.isDirectory()) {
+            errors << "Missing release smoke bundle mods directory: ${project.relativePath(bundleModsDir)}"
+        } else {
+            def modJars = fileTree(bundleModsDir).matching { include '*.jar' }.files*.name as Set
+            if (!(sihriyaBundleJarName in modJars)) {
+                errors << "Release smoke bundle is missing ${sihriyaBundleJarName}"
+            }
+            if (!(statModBundleJarName in modJars)) {
+                errors << "Release smoke bundle is missing ${statModBundleJarName}"
+            }
+            if (!sameFileContent(bundledSihriyaJar, sihriyaJar)) {
+                errors << "Release smoke bundle must stage the reobfuscated Sihriya jar from ${project.relativePath(sihriyaJar)}"
+            }
+            if (!sameFileContent(bundledStatModJar, statModJar)) {
+                errors << "Release smoke bundle must stage the reobfuscated STAT Mod jar from ${project.relativePath(statModJar)}"
+            }
+        }
+
+        ['README-release-smoke.txt', 'config/fml.toml', 'config/epicfight-client.toml', 'defaultconfigs/forge-server.toml'].each { relativePath ->
+            def target = new File(bundleDir, relativePath)
+            if (!target.isFile()) {
+                errors << "Release smoke bundle is missing ${project.relativePath(target)}"
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            throw new GradleException("Release artifact validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        println "Release artifact validation passed for ${sihriyaBundleJarName} and ${statModBundleJarName}."
+    }
+}
+
+tasks.register('validateStandaloneReleaseServerSmoke') {
+    group = 'verification'
+    description = 'Boots a standalone Forge server install from the staged release-smoke bundle and validates startup markers.'
+    dependsOn 'validateReleaseArtifacts'
+
+    doLast {
+        def smokeScript = file('scripts/validate-standalone-release-server-smoke.ps1')
+        if (!smokeScript.isFile()) {
+            throw new GradleException("Missing standalone release smoke script: ${project.relativePath(smokeScript)}")
+        }
+
+        exec {
+            commandLine 'powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass',
+                '-File', smokeScript.absolutePath,
+                '-ProjectRoot', projectDir.absolutePath,
+                '-BundleDir', file("$buildDir/release-smoke").absolutePath,
+                '-StandaloneDir', file("$buildDir/standalone-server").absolutePath,
+                '-MinecraftVersion', minecraft_version,
+                '-ForgeVersion', forge_version,
+                '-ServerPort', '25567'
+        }
+    }
+}
+
+tasks.register('validateStandaloneReleaseClientSmoke') {
+    group = 'verification'
+    description = 'Boots a standalone Forge client install from the staged release-smoke bundle and validates client startup markers.'
+    dependsOn 'validateReleaseArtifacts'
+
+    doLast {
+        def smokeScript = file('scripts/validate-standalone-release-client-smoke.ps1')
+        if (!smokeScript.isFile()) {
+            throw new GradleException("Missing standalone release client smoke script: ${project.relativePath(smokeScript)}")
+        }
+
+        exec {
+            commandLine 'powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass',
+                '-File', smokeScript.absolutePath,
+                '-ProjectRoot', projectDir.absolutePath,
+                '-BundleDir', file("$buildDir/release-smoke").absolutePath,
+                '-StandaloneDir', file("$buildDir/standalone-client").absolutePath,
+                '-MinecraftVersion', minecraft_version,
+                '-ForgeVersion', forge_version
+        }
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) { artifact jar }
+    }
+    repositories {
+        maven { url "file://${project.projectDir}/mcmodsrepo" }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.register('validateSihriyaContent') {
+    group = 'verification'
+    description = 'Validates Sihriya data, translations, and critical assets.'
+
+    doLast {
+        def json = new JsonSlurper()
+        def errors = []
+        def resources = file('src/main/resources')
+        def expectedSchools = ['fire', 'water', 'wind', 'earth', 'lightning', 'ice', 'lava', 'necromancy', 'lumamancy']
+        def expectedTierCounts = [1: 6, 2: 8, 3: 8, 4: 4, 5: 2]
+        def allowedSpellTypes = ['PROJECTILE', 'ZONE', 'BUFF', 'SUMMON', 'ULTIMATE'] as Set
+        def animationFields = ['chant_animation', 'cast_animation', 'continuous_animation', 'staff_chant', 'staff_cast']
+
+        def requireFile = { File f, String label ->
+            if (!f.isFile()) {
+                errors << "Missing ${label}: ${project.relativePath(f)}"
+            }
+        }
+
+        def schoolsFile = file('src/main/resources/data/sihriya/schools.json')
+        def spellsFile = file('src/main/resources/data/sihriya/spells.json')
+        requireFile(schoolsFile, 'schools data')
+        requireFile(spellsFile, 'spells data')
+        if (!errors.isEmpty()) {
+            throw new GradleException("Sihriya content validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        def schools = json.parse(schoolsFile)
+        def spells = json.parse(spellsFile)
+
+        if (!(schools instanceof List)) errors << 'schools.json must be a JSON array'
+        if (!(spells instanceof List)) errors << 'spells.json must be a JSON array'
+        if (!errors.isEmpty()) {
+            throw new GradleException("Sihriya content validation failed:\n - ${errors.join('\n - ')}")
+        }
+
+        def schoolIds = schools.collect { it.id }
+        if (schoolIds != expectedSchools) {
+            errors << "Expected schools ${expectedSchools}, found ${schoolIds}"
+        }
+        if (schoolIds.toSet().size() != schoolIds.size()) {
+            errors << 'Duplicate school ids in schools.json'
+        }
+        schools.each { school ->
+            if (!(school.id ==~ /[a-z0-9_]+/)) errors << "Invalid school id: ${school.id}"
+            if (!(school.color ==~ /[0-9A-Fa-f]{6}/)) errors << "Invalid color for school ${school.id}: ${school.color}"
+            if (school.unlock != null) {
+                if (!(school.unlock.type in ['level', 'and', 'or'])) errors << "Invalid unlock type for school ${school.id}: ${school.unlock.type}"
+                if (!(school.unlock.schoolIds instanceof List) || !(school.unlock.levels instanceof List)) {
+                    errors << "Unlock for ${school.id} must define schoolIds and levels arrays"
+                } else if (school.unlock.schoolIds.size() != school.unlock.levels.size()) {
+                    errors << "Unlock for ${school.id} has mismatched schoolIds and levels"
+                } else {
+                    school.unlock.schoolIds.each { ref ->
+                        if (!(ref in expectedSchools)) errors << "Unlock for ${school.id} references unknown school ${ref}"
+                    }
+                    school.unlock.levels.each { level ->
+                        if (!(level instanceof Number) || level < 0 || level > 100) errors << "Unlock for ${school.id} has invalid level ${level}"
+                    }
+                }
+            }
+        }
+
+        if (spells.size() != 252) errors << "Expected 252 spells, found ${spells.size()}"
+        def spellIds = spells.collect { it.id }
+        if (spellIds.toSet().size() != spellIds.size()) errors << 'Duplicate spell ids in spells.json'
+
+        spells.each { spell ->
+            if (!(spell.id ==~ /[a-z0-9_]+\.[a-z0-9_]+/)) errors << "Invalid spell id: ${spell.id}"
+            if (!(spell.school in expectedSchools)) errors << "Spell ${spell.id} references unknown school ${spell.school}"
+            if (!spell.id.startsWith("${spell.school}.")) errors << "Spell ${spell.id} does not start with its school '${spell.school}.'"
+            if (!(spell.tier instanceof Number) || spell.tier < 1 || spell.tier > 5) errors << "Spell ${spell.id} has invalid tier ${spell.tier}"
+            if (!(spell.manaCost instanceof Number) || spell.manaCost < 0) errors << "Spell ${spell.id} has invalid manaCost ${spell.manaCost}"
+            if (!(spell.cooldown instanceof Number) || spell.cooldown < 0) errors << "Spell ${spell.id} has invalid cooldown ${spell.cooldown}"
+            if (!(spell.castTime instanceof Number) || spell.castTime < 0) errors << "Spell ${spell.id} has invalid castTime ${spell.castTime}"
+            if (!(spell.type in allowedSpellTypes)) errors << "Spell ${spell.id} has invalid type ${spell.type}"
+            if (!(spell.effects instanceof List) || spell.effects.isEmpty()) {
+                errors << "Spell ${spell.id} must define at least one effect"
+            } else {
+                spell.effects.eachWithIndex { effect, index ->
+                    if (!(effect.type ==~ /[a-z0-9_]+/)) errors << "Spell ${spell.id} effect ${index} has invalid type ${effect.type}"
+                    if (!(effect.baseValue instanceof Number)) errors << "Spell ${spell.id} effect ${effect.type} has invalid baseValue"
+                    if (!(effect.scaling instanceof Number)) errors << "Spell ${spell.id} effect ${effect.type} has invalid scaling"
+                    if (!(effect.duration instanceof Number) || effect.duration < 0) errors << "Spell ${spell.id} effect ${effect.type} has invalid duration ${effect.duration}"
+                }
+            }
+        }
+
+        expectedSchools.each { school ->
+            def schoolSpells = spells.findAll { it.school == school }
+            if (schoolSpells.size() != 28) errors << "Expected 28 spells for ${school}, found ${schoolSpells.size()}"
+            expectedTierCounts.each { tier, count ->
+                def actual = schoolSpells.count { it.tier == tier }
+                if (actual != count) errors << "Expected ${count} tier ${tier} spells for ${school}, found ${actual}"
+            }
+        }
+
+        ['en_us', 'fr_fr'].each { locale ->
+            requireFile(file("src/main/resources/assets/sihriya/lang/${locale}.json"), "${locale} translations")
+        }
+        def en = json.parse(file('src/main/resources/assets/sihriya/lang/en_us.json'))
+        def fr = json.parse(file('src/main/resources/assets/sihriya/lang/fr_fr.json'))
+        def enKeys = en.keySet().collect { it.toString() } as Set
+        def frKeys = fr.keySet().collect { it.toString() } as Set
+        if (enKeys != frKeys) {
+            errors << "Translation keys differ. Missing FR: ${(enKeys - frKeys).sort()}; missing EN: ${(frKeys - enKeys).sort()}"
+        }
+        expectedSchools.each { school ->
+            def key = "sihriya.school.${school}".toString()
+            if (!enKeys.contains(key)) errors << "Missing school translation key ${key}"
+        }
+        ['projectile', 'zone', 'buff', 'summon', 'ultimate'].each { type ->
+            def key = "sihriya.spell_type.${type}".toString()
+            if (!enKeys.contains(key)) errors << "Missing spell type translation key ${key}"
+        }
+
+        expectedSchools.each { school ->
+            (0..3).each { layer ->
+                requireFile(file("src/main/resources/assets/sihriya/textures/magiccircle/${school}_${layer}.png"), "${school} magic circle layer ${layer}")
+            }
+            requireFile(file("src/main/resources/assets/sihriya/textures/particle/glow_spark_${school}.png"), "${school} particle texture")
+        }
+        ['fire', 'water', 'wind', 'earth', 'lightning', 'ice', 'lava'].each { school ->
+            requireFile(file("src/main/resources/assets/sihriya/particles/${school}_glow.json"), "${school} particle definition")
+        }
+        ['necro_glow', 'lumi_glow'].each { particle ->
+            requireFile(file("src/main/resources/assets/sihriya/particles/${particle}.json"), "${particle} particle definition")
+        }
+        requireFile(file('src/main/resources/assets/sihriya/textures/gui/spell_icons.png'), 'spell icon atlas')
+        def spellIconMapFile = file('src/main/resources/assets/sihriya/textures/gui/spell_icon_map.json')
+        requireFile(spellIconMapFile, 'spell icon map')
+
+        if (spellIconMapFile.isFile()) {
+            def iconMap = json.parse(spellIconMapFile)
+            if (!(iconMap instanceof Map)) {
+                errors << 'spell_icon_map.json must be a JSON object keyed by spell id'
+            } else {
+                def iconIds = iconMap.keySet().collect { it.toString() } as Set
+                def spellIdSet = spellIds.collect { it.toString() } as Set
+                def missingIcons = (spellIdSet - iconIds).sort()
+                def extraIcons = (iconIds - spellIdSet).sort()
+                if (!missingIcons.isEmpty()) errors << "Missing spell icon mappings: ${missingIcons}"
+                if (!extraIcons.isEmpty()) errors << "Spell icon map contains unknown spell ids: ${extraIcons}"
+
+                expectedSchools.eachWithIndex { school, expectedRow ->
+                    def schoolIconEntries = iconMap.findAll { id, entry -> id.toString().startsWith("${school}.") }
+                    def cols = schoolIconEntries.collect { id, entry -> entry.col }
+                    if (schoolIconEntries.size() != 28) errors << "Expected 28 icon mappings for ${school}, found ${schoolIconEntries.size()}"
+                    if ((cols as Set).size() != cols.size()) errors << "Duplicate icon atlas columns for ${school}"
+                    schoolIconEntries.each { id, entry ->
+                        if (!(entry instanceof Map)) {
+                            errors << "Icon mapping for ${id} must be a JSON object"
+                            return
+                        }
+                        if (entry.school != school) errors << "Icon mapping ${id} has school ${entry.school}, expected ${school}"
+                        if (!(entry.row instanceof Number) || entry.row != expectedRow) errors << "Icon mapping ${id} has row ${entry.row}, expected ${expectedRow}"
+                        if (!(entry.col instanceof Number) || entry.col < 0 || entry.col > 27) errors << "Icon mapping ${id} has invalid col ${entry.col}"
+                        if (!(entry.x instanceof Number) || entry.x != entry.col * 32) errors << "Icon mapping ${id} has x ${entry.x}, expected ${entry.col * 32}"
+                        if (!(entry.y instanceof Number) || entry.y != entry.row * 32) errors << "Icon mapping ${id} has y ${entry.y}, expected ${entry.row * 32}"
+                        ['u', 'v', 'w', 'h'].each { field ->
+                            if (!(entry[field] instanceof Number) || entry[field] < 0 || entry[field] > 1) {
+                                errors << "Icon mapping ${id} has invalid ${field} ${entry[field]}"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def spellAnimationsFile = file('src/main/resources/data/sihriya/sihriya_spell_animations/schools.json')
+        requireFile(spellAnimationsFile, 'spell animation mappings')
+        def animationRegistryFile = file('src/main/java/tong/sihriya/animation/SihriyaAnimations.java')
+        requireFile(animationRegistryFile, 'Sihriya animation registry')
+
+        if (spellAnimationsFile.isFile() && animationRegistryFile.isFile()) {
+            def spellAnimations = json.parse(spellAnimationsFile)
+            def animationRegistrySource = animationRegistryFile.text
+            def registeredAnimations = [:]
+            (animationRegistrySource =~ /register\(builder,\s*"([^"]+)",\s*"([^"]+)"/).each { match ->
+                registeredAnimations[match[1]] = match[2]
+            }
+
+            if (!(spellAnimations instanceof Map) || !(spellAnimations.spells instanceof Map)) {
+                errors << 'sihriya_spell_animations/schools.json must contain a spells object'
+            } else {
+                def animationMappings = spellAnimations.spells
+                def animationKeys = animationMappings.keySet().collect { it.toString() } as Set
+                if (!animationKeys.contains('default')) errors << 'Spell animation mappings must define a default fallback'
+                expectedSchools.each { school ->
+                    def schoolKey = "__${school}__".toString()
+                    if (!animationKeys.contains(schoolKey)) errors << "Spell animation mappings must define fallback ${schoolKey}"
+                }
+                def invalidAnimationKeys = (animationKeys.findAll {
+                    it != 'default' && !it.startsWith('__') && !(it in spellIds)
+                }).sort()
+                if (!invalidAnimationKeys.isEmpty()) errors << "Spell animation mappings contain unknown spell ids: ${invalidAnimationKeys}"
+
+                animationMappings.each { key, mapping ->
+                    if (!(mapping instanceof Map)) {
+                        errors << "Animation mapping for ${key} must be a JSON object"
+                        return
+                    }
+                    def populatedFields = animationFields.findAll { field -> mapping[field] != null && mapping[field].toString() != '' }
+                    if (populatedFields.isEmpty()) {
+                        errors << "Animation mapping for ${key} must define at least one animation field"
+                    }
+                    if (key == 'default' || key.toString().startsWith('__')) {
+                        ['chant_animation', 'cast_animation', 'continuous_animation'].each { field ->
+                            if (mapping[field] == null || mapping[field].toString() == '') {
+                                errors << "Animation fallback ${key} must define ${field}"
+                            }
+                        }
+                    }
+                    populatedFields.each { field ->
+                        def animationName = mapping[field].toString()
+                        def animationPath = registeredAnimations[animationName]
+                        if (animationPath == null) {
+                            errors << "Animation mapping ${key}.${field} references unregistered animation ${animationName}"
+                        } else {
+                            requireFile(file("src/main/resources/assets/sihriya/animmodels/animations/${animationPath}.json"), "animation asset ${animationName}")
+                        }
+                    }
+                }
+            }
+        }
+
+        def guide = file('GUIDE-DEV.md').text
+        if (!guide.contains('252')) {
+            errors << 'GUIDE-DEV.md must document the current 252-spell content set'
+        }
+        if (guide.contains('126 sorts')) {
+            errors << 'GUIDE-DEV.md still documents the obsolete 126-spell content set'
+        }
+
+        if (!errors.isEmpty()) {
+            throw new GradleException("Sihriya content validation failed:\n - ${errors.join('\n - ')}")
+        }
+        println "Sihriya content validation passed: ${schools.size()} schools, ${spells.size()} spells."
+    }
+}
+
+tasks.register('validateSihriyaPackaging') {
+    group = 'verification'
+    description = 'Validates Sihriya mod metadata, packaging docs, and dependency declarations.'
+
+    doLast {
+        def errors = []
+        def requireFile = { File f, String label ->
+            if (!f.isFile()) {
+                errors << "Missing ${label}: ${project.relativePath(f)}"
+            } else if (f.text.trim().isEmpty()) {
+                errors << "${label} is empty: ${project.relativePath(f)}"
+            }
+        }
+        def requireText = { String text, String expected, String label ->
+            if (!text.contains(expected)) errors << "${label} must contain '${expected}'"
+        }
+        def requireRegex = { String text, String pattern, String label ->
+            if (!(text =~ pattern)) errors << label
+        }
+        def forbiddenStatModRuntimeArtifacts = [
+            'parcool',
+            'epicparcool',
+            'aaa_particles',
+            'invincible',
+            'epicfight-nightfall',
+            'epicfight-extra',
+            'epic_fight_avalon',
+            'epic-fight-avalon',
+            'WeaponsOfMiracles',
+            'p1nero_bow'
+        ]
+
+        requireFile(file('README.md'), 'README')
+        requireFile(file('CHANGELOG.md'), 'changelog')
+        requireFile(file('LICENSE'), 'license file')
+
+        if (!(mod_id ==~ /[a-z][a-z0-9_]{1,63}/)) errors << "mod_id must be a valid namespaced id, found ${mod_id}"
+        if (!(mod_version ==~ /\d+\.\d+\.\d+([-.+][A-Za-z0-9_.-]+)?/)) errors << "mod_version must be semver-like, found ${mod_version}"
+        if (mod_license.toString().trim().isEmpty()) errors << 'mod_license must not be empty'
+
+        def mainClassFile = file('src/main/java/tong/sihriya/Sihriya.java')
+        requireFile(mainClassFile, 'mod main class')
+        if (mainClassFile.isFile()) {
+            def mainClass = mainClassFile.text
+            requireText(mainClass, "@Mod(Sihriya.MODID)", 'Sihriya main class')
+            requireText(mainClass, "public static final String MODID = \"${mod_id}\";", 'Sihriya MODID constant')
+        }
+        def commandFile = file('src/main/java/tong/sihriya/command/SihriyaCommand.java')
+        requireFile(commandFile, 'Sihriya command registration')
+        if (commandFile.isFile()) {
+            def commandSource = commandFile.text
+            requireText(commandSource, '.requires(SihriyaCommand::canUseCommand)', 'Sihriya root command')
+            requireText(commandSource, 'private static boolean canUseCommand(CommandSourceStack source)', 'Sihriya command permission helper')
+            requireText(commandSource, 'source.hasPermission(2)', 'Sihriya command permission helper')
+        }
+        def spellCastHandlerFile = file('src/main/java/tong/sihriya/core/SpellCastHandler.java')
+        requireFile(spellCastHandlerFile, 'Sihriya spell cast handler')
+        if (spellCastHandlerFile.isFile()) {
+            def spellCastSource = spellCastHandlerFile.text
+            requireText(spellCastSource, 'ProjectileUtil.getEntityHitResult', 'Sihriya direct spell targeting')
+            if (spellCastSource.contains('player.pick(20.0')) {
+                errors << 'Sihriya direct spell targeting must not rely on player.pick for entity hits'
+            }
+            ['case "range_bonus" -> {}', 'case "orbit_damage" -> {}'].each { emptyCase ->
+                if (spellCastSource.contains(emptyCase)) {
+                    errors << "Sihriya spell effect handler must not leave no-op effect branch: ${emptyCase}"
+                }
+            }
+            ['applyRangeBonus', 'applyOrbitDamageAura'].each { required ->
+                requireText(spellCastSource, required, 'Sihriya spell effect handler')
+            }
+            [
+                'TemporaryEffectRules.clampSummonCount(count)',
+                'TemporaryEffectRules.clampSummonDuration(duration)',
+                'TemporaryEffectRules.summonAngle(i, summonCount)',
+                'TemporaryEffectRules.TEMPORARY_SUMMON_TAG',
+                'TemporaryEffectRules.SUMMON_CASTER_TAG_PREFIX',
+                'TemporaryEffectRules.clampWallDuration(duration)',
+                'NetworkInputRules.isValidSchoolId(schoolId, id -> SchoolRegistry.get(id) != null)',
+                'SpellCooldownTracker COOLDOWNS = new SpellCooldownTracker()',
+                'COOLDOWNS.remainingCooldownTicks(player.getUUID(), spellId, spell.cooldown, now)',
+                'COOLDOWNS.recordCast(player.getUUID(), spellId, now)',
+                'PlayerEvent.PlayerLoggedOutEvent',
+                'COOLDOWNS.clearPlayer(event.getEntity().getUUID())'
+            ].each { required ->
+                requireText(spellCastSource, required, 'Sihriya temporary spell effect handler')
+            }
+            ['Math.min(count, 30)', 'duration = 600', 'duration = 1200', 'Map<UUID, Map<String, Long>> cooldowns = new HashMap<>()'].each { forbidden ->
+                if (spellCastSource.contains(forbidden)) {
+                    errors << "Sihriya temporary spell effect handler must not use raw temporary-effect guard: ${forbidden}"
+                }
+            }
+        }
+        def cooldownTrackerFile = file('src/main/java/tong/sihriya/core/SpellCooldownTracker.java')
+        requireFile(cooldownTrackerFile, 'Sihriya spell cooldown tracker')
+        if (cooldownTrackerFile.isFile()) {
+            def cooldownTrackerSource = cooldownTrackerFile.text
+            [
+                'remainingCooldownTicks',
+                'recordCast',
+                'clearPlayer',
+                'trackedPlayerCount',
+                'cooldownsByPlayer'
+            ].each { required ->
+                requireText(cooldownTrackerSource, required, 'Sihriya spell cooldown tracker')
+            }
+        }
+        def temporaryEffectRulesFile = file('src/main/java/tong/sihriya/core/TemporaryEffectRules.java')
+        requireFile(temporaryEffectRulesFile, 'Sihriya temporary effect rules')
+        if (temporaryEffectRulesFile.isFile()) {
+            def temporaryRulesSource = temporaryEffectRulesFile.text
+            [
+                'MAX_SUMMON_COUNT',
+                'MAX_SUMMON_DURATION_TICKS',
+                'MAX_TEMPORARY_BLOCK_TICKS',
+                'DEFAULT_SUMMON_DURATION_TICKS',
+                'DEFAULT_WALL_DURATION_TICKS',
+                'clampSummonCount',
+                'clampSummonDuration',
+                'clampWallDuration'
+            ].each { required ->
+                requireText(temporaryRulesSource, required, 'Sihriya temporary effect rules')
+            }
+        }
+        def playerLoginHandlerFile = file('src/main/java/tong/sihriya/core/PlayerLoginHandler.java')
+        requireFile(playerLoginHandlerFile, 'Sihriya player sync handler')
+        if (playerLoginHandlerFile.isFile()) {
+            def playerSyncSource = playerLoginHandlerFile.text
+            [
+                'public static void syncPlayer(ServerPlayer player)',
+                'PlayerEvent.PlayerLoggedInEvent',
+                'PlayerEvent.PlayerRespawnEvent',
+                'PlayerEvent.PlayerChangedDimensionEvent',
+                'syncPlayer(serverPlayer)',
+                'new ManaSyncPacket',
+                'new SchoolSyncPacket'
+            ].each { required ->
+                requireText(playerSyncSource, required, 'Sihriya player sync handler')
+            }
+        }
+        def schoolProgressionFile = file('src/main/java/tong/sihriya/core/SchoolProgression.java')
+        requireFile(schoolProgressionFile, 'Sihriya school progression persistence')
+        if (schoolProgressionFile.isFile()) {
+            def schoolProgressionSource = schoolProgressionFile.text
+            [
+                'ProgressionStateRules.sanitize',
+                'new ProgressionStateRules.StoredState',
+                'SchoolRegistry.get(id) != null',
+                'SpellRegistry.get(spellId)',
+                'public Set<String> getLearnedSpells() { return Set.copyOf(learnedSpells); }',
+                'public Set<String> getUnlockedSchools() { return Set.copyOf(unlockedSchools); }'
+            ].each { required ->
+                requireText(schoolProgressionSource, required, 'Sihriya school progression persistence')
+            }
+        }
+        def schoolRegistryFile = file('src/main/java/tong/sihriya/data/SchoolRegistry.java')
+        requireFile(schoolRegistryFile, 'Sihriya school registry')
+        if (schoolRegistryFile.isFile()) {
+            def schoolRegistrySource = schoolRegistryFile.text
+            [
+                'List.copyOf(SCHOOLS.values())',
+                'this.schoolIds = schoolIds.clone()',
+                'this.levels = levels.clone()',
+                'public String[] schoolIds()',
+                'public int[] levels()'
+            ].each { required ->
+                requireText(schoolRegistrySource, required, 'Sihriya school registry')
+            }
+        }
+        def spellRegistryFile = file('src/main/java/tong/sihriya/data/SpellRegistry.java')
+        requireFile(spellRegistryFile, 'Sihriya spell registry')
+        if (spellRegistryFile.isFile()) {
+            def spellRegistrySource = spellRegistryFile.text
+            [
+                'List.copyOf(SPELLS.values())',
+                'this.type = type; this.effects = List.copyOf(effects);'
+            ].each { required ->
+                requireText(spellRegistrySource, required, 'Sihriya spell registry')
+            }
+        }
+        def progressionStateRulesFile = file('src/main/java/tong/sihriya/core/ProgressionStateRules.java')
+        requireFile(progressionStateRulesFile, 'Sihriya progression state rules')
+        if (progressionStateRulesFile.isFile()) {
+            def progressionRulesSource = progressionStateRulesFile.text
+            [
+                'sanitize',
+                'clampLevel',
+                'clampXp',
+                'StoredState',
+                'level >= 100'
+            ].each { required ->
+                requireText(progressionRulesSource, required, 'Sihriya progression state rules')
+            }
+        }
+        def modEffectsFile = file('src/main/java/tong/sihriya/core/ModEffects.java')
+        requireFile(modEffectsFile, 'Sihriya custom effects')
+        if (modEffectsFile.isFile()) {
+            def modEffectsSource = modEffectsFile.text
+            requireText(modEffectsSource, 'SpellEffectRules.shouldRevokeMagicFlight(player.isCreative(), player.isSpectator())', 'Sihriya magic flight cleanup')
+            if (modEffectsSource.contains('player.getAbilities().mayfly = false;\n                player.getAbilities().flying = false;')) {
+                errors << 'Sihriya magic flight cleanup must not revoke flight without checking creative/spectator'
+            }
+        }
+        def manaManagerFile = file('src/main/java/tong/sihriya/core/ManaManager.java')
+        requireFile(manaManagerFile, 'Sihriya mana manager')
+        if (manaManagerFile.isFile()) {
+            def manaManagerSource = manaManagerFile.text
+            requireText(manaManagerSource, 'ManaInteropRules.remainingManaLockMs(stats.getManaBlockRemainingTicks())', 'Sihriya mana manager')
+            if (manaManagerSource.contains('getManaBlockRemainingMs()')) {
+                errors << 'Sihriya mana manager must not call removed STAT_MOD API getManaBlockRemainingMs()'
+            }
+        }
+        def manaInteropRulesFile = file('src/main/java/tong/sihriya/core/ManaInteropRules.java')
+        requireFile(manaInteropRulesFile, 'Sihriya mana interop rules')
+        if (manaInteropRulesFile.isFile()) {
+            def manaInteropSource = manaInteropRulesFile.text
+            ['remainingManaLockMs', 'remainingTicks', '* 50L'].each { required ->
+                requireText(manaInteropSource, required, 'Sihriya mana interop rules')
+            }
+        }
+        def clientSchoolDataFile = file('src/main/java/tong/sihriya/client/ClientSchoolData.java')
+        requireFile(clientSchoolDataFile, 'Sihriya client school cache')
+        if (clientSchoolDataFile.isFile()) {
+            def clientSchoolDataSource = clientSchoolDataFile.text
+            [
+                'private static String activeSchool = ""',
+                'private static Map<String, Integer> schoolLevels = new HashMap<>()',
+                'private static Set<String> unlockedSchools = new HashSet<>()',
+                'private static Set<String> learnedSpells = new HashSet<>()',
+                'public static String getActiveSchool()',
+                'public static boolean isSpellLearned(String spellId)',
+                'schoolLevels = new HashMap<>(levels);',
+                'unlockedSchools = new HashSet<>(unlocked);',
+                'learnedSpells = new HashSet<>(spells);'
+            ].each { required ->
+                requireText(clientSchoolDataSource, required, 'Sihriya client school cache')
+            }
+            ['public static String activeSchool', 'public static Set<String> learnedSpells'].each { forbidden ->
+                if (clientSchoolDataSource.contains(forbidden)) {
+                    errors << "Sihriya client school cache must not expose mutable sync state: ${forbidden}"
+                }
+            }
+        }
+        ['src/main/java/tong/sihriya/client/gui/ActiveSpellHud.java',
+         'src/main/java/tong/sihriya/client/gui/GrimoireScreen.java',
+         'src/main/java/tong/sihriya/client/gui/ManaOverlay.java'].each { path ->
+            def clientUiFile = file(path)
+            if (clientUiFile.isFile()) {
+                def clientUiSource = clientUiFile.text
+                ['ClientSchoolData.activeSchool', 'ClientSchoolData.learnedSpells'].each { forbidden ->
+                    if (clientUiSource.contains(forbidden)) {
+                        errors << "${clientUiFile.name} must not read mutable ClientSchoolData fields directly: ${forbidden}"
+                    }
+                }
+            }
+        }
+        def epicFightAliasRegistryFile = file('src/main/java/tong/sihriya/epicfight/EpicFightAliasSkillRegistry.java')
+        requireFile(epicFightAliasRegistryFile, 'Epic Fight alias skill registry')
+        if (epicFightAliasRegistryFile.isFile()) {
+            def epicFightAliasRegistrySource = epicFightAliasRegistryFile.text
+            [
+                'createRegistryWorker("efn")',
+                'worker.build("example"',
+                'ResourceLocation.fromNamespaceAndPath("efn", "example")',
+                'SkillCategories.WEAPON_INNATE',
+                '@SubscribeEvent(priority = EventPriority.HIGHEST)'
+            ].each { required ->
+                requireText(epicFightAliasRegistrySource, required, 'Epic Fight alias skill registry')
+            }
+        }
+        def efnExampleAliasSkillFile = file('src/main/java/tong/sihriya/epicfight/EfnExampleAliasSkill.java')
+        requireFile(efnExampleAliasSkillFile, 'Epic Fight alias skill implementation')
+        if (efnExampleAliasSkillFile.isFile()) {
+            def efnExampleAliasSkillSource = efnExampleAliasSkillFile.text
+            [
+                'extends Skill',
+                'super(builder)'
+            ].each { required ->
+                requireText(efnExampleAliasSkillSource, required, 'Epic Fight alias skill implementation')
+            }
+        }
+        def epicFightFixPackFile = file('src/main/resources/packs/sihriya_epicfight_data_fixes/pack.mcmeta')
+        requireFile(epicFightFixPackFile, 'Epic Fight built-in data fix pack metadata')
+        if (epicFightFixPackFile.isFile()) {
+            def epicFightFixPackSource = epicFightFixPackFile.text
+            [
+                '"pack_format": 15',
+                'Sihriya Epic Fight data fixes',
+                '"namespace": "efn"',
+                'capabilities/weapons/scythe\\\\.json',
+                '"namespace": "epicfight"',
+                'capabilities/weapons/_diamond_greatsword\\\\.json'
+            ].each { required ->
+                requireText(epicFightFixPackSource, required, 'Epic Fight built-in data fix pack metadata')
+            }
+        }
+        def customComboDemoOverrideFile = file('src/main/resources/packs/sihriya_epicfight_data_fixes/data/invincible/capabilities/weapons/types/custom_combo_demo.json')
+        requireFile(customComboDemoOverrideFile, 'Invincible custom_combo_demo built-in override')
+        if (customComboDemoOverrideFile.isFile()) {
+            def customComboDemoOverrideSource = customComboDemoOverrideFile.text
+            requireText(customComboDemoOverrideSource, '"hit_particle": "epicfight:hit_blunt"', 'Invincible custom_combo_demo built-in override')
+            requireText(customComboDemoOverrideSource, '"hit_sound": "epicfight:entity.hit.blunt"', 'Invincible custom_combo_demo built-in override')
+            if (customComboDemoOverrideSource.contains('"hit_particle": "blunt"')) {
+                errors << 'Invincible custom_combo_demo built-in override must not use unqualified particle id blunt'
+            }
+        }
+        def epicFightIntegrationFile = file('src/main/java/tong/sihriya/integration/EpicFightIntegration.java')
+        requireFile(epicFightIntegrationFile, 'Epic Fight integration bootstrap')
+        if (epicFightIntegrationFile.isFile()) {
+            def epicFightIntegrationSource = epicFightIntegrationFile.text
+            [
+                'bootstrap(IEventBus modBus)',
+                'AddPackFindersEvent',
+                'PackType.SERVER_DATA',
+                'Pack.Position.TOP',
+                'sihriya_epicfight_data_fixes',
+                'Pack.readMetaAndCreate',
+                'Component.literal("Sihriya Epic Fight data fixes")'
+            ].each { required ->
+                requireText(epicFightIntegrationSource, required, 'Epic Fight integration bootstrap')
+            }
+        }
+        def buildFile = file('build.gradle')
+        requireText(buildFile.text, "workingDirectory project.file(findProperty('forgeRunDir') ?: 'run')", 'Sihriya build run configuration')
+        requireText(buildFile.text, "tasks.register('prepareVerificationRun')", 'Sihriya verification run preparation')
+        requireText(buildFile.text, "tasks.register('prepareClientSmokeRun')", 'Sihriya client smoke run preparation')
+        requireText(buildFile.text, "tasks.register('prepareReleaseSmokeBundle')", 'Sihriya release smoke bundle preparation')
+        requireText(buildFile.text, "tasks.register('validateVerificationServerLog')", 'Sihriya verification run preparation')
+        requireText(buildFile.text, "tasks.register('validateClientSmokeLog')", 'Sihriya client smoke validation')
+        requireText(buildFile.text, "tasks.register('validateReleaseArtifacts')", 'Sihriya release artifact validation')
+        requireText(buildFile.text, "tasks.register('validateStandaloneReleaseServerSmoke')", 'Sihriya standalone release smoke validation')
+        requireText(buildFile.text, "tasks.register('validateStandaloneReleaseClientSmoke')", 'Sihriya standalone release client smoke validation')
+        requireText(buildFile.text, "verificationForgeServerPort = '25566'", 'Sihriya verification run preparation')
+        requireText(buildFile.text, "gradle/run-defaults/defaultconfigs", 'Sihriya verification run preparation')
+        requireText(buildFile.text, "gradle/run-defaults/config", 'Sihriya client smoke run preparation')
+        requireText(buildFile.text, 'allowedWarningPatterns = [', 'Sihriya verification run preparation')
+        requireText(buildFile.text, "Verification log contains unexpected warning", 'Sihriya verification run preparation')
+
+        def standaloneReleaseSmokeScript = file('scripts/validate-standalone-release-server-smoke.ps1')
+        requireFile(standaloneReleaseSmokeScript, 'Sihriya standalone release smoke script')
+        if (standaloneReleaseSmokeScript.isFile()) {
+            [
+                'Start-Process',
+                'forge-',
+                '--installServer',
+                'ProjectRoot',
+                'epic-fight-20.14.17-mc1.20.1-forge.jar',
+                'epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge.jar',
+                'STAT Mod ready on server',
+                'Done ('
+            ].each { required ->
+                requireText(standaloneReleaseSmokeScript.text, required, 'Sihriya standalone release smoke script')
+            }
+        }
+        def standaloneReleaseClientSmokeScript = file('scripts/validate-standalone-release-client-smoke.ps1')
+        requireFile(standaloneReleaseClientSmokeScript, 'Sihriya standalone release client smoke script')
+        if (standaloneReleaseClientSmokeScript.isFile()) {
+            [
+                'Start-Process',
+                '--installClient',
+                'launcher_profiles.json',
+                'ProjectRoot',
+                'OpenAL initialized',
+                'STAT Mod loaded!',
+                'Sihriya chargé avec Epic Fight + STAT Mod !',
+                'assets-link'
+            ].each { required ->
+                requireText(standaloneReleaseClientSmokeScript.text, required, 'Sihriya standalone release client smoke script')
+            }
+        }
+
+        def defaultForgeServerConfig = file('gradle/run-defaults/defaultconfigs/forge-server.toml')
+        requireFile(defaultForgeServerConfig, 'Sihriya Forge server default config')
+        if (defaultForgeServerConfig.isFile()) {
+            def defaultForgeServerConfigSource = defaultForgeServerConfig.text
+            [
+                '[server]',
+                'removeErroringBlockEntities = false',
+                'permissionHandler = "forge:default_handler"',
+                'advertiseDedicatedServerToLan = true'
+            ].each { required ->
+                requireText(defaultForgeServerConfigSource, required, 'Sihriya Forge server default config')
+            }
+        }
+
+        def defaultEpicFightServerConfig = file('gradle/run-defaults/defaultconfigs/epicfight-server.toml')
+        requireFile(defaultEpicFightServerConfig, 'Sihriya Epic Fight server default config')
+        if (defaultEpicFightServerConfig.isFile()) {
+            requireText(defaultEpicFightServerConfig.text, 'allow_custom_animations = false', 'Sihriya Epic Fight server default config')
+        }
+
+        ['fml.toml', 'forge-client.toml', 'sihriya-client.toml', 'epicfight-common.toml', 'epicfight-client.toml', 'statmod-common.toml'].each { name ->
+            requireFile(file("gradle/run-defaults/config/${name}"), "Sihriya client smoke default config ${name}")
+        }
+
+        def verificationWarningBaseline = file('docs/verification-warning-baseline.md')
+        requireFile(verificationWarningBaseline, 'Sihriya verification warning baseline')
+        if (verificationWarningBaseline.isFile()) {
+            [
+                'Verification Warning Baseline',
+                'javafmllanguage',
+                'lowcodelanguage',
+                'mclanguage',
+                'fmlcore',
+                'MixinWitherBoss',
+                'defineId called for',
+                'unexpected schema',
+                'run-clean/logs/latest.log'
+            ].each { required ->
+                requireText(verificationWarningBaseline.text, required, 'Sihriya verification warning baseline')
+            }
+        }
+        def clientSmokeWarningBaseline = file('docs/client-smoke-warning-baseline.md')
+        requireFile(clientSmokeWarningBaseline, 'Sihriya client smoke warning baseline')
+        if (clientSmokeWarningBaseline.isFile()) {
+            [
+                'Client Smoke Warning Baseline',
+                'validateClientSmokeLog',
+                'run-client-clean/logs/latest.log',
+                'Invalid path in pack',
+                'Datapack animation reading failed',
+                'Unable to load model'
+            ].each { required ->
+                requireText(clientSmokeWarningBaseline.text, required, 'Sihriya client smoke warning baseline')
+            }
+        }
+        def releaseChecklist = file('docs/release-checklist.md')
+        requireFile(releaseChecklist, 'Sihriya release checklist')
+        if (releaseChecklist.isFile()) {
+            [
+                'Release Checklist',
+                'validateClientAnimationPackaging',
+                'validateClientSmokeLog',
+                'validateVerificationServerLog',
+                'validateReleaseArtifacts',
+                'validateStandaloneReleaseServerSmoke',
+                'validateStandaloneReleaseClientSmoke',
+                'runClient -PforgeRunDir=run-client-clean --no-daemon',
+                'runServer -PforgeRunDir=run-clean --no-daemon',
+                'STAT Mod sibling revision',
+                'build/libs'
+            ].each { required ->
+                requireText(releaseChecklist.text, required, 'Sihriya release checklist')
+            }
+        }
+        def proReadinessAudit = file('docs/pro-readiness-audit.md')
+        requireFile(proReadinessAudit, 'Sihriya pro readiness audit')
+        if (proReadinessAudit.isFile()) {
+            [
+                'Pro Readiness Audit',
+                'Proven now',
+                'Tolerated upstream debt',
+                'Not yet fully proven',
+                'validateClientAnimationPackaging',
+                'validateClientSmokeLog',
+                'validateVerificationServerLog',
+                'validateReleaseArtifacts',
+                'validateStandaloneReleaseServerSmoke',
+                'validateStandaloneReleaseClientSmoke',
+                'runClient -PforgeRunDir=run-client-clean --no-daemon',
+                'runServer -PforgeRunDir=run-clean --no-daemon'
+            ].each { required ->
+                requireText(proReadinessAudit.text, required, 'Sihriya pro readiness audit')
+            }
+        }
+        def projectileFile = file('src/main/java/tong/sihriya/projectile/SpellProjectile.java')
+        requireFile(projectileFile, 'Sihriya spell projectile entity')
+        if (projectileFile.isFile()) {
+            def projectileSource = projectileFile.text
+            [
+                'SynchedEntityData.defineId',
+                'EntityDataSerializers.STRING',
+                'EntityDataSerializers.FLOAT',
+                'addAdditionalSaveData',
+                'readAdditionalSaveData',
+                'MAX_LIFETIME_TICKS',
+                'public void tick()',
+                'appliesIgnitionOnImpact'
+            ].each { required ->
+                requireText(projectileSource, required, 'Sihriya spell projectile entity')
+            }
+            if (projectileSource.contains('target.hurt(owner.damageSources().indirectMagic(this, owner), finalDamage);\n                        target.setRemainingFireTicks(100);')) {
+                errors << 'Sihriya spell projectile must not ignite every target unconditionally'
+            }
+        }
+        def entityRegistryFile = file('src/main/java/tong/sihriya/registry/SihriyaEntities.java')
+        requireFile(entityRegistryFile, 'Sihriya entity registry')
+        if (entityRegistryFile.isFile()) {
+            def entityRegistry = entityRegistryFile.text
+            if (entityRegistry.contains('tong.sihriya.client.')) {
+                errors << 'Sihriya entity registry must not import classes from the client package'
+            }
+            requireText(entityRegistry, 'import tong.sihriya.magiccircle.MagicCircleEntity;', 'Sihriya entity registry')
+        }
+        requireFile(file('src/main/java/tong/sihriya/magiccircle/MagicCircleEntity.java'), 'common magic circle entity')
+        def javaSourceDir = file('src/main/java/tong/sihriya')
+        if (!javaSourceDir.isDirectory()) {
+            errors << "Missing Sihriya Java source package: ${project.relativePath(javaSourceDir)}"
+        } else {
+            def unfinishedCodeMarkers = ['TODO', 'FIXME', 'XXX', 'HACK', 'stub', 'non implémenté', 'non implemente']
+            fileTree(javaSourceDir).matching { include '**/*.java' }.each { javaSource ->
+                def sourcePath = project.relativePath(javaSource).replace('\\', '/')
+                def sourceText = javaSource.text
+                unfinishedCodeMarkers.each { marker ->
+                    if (sourceText.toLowerCase().contains(marker.toLowerCase())) {
+                        errors << "${sourcePath} must not contain unfinished-code marker: ${marker}"
+                    }
+                }
+                if (!sourcePath.contains('/client/')) {
+                    ['tong.sihriya.client.', 'net.minecraft.client', 'net.minecraftforge.api.distmarker.OnlyIn', 'Dist.CLIENT'].each { forbidden ->
+                        if (sourceText.contains(forbidden)) {
+                            errors << "${sourcePath} is common code and must not reference client-only code directly: ${forbidden}"
+                        }
+                    }
+                }
+            }
+        }
+        def networkSourceDir = file('src/main/java/tong/sihriya/network')
+        if (!networkSourceDir.isDirectory()) {
+            errors << "Missing Sihriya network package: ${project.relativePath(networkSourceDir)}"
+        } else {
+            fileTree(networkSourceDir).matching { include '**/*.java' }.each { networkSource ->
+                def sourceText = networkSource.text
+                def sourceName = project.relativePath(networkSource)
+                ['tong.sihriya.client.', 'net.minecraft.client', 'net.minecraftforge.api.distmarker.OnlyIn'].each { forbidden ->
+                    if (sourceText.contains(forbidden)) {
+                        errors << "${sourceName} must not reference client-only code directly: ${forbidden}"
+                    }
+                }
+                if ((sourceText =~ /readUtf\(\s*\)/).find()) {
+                    errors << "${sourceName} must bound every FriendlyByteBuf.readUtf call with NetworkInputRules"
+                }
+                sourceText.readLines().findAll { it.contains('writeUtf(') }.each { line ->
+                    if (!line.contains('NetworkInputRules.')) {
+                        errors << "${sourceName} must bound every FriendlyByteBuf.writeUtf call with NetworkInputRules"
+                    }
+                }
+            }
+        }
+        def networkInputRulesFile = file('src/main/java/tong/sihriya/network/NetworkInputRules.java')
+        requireFile(networkInputRulesFile, 'Sihriya network input rules')
+        if (networkInputRulesFile.isFile()) {
+            def networkRulesSource = networkInputRulesFile.text
+            [
+                'MAX_SCHOOL_ID_LENGTH',
+                'MAX_SPELL_ID_LENGTH',
+                'MAX_REASON_KEY_LENGTH',
+                'MAX_SYNC_ENTRIES',
+                'isValidSchoolId',
+                'isValidSchoolIdSyntax',
+                'isValidSpellId',
+                'requireSchoolId',
+                'requireOptionalSchoolId',
+                'requireSpellId',
+                'requireSyncEntryCount'
+            ].each { required ->
+                requireText(networkRulesSource, required, 'Sihriya network input rules')
+            }
+        }
+        def schoolSyncPacketFile = file('src/main/java/tong/sihriya/network/SchoolSyncPacket.java')
+        requireFile(schoolSyncPacketFile, 'Sihriya school sync packet')
+        if (schoolSyncPacketFile.isFile()) {
+            def schoolSyncPacketSource = schoolSyncPacketFile.text
+            [
+                'NetworkInputRules.requireOptionalSchoolId',
+                'NetworkInputRules.requireSchoolId',
+                'NetworkInputRules.requireSpellId',
+                'NetworkInputRules.requireSyncEntryCount(packet.schoolLevels.size())',
+                'NetworkInputRules.requireSyncEntryCount(packet.unlockedSchools.size())',
+                'NetworkInputRules.requireSyncEntryCount(packet.learnedSpells.size())'
+            ].each { required ->
+                requireText(schoolSyncPacketSource, required, 'Sihriya school sync packet')
+            }
+        }
+        def schoolCastPacketFile = file('src/main/java/tong/sihriya/network/SchoolCastPacket.java')
+        requireFile(schoolCastPacketFile, 'Sihriya school cast packet')
+        if (schoolCastPacketFile.isFile()) {
+            def schoolCastPacketSource = schoolCastPacketFile.text
+            requireText(schoolCastPacketSource, 'NetworkInputRules.isValidSchoolId(packet.schoolId, id -> SchoolRegistry.get(id) != null)', 'Sihriya school cast packet')
+            requireText(schoolCastPacketSource, 'buf.readUtf(NetworkInputRules.MAX_SCHOOL_ID_LENGTH)', 'Sihriya school cast packet')
+            requireText(schoolCastPacketSource, 'buf.writeUtf(packet.schoolId, NetworkInputRules.MAX_SCHOOL_ID_LENGTH)', 'Sihriya school cast packet')
+        }
+        requireText(file('build.gradle').text, "tasks.register('validateClientAnimationPackaging')", 'Sihriya build script')
+
+        def modsTomlFile = file('src/main/resources/META-INF/mods.toml')
+        requireFile(modsTomlFile, 'Forge mods.toml')
+        if (modsTomlFile.isFile()) {
+            def modsToml = modsTomlFile.text
+            requireText(modsToml, 'modLoader="javafml"', 'mods.toml')
+            requireText(modsToml, 'loaderVersion="${loader_version_range}"', 'mods.toml')
+            requireText(modsToml, 'license="${mod_license}"', 'mods.toml')
+            requireText(modsToml, 'modId="${mod_id}"', 'mods.toml')
+            requireText(modsToml, 'version="${mod_version}"', 'mods.toml')
+            requireText(modsToml, 'displayName="${mod_name}"', 'mods.toml')
+            requireText(modsToml, 'authors="${mod_authors}"', 'mods.toml')
+            ['forge', 'minecraft', 'epicfight', 'statmod'].each { dependency ->
+                requireRegex(
+                    modsToml,
+                    /(?s)\[\[dependencies\.\$\{mod_id\}\]\].*?modId="${dependency}".*?mandatory=true.*?side="BOTH"/,
+                    "mods.toml must declare mandatory BOTH dependency ${dependency}"
+                )
+            }
+        }
+
+        def packFile = file('src/main/resources/pack.mcmeta')
+        requireFile(packFile, 'pack.mcmeta')
+        if (packFile.isFile()) {
+            def pack = new JsonSlurper().parse(packFile)
+            if (!(pack.pack instanceof Map)) errors << 'pack.mcmeta must contain a pack object'
+            if (pack.pack?.pack_format != 15) errors << "pack.mcmeta pack_format must be 15 for Minecraft 1.20.1, found ${pack.pack?.pack_format}"
+            if (!pack.pack?.description?.toString()?.contains('Sihriya')) errors << 'pack.mcmeta description must identify Sihriya'
+        }
+
+        if (file('LICENSE').isFile()) {
+            requireText(file('LICENSE').text, mod_license.toString(), 'LICENSE')
+        }
+        if (file('README.md').isFile()) {
+            def readme = file('README.md').text
+            ['Sihriya', 'Minecraft 1.20.1', 'Forge', 'Epic Fight', 'STAT Mod', '252', 'validateClientAnimationPackaging', 'validateClientSmokeLog', 'validateVerificationServerLog', 'validateReleaseArtifacts', 'validateStandaloneReleaseServerSmoke', 'validateStandaloneReleaseClientSmoke', 'prepareReleaseSmokeBundle', 'runClient -PforgeRunDir=run-client-clean --no-daemon', 'runServer -PforgeRunDir=run-clean --no-daemon', 'docs/client-smoke-warning-baseline.md', 'docs/pro-readiness-audit.md'].each { required ->
+                requireText(readme, required, 'README')
+            }
+        }
+        if (file('CHANGELOG.md').isFile()) {
+            requireText(file('CHANGELOG.md').text, mod_version.toString(), 'CHANGELOG')
+        }
+
+        if (!errors.isEmpty()) {
+            throw new GradleException("Sihriya packaging validation failed:\n - ${errors.join('\n - ')}")
+        }
+        println "Sihriya packaging validation passed: ${mod_id} ${mod_version}."
+    }
+}
+
+tasks.named('check') {
+    dependsOn 'validateSihriyaContent', 'validateSihriyaPackaging', 'validateClientAnimationPackaging', 'validateReleaseArtifacts', 'validateStandaloneReleaseClientSmoke'
+}
+
+// Désactiver JarInJar — Epic Fight Nightfall embarque AAA Particles incompatible
+jarJar {
+    disable()
+}
+
+// Supprimer les dépendances embarquées incompatibles du cache deobf avant runClient
+tasks.register('cleanDeobfCache', Delete) {
+    doFirst {
+        def deobfBase = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        delete fileTree(deobfBase) {
+            include "aaa_particles-forge-1.20.1-2.2.1-beta.2/**"
+            include "epicfight-nightfall-3.3.3-all/**"
+            include "epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge/**"
+            include "epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge/**"
+        }
+        def deobfCurse = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        delete fileTree(deobfCurse) {
+            include "epicfight-nightfall-1307848/**"
+            include "epic-fight-avalon-1268823/**"
+        }
+    }
+}
+
+tasks.matching { it.name == 'runClient' }.configureEach {
+    dependsOn 'cleanDeobfCache'
+}
+
+// Supprimer les JARs incompatibles juste avant le lancement du jeu
+afterEvaluate {
+    tasks.findByName('runClient')?.doFirst {
+        def cacheDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        ['aaa_particles-forge-1.20.1-2.2.1-beta.2', 'epicfight-nightfall-3.3.3-all',
+         'epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge', 'epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge'].each {
+            def d = new File(cacheDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+        def curseDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        ['epic-fight-avalon-1268823'].each {
+            def d = new File(curseDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+    }
+    tasks.findByName('runServer')?.doFirst {
+        def cacheDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/blank")
+        ['aaa_particles-forge-1.20.1-2.2.1-beta.2', 'epicfight-nightfall-3.3.3-all',
+         'epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge', 'epic-fight-invincible-lib-20.14.7.5-mc1.20.1-forge'].each {
+            def d = new File(cacheDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+        def curseDir = file("${gradle.gradleUserHomeDir}/caches/forge_gradle/deobf_dependencies/curse/maven")
+        ['epic-fight-avalon-1268823'].each {
+            def d = new File(curseDir, it); if (d.exists()) { d.deleteDir(); println "Cleaned: ${it}" }
+        }
+    }
+}

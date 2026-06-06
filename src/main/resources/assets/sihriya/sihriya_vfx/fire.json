@@ -1,0 +1,13 @@
+{
+  "school": "fire",
+  "defaults": {
+    "projectile": { "scale": 1.0, "glowIntensity": 1.5, "color1": [1.0, 0.35, 0.05], "color2": [1.0, 0.8, 0.2], "trail": { "particlesPerTick": 3, "particleLifetime": 12 } },
+    "impact": { "burst": { "count": 25, "speed": 0.6 }, "shockwaveRings": 2, "screenShake": true, "screenShakeIntensity": 0.3 },
+    "beam": { "radius": 0.3, "glowIntensity": 1.5, "color1": [1.0, 0.35, 0.05], "color2": [1.0, 0.8, 0.2] }
+  },
+  "overrides": {
+    "fire.fireball": { "projectile": { "scale": 1.5, "glowIntensity": 2.0, "trail": { "particlesPerTick": 5 } } },
+    "fire.meteor": { "projectile": { "scale": 2.5, "glowIntensity": 2.5 }, "impact": { "burst": { "count": 60, "speed": 1.0 }, "shockwaveRings": 3, "screenShakeIntensity": 0.8 } },
+    "fire.wall": { "beam": { "radius": 0.5 } }
+  }
+}

@@ -1,0 +1,137 @@
+[05Jun2026 06:12:48.144] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserveruserdev, --gameDir, ., --fml.forgeVersion, 47.4.20, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --nogui]
+[05Jun2026 06:12:48.149] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[05Jun2026 06:12:48.275] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserveruserdev
+[05Jun2026 06:12:48.331] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/El%20Hadji/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=SERVER
+[05Jun2026 06:12:48.593] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.20\c354b21002937b393c4f86163a98dccdf1d51e72\javafmllanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 06:12:48.596] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.20\865d75f8c18329ddb31db5856701ab86609108b5\lowcodelanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 06:12:48.600] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.20\af599930362212ae937e392709f49047e6abbbf\mclanguage-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 06:12:48.603] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\El Hadji\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.20\e8cc697c69f3911e76caa2f005d9486597cd7448\fmlcore-1.20.1-47.4.20.jar is missing mods.toml file
+[05Jun2026 06:12:48.710] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[05Jun2026 06:12:50.223] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[05Jun2026 06:12:50.229] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserveruserdev' with arguments [--gameDir, ., --nogui]
+[05Jun2026 06:12:50.551] [main/INFO] [mixin/]: Remapping refMap invincible.mixin-refmap.json using C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA/build/createSrgToMcp/output.srg
+[05Jun2026 06:12:50.553] [main/INFO] [mixin/]: Remapping refMap mixins.epicfight.refmap.json using C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA/build/createSrgToMcp/output.srg
+[05Jun2026 06:12:53.513] [main/WARN] [mixin/]: @Final field nextHeadUpdate:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[05Jun2026 06:12:53.513] [main/WARN] [mixin/]: @Final field idleHeadUpdates:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[05Jun2026 06:12:54.920] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 06:12:54.920] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 06:12:54.920] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 06:12:54.920] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[05Jun2026 06:12:56.101] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.20, for MC 1.20.1 with MCP 20230612.114412
+[05Jun2026 06:12:56.101] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.20 Initialized
+[05Jun2026 06:12:56.356] [main/INFO] [sihriya/]: SihriyaAnimations.registerAnimations called, creating builder
+[05Jun2026 06:12:56.407] [main/INFO] [sihriya/]: SihriyaAnimations.build() called
+[05Jun2026 06:12:56.601] [main/INFO] [statmod/]: Registered 60 Epic Fight skills for STAT Mod
+[05Jun2026 06:12:56.763] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.player.Player from class yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch
+[05Jun2026 06:12:56.787] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.788] [main/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[05Jun2026 06:12:56.927] [modloading-worker-0/INFO] [statmod/]: Registered 23 stats across 5 categories
+[05Jun2026 06:12:56.928] [modloading-worker-0/INFO] [statmod/]: Stat scaling formulas initialized
+[05Jun2026 06:12:56.928] [modloading-worker-0/INFO] [statmod/]:   XP curve: (level+1)*40 — Level 100 requires 4040 XP
+[05Jun2026 06:12:56.931] [modloading-worker-0/INFO] [statmod/]:   Damage bonus range: 0% - 20%
+[05Jun2026 06:12:56.931] [modloading-worker-0/INFO] [statmod/]: Epic Fight detected — deep integration enabled
+[05Jun2026 06:12:56.935] [modloading-worker-0/INFO] [statmod/]: Epic Parcool not detected — STAT integration disabled
+[05Jun2026 06:12:56.938] [modloading-worker-0/INFO] [statmod/]: Registered stat requirements for 176 skills
+[05Jun2026 06:12:56.939] [modloading-worker-0/INFO] [statmod/]: Loaded plugin: kubejs (priority=900)
+[05Jun2026 06:12:56.941] [modloading-worker-0/INFO] [statmod/]: Plugin system ready — 1 plugins loaded
+[05Jun2026 06:12:56.955] [modloading-worker-0/INFO] [statmod/]: [COMPAT] Epic Fight detected
+[05Jun2026 06:12:56.955] [modloading-worker-0/INFO] [statmod/]: [COMPAT] Loaded 3 other mods — no known attribute conflicts detected
+[05Jun2026 06:12:56.956] [modloading-worker-0/INFO] [statmod/]: Mod compat:(0 compatible mods)
+[05Jun2026 06:12:56.956] [modloading-worker-0/INFO] [statmod/]: === STAT Mod Diagnostic ===
+[05Jun2026 06:12:56.956] [modloading-worker-0/INFO] [statmod/]:   Minecraft: 1.20.1
+[05Jun2026 06:12:56.956] [modloading-worker-0/INFO] [statmod/]:   Forge: 47.4.20
+[05Jun2026 06:12:56.957] [modloading-worker-0/INFO] [statmod/]:   Stats: 23 registered
+[05Jun2026 06:12:56.957] [modloading-worker-0/INFO] [statmod/]:   Skills: 60 registered via SkillBuildEvent
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]:   Perks: 42 defined
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]:   Commands: /statmod [list|get|set|xp|reset|backup|restore|preset|profile|benchmark|top|respec|party]
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]:   Config: 30 values configurable
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]:   Network: 8 packet types registered
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]:   Plugin API: 1 plugins loaded
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]: ==============================
+[05Jun2026 06:12:56.958] [modloading-worker-0/INFO] [statmod/]: STAT Mod loaded!
+[05Jun2026 06:12:56.990] [main/INFO] [sihriya/]: Loaded 9 schools and 252 spells
+[05Jun2026 06:12:57.000] [main/INFO] [sihriya/]: STAT Mod détecté et intégré !
+[05Jun2026 06:12:57.002] [main/INFO] [sihriya/]: Epic Fight détecté et intégré !
+[05Jun2026 06:12:57.003] [main/INFO] [sihriya/]: Iron's Spells 'n Spellbooks non détecté. Compatibilité désactivée.
+[05Jun2026 06:12:57.003] [main/INFO] [sihriya/]: Sihriya chargé avec Epic Fight + STAT Mod !
+[05Jun2026 06:12:57.082] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[05Jun2026 06:12:57.805] [main/INFO] [epicfight/]: Data keys [epicfight:penalty, epicfight:penalty_restore_counter] for statmod:parry
+[05Jun2026 06:12:57.805] [main/INFO] [epicfight/]: Data keys [epicfight:penalty, epicfight:penalty_restore_counter] for statmod:guard_fortress
+[05Jun2026 06:12:57.805] [main/INFO] [epicfight/]: Data keys [epicfight:penalty, epicfight:penalty_restore_counter] for statmod:guard_iron_wall
+[05Jun2026 06:12:57.805] [main/INFO] [epicfight/]: Data keys [invincible:right, invincible:dodge_success_timer, invincible:down, invincible:up, invincible:parry_timer, invincible:left, invincible:cooldown] for invincible:combo_demo
+[05Jun2026 06:12:57.805] [main/INFO] [epicfight/]: Data keys [epicfight:combo_counter, epicfight:basic_attack_active] for epicfight:basic_attack
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:penalty, epicfight:penalty_restore_counter] for epicfight:guard
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:parry_motion_counter, epicfight:penalty, epicfight:penalty_restore_counter, epicfight:last_active] for epicfight:parrying
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:penalty, epicfight:penalty_restore_counter] for epicfight:impact_guard
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:stacks, epicfight:resisting_damage_type, epicfight:tick_record] for epicfight:adaptive_skin
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:tick_record] for epicfight:adrenaline_fiend
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:stacks, epicfight:entity_id] for epicfight:bonebreaker
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:entity_id, epicfight:tick_record] for epicfight:vengeance
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall, epicfight:fall_distance] for epicfight:meteor_slam
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:stacks] for epicfight:revelation
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall] for epicfight:demolition_leap
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:jump_key_pressed_last_tick, epicfight:slam_protect_next_fall, epicfight:jump_count] for epicfight:phantom_ascent
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:last_hit_count] for epicfight:grasping_spire
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu_passive
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:combo_counter] for epicfight:blade_rush
+[05Jun2026 06:12:57.806] [main/INFO] [epicfight/]: Data keys [epicfight:thrown_trident_entity_id] for epicfight:everlasting_allegiance
+[05Jun2026 06:12:57.830] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[05Jun2026 06:12:57.867] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/El%20Hadji/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[05Jun2026 06:12:57.868] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/El%20Hadji/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.20_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[05Jun2026 06:12:57.904] [main/INFO] [net.minecraft.server.MinecraftServer/]: Found new data pack sihriya_epicfight_data_fixes, loading it automatically
+[05Jun2026 06:12:57.966] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: AHEAD Current: 47.4.20 Target: null
+[05Jun2026 06:12:58.648] [main/INFO] [sihriya/]: Sihriya commands registered
+[05Jun2026 06:12:59.090] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[05Jun2026 06:12:59.156] [main/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1290 advancements
+[05Jun2026 06:13:02.656] [main/INFO] [sihriya/]: SpellAnimationLoader loaded 95 spell animation mappings from [sihriya:schools]
+[05Jun2026 06:13:02.999] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.20.1
+[05Jun2026 06:13:03.000] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[05Jun2026 06:13:03.000] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[05Jun2026 06:13:03.000] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[05Jun2026 06:13:03.069] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25566
+[05Jun2026 06:13:03.079] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using default channel type
+[05Jun2026 06:13:03.194] [Server thread/INFO] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loading default config file from path C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-clean\defaultconfigs\epicfight-server.toml
+[05Jun2026 06:13:03.200] [Server thread/INFO] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loading default config file from path C:\Users\El Hadji\Downloads\STAT_MOD\SIHRIYA\run-clean\defaultconfigs\forge-server.toml
+[05Jun2026 06:13:03.224] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[05Jun2026 06:13:05.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[05Jun2026 06:13:05.978] [Worker-Main-8/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[05Jun2026 06:13:05.980] [Worker-Main-4/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[05Jun2026 06:13:06.383] [Worker-Main-11/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[05Jun2026 06:13:06.888] [Worker-Main-4/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
+[05Jun2026 06:13:07.381] [Worker-Main-7/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 3%
+[05Jun2026 06:13:07.881] [Worker-Main-2/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 6%
+[05Jun2026 06:13:08.413] [Worker-Main-3/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 9%
+[05Jun2026 06:13:08.882] [Worker-Main-1/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 12%
+[05Jun2026 06:13:09.380] [Worker-Main-9/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 16%
+[05Jun2026 06:13:09.883] [Worker-Main-9/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 20%
+[05Jun2026 06:13:10.380] [Worker-Main-2/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 25%
+[05Jun2026 06:13:10.881] [Worker-Main-1/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 30%
+[05Jun2026 06:13:11.383] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 34%
+[05Jun2026 06:13:11.885] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 37%
+[05Jun2026 06:13:12.386] [Worker-Main-11/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
+[05Jun2026 06:13:12.882] [Worker-Main-4/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 47%
+[05Jun2026 06:13:13.386] [Worker-Main-10/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 52%
+[05Jun2026 06:13:13.880] [Worker-Main-1/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 57%
+[05Jun2026 06:13:14.381] [Worker-Main-3/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 62%
+[05Jun2026 06:13:14.881] [Worker-Main-1/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 68%
+[05Jun2026 06:13:16.184] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 71%
+[05Jun2026 06:13:16.185] [Worker-Main-7/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 71%
+[05Jun2026 06:13:16.386] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 72%
+[05Jun2026 06:13:16.886] [Worker-Main-10/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 77%
+[05Jun2026 06:13:17.387] [Worker-Main-10/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 83%
+[05Jun2026 06:13:17.890] [Worker-Main-7/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 87%
+[05Jun2026 06:13:18.382] [Worker-Main-3/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 92%
+[05Jun2026 06:13:18.859] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 13480 ms
+[05Jun2026 06:13:18.859] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (15.667s)! For help, type "help"
+[05Jun2026 06:13:18.874] [Server thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [sihriya]
+[05Jun2026 06:13:18.886] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[05Jun2026 06:13:18.887] [Server thread/INFO] [statmod/]: STAT Mod ready on server
+[05Jun2026 06:13:18.939] [Server thread/INFO] [statmod/]: Random bonus XP event started

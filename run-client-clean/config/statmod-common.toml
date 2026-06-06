@@ -1,0 +1,114 @@
+#Enable debug logging for stats
+enableDebug = false
+#Multiplier for XP required per level. Formula: (level + 1) * multiplier
+#Range: 10 ~ 500
+xpPerLevelMultiplier = 40
+#Minimum XP awarded for COMMON actions
+#Range: 1 ~ 100
+xpTierCommonMin = 2
+#Maximum XP awarded for COMMON actions
+#Range: 1 ~ 100
+xpTierCommonMax = 3
+#Minimum XP awarded for INTERMEDIATE actions
+#Range: 1 ~ 100
+xpTierIntermediateMin = 5
+#Maximum XP awarded for INTERMEDIATE actions
+#Range: 1 ~ 100
+xpTierIntermediateMax = 8
+#Minimum XP awarded for RARE actions
+#Range: 1 ~ 100
+xpTierRareMin = 12
+#Maximum XP awarded for RARE actions
+#Range: 1 ~ 100
+xpTierRareMax = 20
+#Minimum weapon mastery XP per hit
+#Range: 1 ~ 100
+weaponXpMin = 8
+#Maximum weapon mastery XP per hit (random between min and max)
+#Range: 1 ~ 100
+weaponXpMax = 15
+#Maximum level for weapon mastery
+#Range: 10 ~ 200
+weaponMasteryMaxLevel = 50
+#Level required to unlock tier 1 perks
+#Range: 1 ~ 100
+perkTier1Level = 20
+#Level required to unlock tier 2 perks
+#Range: 1 ~ 100
+perkTier2Level = 50
+#Level required to unlock tier 3 perks
+#Range: 1 ~ 100
+perkTier3Level = 80
+#Level required to unlock tier 1 passive skills
+#Range: 1 ~ 100
+skillTier1Level = 20
+#Level required to unlock tier 2 passive skills
+#Range: 1 ~ 100
+skillTier2Level = 50
+#Level required to unlock tier 3 passive skills
+#Range: 1 ~ 100
+skillTier3Level = 80
+#Level required to unlock active skills
+#Range: 1 ~ 100
+skillActiveLevel = 100
+#Global cooldown multiplier for ALL skills (1.0 = default)
+#Range: 0.1 ~ 10.0
+cooldownMultiplier = 1.0
+#Base thirst decay per tick
+#Range: 0.0 ~ 1.0
+thirstBaseDecay = 0.002
+#Additional thirst cost per tick while sprinting
+#Range: 0.0 ~ 1.0
+thirstSprintCost = 0.05
+#Thirst cost per jump
+#Range: 0.0 ~ 1.0
+thirstJumpCost = 0.1
+#Thirst cost per block broken
+#Range: 0.0 ~ 10.0
+thirstBlockBreakCost = 0.5
+#Thirst cost per tick per armor piece worn
+#Range: 0.0 ~ 0.1
+thirstArmorCostPerPiece = 0.005
+#Additional thirst cost per tick in hot biomes
+#Range: 0.0 ~ 0.1
+thirstHotBiomeCost = 0.005
+#Fatigue recovered per tick while sneaking
+#Range: 0.0 ~ 10.0
+fatigueSneakRecovery = 0.5
+#Fatigue reduction per water bottle consumed
+#Range: 0.0 ~ 100.0
+fatigueWaterBottleRecovery = 20.0
+#Passive fatigue accumulation per tick during day
+#Range: 0.0 ~ 100.0
+fatigueDayRate = 2.0E-4
+#Passive fatigue accumulation per tick during night
+#Range: 0.0 ~ 100.0
+fatigueNightRate = 3.0E-4
+#Passive fatigue accumulation per tick underground
+#Range: 0.0 ~ 100.0
+fatigueUndergroundRate = 2.0E-4
+#Fatigue added when player takes damage
+#Range: 0.0 ~ 100.0
+fatigueDamageCost = 1.0
+#Fatigue added per sprint tick
+#Range: 0.0 ~ 100.0
+fatigueSprintCost = 0.03
+#Fatigue added per jump
+#Range: 0.0 ~ 100.0
+fatigueJumpCost = 0.1
+#Fatigue added per block broken
+#Range: 0.0 ~ 100.0
+fatigueBlockBreakCost = 0.1
+#Base fatigue penalty at dawn for each sleepless night
+#Range: 0.0 ~ 100.0
+fatigueSleepPenaltyBase = 25.0
+#Base max fatigue capacity (endurance adds +5 per level)
+#Range: 50 ~ 5000
+fatigueMaxCapacity = 750
+#Ticks between damage ticks when exhausted (100% fatigue)
+#Range: 1 ~ 200
+fatigueExhaustedDamageInterval = 40
+#Damage dealt per tick when exhausted (hearts)
+#Range: 0.0 ~ 20.0
+fatigueExhaustedDamage = 1.0
+

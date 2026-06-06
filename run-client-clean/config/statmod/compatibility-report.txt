@@ -1,0 +1,12 @@
+=== STAT Mod Compatibility Report ===
+Generated: Fri Jun 05 14:16:54 GMT 2026
+
+--- ISSUES (0) ---
+
+--- WARNINGS (0) ---
+
+--- INFO (2) ---
+[INFO] Epic Fight detected
+[INFO] Loaded 2 other mods — no known attribute conflicts detected
+
+Report complete.
