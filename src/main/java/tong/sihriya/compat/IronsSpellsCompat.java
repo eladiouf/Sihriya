@@ -4,6 +4,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tong.sihriya.Sihriya;
 import tong.sihriya.animation.SihriyaAnimationPlayer;
+import tong.sihriya.network.NetworkHandler;
+import tong.sihriya.network.SpellParticlePacket;
 
 public class IronsSpellsCompat {
     private static boolean detected = false;
@@ -30,10 +32,10 @@ public class IronsSpellsCompat {
         if (!(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer sp)) return;
 
         String spellId = event.getSpellId();
-        if (!spellId.startsWith(Sihriya.MODID + ".")) return;
+        if (!spellId.startsWith(Sihriya.MODID + ":")) return;
 
-        SihriyaAnimationPlayer.play(sp, spellId,
-            SihriyaAnimationPlayer.SpellPhase.CHANT);
+        String bareId = spellId.substring(Sihriya.MODID.length() + 1);
+        SihriyaAnimationPlayer.play(sp, bareId, SihriyaAnimationPlayer.SpellPhase.CHANT);
     }
 
     @SubscribeEvent
@@ -42,17 +44,14 @@ public class IronsSpellsCompat {
         if (!(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer sp)) return;
 
         String spellId = event.getSpellId();
-        if (!spellId.startsWith(Sihriya.MODID + ".")) return;
+        if (!spellId.startsWith(Sihriya.MODID + ":")) return;
 
-        SihriyaAnimationPlayer.play(sp, spellId,
-            SihriyaAnimationPlayer.SpellPhase.CAST);
+        String bareId = spellId.substring(Sihriya.MODID.length() + 1);
+        SihriyaAnimationPlayer.play(sp, bareId, SihriyaAnimationPlayer.SpellPhase.CAST);
 
-        // Déclencher nos particules glow
-        var spell = tong.sihriya.data.SpellRegistry.get(spellId);
+        var spell = tong.sihriya.data.SpellRegistry.get(bareId);
         if (spell != null) {
-            tong.sihriya.network.NetworkHandler.sendToPlayer(
-                new tong.sihriya.network.SpellParticlePacket(spellId, spell.school),
-                sp);
+            NetworkHandler.sendToPlayer(new SpellParticlePacket(bareId, spell.school), sp);
         }
     }
 }

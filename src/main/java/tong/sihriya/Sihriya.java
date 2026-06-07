@@ -3,6 +3,7 @@ package tong.sihriya;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -31,6 +32,10 @@ public class Sihriya {
         tong.sihriya.core.ModEffects.EFFECTS.register(bus);
         SihriyaParticles.PARTICLES.register(bus);
         SihriyaEntities.ENTITIES.register(bus);
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            tong.sihriya.compat.SihriyaIronsSchools.register(bus);
+            tong.sihriya.compat.SihriyaIronsSpellRegister.register(bus);
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 

@@ -190,6 +190,22 @@ public class SpellCastHandler {
         }
     }
 
+    /** Called by external systems (Iron's Spells, etc.) that already handled mana/cooldown. */
+    public static void executeSpellEffects(ServerPlayer player, String spellId) {
+        SpellData spell = SpellRegistry.get(spellId);
+        if (spell == null) return;
+        executeEffects(player, spell);
+        var progOpt = player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).resolve();
+        if (progOpt.isPresent()) {
+            var prog = progOpt.get();
+            prog.addXp(spell.school, 5);
+            TierUnlockHandler.checkUnlocks(player, prog);
+        }
+        STATModIntegration.awardSpellXp(player, spell);
+        NetworkHandler.sendToPlayer(new VFXTriggerPacket(spellId, spell.school,
+            player.getId(), player.getX(), player.getY(), player.getZ()), player);
+    }
+
     private static void executeEffects(ServerPlayer player, SpellData spell) {
         float schoolLevel = 0;
         var progOpt = player.getCapability(SchoolProgressionProvider.SCHOOL_PROGRESSION).resolve();
