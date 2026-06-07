@@ -85,8 +85,8 @@ dependencies {
     // STAT Mod (sibling project) - compile against sibling jar and load it as a regular runtime mod
     implementation project(':STAT_MOD')
 
-    // Iron's Spells 'n Spellbooks (optional — compileOnly, détection runtime via Class.forName)
-    compileOnly fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:7907340")
+    // Iron's Spells 'n Spellbooks (required — addon)
+    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:7907340")
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }

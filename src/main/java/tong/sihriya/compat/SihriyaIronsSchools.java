@@ -6,6 +6,8 @@ import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -17,6 +19,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import tong.sihriya.Sihriya;
+import tong.sihriya.data.SchoolColors;
 
 import java.util.function.Supplier;
 
@@ -74,10 +77,14 @@ public class SihriyaIronsSchools {
                                      Supplier<Attribute> power,
                                      Supplier<Attribute> resist,
                                      RegistryObject<?> sound) {
+        float[] rgb = SchoolColors.get(id);
+        int color = ((int)(rgb[0] * 255) << 16) | ((int)(rgb[1] * 255) << 8) | (int)(rgb[2] * 255);
+        Component displayName = Component.translatable("school." + Sihriya.MODID + "." + id)
+            .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(color)));
         return new SchoolType(
             new ResourceLocation(Sihriya.MODID, id),
             focusTag(id),
-            Component.translatable("school." + Sihriya.MODID + "." + id),
+            displayName,
             power,
             resist,
             () -> (net.minecraft.sounds.SoundEvent) sound.get(),

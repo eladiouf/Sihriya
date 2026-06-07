@@ -73,7 +73,8 @@
       "Bash(node -e ' *)",
       "Bash(node *)",
       "Bash(git *)",
-      "Skill(update-config)"
+      "Skill(update-config)",
+      "Bash(./gradlew compileJava)"
     ]
   }
 }

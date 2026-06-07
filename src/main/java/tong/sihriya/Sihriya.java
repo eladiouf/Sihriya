@@ -32,10 +32,8 @@ public class Sihriya {
         tong.sihriya.core.ModEffects.EFFECTS.register(bus);
         SihriyaParticles.PARTICLES.register(bus);
         SihriyaEntities.ENTITIES.register(bus);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
-            tong.sihriya.compat.SihriyaIronsSchools.register(bus);
-            tong.sihriya.compat.SihriyaIronsSpellRegister.register(bus);
-        }
+        tong.sihriya.compat.SihriyaIronsSchools.register(bus);
+        tong.sihriya.compat.SihriyaIronsSpellRegister.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

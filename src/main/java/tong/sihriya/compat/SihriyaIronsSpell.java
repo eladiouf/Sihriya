@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -64,6 +65,23 @@ public class SihriyaIronsSpell extends AbstractSpell {
     }
 
     @Override
+    public AnimationHolder getCastStartAnimation() {
+        return switch (getCastType()) {
+            case INSTANT -> SpellAnimations.ANIMATION_INSTANT_CAST;
+            case LONG -> SpellAnimations.ANIMATION_LONG_CAST;
+            case CONTINUOUS -> SpellAnimations.ANIMATION_CONTINUOUS_CAST;
+            default -> SpellAnimations.ANIMATION_INSTANT_CAST;
+        };
+    }
+
+    @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return getCastType() == CastType.LONG
+            ? SpellAnimations.ANIMATION_LONG_CAST_FINISH
+            : AnimationHolder.none();
+    }
+
+    @Override
     public int getManaCost(int level) {
         return sihriyaManaCost;
     }
@@ -106,7 +124,7 @@ public class SihriyaIronsSpell extends AbstractSpell {
                 .setCooldownSeconds(sihriyaCooldownTicks / 20.0)
                 .build();
         } catch (Exception e) {
-            Sihriya.LOGGER.warn("SihriyaIronsSpell: DefaultConfig build failed for {}: {}", spellId, e.getMessage());
+            Sihriya.LOGGER.warn("SihriyaIronsSpell: config build failed for {}: {}", spellId, e.getMessage());
             return new DefaultConfig();
         }
     }
