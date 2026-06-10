@@ -6,7 +6,28 @@
     "beam": { "radius": 0.4, "glowIntensity": 1.0, "color1": [0.35, 0.6, 0.2], "color2": [0.6, 0.8, 0.4] }
   },
   "overrides": {
-    "earth.boulder": { "projectile": { "scale": 2.0 } },
-    "earth.wall": { "beam": { "radius": 0.6 } }
+    "earth.rock_strike": { "projectile": { "scale": 2.0 } },
+    "earth.rock_spike": { "projectile": { "scale": 1.0 }, "impact": { "burst": { "count": 25 } } },
+    "earth.stone_roots": { "impact": { "burst": { "count": 28, "speed": 0.5 }, "shockwaveRings": 3 } },
+    "earth.absorption": { "impact": { "burst": { "count": 25 } } },
+    "earth.fortress": { "impact": { "burst": { "count": 35, "speed": 0.6 } }, "beam": { "radius": 0.5 } },
+    "earth.stone_golem": { "impact": { "burst": { "count": 35, "speed": 0.5 } } },
+    "earth.avalanche": { "impact": { "burst": { "count": 60, "speed": 0.8 }, "shockwaveRings": 3, "screenShakeIntensity": 0.7 } },
+    "earth.fissure": { "impact": { "burst": { "count": 50, "speed": 0.7 }, "shockwaveRings": 3, "screenShakeIntensity": 0.6 } },
+    "earth.earth_column": { "projectile": { "scale": 2.1, "glowIntensity": 1.3 }, "impact": { "burst": { "count": 65, "speed": 0.8 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.7 } },
+    "earth.stone_vise": { "projectile": { "scale": 1.0 }, "impact": { "burst": { "count": 25 }, "shockwaveRings": 3 } },
+    "earth.trench": { "impact": { "burst": { "count": 28, "speed": 0.5 }, "shockwaveRings": 3 } },
+    "earth.sand_armor": { "impact": { "burst": { "count": 15 } } },
+    "earth.shield_strike": { "impact": { "burst": { "speed": 0.5 } } },
+    "earth.rock_path": { "impact": { "burst": { "count": 35, "speed": 0.6 } } },
+    "earth.targeted_quake": { "impact": { "burst": { "count": 35, "speed": 0.6 }, "shockwaveRings": 3 } },
+    "earth.stone_statue": { "projectile": { "scale": 1.9, "glowIntensity": 1.2 }, "impact": { "burst": { "count": 35, "speed": 0.5 }, "shockwaveRings": 3 } },
+    "earth.drill_through": { "projectile": { "glowIntensity": 1.2 }, "impact": { "burst": { "count": 35, "speed": 0.5 } } },
+    "earth.earthquake": { "impact": { "burst": { "count": 70, "speed": 0.6 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
+    "earth.earth_magnet": { "impact": { "burst": { "count": 55, "speed": 0.7 }, "shockwaveRings": 4, "screenShake": true, "screenShakeIntensity": 0.6 } },
+    "earth.lithic_regen": { "impact": { "burst": { "count": 65 }, "screenShake": true, "screenShakeIntensity": 0.8 } },
+    "earth.titan_awakening": { "impact": { "burst": { "count": 90, "speed": 1.0 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
+    "earth.earth_mother_wrath": { "impact": { "burst": { "count": 100, "speed": 1.1 }, "shockwaveRings": 5, "screenShakeIntensity": 1.2 } },
+    "earth.stone_wall": { "beam": { "radius": 0.6 } }
   }
 }

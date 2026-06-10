@@ -7,6 +7,27 @@
   },
   "overrides": {
     "water.water_jet": { "projectile": { "scale": 1.2, "trail": { "particlesPerTick": 4 } } },
-    "water.heal": { "impact": { "burst": { "count": 30, "speed": 0.3 } } }
+    "water.liquid_shield": { "impact": { "burst": { "count": 15 }, "shockwaveRings": 2 } },
+    "water.crushing_wave": { "impact": { "burst": { "count": 40, "speed": 0.7 }, "shockwaveRings": 2 } },
+    "water.water_prison": { "impact": { "burst": { "count": 28, "speed": 0.6 }, "shockwaveRings": 2 }, "beam": { "radius": 0.5 } },
+    "water.deluge": { "impact": { "burst": { "count": 35, "speed": 0.7 }, "shockwaveRings": 2 } },
+    "water.geysers": { "impact": { "burst": { "count": 35, "speed": 0.8 }, "shockwaveRings": 2 } },
+    "water.liquid_form": { "impact": { "burst": { "count": 25 } } },
+    "water.ice_armor": { "impact": { "burst": { "count": 25 }, "shockwaveRings": 2 } },
+    "water.ascending_current": { "impact": { "burst": { "speed": 0.6 } } },
+    "water.water_lace": { "projectile": { "scale": 0.7 }, "impact": { "burst": { "count": 25 } } },
+    "water.aquatic_purge": { "impact": { "burst": { "count": 25 } } },
+    "water.pressure_wave": { "impact": { "burst": { "count": 28, "speed": 0.7 }, "shockwaveRings": 3 } },
+    "water.maelstrom": { "impact": { "burst": { "count": 50, "speed": 0.6 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.5 } },
+    "water.abyssal_well": { "impact": { "burst": { "count": 35, "speed": 0.7 }, "shockwaveRings": 3 } },
+    "water.water_mirror": { "impact": { "burst": { "count": 25 } } },
+    "water.liquid_blade": { "impact": { "burst": { "count": 25 } } },
+    "water.local_flood": { "impact": { "burst": { "count": 35, "speed": 0.7 }, "shockwaveRings": 2 } },
+    "water.tidal_wave": { "impact": { "burst": { "count": 70, "speed": 0.9 }, "shockwaveRings": 4, "screenShakeIntensity": 0.8 } },
+    "water.black_tide": { "impact": { "burst": { "count": 45, "speed": 0.8 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.5 } },
+    "water.evaporation": { "impact": { "burst": { "count": 60 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.6 } },
+    "water.eye_of_deluge": { "impact": { "burst": { "count": 90, "speed": 1.0 }, "shockwaveRings": 5, "screenShakeIntensity": 0.9 } },
+    "water.primeval_deluge": { "impact": { "burst": { "count": 100, "speed": 1.1 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
+    "water.healing_rain": { "impact": { "burst": { "count": 30, "speed": 0.3 } } }
   }
 }

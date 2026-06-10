@@ -10,8 +10,10 @@ import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 public class SihriyaAnimationPlayer {
     public enum SpellPhase { CHANT, CAST, CONTINUOUS }
 
+    private static final float INSTANT_BLEND = 0.02f;
+
     public static void play(ServerPlayer player, String spellId, SpellPhase phase) {
-        play(player, spellId, phase, 0.1f);
+        play(player, spellId, phase, INSTANT_BLEND);
     }
 
     public static void play(ServerPlayer player, String spellId, SpellPhase phase, float modifyTime) {
@@ -31,37 +33,10 @@ public class SihriyaAnimationPlayer {
             try {
                 patch.playAnimationSynchronized(typedAccessor, modifyTime);
                 Sihriya.LOGGER.debug("playAnimationSynchronized {} for {} phase {}", animName, spellId, phase);
-                scheduleReturnToIdle(player, patch, animName);
             } catch (Exception e) {
                 Sihriya.LOGGER.error("playAnimationSynchronized failed: {}", e.toString());
             }
         }
-    }
-
-    private static void scheduleReturnToIdle(ServerPlayer player, ServerPlayerPatch patch, String animName) {
-        if (!AnimationDurationHelper.isLoaded() && player.getServer() != null) {
-            AnimationDurationHelper.load(player.getServer());
-        }
-        float duration = AnimationDurationHelper.getDuration(animName);
-        if (duration <= 0) duration = 0.5f;
-        int ticks = Math.max(4, (int) (duration * 20) + 2);
-
-        player.getServer().tell(new net.minecraft.server.TickTask(
-            player.getServer().getTickCount() + ticks,
-            () -> {
-                if (!player.isAlive()) return;
-                try {
-                    var animator = patch.getAnimator();
-                    for (var mn : new String[]{"resetToBasePose", "resetToIdle", "clearAnimation", "resetPose", "offAnimation"}) {
-                        try {
-                            var m = animator.getClass().getMethod(mn);
-                            m.invoke(animator);
-                            break;
-                        } catch (Exception ignored) {}
-                    }
-                } catch (Exception ignored) {}
-            }
-        ));
     }
 
     private static String resolveAnimation(String spellId, SpellPhase phase) {
@@ -85,7 +60,7 @@ public class SihriyaAnimationPlayer {
     }
 
     public static void playByName(ServerPlayer player, String animName) {
-        playByName(player, animName, 0.1f);
+        playByName(player, animName, INSTANT_BLEND);
     }
 
     public static void playByName(ServerPlayer player, String animName, float modifyTime) {

@@ -41,15 +41,16 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
         // fire
         m.put("spark",              "bolt");
         m.put("fireball",           "orb");
+        m.put("blazing_sun",        "sun");
         m.put("comet",              "meteor");
         m.put("fire_piston_strike", "bolt");
-        m.put("brands_mark",        "disc");
+        m.put("brands_mark",        "ember");
         m.put("fire_lance",         "lance");
         m.put("fire_wheel",         "disc");
         m.put("piercing_meteor",    "meteor");
         // water
         m.put("water_jet",  "stream");
-        m.put("sharp_drop", "blade");
+        m.put("sharp_drop", "droplet");
         m.put("holy_water", "globe");
         m.put("water_lace", "stream");
         // wind
@@ -71,8 +72,8 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
         m.put("earth_column",   "column");
         // lightning
         m.put("electric_arc",    "bolt");
-        m.put("chain_lightning", "bolt");
-        m.put("paralysis",       "bolt");
+        m.put("chain_lightning", "chain");
+        m.put("paralysis",       "orb");
         m.put("guided_lightning","orb");
         m.put("bouncing_spark",  "spark");
         m.put("lightning_link",  "bolt");
@@ -91,9 +92,9 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
         m.put("magma_grenade",  "chunk");
         m.put("igneous_rock",   "chunk");
         // necromancy
-        m.put("drain_vital",       "stream");
+        m.put("drain_vital",       "wisp");
         m.put("death_touch",       "orb");
-        m.put("lethal_curse",      "disc");
+        m.put("lethal_curse",      "wisp");
         m.put("soul_rend",         "bolt");
         m.put("soul_chains",       "shard");
         m.put("soul_corruption",   "wisp");
@@ -118,27 +119,38 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
     @Override
     public void render(SpellProjectile entity, float yaw, float partialTick,
                        PoseStack pose, MultiBufferSource buffer, int light) {
+        boolean charging = entity.isCharging();
         Vec3 motion = entity.getDeltaMovement();
-        if (motion.lengthSqr() < 1e-6) return;
+        if (motion.lengthSqr() < 1e-6 && !charging) return;
 
-        Vec3 dir = motion.normalize();
-        String school  = entity.getSchoolId();
-        String variant = SPELL_VARIANTS.getOrDefault(entity.getSpellId(), "default");
+        String school   = entity.getSchoolId();
+        String spellRaw = entity.getSpellId();
+        String spellKey = spellRaw.contains(".") ? spellRaw.substring(spellRaw.indexOf('.') + 1) : spellRaw;
+        String variant  = SPELL_VARIANTS.getOrDefault(spellKey, "default");
 
         pose.pushPose();
         pose.scale(0.25f, 0.25f, 0.25f);
+
+        // Scale charge (1.0x → 8.0x) toujours appliqué, même après lancement
+        float chargeScale = entity.getChargeScale();
+        pose.scale(chargeScale, chargeScale, chargeScale);
+
+        if (charging) {
+            pose.mulPose(Axis.YP.rotationDegrees(yaw));
+        } else {
+            Vec3 dir = motion.normalize();
+            pose.mulPose(Axis.YP.rotationDegrees((float) Math.toDegrees(Math.atan2(dir.x, dir.z))));
+            pose.mulPose(Axis.XP.rotationDegrees((float) Math.toDegrees(Math.asin(-dir.y))));
+        }
 
         RenderSystem.enableDepthTest();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
 
-        pose.mulPose(Axis.YP.rotationDegrees((float) Math.toDegrees(Math.atan2(dir.x, dir.z))));
-        pose.mulPose(Axis.XP.rotationDegrees((float) Math.toDegrees(Math.asin(-dir.y))));
-
         Matrix4f mat = new Matrix4f();
 
         switch (school) {
-            case "fire"       -> renderFire(buffer, pose, light, mat, variant);
+            case "fire"       -> renderFire(buffer, pose, light, mat, variant, entity);
             case "lava"       -> renderLava(buffer, pose, light, mat, variant);
             case "water"      -> renderWater(buffer, pose, light, mat, variant);
             case "ice"        -> renderIce(buffer, pose, light, mat, variant);
@@ -147,7 +159,7 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
             case "earth"      -> renderEarth(buffer, pose, light, mat, variant);
             case "necromancy" -> renderNecromancy(buffer, pose, light, mat, variant);
             case "lumamancy"  -> renderLumamancy(buffer, pose, light, mat, variant);
-            default           -> renderFire(buffer, pose, light, mat, "default");
+            default           -> renderFire(buffer, pose, light, mat, "default", entity);
         }
 
         RenderSystem.disableBlend();
@@ -156,7 +168,7 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
 
     // ── FIRE ──────────────────────────────────────────────────────────────────
     private static void renderFire(MultiBufferSource buf, PoseStack pose, int light,
-                                    Matrix4f mat, String variant) {
+                                    Matrix4f mat, String variant, SpellProjectile entity) {
         VertexConsumer vc = buf.getBuffer(RenderType.cutout());
         switch (variant) {
             case "bolt" -> { // spark, fire_piston_strike — thin fast streak
@@ -191,6 +203,27 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
                 pose.popPose();
                 pose.pushPose(); pose.scale(0.9f, 0.9f, 0.9f);
                 SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 0.8f, 0.2f, 0.7f, TEX_FIRE_CORE, 3.0f, mat, false, true, true);
+                pose.popPose();
+            }
+            case "sun" -> { // blazing_sun — enormous fiery sun cubique qui tourne
+                float spin = entity.tickCount * 2.0f;
+                // Layer 1: outer fire glow
+                pose.pushPose();
+                pose.mulPose(Axis.YP.rotationDegrees(spin));
+                pose.scale(25.0f, 25.0f, 25.0f);
+                SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 0.6f, 0.05f, 0.9f, TEX_FIRE, 1.0f, mat, true, true, true);
+                pose.popPose();
+                // Layer 2: inner hot core
+                pose.pushPose();
+                pose.mulPose(Axis.YP.rotationDegrees(spin));
+                pose.scale(18.0f, 18.0f, 18.0f);
+                SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 0.85f, 0.2f, 0.85f, TEX_FIRE_CORE, 1.0f, mat, true, true, true);
+                pose.popPose();
+                // Layer 3: bright center
+                pose.pushPose();
+                pose.mulPose(Axis.YP.rotationDegrees(spin));
+                pose.scale(10.0f, 10.0f, 10.0f);
+                SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 1f, 0.7f, 1f, TEX_BEACON, 1.0f, mat, true, true, true);
                 pose.popPose();
             }
             default -> {
@@ -316,6 +349,37 @@ public class SpellProjectileRenderer extends EntityRenderer<SpellProjectile> {
                     float a = (1f - (i - 1) * 0.3f) * 0.9f;
                     SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 1f, 0.5f, a, TEX_SEA_LANT, 1.2f, scaled, true, true, true);
                 }
+            }
+            case "chain" -> { // chain_lightning — branched electric arcs
+                // Main bolt
+                for (int i = 1; i <= 4; i++) {
+                    Matrix4f scaled = new Matrix4f(mat).scale((float) i / 4, (float) i / 4, (float) i / 4);
+                    float a = (4f / i) / 4f;
+                    float d = 2f * (4f / i);
+                    SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 1f, 0.6f, a, TEX_SEA_LANT, d, scaled, false, true, true);
+                }
+                // Branch offshoots at 45° offset
+                pose.pushPose();
+                pose.mulPose(Axis.YP.rotationDegrees(25));
+                pose.mulPose(Axis.XP.rotationDegrees(15));
+                for (int i = 1; i <= 3; i++) {
+                    Matrix4f scaled = new Matrix4f(mat).scale((float) i / 4, (float) i / 4, (float) i / 4);
+                    float a = ((4f / i) / 4f) * 0.5f;
+                    float d = 1.2f * (4f / i);
+                    SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 0.8f, 0.3f, a, TEX_SEA_LANT, d, scaled, false, true, true);
+                }
+                pose.popPose();
+                // Branch offshoots at -45° offset
+                pose.pushPose();
+                pose.mulPose(Axis.YP.rotationDegrees(-25));
+                pose.mulPose(Axis.XP.rotationDegrees(-15));
+                for (int i = 1; i <= 3; i++) {
+                    Matrix4f scaled = new Matrix4f(mat).scale((float) i / 4, (float) i / 4, (float) i / 4);
+                    float a = ((4f / i) / 4f) * 0.5f;
+                    float d = 1.2f * (4f / i);
+                    SihriyaRenderUtils.drawCube(vc, pose, 255, 1f, 0.8f, 0.3f, a, TEX_SEA_LANT, d, scaled, false, true, true);
+                }
+                pose.popPose();
             }
             case "spark" -> { // bouncing_spark — tiny bright spark
                 pose.pushPose(); pose.scale(0.4f, 0.4f, 0.4f);

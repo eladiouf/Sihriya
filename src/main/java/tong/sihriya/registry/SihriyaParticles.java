@@ -1,5 +1,6 @@
 package tong.sihriya.registry;
 
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,7 +31,7 @@ public class SihriyaParticles {
     public static final RegistryObject<SimpleParticleType> LUMI_GLOW =
         PARTICLES.register("lumi_glow", () -> new SimpleParticleType(false));
 
-    public static SimpleParticleType getForSchool(String schoolId) {
+    public static ParticleOptions getForSchool(String schoolId) {
         return switch (schoolId) {
             case "fire" -> FIRE_GLOW.get();
             case "water" -> WATER_GLOW.get();
@@ -41,7 +42,7 @@ public class SihriyaParticles {
             case "lava" -> LAVA_GLOW.get();
             case "necromancy" -> NECRO_GLOW.get();
             case "lumamancy" -> LUMI_GLOW.get();
-            default -> FIRE_GLOW.get();
+            default -> LUMI_GLOW.get();
         };
     }
 }

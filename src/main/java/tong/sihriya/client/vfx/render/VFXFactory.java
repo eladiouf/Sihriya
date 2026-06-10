@@ -8,13 +8,14 @@ import tong.sihriya.client.vfx.VFXEffect;
 import tong.sihriya.client.vfx.emitter.*;
 import tong.sihriya.client.vfx.mesh.SphereMesh;
 import tong.sihriya.client.vfx.mesh.TorusMesh;
+import tong.sihriya.client.vfx.mesh.DiskMesh;
 import tong.sihriya.data.SchoolColors;
 import tong.sihriya.vfx.VFXDefinition;
 
 public class VFXFactory {
     private static final ResourceLocation TEXTURE = ProceduralTextureHelper.MAGIC_GLOW;
 
-    public static VFXEffect createEffect(VFXDefinition def, ClientLevel level, Vec3 pos, String schoolId) {
+    public static VFXEffect createEffect(VFXDefinition def, ClientLevel level, Vec3 pos, String schoolId, boolean hasProjectileVisual) {
         VFXEffect effect = new VFXEffect();
         effect.setPosition(pos);
         effect.setLifetime(60);
@@ -23,7 +24,7 @@ public class VFXFactory {
 
         if (def == null) return effect;
 
-        if (def.projectile() != null) {
+        if (def.projectile() != null && hasProjectileVisual) {
             VFXDefinition.ProjectileConfig pc = def.projectile();
             effect.setColor(pc.color1() != null ? pc.color1() : SchoolColors.get(schoolId));
             effect.setTexture(ProceduralTextureHelper.STAR_BURST);
@@ -57,6 +58,47 @@ public class VFXFactory {
                 effect.setAlpha(0.3f);
                 effect.addMesh(new TorusMesh(0.5f, 0.1f, 24, 8));
             }
+        }
+
+        if (def.aura() != null) {
+            VFXDefinition.AuraConfig ac = def.aura();
+            float radius = ac.radius() > 0 ? ac.radius() : 2.5f;
+            int lifetime = ac.lifetime() > 0 ? ac.lifetime() : 60;
+            VFXEffect aura = AuraRenderer.createAura(pos, schoolId, radius, lifetime);
+            effect.addMesh(aura.getMeshes().isEmpty() ? new TorusMesh(radius, 0.08f, 24, 12) : null);
+            for (var m : aura.getMeshes()) effect.addMesh(m);
+            for (var e : aura.getEmitters()) {
+                e.init(level, pos, schoolId, lifetime);
+                effect.addEmitter(e);
+            }
+        }
+
+        if (def.persistent() != null) {
+            VFXDefinition.PersistentConfig pc = def.persistent();
+            float radius = pc.decalAlpha() > 0 ? pc.decalAlpha() : 2.0f;
+            int lifetime = pc.duration() > 0 ? pc.duration() : 100;
+            VFXEffect ground = GroundEffectRenderer.createGroundMark(pos, schoolId, radius, lifetime);
+            for (var m : ground.getMeshes()) effect.addMesh(m);
+            for (var e : ground.getEmitters()) {
+                e.init(level, pos, schoolId, lifetime);
+                effect.addEmitter(e);
+            }
+            if (pc.groundDecal()) {
+                effect.setAlpha(pc.decalAlpha());
+            }
+        }
+
+        if (def.charge() != null) {
+            VFXDefinition.ChargeConfig cc = def.charge();
+            float scaleEnd = cc.scaleEnd() > 0 ? cc.scaleEnd() : 1.5f;
+            int duration = cc.duration() > 0 ? cc.duration() : 20;
+            effect.setLifetime(duration);
+            effect.setScale(scaleEnd);
+            effect.addMesh(new TorusMesh(0.6f, 0.05f, 20, 8));
+            effect.addMesh(new DiskMesh(0.4f, 4, 16));
+            RingEmitter ring = new RingEmitter(0.2f, 0.8f, 0.3f, 6, duration);
+            ring.init(level, pos, schoolId, duration);
+            effect.addEmitter(ring);
         }
 
         return effect;

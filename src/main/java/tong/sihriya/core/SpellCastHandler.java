@@ -7,6 +7,7 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -31,6 +32,10 @@ import java.util.UUID;
 public class SpellCastHandler {
     private static final SpellCooldownTracker COOLDOWNS = new SpellCooldownTracker();
     private static final java.util.Set<UUID> CASTING_PLAYERS = new java.util.HashSet<>();
+    private static final java.util.Set<UUID> MOVEMENT_LOCKED = new java.util.HashSet<>();
+    private static final java.util.Set<UUID> CANCELLED_CASTS = new java.util.HashSet<>();
+    private static final java.util.Map<UUID, LivingEntity> LOCKED_TARGETS = new java.util.HashMap<>();
+    private static final java.util.Map<UUID, Vec3> CAST_START_POSITIONS = new java.util.HashMap<>();
 
     public static boolean castSpell(ServerPlayer player, String spellId) {
         return castSpellDetailed(player, spellId).success();
@@ -81,25 +86,55 @@ public class SpellCastHandler {
             // --- Phase CHANT : animation d'incantation, effets différés ---
             CASTING_PLAYERS.add(player.getUUID());
 
-            // Blend 0.2s vers la pose de chant (visible et fluide)
+            // Lock mouvement pour les ULTIMATE (pas de déplacement, pas d'annulation)
+            if (spell.type == SpellType.ULTIMATE) {
+                MOVEMENT_LOCKED.add(player.getUUID());
+                CAST_START_POSITIONS.put(player.getUUID(), player.position());
+            }
+
+            // Lock la cible au début du cast (ne change pas pendant le chant)
+            if (spell.type != SpellType.PROJECTILE) {
+                LOCKED_TARGETS.put(player.getUUID(), computeTargetEntity(player));
+            }
+
+            // Pour blazing_sun : prédire le point d'impact et envoyer le cercle magique immédiatement
+            if ("fire.blazing_sun".equals(spellId)) {
+                Vec3 eye = player.getEyePosition(1.0f);
+                Vec3 look = player.getLookAngle().scale(120);
+                var clip = player.level().clip(new ClipContext(
+                    eye, eye.add(look), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+                Vec3 hitPos = clip.getType() == HitResult.Type.MISS
+                    ? eye.add(look) : clip.getLocation();
+                NetworkHandler.sendToPlayer(new VFXTriggerPacket(spellId, spell.school,
+                    player.getId(), hitPos.x, hitPos.y, hitPos.z), player);
+            }
+
+            // Blend ultra-rapide vers la pose de chant
             tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
-                tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CHANT, 0.2f);
+                tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CHANT);
 
             // Déclencher le CAST après chantTicks ticks
+            final int POST_CAST_LOCK = 10;
             player.getServer().tell(new net.minecraft.server.TickTask(
                 player.getServer().getTickCount() + chantTicks,
                 () -> {
-                    CASTING_PLAYERS.remove(player.getUUID());
+                    // Annuler si le joueur est mort, déconnecté, ou a bougé pendant le chant
+                    if (player.isRemoved() || !player.isAlive() || CANCELLED_CASTS.contains(player.getUUID())) {
+                        CANCELLED_CASTS.remove(player.getUUID());
+                        CASTING_PLAYERS.remove(player.getUUID());
+                        MOVEMENT_LOCKED.remove(player.getUUID());
+                        LOCKED_TARGETS.remove(player.getUUID());
+                        CAST_START_POSITIONS.remove(player.getUUID());
+                        return;
+                    }
 
-                    // Annuler si le joueur est mort ou déconnecté pendant le chant
-                    if (player.isRemoved() || !player.isAlive()) return;
-
-                    // --- Phase CAST : animation de lancer, blend 0.2s depuis le chant ---
+                    // --- Phase CAST : animation de lancer ultra-rapide ---
                     tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
-                        tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST, 0.2f);
+                        tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST);
 
-                    // Effets, XP, VFX
+                    // Effets, XP, VFX (immédiats, l'animation de cast continue en parallèle)
                     executeEffects(player, spell);
+                    LOCKED_TARGETS.remove(player.getUUID());
                     prog.addXp(spell.school, 5);
                     STATModIntegration.awardSpellXp(player, spell);
                     TierUnlockHandler.checkUnlocks(player, prog);
@@ -108,15 +143,34 @@ public class SpellCastHandler {
 
                     Sihriya.LOGGER.debug("Player {} cast spell {} (chant {}t → cast)",
                         player.getName().getString(), spellId, chantTicks);
+
+                    // Débloquer après la durée de l'animation de cast
+                    player.getServer().tell(new net.minecraft.server.TickTask(
+                        player.getServer().getTickCount() + POST_CAST_LOCK,
+                        () -> {
+                            CASTING_PLAYERS.remove(player.getUUID());
+                            MOVEMENT_LOCKED.remove(player.getUUID());
+                            CAST_START_POSITIONS.remove(player.getUUID());
+                        }
+                    ));
                 }
             ));
         } else {
             // --- Instant cast (castTime == 0) ---
+            CASTING_PLAYERS.add(player.getUUID());
+            if (spell.type == SpellType.ULTIMATE) {
+                MOVEMENT_LOCKED.add(player.getUUID());
+                CAST_START_POSITIONS.put(player.getUUID(), player.position());
+            }
+            if (spell.type != SpellType.PROJECTILE) {
+                LOCKED_TARGETS.put(player.getUUID(), computeTargetEntity(player));
+            }
             if (!player.level().isClientSide) {
                 tong.sihriya.animation.SihriyaAnimationPlayer.play(player, spellId,
-                    tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST, 0.15f);
+                    tong.sihriya.animation.SihriyaAnimationPlayer.SpellPhase.CAST);
             }
             executeEffects(player, spell);
+            LOCKED_TARGETS.remove(player.getUUID());
             prog.addXp(spell.school, 5);
             STATModIntegration.awardSpellXp(player, spell);
             TierUnlockHandler.checkUnlocks(player, prog);
@@ -124,6 +178,22 @@ public class SpellCastHandler {
                 player.getId(), player.getX(), player.getY(), player.getZ()), player);
 
             Sihriya.LOGGER.debug("Player {} cast spell {} (instant)", player.getName().getString(), spellId);
+
+            // Petit lock pour laisser l'animation de cast se jouer
+            if (!player.level().isClientSide) {
+                player.getServer().tell(new net.minecraft.server.TickTask(
+                    player.getServer().getTickCount() + 10,
+                    () -> {
+                        CASTING_PLAYERS.remove(player.getUUID());
+                        MOVEMENT_LOCKED.remove(player.getUUID());
+                        CAST_START_POSITIONS.remove(player.getUUID());
+                    }
+                ));
+            } else {
+                CASTING_PLAYERS.remove(player.getUUID());
+                MOVEMENT_LOCKED.remove(player.getUUID());
+                CAST_START_POSITIONS.remove(player.getUUID());
+            }
         }
 
         return CastResult.success(spell.school, spell.id, spell.cooldown);
@@ -133,6 +203,32 @@ public class SpellCastHandler {
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         COOLDOWNS.clearPlayer(event.getEntity().getUUID());
         CASTING_PLAYERS.remove(event.getEntity().getUUID());
+        MOVEMENT_LOCKED.remove(event.getEntity().getUUID());
+        LOCKED_TARGETS.remove(event.getEntity().getUUID());
+        CAST_START_POSITIONS.remove(event.getEntity().getUUID());
+        CANCELLED_CASTS.remove(event.getEntity().getUUID());
+    }
+
+    // Lock mouvement pendant le cast des sorts ultimes + détection de mouvement → annulation
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && !event.player.level().isClientSide) {
+            if (MOVEMENT_LOCKED.contains(event.player.getUUID())) {
+                // Vérifier si le joueur a bougé → annuler le sort
+                Vec3 start = CAST_START_POSITIONS.get(event.player.getUUID());
+                if (start != null && event.player.position().distanceToSqr(start) > 0.01) {
+                    CANCELLED_CASTS.add(event.player.getUUID());
+                    MOVEMENT_LOCKED.remove(event.player.getUUID());
+                    CAST_START_POSITIONS.remove(event.player.getUUID());
+                    return;
+                }
+                // Bloquer tout mouvement
+                event.player.xxa = 0;
+                event.player.zza = 0;
+                Vec3 motion = event.player.getDeltaMovement();
+                event.player.setDeltaMovement(0, Math.min(0, motion.y), 0);
+            }
+        }
     }
 
     /** Cast le meilleur sort disponible pour une école (touché 1-6). */
@@ -262,6 +358,26 @@ public class SpellCastHandler {
                     case "orbit_damage" -> applyOrbitDamageAura(player, value, duration);
                     case "summon" -> applySummon(player, spell.school, (int) value, duration);
                     case "wall" -> applyWall(player, spell.school, (int) value, duration);
+                    case "light" -> applyLight(player, duration);
+                    case "water_walk" -> applyWaterWalk(player, duration);
+                    case "water_breathing" -> applyWaterBreathing(player, duration);
+                    case "mana_regen" -> applyManaRegen(player, value, duration);
+                    case "fire_immunity" -> applyFireImmunity(player, duration);
+                    case "physical_immunity" -> applyPhysicalImmunity(player, value, duration);
+                    case "attack_speed" -> applyAttackSpeed(player, value, duration);
+                    case "lava_immunity" -> applyLavaImmunity(player, duration);
+                    case "ice_walk" -> applyIceWalk(player, duration);
+                    case "fear_animals" -> applyFearAnimals(player, duration);
+                    case "fear_immunity" -> applyFearImmunity(player, duration);
+                    case "curse_immunity" -> applyCurseImmunity(player, duration);
+                    case "heal_reduction" -> applyHealReduction(player, value, duration);
+                    case "mana_drain" -> applyManaDrain(player, value);
+                    case "resurrect" -> applyResurrect(player);
+                    case "invulnerability" -> applyInvulnerability(player, value, duration);
+                    case "banish" -> applyBanish(player);
+                    case "invisibility" -> applyInvisibility(player, duration);
+                    case "lightning_rod" -> applyLightningRod(player, duration);
+                    case "barrier_undead" -> applyBarrierUndead(player, value, duration);
                     default -> Sihriya.LOGGER.debug("Unhandled effect type: {}", effect.type);
                 }
             } catch (Throwable t) {
@@ -373,9 +489,16 @@ public class SpellCastHandler {
     private static void spawnProjectile(ServerPlayer player, String schoolId, float damage, String spellId) {
         var projectile = new tong.sihriya.projectile.SpellProjectile(
             player.level(), player, damage, schoolId, spellId);
-        var look = player.getLookAngle();
-        projectile.setPos(player.getX() + look.x * 1.5, player.getEyeY() - 0.3, player.getZ() + look.z * 1.5);
-        projectile.shoot(look.x, look.y, look.z, 2.0f, 0.5f);
+
+        if ("fire.blazing_sun".equals(spellId)) {
+            // Plane à +15Y, grossit, puis se lance
+            projectile.setPos(player.getX(), player.getY() + 15.0, player.getZ());
+            projectile.startCharge(560, 15.0, 19.0);
+        } else {
+            var look = player.getLookAngle();
+            projectile.setPos(player.getX() + look.x * 1.5, player.getEyeY() - 0.3, player.getZ() + look.z * 1.5);
+            projectile.shoot(look.x, look.y, look.z, 2.0f, 0.5f);
+        }
         player.level().addFreshEntity(projectile);
     }
 
@@ -548,6 +671,12 @@ public class SpellCastHandler {
     }
 
     private static LivingEntity getTargetEntity(ServerPlayer player) {
+        LivingEntity locked = LOCKED_TARGETS.get(player.getUUID());
+        if (locked != null) return locked;
+        return computeTargetEntity(player);
+    }
+
+    private static LivingEntity computeTargetEntity(ServerPlayer player) {
         double range = getDirectTargetRange(player);
         Vec3 start = player.getEyePosition();
         Vec3 look = player.getViewVector(1.0f);
@@ -817,4 +946,186 @@ public class SpellCastHandler {
         ));
     }
 
+    // ---- Missing effect implementations (Step 3) ----
+
+    private static void applyLight(ServerPlayer player, int duration) {
+        var level = player.level();
+        var pos = player.blockPosition().above();
+        if (level.getBlockState(pos).isAir()) {
+            level.setBlock(pos, net.minecraft.world.level.block.Blocks.LIGHT.defaultBlockState(), 3);
+            int cleanupDelay = Math.max(duration, 100);
+            player.getServer().tell(new net.minecraft.server.TickTask(
+                player.getServer().getTickCount() + cleanupDelay,
+                () -> {
+                    if (level.getBlockState(pos).getBlock() == net.minecraft.world.level.block.Blocks.LIGHT) {
+                        level.setBlock(pos, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 3);
+                    }
+                }
+            ));
+        }
+    }
+
+    private static void applyWaterWalk(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.WATER_WALK.get(), Math.max(1, duration), 0));
+    }
+
+    private static void applyWaterBreathing(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.WATER_BREATHING, duration, 0));
+    }
+
+    private static void applyManaRegen(ServerPlayer player, float amount, int duration) {
+        if (duration > 0) {
+            int amp = Math.max(0, Math.round(amount) - 1);
+            safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+                ModEffects.MANA_REGEN.get(), duration, amp));
+        } else {
+            player.getCapability(ManaProvider.MANA).ifPresent(m -> m.regenMana(player, amount));
+        }
+    }
+
+    private static void applyFireImmunity(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.FIRE_RESISTANCE, duration, 0));
+    }
+
+    private static void applyPhysicalImmunity(ServerPlayer player, float amount, int duration) {
+        int amp = Math.min(4, (int)(amount / 4));
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE, duration, amp));
+    }
+
+    private static void applyAttackSpeed(ServerPlayer player, float amount, int duration) {
+        int amp = Math.max(0, (int)(amount * 2) - 1);
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DIG_SPEED, duration, amp));
+    }
+
+    private static void applyLavaImmunity(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.FIRE_RESISTANCE, duration, 1));
+    }
+
+    private static void applyIceWalk(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.ICE_WALK.get(), Math.max(1, duration), 0));
+    }
+
+    private static void applyFearAnimals(ServerPlayer player, int duration) {
+        var nearby = player.level().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,
+            player.getBoundingBox().inflate(10),
+            e -> e != player && e.isAlive()
+                && e.getType().getCategory() == net.minecraft.world.entity.MobCategory.CREATURE);
+        for (var animal : nearby) {
+            animal.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN, duration, 3));
+            animal.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.WEAKNESS, duration, 2));
+            var away = animal.position().subtract(player.position()).normalize();
+            animal.push(away.x * 0.5, 0.3, away.z * 0.5);
+            animal.hurtMarked = true;
+        }
+    }
+
+    private static void applyFearImmunity(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.FEAR_IMMUNITY.get(), Math.max(1, duration), 0));
+    }
+
+    private static void applyCurseImmunity(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.CURSE_IMMUNITY.get(), Math.max(1, duration), 0));
+    }
+
+    private static void applyHealReduction(ServerPlayer player, float amount, int duration) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            int amp = Math.max(0, (int)(amount * 2) - 1);
+            target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.WITHER, duration, amp));
+        }
+    }
+
+    private static void applyManaDrain(ServerPlayer player, float amount) {
+        var target = getTargetEntity(player);
+        if (target instanceof ServerPlayer targetPlayer) {
+            targetPlayer.getCapability(ManaProvider.MANA).ifPresent(m -> {
+                float drained = Math.min(amount, m.getMana(targetPlayer));
+                m.consumeMana(targetPlayer, drained);
+                player.getCapability(ManaProvider.MANA)
+                    .ifPresent(pm -> pm.regenMana(player, drained * 0.5f));
+            });
+        } else if (target != null) {
+            target.hurt(player.damageSources().magic(), amount * 0.3f);
+            player.getCapability(ManaProvider.MANA)
+                .ifPresent(pm -> pm.regenMana(player, amount * 0.1f));
+        } else {
+            player.getCapability(ManaProvider.MANA)
+                .ifPresent(pm -> pm.regenMana(player, amount * 0.2f));
+        }
+    }
+
+    private static void applyResurrect(ServerPlayer player) {
+        for (var sp : player.getServer().getPlayerList().getPlayers()) {
+            if (!sp.isAlive()) {
+                sp.setHealth(20.0f);
+                sp.clearFire();
+                var spawnLevel = player.getServer().getLevel(sp.getRespawnDimension());
+                if (spawnLevel == null) spawnLevel = (net.minecraft.server.level.ServerLevel) player.level();
+                var respawn = sp.getRespawnPosition();
+                if (respawn != null) {
+                    sp.teleportTo(spawnLevel, respawn.getX(), respawn.getY(), respawn.getZ(),
+                        sp.getYRot(), sp.getXRot());
+                } else {
+                    sp.teleportTo(spawnLevel, player.getX(), player.getY(), player.getZ(),
+                        player.getYRot(), player.getXRot());
+                }
+            }
+        }
+    }
+
+    private static void applyInvulnerability(ServerPlayer player, float amount, int duration) {
+        int resAmp = Math.min(4, (int)(amount / 4));
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE, duration, Math.max(4, resAmp)));
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.ABSORPTION, duration, Math.max(4, (int)(amount * 4))));
+    }
+
+    private static void applyBanish(ServerPlayer player) {
+        var target = getTargetEntity(player);
+        if (target != null) {
+            target.kill();
+            target.discard();
+        }
+    }
+
+    private static void applyInvisibility(ServerPlayer player, int duration) {
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            net.minecraft.world.effect.MobEffects.INVISIBILITY, duration, 0));
+    }
+
+    private static void applyLightningRod(ServerPlayer player, int duration) {
+        var level = player.level();
+        var bolt = new net.minecraft.world.entity.LightningBolt(
+            net.minecraft.world.entity.EntityType.LIGHTNING_BOLT, level);
+        bolt.setPos(player.getX(), player.getY(), player.getZ());
+        bolt.setVisualOnly(true);
+        level.addFreshEntity(bolt);
+        safeAddEffect(player, new net.minecraft.world.effect.MobEffectInstance(
+            ModEffects.LIGHTNING_ABSORPTION.get(), duration, 0));
+    }
+
+    private static void applyBarrierUndead(ServerPlayer player, float damage, int duration) {
+        var nearby = player.level().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,
+            player.getBoundingBox().inflate(5),
+            e -> e.isAlive() && e.getMobType() == net.minecraft.world.entity.MobType.UNDEAD);
+        for (var undead : nearby) {
+            undead.hurt(player.damageSources().magic(), damage);
+            undead.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,
+                duration > 0 ? duration : 100, 4));
+        }
+    }
 }

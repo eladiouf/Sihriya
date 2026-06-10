@@ -3,16 +3,22 @@
     "id": "fire.spark",
     "school": "fire",
     "tier": 1,
-    "manaCost": 5,
-    "cooldown": 20,
-    "castTime": 0,
+    "manaCost": 7,
+    "cooldown": 21,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 3.0,
+        "baseValue": 6,
         "scaling": 0.05,
         "duration": 0
+      },
+      {
+        "type": "burn",
+        "baseValue": 2,
+        "scaling": 0.03,
+        "duration": 60
       }
     ]
   },
@@ -20,20 +26,20 @@
     "id": "fire.living_torch",
     "school": "fire",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 200,
+    "manaCost": 9,
+    "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "light",
-        "baseValue": 14.0,
+        "baseValue": 14,
         "scaling": 0,
         "duration": 600
       },
       {
         "type": "thorns",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0.02,
         "duration": 600
       }
@@ -43,20 +49,20 @@
     "id": "fire.fireball",
     "school": "fire",
     "tier": 1,
-    "manaCost": 12,
-    "cooldown": 40,
+    "manaCost": 10,
+    "cooldown": 38,
     "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
-        "scaling": 0.12,
+        "baseValue": 7,
+        "scaling": 0.04,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.05,
         "duration": 100
       }
@@ -66,22 +72,22 @@
     "id": "fire.wall_of_flames",
     "school": "fire",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 200,
-    "castTime": 20,
+    "manaCost": 16,
+    "cooldown": 49,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
-        "type": "damage",
-        "baseValue": 8.0,
+        "type": "wall",
+        "baseValue": 8,
         "scaling": 0.1,
         "duration": 400
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
-        "scaling": 0.08,
-        "duration": 400
+        "baseValue": 2,
+        "scaling": 0.04,
+        "duration": 100
       }
     ]
   },
@@ -89,21 +95,21 @@
     "id": "fire.fiery_breath",
     "school": "fire",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 100,
-    "castTime": 0,
+    "manaCost": 11,
+    "cooldown": 81,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
+        "baseValue": 11,
         "scaling": 0.08,
         "duration": 40
       },
       {
-        "type": "burn",
-        "baseValue": 3.0,
-        "scaling": 0.06,
+        "type": "fear",
+        "baseValue": 1,
+        "scaling": 0,
         "duration": 60
       }
     ]
@@ -112,26 +118,26 @@
     "id": "fire.fire_nova",
     "school": "fire",
     "tier": 2,
-    "manaCost": 25,
-    "cooldown": 160,
+    "manaCost": 16,
+    "cooldown": 54,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 15,
+        "scaling": 0.12,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.04,
         "duration": 60
       }
@@ -141,9 +147,9 @@
     "id": "fire.blazing_armor",
     "school": "fire",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 19,
+    "cooldown": 192,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -154,7 +160,7 @@
       },
       {
         "type": "thorns",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.05,
         "duration": 1200
       }
@@ -164,20 +170,20 @@
     "id": "fire.comet",
     "school": "fire",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 300,
-    "castTime": 30,
+    "manaCost": 27,
+    "cooldown": 116,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 35.0,
-        "scaling": 0.3,
+        "baseValue": 23,
+        "scaling": 0.14,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.1,
         "duration": 200
       }
@@ -188,21 +194,27 @@
     "school": "fire",
     "tier": 3,
     "manaCost": 30,
-    "cooldown": 200,
-    "castTime": 10,
+    "cooldown": 193,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
-        "scaling": 0.35,
+        "baseValue": 20,
+        "scaling": 0.11,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
+      },
+      {
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -210,15 +222,15 @@
     "id": "fire.ash_storm",
     "school": "fire",
     "tier": 3,
-    "manaCost": 40,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 24,
+    "cooldown": 183,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 3.0,
-        "scaling": 0.05,
+        "baseValue": 24,
+        "scaling": 0.19,
         "duration": 160
       },
       {
@@ -233,8 +245,8 @@
     "id": "fire.fusion",
     "school": "fire",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 500,
+    "manaCost": 23,
+    "cooldown": 231,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
@@ -246,13 +258,13 @@
       },
       {
         "type": "melee_fire_bonus",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 300
       },
       {
         "type": "fire_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       }
@@ -263,13 +275,13 @@
     "school": "fire",
     "tier": 4,
     "manaCost": 50,
-    "cooldown": 6000,
-    "castTime": 40,
+    "cooldown": 427,
+    "castTime": 30,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -279,22 +291,22 @@
     "id": "fire.meteor_shower",
     "school": "fire",
     "tier": 4,
-    "manaCost": 60,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 37,
+    "cooldown": 252,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 25.0,
+        "baseValue": 25,
         "scaling": 0.25,
         "duration": 100
       },
       {
-        "type": "burn",
-        "baseValue": 4.0,
-        "scaling": 0.08,
-        "duration": 200
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -302,22 +314,22 @@
     "id": "fire.blazing_sun",
     "school": "fire",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
-    "castTime": 60,
-    "type": "ULTIMATE",
+    "manaCost": 62,
+    "cooldown": 1200,
+    "castTime": 560,
+    "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
-        "scaling": 0.1,
-        "duration": 120
+        "baseValue": 50,
+        "scaling": 0.45,
+        "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 6.0,
-        "scaling": 0.1,
-        "duration": 120
+        "baseValue": 8,
+        "scaling": 0.12,
+        "duration": 2400
       },
       {
         "type": "blindness",
@@ -331,20 +343,20 @@
     "id": "water.water_jet",
     "school": "water",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 45,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0,
         "duration": 0
       }
@@ -354,14 +366,14 @@
     "id": "water.walk_on_water",
     "school": "water",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 6,
+    "cooldown": 98,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "water_walk",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 2400
       }
@@ -371,14 +383,14 @@
     "id": "water.air_bubble",
     "school": "water",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 300,
+    "manaCost": 6,
+    "cooldown": 75,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "water_breathing",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -388,14 +400,14 @@
     "id": "water.liquid_shield",
     "school": "water",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 300,
+    "manaCost": 19,
+    "cooldown": 184,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.3,
         "duration": 900
       }
@@ -405,20 +417,20 @@
     "id": "water.crushing_wave",
     "school": "water",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 200,
-    "castTime": 20,
+    "manaCost": 20,
+    "cooldown": 44,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
       },
@@ -434,9 +446,9 @@
     "id": "water.water_prison",
     "school": "water",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 14,
+    "cooldown": 52,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
@@ -451,14 +463,14 @@
     "id": "water.healing_rain",
     "school": "water",
     "tier": 2,
-    "manaCost": 25,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 15,
+    "cooldown": 86,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.08,
         "duration": 200
       }
@@ -468,20 +480,20 @@
     "id": "water.maelstrom",
     "school": "water",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 300,
+    "manaCost": 30,
+    "cooldown": 115,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.08,
+        "baseValue": 24,
+        "scaling": 0.1,
         "duration": 120
       },
       {
         "type": "pull",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 120
       }
@@ -491,9 +503,9 @@
     "id": "water.deluge",
     "school": "water",
     "tier": 3,
-    "manaCost": 40,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 27,
+    "cooldown": 163,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
@@ -504,7 +516,7 @@
       },
       {
         "type": "mana_regen",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.02,
         "duration": 2400
       }
@@ -514,20 +526,20 @@
     "id": "water.geysers",
     "school": "water",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 250,
-    "castTime": 6,
+    "manaCost": 29,
+    "cooldown": 174,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0,
         "duration": 0
       }
@@ -537,14 +549,14 @@
     "id": "water.liquid_form",
     "school": "water",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 500,
+    "manaCost": 22,
+    "cooldown": 272,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "physical_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 400
       },
@@ -560,22 +572,28 @@
     "id": "water.tidal_wave",
     "school": "water",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 34,
+    "cooldown": 389,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 50.0,
-        "scaling": 0.4,
+        "baseValue": 35,
+        "scaling": 0.19,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -583,8 +601,8 @@
     "id": "water.ice_armor",
     "school": "water",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
+    "manaCost": 50,
+    "cooldown": 485,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
@@ -596,7 +614,7 @@
       },
       {
         "type": "fire_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       },
@@ -612,14 +630,14 @@
     "id": "water.eye_of_deluge",
     "school": "water",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 52,
+    "cooldown": 1657,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.12,
         "duration": 200
       },
@@ -628,6 +646,12 @@
         "baseValue": 0.4,
         "scaling": 0,
         "duration": 200
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -635,20 +659,20 @@
     "id": "wind.gust",
     "school": "wind",
     "tier": 1,
-    "manaCost": 5,
-    "cooldown": 20,
-    "castTime": 0,
+    "manaCost": 10,
+    "cooldown": 44,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.03,
         "duration": 0
       }
@@ -658,14 +682,14 @@
     "id": "wind.wind_step",
     "school": "wind",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 60,
-    "castTime": 0,
+    "manaCost": 6,
+    "cooldown": 65,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "dash",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.05,
         "duration": 0
       }
@@ -675,8 +699,8 @@
     "id": "wind.air_shield",
     "school": "wind",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 300,
+    "manaCost": 7,
+    "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
@@ -692,14 +716,14 @@
     "id": "wind.whistle",
     "school": "wind",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 12,
+    "cooldown": 44,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.12,
         "duration": 0
       },
@@ -715,16 +739,22 @@
     "id": "wind.air_blade",
     "school": "wind",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 100,
-    "castTime": 10,
+    "manaCost": 19,
+    "cooldown": 56,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 22.0,
-        "scaling": 0.2,
+        "baseValue": 14,
+        "scaling": 0.08,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -732,14 +762,14 @@
     "id": "wind.brief_flight",
     "school": "wind",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 18,
+    "cooldown": 167,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "flight",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 600
       }
@@ -749,20 +779,20 @@
     "id": "wind.whirlwind",
     "school": "wind",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 15,
+    "cooldown": 86,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "knockback",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.02,
         "duration": 100
       },
       {
         "type": "projectile_deflect",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 100
       }
@@ -772,15 +802,15 @@
     "id": "wind.dust_storm",
     "school": "wind",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 29,
+    "cooldown": 182,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 2.0,
-        "scaling": 0.03,
+        "baseValue": 17,
+        "scaling": 0.14,
         "duration": 300
       },
       {
@@ -795,8 +825,8 @@
     "id": "wind.wind_speed",
     "school": "wind",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 500,
+    "manaCost": 22,
+    "cooldown": 297,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
@@ -808,7 +838,7 @@
       },
       {
         "type": "melee_bonus",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 900
       }
@@ -818,9 +848,9 @@
     "id": "wind.wind_cage",
     "school": "wind",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 300,
-    "castTime": 10,
+    "manaCost": 22,
+    "cooldown": 165,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
@@ -835,14 +865,14 @@
     "id": "wind.storm_blades",
     "school": "wind",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 350,
+    "manaCost": 21,
+    "cooldown": 281,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "orbit_damage",
-        "baseValue": 12.0,
+        "baseValue": 12,
         "scaling": 0.12,
         "duration": 600
       }
@@ -852,20 +882,20 @@
     "id": "wind.hurricane",
     "school": "wind",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 31,
+    "cooldown": 239,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
-        "scaling": 0.08,
+        "baseValue": 38,
+        "scaling": 0.2,
         "duration": 400
       },
       {
         "type": "knockback",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0,
         "duration": 400
       }
@@ -876,13 +906,13 @@
     "school": "wind",
     "tier": 4,
     "manaCost": 40,
-    "cooldown": 500,
-    "castTime": 20,
+    "cooldown": 538,
+    "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "flight",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 40
       },
@@ -898,20 +928,20 @@
     "id": "wind.eye_of_storm",
     "school": "wind",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 63,
+    "cooldown": 2967,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 240
       },
       {
         "type": "knockback",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0,
         "duration": 240
       }
@@ -921,20 +951,20 @@
     "id": "earth.rock_strike",
     "school": "earth",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 30,
-    "castTime": 6,
+    "manaCost": 7,
+    "cooldown": 52,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 7,
         "scaling": 0.1,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 0
       }
@@ -944,9 +974,9 @@
     "id": "earth.stone_skin",
     "school": "earth",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 6,
+    "cooldown": 60,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
@@ -967,14 +997,14 @@
     "id": "earth.tremor",
     "school": "earth",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 80,
+    "manaCost": 8,
+    "cooldown": 45,
     "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.06,
         "duration": 0
       },
@@ -990,15 +1020,15 @@
     "id": "earth.stone_wall",
     "school": "earth",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 300,
-    "castTime": 10,
+    "manaCost": 17,
+    "cooldown": 50,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "wall",
-        "baseValue": 200.0,
-        "scaling": 2.0,
+        "baseValue": 200,
+        "scaling": 2,
         "duration": 600
       }
     ]
@@ -1008,14 +1038,20 @@
     "school": "earth",
     "tier": 2,
     "manaCost": 20,
-    "cooldown": 120,
-    "castTime": 6,
+    "cooldown": 73,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 28.0,
-        "scaling": 0.25,
+        "baseValue": 10,
+        "scaling": 0.1,
+        "duration": 0
+      },
+      {
+        "type": "knockback",
+        "baseValue": 0.5,
+        "scaling": 0.01,
         "duration": 0
       }
     ]
@@ -1024,11 +1060,17 @@
     "id": "earth.stone_roots",
     "school": "earth",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 13,
+    "cooldown": 92,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
+      {
+        "type": "damage",
+        "baseValue": 10,
+        "scaling": 0.1,
+        "duration": 0
+      },
       {
         "type": "stun",
         "baseValue": 0,
@@ -1041,20 +1083,20 @@
     "id": "earth.absorption",
     "school": "earth",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 14,
+    "cooldown": 111,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 200
       },
       {
         "type": "mana_regen",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.03,
         "duration": 200
       }
@@ -1064,15 +1106,15 @@
     "id": "earth.fortress",
     "school": "earth",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 600,
-    "castTime": 10,
+    "manaCost": 26,
+    "cooldown": 179,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "wall",
-        "baseValue": 300.0,
-        "scaling": 3.0,
+        "baseValue": 300,
+        "scaling": 3,
         "duration": 6000
       }
     ]
@@ -1081,20 +1123,20 @@
     "id": "earth.avalanche",
     "school": "earth",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
+    "manaCost": 22,
+    "cooldown": 159,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
       }
@@ -1104,14 +1146,14 @@
     "id": "earth.fissure",
     "school": "earth",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 350,
+    "manaCost": 28,
+    "cooldown": 103,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 0
       },
@@ -1120,6 +1162,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 60
+      },
+      {
+        "type": "knockback",
+        "baseValue": 3,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -1127,14 +1175,14 @@
     "id": "earth.stone_golem",
     "school": "earth",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 23,
+    "cooldown": 400,
+    "castTime": 20,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -1144,15 +1192,15 @@
     "id": "earth.earthquake",
     "school": "earth",
     "tier": 4,
-    "manaCost": 60,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 49,
+    "cooldown": 272,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
-        "scaling": 0.12,
+        "baseValue": 24,
+        "scaling": 0.15,
         "duration": 160
       },
       {
@@ -1167,20 +1215,20 @@
     "id": "earth.earth_column",
     "school": "earth",
     "tier": 4,
-    "manaCost": 35,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 49,
+    "cooldown": 303,
+    "castTime": 30,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.25,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0,
         "duration": 0
       }
@@ -1190,20 +1238,20 @@
     "id": "earth.titan_awakening",
     "school": "earth",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 55,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       },
       {
         "type": "damage",
-        "baseValue": 40.0,
+        "baseValue": 40,
         "scaling": 0.35,
         "duration": 300
       }
@@ -1213,14 +1261,14 @@
     "id": "lightning.electric_arc",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 7,
+    "cooldown": 50,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 0
       },
@@ -1236,15 +1284,15 @@
     "id": "lightning.discharge",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 80,
-    "castTime": 40,
+    "manaCost": 7,
+    "cooldown": 95,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 10,
+        "scaling": 0.12,
         "duration": 0
       },
       {
@@ -1259,14 +1307,14 @@
     "id": "lightning.antenna",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 12,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 6,
+    "cooldown": 27,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "lightning_rod",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -1276,20 +1324,20 @@
     "id": "lightning.chain_lightning",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 100,
-    "castTime": 10,
+    "manaCost": 11,
+    "cooldown": 48,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 12,
+        "scaling": 0.11,
         "duration": 0
       },
       {
         "type": "chain",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 0
       }
@@ -1299,14 +1347,14 @@
     "id": "lightning.lightning_armor",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 16,
+    "cooldown": 86,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "thorns",
-        "baseValue": 12.0,
+        "baseValue": 12,
         "scaling": 0.12,
         "duration": 1200
       },
@@ -1322,14 +1370,14 @@
     "id": "lightning.acceleration",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 300,
-    "castTime": 10,
+    "manaCost": 14,
+    "cooldown": 138,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "speed",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0.008,
         "duration": 400
       },
@@ -1345,22 +1393,22 @@
     "id": "lightning.paralysis",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 160,
-    "castTime": 5,
+    "manaCost": 13,
+    "cooldown": 78,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
-        "scaling": 0.06,
+        "baseValue": 11,
+        "scaling": 0.09,
         "duration": 0
       },
       {
         "type": "stun",
-        "baseValue": 0,
+        "baseValue": 1,
         "scaling": 0,
-        "duration": 80
+        "duration": 60
       }
     ]
   },
@@ -1368,14 +1416,14 @@
     "id": "lightning.electric_storm",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 22,
+    "cooldown": 198,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 200
       },
@@ -1384,26 +1432,9 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 10
-      }
-    ]
-  },
-  {
-    "id": "lightning.surge",
-    "school": "lightning",
-    "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
-    "castTime": 15,
-    "type": "ZONE",
-    "effects": [
-      {
-        "type": "damage",
-        "baseValue": 30.0,
-        "scaling": 0.3,
-        "duration": 0
       },
       {
-        "type": "stun",
+        "type": "blindness",
         "baseValue": 0,
         "scaling": 0,
         "duration": 60
@@ -1411,17 +1442,46 @@
     ]
   },
   {
+    "id": "lightning.surge",
+    "school": "lightning",
+    "tier": 3,
+    "manaCost": 26,
+    "cooldown": 163,
+    "castTime": 20,
+    "type": "ZONE",
+    "effects": [
+      {
+        "type": "damage",
+        "baseValue": 21,
+        "scaling": 0.15,
+        "duration": 0
+      },
+      {
+        "type": "stun",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 60
+      },
+      {
+        "type": "knockback",
+        "baseValue": 3,
+        "scaling": 0,
+        "duration": 0
+      }
+    ]
+  },
+  {
     "id": "lightning.emp",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 500,
+    "manaCost": 22,
+    "cooldown": 187,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       }
@@ -1431,16 +1491,22 @@
     "id": "lightning.guided_lightning",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 200,
-    "castTime": 0,
+    "manaCost": 25,
+    "cooldown": 121,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 15,
         "scaling": 0.1,
         "duration": 60
+      },
+      {
+        "type": "stun",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -1448,15 +1514,15 @@
     "id": "lightning.storm_call",
     "school": "lightning",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 38,
+    "cooldown": 214,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
-        "scaling": 0.12,
+        "baseValue": 28,
+        "scaling": 0.26,
         "duration": 6000
       },
       {
@@ -1471,21 +1537,21 @@
     "id": "lightning.conduit",
     "school": "lightning",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
+    "manaCost": 35,
+    "cooldown": 411,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb_lightning",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 600
       },
       {
         "type": "damage",
-        "baseValue": 50.0,
-        "scaling": 0.4,
+        "baseValue": 40,
+        "scaling": 0.35,
         "duration": 0
       }
     ]
@@ -1494,14 +1560,14 @@
     "id": "lightning.celestial_judgment",
     "school": "lightning",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
-    "castTime": 100,
+    "manaCost": 68,
+    "cooldown": 1200,
+    "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 45.0,
+        "baseValue": 45,
         "scaling": 0.4,
         "duration": 0
       },
@@ -1510,6 +1576,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 40
+      },
+      {
+        "type": "burn",
+        "baseValue": 6,
+        "scaling": 0.1,
+        "duration": 200
       }
     ]
   },
@@ -1518,19 +1590,25 @@
     "school": "ice",
     "tier": 1,
     "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "cooldown": 37,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "slow",
         "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 60
+      },
+      {
+        "type": "freeze",
+        "baseValue": 1,
         "scaling": 0,
         "duration": 60
       }
@@ -1540,16 +1618,22 @@
     "id": "ice.ice_arrow",
     "school": "ice",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 50,
-    "castTime": 5,
+    "manaCost": 9,
+    "cooldown": 51,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 14.0,
-        "scaling": 0.14,
+        "baseValue": 5,
+        "scaling": 0.06,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -1557,11 +1641,17 @@
     "id": "ice.slippery_ground",
     "school": "ice",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 200,
+    "manaCost": 6,
+    "cooldown": 58,
     "castTime": 10,
     "type": "ZONE",
     "effects": [
+      {
+        "type": "damage",
+        "baseValue": 3,
+        "scaling": 0.03,
+        "duration": 0
+      },
       {
         "type": "slow",
         "baseValue": 0.3,
@@ -1574,9 +1664,9 @@
     "id": "ice.ice_prison",
     "school": "ice",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 13,
+    "cooldown": 94,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
@@ -1591,9 +1681,9 @@
     "id": "ice.frost_armor",
     "school": "ice",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 18,
+    "cooldown": 100,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -1604,7 +1694,7 @@
       },
       {
         "type": "thorns",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 2400
       }
@@ -1614,15 +1704,15 @@
     "id": "ice.stalactites",
     "school": "ice",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 150,
-    "castTime": 10,
+    "manaCost": 17,
+    "cooldown": 68,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 18.0,
-        "scaling": 0.18,
+        "baseValue": 9,
+        "scaling": 0.07,
         "duration": 0
       },
       {
@@ -1638,8 +1728,8 @@
     "school": "ice",
     "tier": 2,
     "manaCost": 12,
-    "cooldown": 300,
-    "castTime": 10,
+    "cooldown": 114,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -1650,7 +1740,7 @@
       },
       {
         "type": "ice_walk",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 1200
       }
@@ -1660,15 +1750,15 @@
     "id": "ice.blizzard",
     "school": "ice",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 21,
+    "cooldown": 106,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
-        "scaling": 0.06,
+        "baseValue": 16,
+        "scaling": 0.17,
         "duration": 240
       },
       {
@@ -1689,9 +1779,9 @@
     "id": "ice.freeze",
     "school": "ice",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 21,
+    "cooldown": 161,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
@@ -1712,14 +1802,14 @@
     "id": "ice.ice_wall",
     "school": "ice",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 300,
-    "castTime": 10,
+    "manaCost": 24,
+    "cooldown": 177,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "wall",
-        "baseValue": 250.0,
+        "baseValue": 250,
         "scaling": 2.5,
         "duration": 700
       }
@@ -1729,20 +1819,20 @@
     "id": "ice.frozen_heart",
     "school": "ice",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 600,
+    "manaCost": 20,
+    "cooldown": 233,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "fear_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 900
       },
       {
         "type": "curse_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 900
       },
@@ -1758,15 +1848,15 @@
     "id": "ice.frostbite_storm",
     "school": "ice",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 47,
+    "cooldown": 263,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
-        "scaling": 0.1,
+        "baseValue": 36,
+        "scaling": 0.28,
         "duration": 400
       },
       {
@@ -1781,15 +1871,15 @@
     "id": "ice.glacial_avalanche",
     "school": "ice",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
+    "manaCost": 45,
+    "cooldown": 272,
     "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
-        "scaling": 0.35,
+        "baseValue": 34,
+        "scaling": 0.27,
         "duration": 0
       },
       {
@@ -1804,8 +1894,8 @@
     "id": "ice.ice_age",
     "school": "ice",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 61,
+    "cooldown": 2004,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
@@ -1817,9 +1907,15 @@
       },
       {
         "type": "damage",
-        "baseValue": 3.0,
-        "scaling": 0.05,
+        "baseValue": 20,
+        "scaling": 0.2,
         "duration": 3600
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.5,
+        "scaling": 0,
+        "duration": 200
       }
     ]
   },
@@ -1827,22 +1923,28 @@
     "id": "lava.lava_jet",
     "school": "lava",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 40,
-    "castTime": 5,
+    "manaCost": 9,
+    "cooldown": 26,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 6,
         "scaling": 0.1,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.06,
         "duration": 80
+      },
+      {
+        "type": "knockback",
+        "baseValue": 2,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -1850,22 +1952,28 @@
     "id": "lava.burning_puddle",
     "school": "lava",
     "tier": 1,
-    "manaCost": 12,
-    "cooldown": 200,
+    "manaCost": 7,
+    "cooldown": 55,
     "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 600
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.06,
         "duration": 600
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -1873,20 +1981,20 @@
     "id": "lava.magma_shield",
     "school": "lava",
     "tier": 1,
-    "manaCost": 12,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 5,
+    "cooldown": 60,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 25.0,
+        "baseValue": 25,
         "scaling": 0.25,
         "duration": 1200
       },
       {
         "type": "thorns",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 1200
       }
@@ -1896,22 +2004,28 @@
     "id": "lava.volcanic_fissure",
     "school": "lava",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 200,
-    "castTime": 20,
+    "manaCost": 16,
+    "cooldown": 77,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 9,
+        "scaling": 0.11,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.08,
         "duration": 400
+      },
+      {
+        "type": "knockback",
+        "baseValue": 2,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -1919,22 +2033,28 @@
     "id": "lava.magma_bomb",
     "school": "lava",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 150,
-    "castTime": 10,
+    "manaCost": 17,
+    "cooldown": 97,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 25.0,
-        "scaling": 0.25,
+        "baseValue": 9,
+        "scaling": 0.11,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.08,
         "duration": 400
+      },
+      {
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -1942,9 +2062,9 @@
     "id": "lava.magma_armor",
     "school": "lava",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 16,
+    "cooldown": 88,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -1955,7 +2075,7 @@
       },
       {
         "type": "thorns",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
         "duration": 1800
       },
@@ -1971,20 +2091,20 @@
     "id": "lava.lava_walk",
     "school": "lava",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 400,
-    "castTime": 10,
+    "manaCost": 17,
+    "cooldown": 172,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "lava_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       },
       {
         "type": "fire_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -1994,22 +2114,28 @@
     "id": "lava.magma_wall",
     "school": "lava",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 29,
+    "cooldown": 108,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
+        "baseValue": 20,
         "scaling": 0.12,
         "duration": 500
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
         "duration": 500
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 120
       }
     ]
   },
@@ -2017,22 +2143,28 @@
     "id": "lava.lava_rain",
     "school": "lava",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 29,
+    "cooldown": 177,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 18,
         "scaling": 0.1,
         "duration": 160
       },
       {
         "type": "burn",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.05,
         "duration": 200
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -2040,16 +2172,22 @@
     "id": "lava.incandescent_ground",
     "school": "lava",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 300,
+    "manaCost": 27,
+    "cooldown": 135,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 14,
+        "scaling": 0.11,
         "duration": 300
+      },
+      {
+        "type": "burn",
+        "baseValue": 4,
+        "scaling": 0.04,
+        "duration": 100
       }
     ]
   },
@@ -2057,26 +2195,26 @@
     "id": "lava.magma_wave",
     "school": "lava",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 250,
+    "manaCost": 24,
+    "cooldown": 146,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 30.0,
-        "scaling": 0.3,
+        "baseValue": 24,
+        "scaling": 0.13,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
         "duration": 100
       }
@@ -2086,20 +2224,20 @@
     "id": "lava.eruption",
     "school": "lava",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 32,
+    "cooldown": 296,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
-        "scaling": 0.35,
+        "baseValue": 30,
+        "scaling": 0.23,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.1,
         "duration": 1200
       }
@@ -2109,26 +2247,26 @@
     "id": "lava.magmatic_form",
     "school": "lava",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
+    "manaCost": 46,
+    "cooldown": 425,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "physical_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 400
       },
       {
         "type": "melee_fire_bonus",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 400
       },
       {
         "type": "lava_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 400
       }
@@ -2138,22 +2276,34 @@
     "id": "lava.volcanic_awakening",
     "school": "lava",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 79,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
+        "baseValue": 40,
         "scaling": 0.35,
         "duration": 400
       },
       {
         "type": "burn",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.12,
         "duration": 6000
+      },
+      {
+        "type": "knockback",
+        "baseValue": 6,
+        "scaling": 0,
+        "duration": 0
+      },
+      {
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -2161,20 +2311,20 @@
     "id": "necromancy.drain_vital",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 40,
+    "manaCost": 6,
+    "cooldown": 27,
     "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 7,
         "scaling": 0.1,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 0
       }
@@ -2184,20 +2334,20 @@
     "id": "necromancy.death_touch",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 60,
-    "castTime": 0,
+    "manaCost": 6,
+    "cooldown": 31,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
-        "scaling": 0.15,
+        "baseValue": 4,
+        "scaling": 0.09,
         "duration": 0
       },
       {
         "type": "poison",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 160
       }
@@ -2207,14 +2357,14 @@
     "id": "necromancy.death_veil",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 7,
+    "cooldown": 96,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "fear_animals",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 600
       }
@@ -2224,14 +2374,14 @@
     "id": "necromancy.corrupted_resurrection",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 25,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 13,
+    "cooldown": 300,
+    "castTime": 15,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 6000
       }
@@ -2241,8 +2391,8 @@
     "id": "necromancy.lethal_curse",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 300,
+    "manaCost": 14,
+    "cooldown": 41,
     "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
@@ -2264,20 +2414,20 @@
     "id": "necromancy.soul_rend",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 11,
+    "cooldown": 73,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "mana_drain",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 0
       },
@@ -2293,9 +2443,9 @@
     "id": "necromancy.soul_chains",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 18,
+    "cooldown": 63,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -2310,14 +2460,14 @@
     "id": "necromancy.army_of_dead",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 40,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 29,
+    "cooldown": 400,
+    "castTime": 20,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 3600
       }
@@ -2327,15 +2477,15 @@
     "id": "necromancy.soul_corruption",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 23,
+    "cooldown": 139,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 3.0,
-        "scaling": 0.04,
+        "baseValue": 22,
+        "scaling": 0.18,
         "duration": 900
       },
       {
@@ -2350,16 +2500,28 @@
     "id": "necromancy.rift",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 400,
+    "manaCost": 20,
+    "cooldown": 158,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
-        "scaling": 0.08,
+        "baseValue": 22,
+        "scaling": 0.15,
         "duration": 300
+      },
+      {
+        "type": "fear",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 60
+      },
+      {
+        "type": "poison",
+        "baseValue": 3,
+        "scaling": 0.02,
+        "duration": 100
       }
     ]
   },
@@ -2367,8 +2529,8 @@
     "id": "necromancy.terror",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 400,
+    "manaCost": 26,
+    "cooldown": 112,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
@@ -2380,7 +2542,7 @@
       },
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 21,
         "scaling": 0.1,
         "duration": 0
       }
@@ -2390,14 +2552,14 @@
     "id": "necromancy.the_void",
     "school": "necromancy",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 800,
+    "manaCost": 40,
+    "cooldown": 362,
     "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "pull",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 200
       },
@@ -2413,21 +2575,21 @@
     "id": "necromancy.shroud_of_shadows",
     "school": "necromancy",
     "tier": 4,
-    "manaCost": 40,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 45,
+    "cooldown": 510,
+    "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "invisibility",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 500
       },
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 22,
+        "scaling": 0.15,
         "duration": 500
       }
     ]
@@ -2436,20 +2598,20 @@
     "id": "necromancy.hand_of_nox",
     "school": "necromancy",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 76,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 60.0,
-        "scaling": 0.5,
+        "baseValue": 60,
+        "scaling": 0.45,
         "duration": 240
       },
       {
         "type": "mana_drain",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.3,
         "duration": 240
       }
@@ -2459,14 +2621,14 @@
     "id": "lumamancy.light_shard",
     "school": "lumamancy",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 30,
-    "castTime": 5,
+    "manaCost": 5,
+    "cooldown": 57,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 0
       },
@@ -2482,21 +2644,21 @@
     "id": "lumamancy.sacred_light",
     "school": "lumamancy",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 9,
+    "cooldown": 78,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "light",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0,
         "duration": 6000
       },
       {
         "type": "damage",
-        "baseValue": 2.0,
-        "scaling": 0.03,
+        "baseValue": 4,
+        "scaling": 0.04,
         "duration": 6000
       }
     ]
@@ -2506,19 +2668,19 @@
     "school": "lumamancy",
     "tier": 1,
     "manaCost": 8,
-    "cooldown": 100,
+    "cooldown": 78,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 0
       }
@@ -2528,9 +2690,9 @@
     "id": "lumamancy.sacred_aura",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 11,
+    "cooldown": 107,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -2541,8 +2703,8 @@
       },
       {
         "type": "damage",
-        "baseValue": 3.0,
-        "scaling": 0.04,
+        "baseValue": 8,
+        "scaling": 0.07,
         "duration": 1200
       }
     ]
@@ -2551,20 +2713,20 @@
     "id": "lumamancy.blessed_heal",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 25,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 19,
+    "cooldown": 93,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.3,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 200
       }
@@ -2574,14 +2736,14 @@
     "id": "lumamancy.divine_shield",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 22,
-    "cooldown": 300,
+    "manaCost": 16,
+    "cooldown": 127,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 60.0,
+        "baseValue": 60,
         "scaling": 0.6,
         "duration": 900
       }
@@ -2591,9 +2753,9 @@
     "id": "lumamancy.blessing",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 11,
+    "cooldown": 89,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -2604,13 +2766,13 @@
       },
       {
         "type": "heal",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0.01,
         "duration": 3600
       },
       {
         "type": "fear_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 3600
       }
@@ -2620,21 +2782,21 @@
     "id": "lumamancy.greater_purification",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 26,
+    "cooldown": 168,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "damage",
-        "baseValue": 30.0,
-        "scaling": 0.3,
+        "baseValue": 19,
+        "scaling": 0.1,
         "duration": 0
       }
     ]
@@ -2643,21 +2805,21 @@
     "id": "lumamancy.healing_wave",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
+    "manaCost": 23,
+    "cooldown": 162,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 25.0,
+        "baseValue": 25,
         "scaling": 0.25,
         "duration": 0
       },
       {
         "type": "damage",
-        "baseValue": 25.0,
-        "scaling": 0.25,
+        "baseValue": 25,
+        "scaling": 0.11,
         "duration": 0
       }
     ]
@@ -2666,15 +2828,15 @@
     "id": "lumamancy.holy_strike",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 200,
+    "manaCost": 26,
+    "cooldown": 182,
     "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 55.0,
-        "scaling": 0.5,
+        "baseValue": 17,
+        "scaling": 0.13,
         "duration": 0
       },
       {
@@ -2695,20 +2857,20 @@
     "id": "lumamancy.sanctuary",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 600,
-    "castTime": 30,
+    "manaCost": 20,
+    "cooldown": 198,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.03,
         "duration": 2400
       },
       {
         "type": "barrier_undead",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 2400
       }
@@ -2718,9 +2880,9 @@
     "id": "lumamancy.resurrection",
     "school": "lumamancy",
     "tier": 4,
-    "manaCost": 60,
-    "cooldown": 6000,
-    "castTime": 60,
+    "manaCost": 31,
+    "cooldown": 587,
+    "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
@@ -2731,7 +2893,7 @@
       },
       {
         "type": "invulnerability",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 100
       }
@@ -2741,15 +2903,15 @@
     "id": "lumamancy.judgment",
     "school": "lumamancy",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 41,
+    "cooldown": 340,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
-        "scaling": 0.12,
+        "baseValue": 25,
+        "scaling": 0.28,
         "duration": 160
       },
       {
@@ -2770,32 +2932,32 @@
     "id": "lumamancy.miracle_of_aelira",
     "school": "lumamancy",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
-    "castTime": 100,
+    "manaCost": 51,
+    "cooldown": 3600,
+    "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "resurrect",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 999.0,
+        "baseValue": 999,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "damage",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 300
       },
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       }
@@ -2805,14 +2967,14 @@
     "id": "fire.dancing_embers",
     "school": "fire",
     "tier": 1,
-    "manaCost": 8,
+    "manaCost": 5,
     "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "orbit_damage",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 300
       }
@@ -2822,20 +2984,20 @@
     "id": "fire.fire_piston_strike",
     "school": "fire",
     "tier": 1,
-    "manaCost": 6,
+    "manaCost": 9,
     "cooldown": 30,
-    "castTime": 0,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 0
       }
@@ -2845,8 +3007,8 @@
     "id": "fire.brands_mark",
     "school": "fire",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 80,
+    "manaCost": 10,
+    "cooldown": 22,
     "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
@@ -2862,15 +3024,15 @@
     "id": "fire.flying_ashes",
     "school": "fire",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 160,
+    "manaCost": 11,
+    "cooldown": 44,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
-        "scaling": 0.05,
+        "baseValue": 13,
+        "scaling": 0.11,
         "duration": 200
       },
       {
@@ -2885,20 +3047,20 @@
     "id": "fire.fire_lance",
     "school": "fire",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 120,
-    "castTime": 10,
+    "manaCost": 11,
+    "cooldown": 50,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 24.0,
-        "scaling": 0.22,
+        "baseValue": 13,
+        "scaling": 0.12,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.06,
         "duration": 100
       }
@@ -2908,22 +3070,22 @@
     "id": "fire.minor_eruption",
     "school": "fire",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 160,
-    "castTime": 10,
+    "manaCost": 20,
+    "cooldown": 42,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 100
       },
       {
-        "type": "burn",
-        "baseValue": 3.0,
-        "scaling": 0.05,
-        "duration": 100
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -2931,22 +3093,22 @@
     "id": "fire.flame_dance",
     "school": "fire",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 100,
-    "castTime": 10,
-    "type": "ZONE",
+    "manaCost": 18,
+    "cooldown": 44,
+    "castTime": 15,
+    "type": "BUFF",
     "effects": [
       {
-        "type": "damage",
-        "baseValue": 12.0,
-        "scaling": 0.12,
-        "duration": 0
+        "type": "speed",
+        "baseValue": 0.3,
+        "scaling": 0.002,
+        "duration": 300
       },
       {
-        "type": "burn",
-        "baseValue": 3.0,
+        "type": "orbit_damage",
+        "baseValue": 3,
         "scaling": 0.04,
-        "duration": 60
+        "duration": 300
       }
     ]
   },
@@ -2954,16 +3116,22 @@
     "id": "fire.furnace",
     "school": "fire",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
+    "manaCost": 21,
+    "cooldown": 141,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 17,
         "scaling": 0.1,
         "duration": 600
+      },
+      {
+        "type": "burn",
+        "baseValue": 3,
+        "scaling": 0.05,
+        "duration": 200
       }
     ]
   },
@@ -2971,16 +3139,22 @@
     "id": "fire.dragons_breath",
     "school": "fire",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 300,
+    "manaCost": 30,
+    "cooldown": 147,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 35.0,
-        "scaling": 0.3,
+        "baseValue": 15,
+        "scaling": 0.15,
         "duration": 40
+      },
+      {
+        "type": "fear",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -2989,19 +3163,19 @@
     "school": "fire",
     "tier": 3,
     "manaCost": 28,
-    "cooldown": 200,
-    "castTime": 15,
+    "cooldown": 139,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 28.0,
-        "scaling": 0.25,
+        "baseValue": 16,
+        "scaling": 0.16,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 0
       }
@@ -3011,15 +3185,15 @@
     "id": "fire.furnace_heart",
     "school": "fire",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 400,
+    "manaCost": 28,
+    "cooldown": 282,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 14,
+        "scaling": 0.1,
         "duration": 300
       },
       {
@@ -3034,20 +3208,20 @@
     "id": "fire.piercing_meteor",
     "school": "fire",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 600,
+    "manaCost": 48,
+    "cooldown": 255,
     "castTime": 30,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 60.0,
-        "scaling": 0.5,
+        "baseValue": 29,
+        "scaling": 0.19,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
         "duration": 600
       }
@@ -3057,14 +3231,14 @@
     "id": "fire.infinite_brazier",
     "school": "fire",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 1200,
-    "castTime": 40,
+    "manaCost": 46,
+    "cooldown": 274,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "burn",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.08,
         "duration": 3600
       }
@@ -3074,20 +3248,20 @@
     "id": "fire.apocalypse_ignited",
     "school": "fire",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 57,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 50.0,
+        "baseValue": 50,
         "scaling": 0.45,
         "duration": 200
       },
       {
         "type": "burn",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.12,
         "duration": 2400
       }
@@ -3097,16 +3271,22 @@
     "id": "water.sharp_drop",
     "school": "water",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 52,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.15,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -3114,9 +3294,9 @@
     "id": "water.fog",
     "school": "water",
     "tier": 1,
-    "manaCost": 12,
-    "cooldown": 200,
-    "castTime": 15,
+    "manaCost": 7,
+    "cooldown": 57,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
@@ -3138,19 +3318,19 @@
     "school": "water",
     "tier": 1,
     "manaCost": 8,
-    "cooldown": 60,
-    "castTime": 5,
+    "cooldown": 51,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 7,
         "scaling": 0.1,
         "duration": 0
       }
@@ -3160,16 +3340,22 @@
     "id": "water.ascending_current",
     "school": "water",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 120,
-    "castTime": 5,
+    "manaCost": 16,
+    "cooldown": 149,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "knockback",
-        "baseValue": 12.0,
+        "baseValue": 12,
         "scaling": 0,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -3177,20 +3363,20 @@
     "id": "water.water_lace",
     "school": "water",
     "tier": 2,
-    "manaCost": 14,
-    "cooldown": 100,
-    "castTime": 10,
+    "manaCost": 18,
+    "cooldown": 67,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 0
       },
       {
         "type": "pull",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0,
         "duration": 0
       }
@@ -3200,20 +3386,20 @@
     "id": "water.aquatic_purge",
     "school": "water",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 100,
-    "castTime": 10,
+    "manaCost": 14,
+    "cooldown": 95,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
         "duration": 0
       }
@@ -3223,22 +3409,28 @@
     "id": "water.pressure_wave",
     "school": "water",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 14,
+    "cooldown": 41,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 14.0,
+        "baseValue": 14,
         "scaling": 0.14,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 0
+      },
+      {
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -3246,15 +3438,15 @@
     "id": "water.abyssal_well",
     "school": "water",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
+    "manaCost": 21,
+    "cooldown": 186,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 22,
+        "scaling": 0.2,
         "duration": 400
       },
       {
@@ -3269,9 +3461,9 @@
     "id": "water.water_mirror",
     "school": "water",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 21,
+    "cooldown": 228,
+    "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
@@ -3286,14 +3478,14 @@
     "id": "water.liquid_blade",
     "school": "water",
     "tier": 3,
-    "manaCost": 22,
-    "cooldown": 400,
+    "manaCost": 28,
+    "cooldown": 179,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "melee_bonus",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 2400
       }
@@ -3303,9 +3495,9 @@
     "id": "water.local_flood",
     "school": "water",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 400,
-    "castTime": 30,
+    "manaCost": 22,
+    "cooldown": 160,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
@@ -3320,11 +3512,17 @@
     "id": "water.black_tide",
     "school": "water",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 40,
+    "cooldown": 390,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
+      {
+        "type": "damage",
+        "baseValue": 18,
+        "scaling": 0.14,
+        "duration": 0
+      },
       {
         "type": "slow",
         "baseValue": 0.5,
@@ -3333,7 +3531,7 @@
       },
       {
         "type": "poison",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 1200
       }
@@ -3343,15 +3541,21 @@
     "id": "water.evaporation",
     "school": "water",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 43,
+    "cooldown": 288,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.3,
+        "duration": 0
+      },
+      {
+        "type": "heal",
+        "baseValue": 8,
+        "scaling": 0.08,
         "duration": 0
       }
     ]
@@ -3360,14 +3564,14 @@
     "id": "water.primeval_deluge",
     "school": "water",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 65,
+    "cooldown": 2105,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.1,
         "duration": 600
       },
@@ -3376,6 +3580,12 @@
         "baseValue": 0.6,
         "scaling": 0,
         "duration": 600
+      },
+      {
+        "type": "poison",
+        "baseValue": 4,
+        "scaling": 0.05,
+        "duration": 120
       }
     ]
   },
@@ -3383,9 +3593,9 @@
     "id": "wind.whisper",
     "school": "wind",
     "tier": 1,
-    "manaCost": 3,
-    "cooldown": 20,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 90,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
@@ -3400,16 +3610,22 @@
     "id": "wind.air_scissors",
     "school": "wind",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 40,
-    "castTime": 5,
+    "manaCost": 7,
+    "cooldown": 30,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 4,
         "scaling": 0.1,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.15,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -3417,16 +3633,22 @@
     "id": "wind.protective_breath",
     "school": "wind",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 6,
+    "cooldown": 92,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "projectile_deflect",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 60
+      },
+      {
+        "type": "speed",
+        "baseValue": 0.2,
+        "scaling": 0.002,
+        "duration": 300
       }
     ]
   },
@@ -3434,20 +3656,20 @@
     "id": "wind.minor_trombe",
     "school": "wind",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
+    "manaCost": 19,
+    "cooldown": 77,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
         "duration": 300
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 300
       }
@@ -3457,8 +3679,8 @@
     "id": "wind.wind_feather",
     "school": "wind",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 300,
+    "manaCost": 19,
+    "cooldown": 169,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
@@ -3474,9 +3696,9 @@
     "id": "wind.enhanced_throw",
     "school": "wind",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 19,
+    "cooldown": 122,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -3491,14 +3713,14 @@
     "id": "wind.whip_strike",
     "school": "wind",
     "tier": 2,
-    "manaCost": 14,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 17,
+    "cooldown": 47,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 0
       },
@@ -3510,7 +3732,7 @@
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
       }
@@ -3520,16 +3742,22 @@
     "id": "wind.silent_gust",
     "school": "wind",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 200,
-    "castTime": 5,
+    "manaCost": 28,
+    "cooldown": 125,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 18.0,
+        "baseValue": 18,
         "scaling": 0.18,
         "duration": 0
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -3537,21 +3765,21 @@
     "id": "wind.wind_circle",
     "school": "wind",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 300,
+    "manaCost": 29,
+    "cooldown": 159,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "knockback",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 400
       },
       {
         "type": "damage",
-        "baseValue": 8.0,
-        "scaling": 0.08,
+        "baseValue": 19,
+        "scaling": 0.15,
         "duration": 400
       }
     ]
@@ -3560,20 +3788,20 @@
     "id": "wind.impaling_wind",
     "school": "wind",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 26,
+    "cooldown": 131,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 35.0,
-        "scaling": 0.3,
+        "baseValue": 19,
+        "scaling": 0.2,
         "duration": 0
       },
       {
         "type": "poison",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 100
       }
@@ -3583,20 +3811,20 @@
     "id": "wind.brutal_ascension",
     "school": "wind",
     "tier": 3,
-    "manaCost": 22,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 28,
+    "cooldown": 158,
+    "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 0
       },
       {
         "type": "flight",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 20
       }
@@ -3606,15 +3834,15 @@
     "id": "wind.air_vacuum",
     "school": "wind",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
+    "manaCost": 42,
+    "cooldown": 345,
     "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 36,
+        "scaling": 0.22,
         "duration": 200
       },
       {
@@ -3629,14 +3857,14 @@
     "id": "wind.wind_corridor",
     "school": "wind",
     "tier": 4,
-    "manaCost": 40,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 33,
+    "cooldown": 339,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "speed",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0,
         "duration": 600
       }
@@ -3646,26 +3874,26 @@
     "id": "wind.ether_breath",
     "school": "wind",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
-    "castTime": 40,
+    "manaCost": 65,
+    "cooldown": 2872,
+    "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 80.0,
-        "scaling": 0.6,
+        "baseValue": 20,
+        "scaling": 0.2,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       }
@@ -3675,14 +3903,14 @@
     "id": "earth.clay_projectile",
     "school": "earth",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 57,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 0
       },
@@ -3699,8 +3927,8 @@
     "school": "earth",
     "tier": 1,
     "manaCost": 8,
-    "cooldown": 100,
-    "castTime": 20,
+    "cooldown": 60,
+    "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
@@ -3715,15 +3943,15 @@
     "id": "earth.blinding_dust",
     "school": "earth",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 40,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 28,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 2.0,
-        "scaling": 0.03,
+        "baseValue": 7,
+        "scaling": 0.05,
         "duration": 0
       },
       {
@@ -3738,15 +3966,15 @@
     "id": "earth.stone_vise",
     "school": "earth",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 160,
-    "castTime": 10,
+    "manaCost": 12,
+    "cooldown": 74,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 18.0,
-        "scaling": 0.18,
+        "baseValue": 11,
+        "scaling": 0.09,
         "duration": 0
       },
       {
@@ -3762,7 +3990,7 @@
     "school": "earth",
     "tier": 2,
     "manaCost": 16,
-    "cooldown": 200,
+    "cooldown": 88,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
@@ -3771,6 +3999,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 600
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 120
       }
     ]
   },
@@ -3778,14 +4012,14 @@
     "id": "earth.sand_armor",
     "school": "earth",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
+    "manaCost": 16,
+    "cooldown": 197,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 25.0,
+        "baseValue": 25,
         "scaling": 0.25,
         "duration": 800
       },
@@ -3801,20 +4035,20 @@
     "id": "earth.shield_strike",
     "school": "earth",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 60,
-    "castTime": 0,
+    "manaCost": 14,
+    "cooldown": 99,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
+        "baseValue": 12,
         "scaling": 0.12,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 0
       }
@@ -3824,20 +4058,20 @@
     "id": "earth.rock_path",
     "school": "earth",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 300,
+    "manaCost": 27,
+    "cooldown": 161,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 16,
         "scaling": 0.1,
         "duration": 1200
       },
       {
         "type": "poison",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 100
       }
@@ -3847,15 +4081,15 @@
     "id": "earth.targeted_quake",
     "school": "earth",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 250,
-    "castTime": 15,
+    "manaCost": 23,
+    "cooldown": 157,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 25.0,
-        "scaling": 0.25,
+        "baseValue": 25,
+        "scaling": 0.18,
         "duration": 0
       },
       {
@@ -3863,6 +4097,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 60
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -3871,8 +4111,8 @@
     "school": "earth",
     "tier": 3,
     "manaCost": 22,
-    "cooldown": 300,
-    "castTime": 15,
+    "cooldown": 157,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -3887,16 +4127,22 @@
     "id": "earth.drill_through",
     "school": "earth",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 29,
+    "cooldown": 161,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 30.0,
-        "scaling": 0.28,
+        "baseValue": 24,
+        "scaling": 0.16,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -3904,14 +4150,14 @@
     "id": "earth.earth_magnet",
     "school": "earth",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
+    "manaCost": 43,
+    "cooldown": 378,
     "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
+        "baseValue": 33,
         "scaling": 0.2,
         "duration": 0
       },
@@ -3923,7 +4169,7 @@
       },
       {
         "type": "pull",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0,
         "duration": 0
       }
@@ -3933,15 +4179,15 @@
     "id": "earth.lithic_regen",
     "school": "earth",
     "tier": 4,
-    "manaCost": 40,
-    "cooldown": 600,
+    "manaCost": 47,
+    "cooldown": 380,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 100.0,
-        "scaling": 1.0,
+        "baseValue": 100,
+        "scaling": 1,
         "duration": 0
       }
     ]
@@ -3950,14 +4196,14 @@
     "id": "earth.earth_mother_wrath",
     "school": "earth",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 65,
+    "cooldown": 1972,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.12,
         "duration": 300
       },
@@ -3973,20 +4219,20 @@
     "id": "lightning.bouncing_spark",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 7,
+    "cooldown": 26,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 0
       },
       {
         "type": "chain",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 0
       }
@@ -3996,14 +4242,14 @@
     "id": "lightning.static_charge",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 100,
+    "manaCost": 7,
+    "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "thorns",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 300
       }
@@ -4013,8 +4259,8 @@
     "id": "lightning.electric_detection",
     "school": "lightning",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 100,
+    "manaCost": 5,
+    "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
@@ -4030,16 +4276,22 @@
     "id": "lightning.lightning_link",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 160,
-    "castTime": 10,
+    "manaCost": 16,
+    "cooldown": 42,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
-        "duration": 160
+        "duration": 0
+      },
+      {
+        "type": "pull",
+        "baseValue": 3,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -4047,14 +4299,14 @@
     "id": "lightning.faraday_cage",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 300,
+    "manaCost": 13,
+    "cooldown": 191,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "projectile_deflect",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       }
@@ -4064,14 +4316,14 @@
     "id": "lightning.electro_muscle",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 200,
-    "castTime": 0,
+    "manaCost": 20,
+    "cooldown": 162,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "speed",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0,
         "duration": 60
       }
@@ -4081,16 +4333,22 @@
     "id": "lightning.underground_arc",
     "school": "lightning",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 100,
-    "castTime": 10,
+    "manaCost": 11,
+    "cooldown": 69,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 18.0,
-        "scaling": 0.18,
+        "baseValue": 14,
+        "scaling": 0.15,
         "duration": 0
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -4098,16 +4356,22 @@
     "id": "lightning.plasma_orb",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 300,
+    "manaCost": 21,
+    "cooldown": 125,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 18,
+        "scaling": 0.11,
         "duration": 200
+      },
+      {
+        "type": "burn",
+        "baseValue": 3,
+        "scaling": 0.05,
+        "duration": 80
       }
     ]
   },
@@ -4115,14 +4379,14 @@
     "id": "lightning.electric_conversion",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 0,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 24,
+    "cooldown": 296,
+    "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0.3,
         "duration": 0
       }
@@ -4132,15 +4396,21 @@
     "id": "lightning.fan_arc",
     "school": "lightning",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 150,
-    "castTime": 5,
+    "manaCost": 26,
+    "cooldown": 106,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 14.0,
+        "baseValue": 14,
         "scaling": 0.14,
+        "duration": 0
+      },
+      {
+        "type": "knockback",
+        "baseValue": 2,
+        "scaling": 0,
         "duration": 0
       }
     ]
@@ -4150,19 +4420,19 @@
     "school": "lightning",
     "tier": 3,
     "manaCost": 30,
-    "cooldown": 300,
+    "cooldown": 172,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
-        "scaling": 0.08,
+        "baseValue": 20,
+        "scaling": 0.1,
         "duration": 200
       },
       {
         "type": "pull",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0,
         "duration": 200
       }
@@ -4172,20 +4442,20 @@
     "id": "lightning.rainbow_arc",
     "school": "lightning",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 400,
-    "castTime": 20,
+    "manaCost": 42,
+    "cooldown": 270,
+    "castTime": 25,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 45.0,
-        "scaling": 0.4,
+        "baseValue": 25,
+        "scaling": 0.27,
         "duration": 60
       },
       {
         "type": "burn",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.04,
         "duration": 60
       },
@@ -4197,7 +4467,7 @@
       },
       {
         "type": "poison",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.04,
         "duration": 60
       }
@@ -4207,20 +4477,20 @@
     "id": "lightning.storm_heart",
     "school": "lightning",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 36,
+    "cooldown": 562,
+    "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 10.0,
-        "scaling": 0.1,
+        "baseValue": 22,
+        "scaling": 0.15,
         "duration": 400
       },
       {
         "type": "flight",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 400
       }
@@ -4230,14 +4500,14 @@
     "id": "lightning.wrath_of_zeus",
     "school": "lightning",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
-    "castTime": 100,
+    "manaCost": 64,
+    "cooldown": 1200,
+    "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
+        "baseValue": 40,
         "scaling": 0.35,
         "duration": 0
       },
@@ -4246,6 +4516,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 60
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.4,
+        "scaling": 0,
+        "duration": 120
       }
     ]
   },
@@ -4253,16 +4529,22 @@
     "id": "ice.shiver",
     "school": "ice",
     "tier": 1,
-    "manaCost": 5,
-    "cooldown": 20,
-    "castTime": 0,
+    "manaCost": 8,
+    "cooldown": 41,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
-        "scaling": 0.04,
+        "baseValue": 6,
+        "scaling": 0.06,
         "duration": 0
+      },
+      {
+        "type": "fear",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -4271,13 +4553,19 @@
     "school": "ice",
     "tier": 1,
     "manaCost": 6,
-    "cooldown": 60,
-    "castTime": 5,
+    "cooldown": 27,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "slow",
         "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 40
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
         "scaling": 0,
         "duration": 40
       }
@@ -4287,14 +4575,14 @@
     "id": "ice.frozen_breath",
     "school": "ice",
     "tier": 1,
-    "manaCost": 5,
-    "cooldown": 20,
-    "castTime": 0,
+    "manaCost": 10,
+    "cooldown": 34,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 0
       },
@@ -4303,6 +4591,12 @@
         "baseValue": 0.1,
         "scaling": 0,
         "duration": 40
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -4310,15 +4604,15 @@
     "id": "ice.frost_crystal",
     "school": "ice",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 200,
+    "manaCost": 13,
+    "cooldown": 51,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
-        "scaling": 0.05,
+        "baseValue": 13,
+        "scaling": 0.15,
         "duration": 600
       },
       {
@@ -4333,20 +4627,20 @@
     "id": "ice.iceberg_lance",
     "school": "ice",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 120,
-    "castTime": 10,
+    "manaCost": 13,
+    "cooldown": 40,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 9,
+        "scaling": 0.08,
         "duration": 0
       },
       {
         "type": "knockback",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0,
         "duration": 0
       }
@@ -4356,9 +4650,9 @@
     "id": "ice.rapid_cooling",
     "school": "ice",
     "tier": 2,
-    "manaCost": 10,
-    "cooldown": 100,
-    "castTime": 5,
+    "manaCost": 12,
+    "cooldown": 62,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
@@ -4373,14 +4667,14 @@
     "id": "ice.ice_thorns",
     "school": "ice",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 12,
+    "cooldown": 158,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "thorns",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 400
       },
@@ -4396,15 +4690,15 @@
     "id": "ice.cold_room",
     "school": "ice",
     "tier": 3,
-    "manaCost": 32,
-    "cooldown": 400,
+    "manaCost": 27,
+    "cooldown": 157,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
-        "scaling": 0.05,
+        "baseValue": 20,
+        "scaling": 0.19,
         "duration": 300
       },
       {
@@ -4419,16 +4713,28 @@
     "id": "ice.hail_wall",
     "school": "ice",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 30,
+    "cooldown": 177,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
-        "scaling": 0.07,
+        "baseValue": 17,
+        "scaling": 0.11,
         "duration": 160
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.5,
+        "scaling": 0,
+        "duration": 160
+      },
+      {
+        "type": "freeze",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -4436,9 +4742,9 @@
     "id": "ice.frost_link",
     "school": "ice",
     "tier": 3,
-    "manaCost": 22,
-    "cooldown": 250,
-    "castTime": 10,
+    "manaCost": 25,
+    "cooldown": 124,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -4453,15 +4759,15 @@
     "id": "ice.frozen_heart_v2",
     "school": "ice",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 400,
+    "manaCost": 22,
+    "cooldown": 284,
     "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
         "type": "damage_reduction",
-        "baseValue": 0.8,
-        "scaling": 0,
+        "baseValue": 0.25,
+        "scaling": 0.002,
         "duration": 400
       }
     ]
@@ -4470,9 +4776,9 @@
     "id": "ice.diamond_prison",
     "school": "ice",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 43,
+    "cooldown": 208,
+    "castTime": 30,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -4487,9 +4793,9 @@
     "id": "ice.absolute_zero",
     "school": "ice",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 41,
+    "cooldown": 297,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
@@ -4504,14 +4810,14 @@
     "id": "ice.eternal_winter",
     "school": "ice",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 65,
+    "cooldown": 3464,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 400
       },
@@ -4520,6 +4826,12 @@
         "baseValue": 0,
         "scaling": 0,
         "duration": 400
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -4527,22 +4839,28 @@
     "id": "lava.lava_splash",
     "school": "lava",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 9,
+    "cooldown": 52,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 20
       },
       {
         "type": "burn",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 20
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -4550,22 +4868,28 @@
     "id": "lava.igneous_rock",
     "school": "lava",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 8,
+    "cooldown": 44,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 7.0,
+        "baseValue": 7,
         "scaling": 0.07,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 100
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 40
       }
     ]
   },
@@ -4573,9 +4897,9 @@
     "id": "lava.heat_hindrance",
     "school": "lava",
     "tier": 1,
-    "manaCost": 10,
-    "cooldown": 200,
-    "castTime": 15,
+    "manaCost": 9,
+    "cooldown": 35,
+    "castTime": 10,
     "type": "ZONE",
     "effects": [
       {
@@ -4590,22 +4914,28 @@
     "id": "lava.volcanic_tears",
     "school": "lava",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 120,
-    "castTime": 10,
+    "manaCost": 19,
+    "cooldown": 89,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
+        "baseValue": 12,
         "scaling": 0.12,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 3.0,
+        "baseValue": 3,
         "scaling": 0.05,
         "duration": 100
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -4613,22 +4943,28 @@
     "id": "lava.lava_scar",
     "school": "lava",
     "tier": 2,
-    "manaCost": 16,
-    "cooldown": 120,
-    "castTime": 10,
+    "manaCost": 20,
+    "cooldown": 57,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 18.0,
-        "scaling": 0.18,
+        "baseValue": 8,
+        "scaling": 0.1,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.06,
         "duration": 40
+      },
+      {
+        "type": "vulnerability",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -4636,20 +4972,20 @@
     "id": "lava.slag_armor",
     "school": "lava",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 17,
+    "cooldown": 86,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 35.0,
+        "baseValue": 35,
         "scaling": 0.35,
         "duration": 800
       },
       {
         "type": "thorns",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
         "duration": 800
       }
@@ -4659,15 +4995,15 @@
     "id": "lava.smoke_breath",
     "school": "lava",
     "tier": 2,
-    "manaCost": 14,
-    "cooldown": 160,
-    "castTime": 10,
+    "manaCost": 16,
+    "cooldown": 100,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 2.0,
-        "scaling": 0.03,
+        "baseValue": 8,
+        "scaling": 0.09,
         "duration": 200
       },
       {
@@ -4682,22 +5018,28 @@
     "id": "lava.rock_fusion",
     "school": "lava",
     "tier": 3,
-    "manaCost": 28,
-    "cooldown": 250,
-    "castTime": 15,
+    "manaCost": 24,
+    "cooldown": 140,
+    "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 25.0,
-        "scaling": 0.25,
+        "baseValue": 25,
+        "scaling": 0.13,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
         "duration": 200
+      },
+      {
+        "type": "stun",
+        "baseValue": 1,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -4705,22 +5047,34 @@
     "id": "lava.pyroclastic_flow",
     "school": "lava",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 300,
+    "manaCost": 29,
+    "cooldown": 149,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 20.0,
-        "scaling": 0.2,
+        "baseValue": 22,
+        "scaling": 0.18,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
-        "duration": 100
+        "duration": 200
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.4,
+        "scaling": 0,
+        "duration": 120
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 80
       }
     ]
   },
@@ -4728,22 +5082,28 @@
     "id": "lava.magma_grenade",
     "school": "lava",
     "tier": 3,
-    "manaCost": 22,
-    "cooldown": 120,
-    "castTime": 10,
+    "manaCost": 28,
+    "cooldown": 128,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 0
       },
       {
         "type": "burn",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.06,
         "duration": 100
+      },
+      {
+        "type": "knockback",
+        "baseValue": 3,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -4752,21 +5112,27 @@
     "school": "lava",
     "tier": 3,
     "manaCost": 30,
-    "cooldown": 300,
+    "cooldown": 146,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 25.0,
-        "scaling": 0.25,
+        "baseValue": 25,
+        "scaling": 0.16,
         "duration": 600
       },
       {
         "type": "burn",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.08,
         "duration": 600
+      },
+      {
+        "type": "pull",
+        "baseValue": 3,
+        "scaling": 0,
+        "duration": 0
       }
     ]
   },
@@ -4774,14 +5140,14 @@
     "id": "lava.magma_heart",
     "school": "lava",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
+    "manaCost": 35,
+    "cooldown": 486,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "melee_fire_bonus",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 600
       }
@@ -4791,20 +5157,20 @@
     "id": "lava.total_fusion",
     "school": "lava",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
-    "castTime": 20,
+    "manaCost": 48,
+    "cooldown": 412,
+    "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "physical_immunity",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       },
       {
         "type": "melee_fire_bonus",
-        "baseValue": 20.0,
+        "baseValue": 20,
         "scaling": 0.2,
         "duration": 300
       }
@@ -4814,22 +5180,34 @@
     "id": "lava.cataclysmic_eruption",
     "school": "lava",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 76,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 40.0,
+        "baseValue": 40,
         "scaling": 0.35,
         "duration": 200
       },
       {
         "type": "burn",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.12,
         "duration": 2400
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.5,
+        "scaling": 0,
+        "duration": 200
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 120
       }
     ]
   },
@@ -4837,22 +5215,28 @@
     "id": "necromancy.broken_bones",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 30,
-    "castTime": 0,
+    "manaCost": 8,
+    "cooldown": 57,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 7.0,
+        "baseValue": 7,
         "scaling": 0.07,
         "duration": 0
       },
       {
         "type": "poison",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.03,
         "duration": 80
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.2,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -4860,9 +5244,9 @@
     "id": "necromancy.empty_gaze",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 60,
-    "castTime": 5,
+    "manaCost": 10,
+    "cooldown": 43,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -4877,14 +5261,14 @@
     "id": "necromancy.putrid_hand",
     "school": "necromancy",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 40,
-    "castTime": 0,
+    "manaCost": 5,
+    "cooldown": 52,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 4.0,
+        "baseValue": 4,
         "scaling": 0.04,
         "duration": 0
       },
@@ -4900,14 +5284,14 @@
     "id": "necromancy.suffering_transfer",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 15,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 16,
+    "cooldown": 142,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "absorb",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.08,
         "duration": 240
       }
@@ -4917,15 +5301,15 @@
     "id": "necromancy.grave_call",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 200,
+    "manaCost": 10,
+    "cooldown": 60,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 13,
+        "scaling": 0.1,
         "duration": 300
       },
       {
@@ -4940,15 +5324,15 @@
     "id": "necromancy.cold_fingers",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 11,
+    "cooldown": 44,
+    "castTime": 15,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 15.0,
-        "scaling": 0.15,
+        "baseValue": 12,
+        "scaling": 0.12,
         "duration": 0
       },
       {
@@ -4963,9 +5347,9 @@
     "id": "necromancy.blood_ritual",
     "school": "necromancy",
     "tier": 2,
-    "manaCost": 0,
-    "cooldown": 300,
-    "castTime": 20,
+    "manaCost": 11,
+    "cooldown": 180,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
@@ -4980,16 +5364,22 @@
     "id": "necromancy.spectral_knight",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 22,
+    "cooldown": 400,
+    "castTime": 20,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 1200
+      },
+      {
+        "type": "damage",
+        "baseValue": 18,
+        "scaling": 0.14,
+        "duration": 0
       }
     ]
   },
@@ -4997,14 +5387,14 @@
     "id": "necromancy.decomposition",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 200,
-    "castTime": 15,
+    "manaCost": 29,
+    "cooldown": 176,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 8.0,
+        "baseValue": 24,
         "scaling": 0.1,
         "duration": 160
       },
@@ -5020,16 +5410,22 @@
     "id": "necromancy.voices_of_dead",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 30,
+    "manaCost": 22,
     "cooldown": 400,
     "castTime": 20,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0,
         "duration": 600
+      },
+      {
+        "type": "slow",
+        "baseValue": 0.3,
+        "scaling": 0,
+        "duration": 100
       }
     ]
   },
@@ -5037,9 +5433,9 @@
     "id": "necromancy.mark_of_sacrifice",
     "school": "necromancy",
     "tier": 3,
-    "manaCost": 15,
-    "cooldown": 200,
-    "castTime": 10,
+    "manaCost": 21,
+    "cooldown": 123,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -5054,14 +5450,14 @@
     "id": "necromancy.soul_scythe",
     "school": "necromancy",
     "tier": 4,
-    "manaCost": 50,
-    "cooldown": 600,
+    "manaCost": 47,
+    "cooldown": 431,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "melee_bonus",
-        "baseValue": 25.0,
+        "baseValue": 25,
         "scaling": 0.25,
         "duration": 1200
       }
@@ -5071,20 +5467,20 @@
     "id": "necromancy.necropolis",
     "school": "necromancy",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 31,
+    "cooldown": 261,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 5.0,
-        "scaling": 0.06,
+        "baseValue": 35,
+        "scaling": 0.18,
         "duration": 2400
       },
       {
         "type": "heal",
-        "baseValue": 5.0,
+        "baseValue": 5,
         "scaling": 0.05,
         "duration": 2400
       }
@@ -5094,14 +5490,14 @@
     "id": "necromancy.macabre_dance",
     "school": "necromancy",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 64,
+    "cooldown": 1200,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 30.0,
+        "baseValue": 30,
         "scaling": 0,
         "duration": 2400
       }
@@ -5111,9 +5507,9 @@
     "id": "lumamancy.blinding_ray",
     "school": "lumamancy",
     "tier": 1,
-    "manaCost": 5,
-    "cooldown": 30,
-    "castTime": 5,
+    "manaCost": 10,
+    "cooldown": 42,
+    "castTime": 10,
     "type": "PROJECTILE",
     "effects": [
       {
@@ -5128,14 +5524,14 @@
     "id": "lumamancy.glowing_wisp",
     "school": "lumamancy",
     "tier": 1,
-    "manaCost": 8,
-    "cooldown": 200,
+    "manaCost": 9,
+    "cooldown": 60,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.02,
         "duration": 600
       }
@@ -5145,8 +5541,8 @@
     "id": "lumamancy.minor_blessing",
     "school": "lumamancy",
     "tier": 1,
-    "manaCost": 6,
-    "cooldown": 200,
+    "manaCost": 5,
+    "cooldown": 66,
     "castTime": 10,
     "type": "BUFF",
     "effects": [
@@ -5162,20 +5558,20 @@
     "id": "lumamancy.light_sword",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 18,
-    "cooldown": 300,
+    "manaCost": 11,
+    "cooldown": 151,
     "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "melee_bonus",
-        "baseValue": 10.0,
+        "baseValue": 10,
         "scaling": 0.1,
         "duration": 900
       },
       {
         "type": "heal",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.02,
         "duration": 900
       }
@@ -5185,15 +5581,15 @@
     "id": "lumamancy.sacred_rampart",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 20,
-    "cooldown": 200,
+    "manaCost": 18,
+    "cooldown": 72,
     "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "wall",
-        "baseValue": 100.0,
-        "scaling": 1.0,
+        "baseValue": 100,
+        "scaling": 1,
         "duration": 400
       }
     ]
@@ -5202,20 +5598,20 @@
     "id": "lumamancy.minor_purification",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 10,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 18,
+    "cooldown": 150,
+    "castTime": 15,
     "type": "BUFF",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 0
       }
@@ -5225,15 +5621,15 @@
     "id": "lumamancy.dazzling_flash",
     "school": "lumamancy",
     "tier": 2,
-    "manaCost": 12,
-    "cooldown": 80,
-    "castTime": 5,
+    "manaCost": 11,
+    "cooldown": 67,
+    "castTime": 15,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 6.0,
-        "scaling": 0.06,
+        "baseValue": 11,
+        "scaling": 0.09,
         "duration": 0
       },
       {
@@ -5248,22 +5644,28 @@
     "id": "lumamancy.pillar_of_light",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 30,
-    "cooldown": 300,
+    "manaCost": 24,
+    "cooldown": 193,
     "castTime": 20,
     "type": "ZONE",
     "effects": [
       {
         "type": "damage",
-        "baseValue": 12.0,
+        "baseValue": 18,
         "scaling": 0.12,
         "duration": 120
       },
       {
         "type": "heal",
-        "baseValue": 6.0,
+        "baseValue": 6,
         "scaling": 0.06,
         "duration": 120
+      },
+      {
+        "type": "blindness",
+        "baseValue": 0,
+        "scaling": 0,
+        "duration": 60
       }
     ]
   },
@@ -5271,14 +5673,14 @@
     "id": "lumamancy.minor_angel",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 35,
-    "cooldown": 600,
-    "castTime": 40,
+    "manaCost": 23,
+    "cooldown": 400,
+    "castTime": 20,
     "type": "SUMMON",
     "effects": [
       {
         "type": "summon",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 2400
       }
@@ -5288,9 +5690,9 @@
     "id": "lumamancy.redemption",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 40,
-    "cooldown": 600,
-    "castTime": 30,
+    "manaCost": 22,
+    "cooldown": 180,
+    "castTime": 20,
     "type": "BUFF",
     "effects": [
       {
@@ -5305,14 +5707,14 @@
     "id": "lumamancy.avenging_light",
     "school": "lumamancy",
     "tier": 3,
-    "manaCost": 25,
-    "cooldown": 300,
-    "castTime": 15,
+    "manaCost": 21,
+    "cooldown": 130,
+    "castTime": 20,
     "type": "PROJECTILE",
     "effects": [
       {
         "type": "thorns",
-        "baseValue": 15.0,
+        "baseValue": 15,
         "scaling": 0.15,
         "duration": 600
       }
@@ -5322,21 +5724,21 @@
     "id": "lumamancy.celestial_portal",
     "school": "lumamancy",
     "tier": 4,
-    "manaCost": 55,
-    "cooldown": 800,
-    "castTime": 40,
+    "manaCost": 43,
+    "cooldown": 324,
+    "castTime": 30,
     "type": "ZONE",
     "effects": [
       {
         "type": "heal",
-        "baseValue": 8.0,
+        "baseValue": 8,
         "scaling": 0.08,
         "duration": 1200
       },
       {
         "type": "damage",
-        "baseValue": 12.0,
-        "scaling": 0.12,
+        "baseValue": 38,
+        "scaling": 0.28,
         "duration": 1200
       }
     ]
@@ -5345,20 +5747,20 @@
     "id": "lumamancy.aura_of_purity",
     "school": "lumamancy",
     "tier": 4,
-    "manaCost": 45,
-    "cooldown": 600,
+    "manaCost": 39,
+    "cooldown": 319,
     "castTime": 30,
     "type": "BUFF",
     "effects": [
       {
         "type": "dispel",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 1200
       },
       {
         "type": "heal",
-        "baseValue": 2.0,
+        "baseValue": 2,
         "scaling": 0.02,
         "duration": 1200
       }
@@ -5368,32 +5770,32 @@
     "id": "lumamancy.paradise_found",
     "school": "lumamancy",
     "tier": 5,
-    "manaCost": 100,
-    "cooldown": 6000,
+    "manaCost": 65,
+    "cooldown": 1901,
     "castTime": 60,
     "type": "ULTIMATE",
     "effects": [
       {
         "type": "resurrect",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "heal",
-        "baseValue": 999.0,
+        "baseValue": 999,
         "scaling": 0,
         "duration": 0
       },
       {
         "type": "damage",
-        "baseValue": 999.0,
-        "scaling": 0,
+        "baseValue": 10,
+        "scaling": 0.1,
         "duration": 0
       },
       {
         "type": "invulnerability",
-        "baseValue": 1.0,
+        "baseValue": 1,
         "scaling": 0,
         "duration": 300
       }

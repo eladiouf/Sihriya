@@ -50,7 +50,7 @@ public class SihriyaIronsSpellRegister {
                 final int fTier = tier, fMana = manaCost, fCooldown = cooldown;
                 final int fCastTime = castTime;
                 final SpellType fType = spellType;
-                SPELL_REGISTER.register(id, () ->
+                SPELL_REGISTER.register(id.replace('.', '_'), () ->
                     new SihriyaIronsSpell(fId, fSchool, fTier, fMana, fCooldown, fCastTime, fType));
                 count++;
             }

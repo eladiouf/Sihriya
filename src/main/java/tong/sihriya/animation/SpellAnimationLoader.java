@@ -74,14 +74,13 @@ public class SpellAnimationLoader extends SimpleJsonResourceReloadListener {
             return getByPhase(set, phase);
         }
 
-        // 2. School-based (__school__ pattern: "fire.fireball" -> "__fire__")
-        int dot = spellId.indexOf('.');
-        if (dot > 0) {
-            String school = spellId.substring(0, dot);
-            String schoolKey = "__" + school + "__";
-            SpellAnimSet schoolSet = REGISTRY.get(schoolKey);
-            if (schoolSet != null && !schoolSet.isEmpty()) {
-                return getByPhase(schoolSet, phase);
+        // 2. Tier-based (__tier1__, __tier2__, ...)
+        var spell = tong.sihriya.data.SpellRegistry.get(spellId);
+        if (spell != null) {
+            String tierKey = "__tier" + spell.tier + "__";
+            SpellAnimSet tierSet = REGISTRY.get(tierKey);
+            if (tierSet != null && !tierSet.isEmpty()) {
+                return getByPhase(tierSet, phase);
             }
         }
 

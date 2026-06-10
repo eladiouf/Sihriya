@@ -1,7 +1,7 @@
 package tong.sihriya.client.vfx.emitter;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.phys.Vec3;
 import tong.sihriya.registry.SihriyaParticles;
 
@@ -37,7 +37,7 @@ public abstract class Emitter {
 
     protected void spawnParticle(Vec3 pos, Vec3 vel, int count) {
         if (level == null) return;
-        SimpleParticleType type = SihriyaParticles.getForSchool(schoolId);
+        ParticleOptions type = SihriyaParticles.getForSchool(schoolId);
         for (int i = 0; i < count; i++) {
             level.addParticle(type, true,
                 pos.x, pos.y, pos.z,

@@ -80,6 +80,7 @@ public class VFXEffect {
     public void addEmitter(Emitter e) { emitters.add(e); }
     public void addMesh(ProceduralMesh m) { meshes.add(m); }
     public List<Emitter> getEmitters() { return emitters; }
+    public List<ProceduralMesh> getMeshes() { return meshes; }
 
     public void reset() {
         vfxId = null; age = 0; lifetime = 0; intensity = 1.0f; active = true;

@@ -1,8 +1,28 @@
 {
   "spells": {
-    "default": {
+    "__tier1__": {
+      "chant_animation": "CHANTING_ONE_HAND_TOP",
+      "cast_animation": "CASTING_ONE_HAND_TOP",
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
+    },
+    "__tier2__": {
+      "chant_animation": "CHANTING_TWO_HAND_STOMP",
+      "cast_animation": "CASTING_TWO_HAND_STOMP",
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
+    },
+    "__tier3__": {
       "chant_animation": "CHANTING_TWO_HAND_EXPLOSION",
       "cast_animation": "CASTING_TWO_HAND_EXPLOSION",
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
+    },
+    "__tier4__": {
+      "chant_animation": "CHANTING_TWO_HAND_BOW",
+      "cast_animation": "CASTING_TWO_HAND_BOW",
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
+    },
+    "__tier5__": {
+      "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
+      "cast_animation": "CASTING_TWO_HAND_ASCENSION",
       "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
     "__fire__": {
@@ -18,7 +38,7 @@
     "__wind__": {
       "chant_animation": "CHANTING_ONE_HAND_TOP",
       "cast_animation": "CASTING_ONE_HAND_TOP",
-      "continuous_animation": "CONTINUOUS_ONE_HAND_STAFF_LEFT"
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
     "__earth__": {
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
@@ -32,25 +52,29 @@
     },
     "__ice__": {
       "chant_animation": "CHANTING_ONE_HAND_TOP",
-      "cast_animation": "CASTING_ONE_HAND_INWARD",
+      "cast_animation": "CASTING_ONE_HAND_TOP",
       "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
     "__lava__": {
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
       "cast_animation": "CASTING_TWO_HAND_STOMP",
-      "continuous_animation": "CONTINUOUS_ONE_HAND_STAFF_RIGHT"
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
     "__necromancy__": {
       "chant_animation": "CHANTING_TWO_HAND_BACK",
       "cast_animation": "CASTING_TWO_HAND_BACK",
-      "continuous_animation": "CONTINUOUS_ONE_HAND_STAFF_LEFT"
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
     "__lumamancy__": {
       "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
       "cast_animation": "CASTING_TWO_HAND_ASCENSION",
       "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
     },
-
+    "default": {
+      "chant_animation": "CHANTING_ONE_HAND_TOP",
+      "cast_animation": "CASTING_ONE_HAND_TOP",
+      "continuous_animation": "CONTINUOUS_TWO_HAND_FRONT"
+    },
     "earth.earth_mother_wrath": {
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
       "cast_animation": "ANIM_EARTH_EARTH_MOTHER_WRATH"
@@ -59,7 +83,6 @@
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
       "cast_animation": "ANIM_EARTH_TITAN_AWAKENING"
     },
-
     "fire.apocalypse_ignited": {
       "chant_animation": "CHANTING_TWO_HAND_EXPLOSION",
       "cast_animation": "ANIM_FIRE_APOCALYPSE_IGNITED"
@@ -174,7 +197,6 @@
       "chant_animation": "CHANTING_TWO_HAND_EXPLOSION",
       "cast_animation": "ANIM_WALL_OF_FLAMES"
     },
-
     "ice.eternal_winter": {
       "chant_animation": "CHANTING_ONE_HAND_TOP",
       "cast_animation": "ANIM_ICE_ETERNAL_WINTER"
@@ -183,7 +205,6 @@
       "chant_animation": "CHANTING_ONE_HAND_TOP",
       "cast_animation": "ANIM_ICE_ICE_AGE"
     },
-
     "lava.cataclysmic_eruption": {
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
       "cast_animation": "ANIM_LAVA_CATACLYSMIC_ERUPTION"
@@ -192,7 +213,6 @@
       "chant_animation": "CHANTING_TWO_HAND_STOMP",
       "cast_animation": "ANIM_LAVA_VOLCANIC_AWAKENING"
     },
-
     "lightning.celestial_judgment": {
       "chant_animation": "CHANTING_TWO_HAND_TOP",
       "cast_animation": "ANIM_LIGHTNING_CELESTIAL_JUDGMENT"
@@ -213,7 +233,6 @@
       "chant_animation": "CHANTING_TWO_HAND_TOP",
       "cast_animation": "ANIM_LIGHTNING_WRATH_OF_ZEUS"
     },
-
     "lumamancy.celestial_portal": {
       "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
       "cast_animation": "ANIM_LUMAMANCY_CELESTIAL_PORTAL"
@@ -238,7 +257,6 @@
       "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
       "cast_animation": "ANIM_LUMAMANCY_SANCTUARY"
     },
-
     "necromancy.army_of_dead": {
       "chant_animation": "CHANTING_TWO_HAND_BACK",
       "cast_animation": "ANIM_NECROMANCY_ARMY_OF_DEAD"
@@ -271,7 +289,6 @@
       "chant_animation": "CHANTING_TWO_HAND_BACK",
       "cast_animation": "ANIM_NECROMANCY_SPECTRAL_KNIGHT"
     },
-
     "water.abyssal_well": {
       "chant_animation": "CHANTING_TWO_HAND_BOW",
       "cast_animation": "ANIM_WATER_ABYSSAL_WELL"
@@ -348,7 +365,6 @@
       "chant_animation": "CHANTING_TWO_HAND_BOW",
       "cast_animation": "ANIM_WATER_WATER_PRISON"
     },
-
     "wind.air_scissors": {
       "chant_animation": "CHANTING_ONE_HAND_TOP",
       "cast_animation": "ANIM_WIND_AIR_SCISSORS"

@@ -3,6 +3,7 @@ package tong.sihriya.client.particle.magiccircle;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,10 +23,10 @@ public class MagicCircleRenderer extends EntityRenderer<MagicCircleEntity> {
     }
 
     private static final ResourceLocation[] LAYERS = {
-        tex("circle_rings_a_streaks"),  // outer — slow runes
-        tex("circle_a_streaks"),        // middle — counter symbols
-        tex("circle_b_streaks"),        // inner — fast geometry
-        tex("magic_05"),                // center — barely moves
+        tex("circle_rings_a_streaks"),
+        tex("circle_a_streaks"),
+        tex("circle_b_streaks"),
+        tex("circle_05"),
     };
 
     public MagicCircleRenderer(EntityRendererProvider.Context ctx) {
@@ -42,37 +43,54 @@ public class MagicCircleRenderer extends EntityRenderer<MagicCircleEntity> {
         float alpha = anim.getAlpha();
         if (alpha <= 0.001f) return;
 
-        float s = anim.getRadius() / 3.0f;
+        float scale = anim.getRadius() / 3.0f;
         int overlay = OverlayTexture.NO_OVERLAY;
+        int fullBright = LightTexture.FULL_BRIGHT;
 
-        renderLayer(stack, buffer, rgb, alpha, s, overlay,
+        stack.pushPose();
+        stack.translate(0, 0.5, 0);
+
+        // Billboard vertical : toujours face au joueur
+        var camera = entityRenderDispatcher.camera;
+        stack.mulPose(Axis.YP.rotationDegrees(180 - camera.getYRot()));
+        stack.mulPose(Axis.XP.rotationDegrees(-camera.getXRot()));
+
+        stack.scale(scale, scale, scale);
+
+        renderLayer(stack, buffer, rgb, alpha, overlay, fullBright,
             LAYERS[0], anim.getRotationRunes());
-        renderLayer(stack, buffer, rgb, alpha, s, overlay,
+        renderLayer(stack, buffer, rgb, alpha, overlay, fullBright,
             LAYERS[1], anim.getRotationSymbols());
-        renderLayer(stack, buffer, rgb, alpha, s, overlay,
+        renderLayer(stack, buffer, rgb, alpha, overlay, fullBright,
             LAYERS[2], anim.getRotationGeometry());
-        renderLayer(stack, buffer, rgb, alpha, s, overlay,
+        renderLayer(stack, buffer, rgb, alpha, overlay, fullBright,
             LAYERS[3], anim.getRotationCenter());
+
+        stack.popPose();
     }
 
     private void renderLayer(PoseStack stack, MultiBufferSource buffer,
-                             float[] rgb, float alpha, float scale, int overlay,
-                             ResourceLocation tex, float rotation) {
-        if (tex == null) return;
+                             float[] rgb, float alpha, int overlay, int packedLight,
+                             ResourceLocation texture, float rotation) {
+        if (texture == null) return;
 
         stack.pushPose();
-        stack.translate(0, 0.02, 0);
-        stack.mulPose(Axis.YP.rotationDegrees(rotation));
-        stack.scale(scale, 1.0f, scale);
+        stack.mulPose(Axis.ZP.rotationDegrees(rotation));
+        stack.mulPose(Axis.YP.rotationDegrees(rotation * 0.5f));
 
-        RenderType renderType = RenderType.entityTranslucent(tex);
+        RenderType renderType;
+        try {
+            renderType = SihriyaRenderTypes.magicCircleGlow(texture);
+        } catch (Exception e) {
+            renderType = RenderType.entityTranslucent(texture);
+        }
         VertexConsumer consumer = buffer.getBuffer(renderType);
         Matrix4f matrix = stack.last().pose();
 
-        consumer.vertex(matrix, -1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 0).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
-        consumer.vertex(matrix, -1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 1).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
-        consumer.vertex(matrix,  1, 0,  1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 1).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
-        consumer.vertex(matrix,  1, 0, -1).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 0).overlayCoords(overlay).uv2(0xF000F0).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix, -0.5f, -0.5f, 0).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 0).overlayCoords(overlay).uv2(packedLight).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix, -0.5f,  0.5f, 0).color(rgb[0], rgb[1], rgb[2], alpha).uv(0, 1).overlayCoords(overlay).uv2(packedLight).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix,  0.5f,  0.5f, 0).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 1).overlayCoords(overlay).uv2(packedLight).normal(0, 1, 0).endVertex();
+        consumer.vertex(matrix,  0.5f, -0.5f, 0).color(rgb[0], rgb[1], rgb[2], alpha).uv(1, 0).overlayCoords(overlay).uv2(packedLight).normal(0, 1, 0).endVertex();
 
         stack.popPose();
     }

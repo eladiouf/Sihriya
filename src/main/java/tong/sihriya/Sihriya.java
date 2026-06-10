@@ -32,8 +32,17 @@ public class Sihriya {
         tong.sihriya.core.ModEffects.EFFECTS.register(bus);
         SihriyaParticles.PARTICLES.register(bus);
         SihriyaEntities.ENTITIES.register(bus);
-        tong.sihriya.compat.SihriyaIronsSchools.register(bus);
-        tong.sihriya.compat.SihriyaIronsSpellRegister.register(bus);
+
+        // Iron's Spellbooks integration (optionnel)
+        try {
+            Class.forName("tong.sihriya.compat.SihriyaIronsSchools");
+            tong.sihriya.compat.SihriyaIronsSchools.register(bus);
+            tong.sihriya.compat.SihriyaIronsSpellRegister.register(bus);
+            LOGGER.info("Iron's Spellbooks integration activée");
+        } catch (Throwable e) {
+            LOGGER.info("Iron's Spellbooks non détecté — fonctionnement autonome");
+        }
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -43,7 +52,11 @@ public class Sihriya {
             NetworkHandler.register();
             STATModIntegration.init();
             EpicFightIntegration.init();
-            tong.sihriya.compat.IronsSpellsCompat.init();
+            try {
+                tong.sihriya.compat.IronsSpellsCompat.init();
+            } catch (Throwable e) {
+                // IS integration non disponible
+            }
             LOGGER.info("Sihriya chargé avec Epic Fight + STAT Mod !");
         });
     }

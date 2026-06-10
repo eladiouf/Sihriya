@@ -5,6 +5,8 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,6 +14,8 @@ import net.minecraft.world.level.Level;
 import tong.sihriya.Sihriya;
 import tong.sihriya.core.SpellCastHandler;
 import tong.sihriya.data.SpellRegistry.SpellType;
+
+import java.util.List;
 
 public class SihriyaIronsSpell extends AbstractSpell {
     private final String spellId;
@@ -41,7 +45,7 @@ public class SihriyaIronsSpell extends AbstractSpell {
 
     @Override
     public ResourceLocation getSpellResource() {
-        return new ResourceLocation(Sihriya.MODID, spellId);
+        return new ResourceLocation(Sihriya.MODID, spellId.replace('.', '_'));
     }
 
     @Override
@@ -99,6 +103,18 @@ public class SihriyaIronsSpell extends AbstractSpell {
     @Override
     public int getMaxLevel() {
         return 1;
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        String typeName = sihriyaSpellType.name().charAt(0)
+            + sihriyaSpellType.name().substring(1).toLowerCase();
+        return List.of(
+            Component.translatable("sihriya.spell_type." + sihriyaSpellType.name().toLowerCase()),
+            Component.literal("Tier " + tier),
+            Component.literal(sihriyaManaCost + " mana"),
+            Component.literal(String.format("%.1fs cooldown", sihriyaCooldownTicks / 20.0))
+        );
     }
 
     @Override

@@ -47,7 +47,10 @@ public class ClientSetup {
         });
         MinecraftForge.EVENT_BUS.register(ManaOverlay.INSTANCE);
         MinecraftForge.EVENT_BUS.addListener((TickEvent.ClientTickEvent e) -> {
-            if (e.phase == TickEvent.Phase.END) VFXEngine.getInstance().tick();
+            if (e.phase == TickEvent.Phase.END) {
+                VFXEngine.getInstance().tick();
+                ClientPacketHandlers.onClientTick();
+            }
         });
         MinecraftForge.EVENT_BUS.addListener((RenderLevelStageEvent e) -> {
             if (e.getStage() == RenderLevelStageEvent.Stage.AFTER_ENTITIES) {

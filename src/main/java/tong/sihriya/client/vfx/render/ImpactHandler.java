@@ -1,13 +1,13 @@
 package tong.sihriya.client.vfx.render;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.phys.Vec3;
 import tong.sihriya.registry.SihriyaParticles;
 
 public class ImpactHandler {
     public static void spawnImpact(ClientLevel level, Vec3 pos, String schoolId) {
-        SimpleParticleType type = SihriyaParticles.getForSchool(schoolId);
+        ParticleOptions type = SihriyaParticles.getForSchool(schoolId);
 
         for (int i = 0; i < 30; i++) {
             double theta = level.random.nextDouble() * Math.PI * 2;

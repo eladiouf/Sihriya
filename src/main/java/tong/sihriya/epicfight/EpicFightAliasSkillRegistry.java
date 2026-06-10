@@ -20,7 +20,7 @@ public final class EpicFightAliasSkillRegistry {
     public static void onSkillBuild(SkillBuildEvent event) {
         SkillBuildEvent.ModRegistryWorker worker = event.createRegistryWorker("efn");
         SkillBuilder builder = Skill.createBuilder();
-        builder.setRegistryName(new ResourceLocation("efn", "example"));
+        builder.setRegistryName(ResourceLocation.fromNamespaceAndPath("efn", "example"));
         builder.setCategory(SkillCategories.WEAPON_INNATE);
         worker.build("example", EfnExampleAliasSkill::new, builder);
     }
