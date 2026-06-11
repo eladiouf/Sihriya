@@ -1,32 +1,309 @@
 {
   "school": "lightning",
   "defaults": {
-    "projectile": { "scale": 1.1, "glowIntensity": 2.0, "color1": [1.0, 0.85, 0.1], "color2": [1.0, 1.0, 0.5], "trail": { "particlesPerTick": 5, "particleLifetime": 10, "spread": 0.1 } },
-    "impact": { "burst": { "count": 35, "speed": 0.8 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.6 },
-    "beam": { "radius": 0.25, "glowIntensity": 2.0, "color1": [1.0, 0.85, 0.1], "color2": [1.0, 1.0, 0.5] }
+    "projectile": {
+      "scale": 1.1,
+      "glowIntensity": 2.0,
+      "color1": [
+        1.0,
+        0.85,
+        0.1
+      ],
+      "color2": [
+        1.0,
+        1.0,
+        0.5
+      ],
+      "trail": {
+        "particlesPerTick": 5,
+        "particleLifetime": 10,
+        "spread": 0.1
+      }
+    },
+    "impact": {
+      "burst": {
+        "count": 35,
+        "speed": 0.8
+      },
+      "shockwaveRings": 3,
+      "screenShake": true,
+      "screenShakeIntensity": 0.6
+    },
+    "beam": {
+      "radius": 0.25,
+      "glowIntensity": 2.0,
+      "color1": [
+        1.0,
+        0.85,
+        0.1
+      ],
+      "color2": [
+        1.0,
+        1.0,
+        0.5
+      ]
+    }
   },
   "overrides": {
-    "lightning.chain_lightning": { "impact": { "burst": { "count": 50, "speed": 1.0 }, "shockwaveRings": 4, "screenShakeIntensity": 0.9 } },
-    "lightning.lightning_armor": { "impact": { "burst": { "count": 30, "speed": 0.5 }, "shockwaveRings": 4 } },
-    "lightning.acceleration": { "impact": { "burst": { "speed": 0.5 } } },
-    "lightning.paralysis": { "projectile": { "scale": 1.2 }, "impact": { "burst": { "count": 40 }, "shockwaveRings": 4 } },
-    "lightning.emp": { "impact": { "burst": { "count": 50, "speed": 1.0 } } },
-    "lightning.guided_lightning": { "projectile": { "scale": 1.3, "glowIntensity": 2.2, "trail": { "particlesPerTick": 7 } }, "impact": { "burst": { "count": 50, "speed": 0.9 } } },
-    "lightning.lightning_link": { "impact": { "burst": { "count": 40 } } },
-    "lightning.faraday_cage": { "impact": { "burst": { "speed": 0.5 } } },
-    "lightning.electro_muscle": { "impact": { "burst": { "speed": 0.5 } } },
-    "lightning.underground_arc": { "impact": { "burst": { "count": 40 } } },
-    "lightning.electric_storm": { "impact": { "burst": { "count": 55, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "lightning.surge": { "impact": { "burst": { "count": 45, "speed": 0.9 }, "shockwaveRings": 3, "screenShakeIntensity": 0.7 } },
-    "lightning.plasma_orb": { "impact": { "burst": { "count": 50, "speed": 1.0 } } },
-    "lightning.electric_conversion": { "impact": { "burst": { "count": 55, "speed": 0.5 } } },
-    "lightning.fan_arc": { "impact": { "burst": { "count": 50, "speed": 1.1 } } },
-    "lightning.electrostatic_storm": { "impact": { "burst": { "count": 60, "speed": 1.0 }, "shockwaveRings": 4 } },
-    "lightning.rainbow_arc": { "projectile": { "scale": 1.6, "glowIntensity": 2.3 }, "impact": { "burst": { "count": 70, "speed": 1.1 }, "shockwaveRings": 4, "screenShake": true, "screenShakeIntensity": 0.8 } },
-    "lightning.conduit": { "impact": { "burst": { "count": 50, "speed": 0.8 }, "shockwaveRings": 3 } },
-    "lightning.storm_call": { "projectile": { "scale": 0.5, "glowIntensity": 3.0 }, "impact": { "burst": { "count": 60, "speed": 1.5 }, "shockwaveRings": 4, "screenShakeIntensity": 1.0 } },
-    "lightning.storm_heart": { "impact": { "burst": { "count": 55, "speed": 0.5 } } },
-    "lightning.celestial_judgment": { "impact": { "burst": { "count": 100, "speed": 1.5 }, "shockwaveRings": 5, "screenShakeIntensity": 1.2 } },
-    "lightning.wrath_of_zeus": { "impact": { "burst": { "count": 110, "speed": 1.5 }, "shockwaveRings": 5, "screenShakeIntensity": 1.3 } }
+    "lightning.chain_lightning": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 1.0
+        },
+        "shockwaveRings": 4,
+        "screenShakeIntensity": 0.9
+      }
+    },
+    "lightning.lightning_armor": {
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.5
+        },
+        "shockwaveRings": 4
+      }
+    },
+    "lightning.acceleration": {
+      "impact": {
+        "burst": {
+          "speed": 0.5
+        }
+      }
+    },
+    "lightning.paralysis": {
+      "projectile": {
+        "scale": 1.2
+      },
+      "impact": {
+        "burst": {
+          "count": 40
+        },
+        "shockwaveRings": 4
+      }
+    },
+    "lightning.emp": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 1.0
+        }
+      }
+    },
+    "lightning.guided_lightning": {
+      "projectile": {
+        "scale": 1.3,
+        "glowIntensity": 2.2,
+        "trail": {
+          "particlesPerTick": 7
+        }
+      },
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.9
+        }
+      }
+    },
+    "lightning.lightning_link": {
+      "impact": {
+        "burst": {
+          "count": 40
+        }
+      }
+    },
+    "lightning.faraday_cage": {
+      "impact": {
+        "burst": {
+          "speed": 0.5
+        }
+      }
+    },
+    "lightning.electro_muscle": {
+      "impact": {
+        "burst": {
+          "speed": 0.5
+        }
+      }
+    },
+    "lightning.underground_arc": {
+      "impact": {
+        "burst": {
+          "count": 40
+        }
+      }
+    },
+    "lightning.electric_storm": {
+      "impact": {
+        "burst": {
+          "count": 55,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "lightning.surge": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "lightning.plasma_orb": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 1.0
+        }
+      }
+    },
+    "lightning.electric_conversion": {
+      "impact": {
+        "burst": {
+          "count": 55,
+          "speed": 0.5
+        }
+      }
+    },
+    "lightning.fan_arc": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 1.1
+        }
+      }
+    },
+    "lightning.electrostatic_storm": {
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 1.0
+        },
+        "shockwaveRings": 4
+      }
+    },
+    "lightning.rainbow_arc": {
+      "projectile": {
+        "scale": 1.6,
+        "glowIntensity": 2.3
+      },
+      "impact": {
+        "burst": {
+          "count": 70,
+          "speed": 1.1
+        },
+        "shockwaveRings": 4,
+        "screenShake": true,
+        "screenShakeIntensity": 0.8
+      }
+    },
+    "lightning.conduit": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "lightning.storm_call": {
+      "projectile": {
+        "scale": 0.5,
+        "glowIntensity": 3.0
+      },
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 1.5
+        },
+        "shockwaveRings": 4,
+        "screenShakeIntensity": 1.0
+      }
+    },
+    "lightning.storm_heart": {
+      "impact": {
+        "burst": {
+          "count": 55,
+          "speed": 0.5
+        }
+      }
+    },
+    "lightning.celestial_judgment": {
+      "impact": {
+        "burst": {
+          "count": 100,
+          "speed": 1.5
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.2
+      }
+    },
+    "lightning.wrath_of_zeus": {
+      "impact": {
+        "burst": {
+          "count": 110,
+          "speed": 1.5
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.3
+      }
+    },
+    "lightning.electric_arc": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "lightning.discharge": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lightning.antenna": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lightning.bouncing_spark": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "lightning.static_charge": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lightning.electric_detection": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    }
   }
 }

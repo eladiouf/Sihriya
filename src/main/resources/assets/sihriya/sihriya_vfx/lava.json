@@ -1,32 +1,303 @@
 {
   "school": "lava",
   "defaults": {
-    "projectile": { "scale": 1.3, "glowIntensity": 1.8, "color1": [1.0, 0.2, 0.0], "color2": [1.0, 0.6, 0.1], "trail": { "particlesPerTick": 4, "particleLifetime": 14 } },
-    "impact": { "burst": { "count": 30, "speed": 0.7 }, "shockwaveRings": 2, "screenShake": true, "screenShakeIntensity": 0.5 },
-    "beam": { "radius": 0.35, "glowIntensity": 1.8, "color1": [1.0, 0.2, 0.0], "color2": [1.0, 0.6, 0.1] }
+    "projectile": {
+      "scale": 1.3,
+      "glowIntensity": 1.8,
+      "color1": [
+        1.0,
+        0.2,
+        0.0
+      ],
+      "color2": [
+        1.0,
+        0.6,
+        0.1
+      ],
+      "trail": {
+        "particlesPerTick": 4,
+        "particleLifetime": 14
+      }
+    },
+    "impact": {
+      "burst": {
+        "count": 30,
+        "speed": 0.7
+      },
+      "shockwaveRings": 2,
+      "screenShake": true,
+      "screenShakeIntensity": 0.5
+    },
+    "beam": {
+      "radius": 0.35,
+      "glowIntensity": 1.8,
+      "color1": [
+        1.0,
+        0.2,
+        0.0
+      ],
+      "color2": [
+        1.0,
+        0.6,
+        0.1
+      ]
+    }
   },
   "overrides": {
-    "lava.magma_bomb": { "projectile": { "scale": 1.7 }, "impact": { "burst": { "count": 35 }, "shockwaveRings": 3 } },
-    "lava.magma_armor": { "impact": { "burst": { "count": 25, "speed": 0.5 } } },
-    "lava.lava_walk": { "impact": { "burst": { "speed": 0.5 } } },
-    "lava.volcanic_fissure": { "impact": { "burst": { "count": 40, "speed": 0.7 }, "shockwaveRings": 2 } },
-    "lava.magma_wall": { "impact": { "burst": { "count": 45, "speed": 0.9 } }, "beam": { "radius": 0.5 } },
-    "lava.lava_rain": { "impact": { "burst": { "count": 45, "speed": 0.9 } } },
-    "lava.incandescent_ground": { "impact": { "burst": { "count": 45, "speed": 0.9 } } },
-    "lava.magma_wave": { "impact": { "burst": { "count": 45, "speed": 1.0 }, "shockwaveRings": 3 } },
-    "lava.magmatic_form": { "impact": { "burst": { "count": 40, "speed": 0.5 } } },
-    "lava.volcanic_tears": { "projectile": { "scale": 1.1, "trail": { "particlesPerTick": 6 } }, "impact": { "burst": { "count": 35 } } },
-    "lava.lava_scar": { "impact": { "burst": { "count": 38, "speed": 0.8 } } },
-    "lava.slag_armor": { "impact": { "burst": { "count": 25, "speed": 0.5 } } },
-    "lava.smoke_breath": { "impact": { "burst": { "count": 38, "speed": 0.8 } } },
-    "lava.rock_fusion": { "impact": { "burst": { "count": 45, "speed": 0.9 }, "shockwaveRings": 3 } },
-    "lava.pyroclastic_flow": { "impact": { "burst": { "count": 60, "speed": 0.8 }, "shockwaveRings": 3, "screenShakeIntensity": 0.7 } },
-    "lava.magma_grenade": { "projectile": { "scale": 1.9, "glowIntensity": 2.0 }, "impact": { "burst": { "count": 45, "speed": 0.9 } } },
-    "lava.lava_pit": { "impact": { "burst": { "count": 45, "speed": 0.9 } } },
-    "lava.magma_heart": { "impact": { "burst": { "count": 40, "speed": 0.5 } } },
-    "lava.total_fusion": { "impact": { "burst": { "count": 40, "speed": 0.5 } } },
-    "lava.eruption": { "impact": { "burst": { "count": 55, "speed": 1.0 }, "shockwaveRings": 3, "screenShakeIntensity": 0.9 } },
-    "lava.volcanic_awakening": { "impact": { "burst": { "count": 90, "speed": 1.2 }, "shockwaveRings": 5, "screenShakeIntensity": 1.2 } },
-    "lava.cataclysmic_eruption": { "impact": { "burst": { "count": 110, "speed": 1.3 }, "shockwaveRings": 5, "screenShakeIntensity": 1.5 } }
+    "lava.magma_bomb": {
+      "projectile": {
+        "scale": 1.7
+      },
+      "impact": {
+        "burst": {
+          "count": 35
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "lava.magma_armor": {
+      "impact": {
+        "burst": {
+          "count": 25,
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.lava_walk": {
+      "impact": {
+        "burst": {
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.volcanic_fissure": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.7
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "lava.magma_wall": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        }
+      },
+      "beam": {
+        "radius": 0.5
+      }
+    },
+    "lava.lava_rain": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        }
+      }
+    },
+    "lava.incandescent_ground": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        }
+      }
+    },
+    "lava.magma_wave": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 1.0
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "lava.magmatic_form": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.volcanic_tears": {
+      "projectile": {
+        "scale": 1.1,
+        "trail": {
+          "particlesPerTick": 6
+        }
+      },
+      "impact": {
+        "burst": {
+          "count": 35
+        }
+      }
+    },
+    "lava.lava_scar": {
+      "impact": {
+        "burst": {
+          "count": 38,
+          "speed": 0.8
+        }
+      }
+    },
+    "lava.slag_armor": {
+      "impact": {
+        "burst": {
+          "count": 25,
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.smoke_breath": {
+      "impact": {
+        "burst": {
+          "count": 38,
+          "speed": 0.8
+        }
+      }
+    },
+    "lava.rock_fusion": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "lava.pyroclastic_flow": {
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "lava.magma_grenade": {
+      "projectile": {
+        "scale": 1.9,
+        "glowIntensity": 2.0
+      },
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        }
+      }
+    },
+    "lava.lava_pit": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.9
+        }
+      }
+    },
+    "lava.magma_heart": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.total_fusion": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.5
+        }
+      }
+    },
+    "lava.eruption": {
+      "impact": {
+        "burst": {
+          "count": 55,
+          "speed": 1.0
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.9
+      }
+    },
+    "lava.volcanic_awakening": {
+      "impact": {
+        "burst": {
+          "count": 90,
+          "speed": 1.2
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.2
+      }
+    },
+    "lava.cataclysmic_eruption": {
+      "impact": {
+        "burst": {
+          "count": 110,
+          "speed": 1.3
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.5
+      }
+    },
+    "lava.lava_jet": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "lava.burning_puddle": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lava.magma_shield": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lava.lava_splash": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "lava.igneous_rock": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "lava.heat_hindrance": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    }
   }
 }

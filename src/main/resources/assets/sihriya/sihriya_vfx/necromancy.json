@@ -1,33 +1,297 @@
 {
   "school": "necromancy",
   "defaults": {
-    "projectile": { "scale": 1.0, "glowIntensity": 1.6, "color1": [0.55, 0.0, 0.75], "color2": [0.75, 0.3, 1.0], "trail": { "particlesPerTick": 3, "particleLifetime": 15 } },
-    "impact": { "burst": { "count": 20, "speed": 0.5 }, "shockwaveRings": 1 },
-    "beam": { "radius": 0.3, "glowIntensity": 1.6, "color1": [0.55, 0.0, 0.75], "color2": [0.75, 0.3, 1.0] }
+    "projectile": {
+      "scale": 1.0,
+      "glowIntensity": 1.6,
+      "color1": [
+        0.55,
+        0.0,
+        0.75
+      ],
+      "color2": [
+        0.75,
+        0.3,
+        1.0
+      ],
+      "trail": {
+        "particlesPerTick": 3,
+        "particleLifetime": 15
+      }
+    },
+    "impact": {
+      "burst": {
+        "count": 20,
+        "speed": 0.5
+      },
+      "shockwaveRings": 1
+    },
+    "beam": {
+      "radius": 0.3,
+      "glowIntensity": 1.6,
+      "color1": [
+        0.55,
+        0.0,
+        0.75
+      ],
+      "color2": [
+        0.75,
+        0.3,
+        1.0
+      ]
+    }
   },
   "overrides": {
-    "necromancy.lethal_curse": { "impact": { "burst": { "count": 25 } } },
-    "necromancy.soul_rend": { "impact": { "burst": { "count": 30 }, "shockwaveRings": 2 } },
-    "necromancy.soul_chains": { "projectile": { "scale": 0.8 }, "impact": { "burst": { "count": 25 }, "shockwaveRings": 2 } },
-    "necromancy.drain_vital": { "beam": { "radius": 0.4, "glowIntensity": 2.0 } },
-    "necromancy.army_of_dead": { "impact": { "burst": { "count": 35, "speed": 0.6 }, "shockwaveRings": 2 } },
-    "necromancy.soul_corruption": { "projectile": { "scale": 1.2, "glowIntensity": 1.8 }, "impact": { "burst": { "count": 35, "speed": 0.6 } } },
-    "necromancy.rift": { "impact": { "burst": { "count": 50, "speed": 0.6 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.6 } },
-    "necromancy.terror": { "impact": { "burst": { "count": 35, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "necromancy.shroud_of_shadows": { "impact": { "burst": { "count": 30 } } },
-    "necromancy.suffering_transfer": { "impact": { "burst": { "count": 25 } } },
-    "necromancy.grave_call": { "impact": { "burst": { "count": 28, "speed": 0.6 } } },
-    "necromancy.cold_fingers": { "impact": { "burst": { "count": 25 } } },
-    "necromancy.blood_ritual": { "impact": { "burst": { "speed": 0.4 } } },
-    "necromancy.spectral_knight": { "impact": { "burst": { "count": 35, "speed": 0.6 }, "shockwaveRings": 2 } },
-    "necromancy.decomposition": { "projectile": { "scale": 1.2, "glowIntensity": 1.8 }, "impact": { "burst": { "count": 35, "speed": 0.6 } } },
-    "necromancy.voices_of_dead": { "impact": { "burst": { "count": 35, "speed": 0.6 }, "shockwaveRings": 2 } },
-    "necromancy.mark_of_sacrifice": { "projectile": { "scale": 1.2, "glowIntensity": 1.8 }, "impact": { "burst": { "count": 35, "speed": 0.6 } } },
-    "necromancy.the_void": { "impact": { "burst": { "count": 60, "speed": 0.7 }, "shockwaveRings": 3, "screenShakeIntensity": 0.7 } },
-    "necromancy.soul_scythe": { "impact": { "burst": { "count": 30 } } },
-    "necromancy.necropolis": { "impact": { "burst": { "count": 60 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.7 } },
-    "necromancy.hand_of_nox": { "impact": { "burst": { "count": 90, "speed": 1.0 }, "shockwaveRings": 5, "screenShakeIntensity": 1.1 } },
-    "necromancy.macabre_dance": { "impact": { "burst": { "count": 100, "speed": 1.0 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
-    "necromancy.corrupted_resurrection": { "impact": { "burst": { "count": 30, "speed": 0.6 } } }
+    "necromancy.lethal_curse": {
+      "impact": {
+        "burst": {
+          "count": 25
+        }
+      }
+    },
+    "necromancy.soul_rend": {
+      "impact": {
+        "burst": {
+          "count": 30
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "necromancy.soul_chains": {
+      "projectile": {
+        "scale": 0.8
+      },
+      "impact": {
+        "burst": {
+          "count": 25
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "necromancy.drain_vital": {
+      "beam": {
+        "radius": 0.4,
+        "glowIntensity": 2.0
+      }
+    },
+    "necromancy.army_of_dead": {
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "necromancy.soul_corruption": {
+      "projectile": {
+        "scale": 1.2,
+        "glowIntensity": 1.8
+      },
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        }
+      }
+    },
+    "necromancy.rift": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.6
+        },
+        "shockwaveRings": 3,
+        "screenShake": true,
+        "screenShakeIntensity": 0.6
+      }
+    },
+    "necromancy.terror": {
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "necromancy.shroud_of_shadows": {
+      "impact": {
+        "burst": {
+          "count": 30
+        }
+      }
+    },
+    "necromancy.suffering_transfer": {
+      "impact": {
+        "burst": {
+          "count": 25
+        }
+      }
+    },
+    "necromancy.grave_call": {
+      "impact": {
+        "burst": {
+          "count": 28,
+          "speed": 0.6
+        }
+      }
+    },
+    "necromancy.cold_fingers": {
+      "impact": {
+        "burst": {
+          "count": 25
+        }
+      }
+    },
+    "necromancy.blood_ritual": {
+      "impact": {
+        "burst": {
+          "speed": 0.4
+        }
+      }
+    },
+    "necromancy.spectral_knight": {
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "necromancy.decomposition": {
+      "projectile": {
+        "scale": 1.2,
+        "glowIntensity": 1.8
+      },
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        }
+      }
+    },
+    "necromancy.voices_of_dead": {
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        },
+        "shockwaveRings": 2
+      }
+    },
+    "necromancy.mark_of_sacrifice": {
+      "projectile": {
+        "scale": 1.2,
+        "glowIntensity": 1.8
+      },
+      "impact": {
+        "burst": {
+          "count": 35,
+          "speed": 0.6
+        }
+      }
+    },
+    "necromancy.the_void": {
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "necromancy.soul_scythe": {
+      "impact": {
+        "burst": {
+          "count": 30
+        }
+      }
+    },
+    "necromancy.necropolis": {
+      "impact": {
+        "burst": {
+          "count": 60
+        },
+        "shockwaveRings": 3,
+        "screenShake": true,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "necromancy.hand_of_nox": {
+      "impact": {
+        "burst": {
+          "count": 90,
+          "speed": 1.0
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.1
+      }
+    },
+    "necromancy.macabre_dance": {
+      "impact": {
+        "burst": {
+          "count": 100,
+          "speed": 1.0
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.0
+      }
+    },
+    "necromancy.corrupted_resurrection": {
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.6
+        }
+      }
+    },
+    "necromancy.death_touch": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "necromancy.death_veil": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "necromancy.broken_bones": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "necromancy.empty_gaze": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "necromancy.putrid_hand": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    }
   }
 }

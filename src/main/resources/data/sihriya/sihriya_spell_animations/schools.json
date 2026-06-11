@@ -424,6 +424,98 @@
     "wind.wind_step": {
       "chant_animation": "CHANTING_ONE_HAND_TOP",
       "cast_animation": "ANIM_WIND_WIND_STEP"
+    },
+    "earth.earth_column": {
+      "chant_animation": "CHANTING_ONE_HAND_STOMP",
+      "cast_animation": "CASTING_ONE_HAND_BELOW"
+    },
+    "earth.earth_magnet": {
+      "chant_animation": "CHANTING_ONE_HAND_FRONT",
+      "cast_animation": "CASTING_ONE_HAND_INWARD"
+    },
+    "earth.earthquake": {
+      "chant_animation": "CHANTING_TWO_HAND_STOMP",
+      "cast_animation": "CASTING_TWO_HAND_STOMP"
+    },
+    "earth.lithic_regen": {
+      "chant_animation": "CHANTING_ONE_HAND_FRONT",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "ice.absolute_zero": {
+      "chant_animation": "CHANTING_TWO_HAND_BACK",
+      "cast_animation": "CASTING_TWO_HAND_EXPLOSION"
+    },
+    "ice.diamond_prison": {
+      "chant_animation": "CHANTING_TWO_HAND_BOW",
+      "cast_animation": "CASTING_TWO_HAND_BOW"
+    },
+    "ice.frostbite_storm": {
+      "chant_animation": "CHANTING_TWO_HAND_TOP",
+      "cast_animation": "CASTING_TWO_HAND_TOP"
+    },
+    "ice.glacial_avalanche": {
+      "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
+      "cast_animation": "CASTING_TWO_HAND_ASCENSION"
+    },
+    "lava.eruption": {
+      "chant_animation": "CHANTING_TWO_HAND_STOMP",
+      "cast_animation": "CASTING_TWO_HAND_EXPLOSION"
+    },
+    "lava.magma_heart": {
+      "chant_animation": "CHANTING_ONE_HAND_FRONT",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "lava.magmatic_form": {
+      "chant_animation": "CHANTING_ONE_HAND_STOMP",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "lava.total_fusion": {
+      "chant_animation": "CHANTING_TWO_HAND_FLYING",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "lightning.conduit": {
+      "chant_animation": "CHANTING_TWO_HAND_TOP",
+      "cast_animation": "CASTING_ONE_HAND_TOP"
+    },
+    "lightning.storm_call": {
+      "chant_animation": "CHANTING_TWO_HAND_TOP",
+      "cast_animation": "CASTING_TWO_HAND_TOP"
+    },
+    "lumamancy.aura_of_purity": {
+      "chant_animation": "CHANTING_TWO_HAND_FLYING",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "lumamancy.judgment": {
+      "chant_animation": "CHANTING_TWO_HAND_ASCENSION",
+      "cast_animation": "CASTING_TWO_HAND_TOP"
+    },
+    "necromancy.shroud_of_shadows": {
+      "chant_animation": "CHANTING_ONE_HAND_FRONT",
+      "cast_animation": "CASTING_ONE_HAND_INWARD"
+    },
+    "necromancy.the_void": {
+      "chant_animation": "CHANTING_GOJO",
+      "cast_animation": "CASTING_GOJO"
+    },
+    "water.black_tide": {
+      "chant_animation": "CHANTING_TWO_HAND_BACK",
+      "cast_animation": "CASTING_TWO_HAND_BOW"
+    },
+    "water.evaporation": {
+      "chant_animation": "CHANTING_TWO_HAND_TOP",
+      "cast_animation": "CASTING_TWO_HAND_ASCENSION"
+    },
+    "water.ice_armor": {
+      "chant_animation": "CHANTING_ONE_HAND_FRONT",
+      "cast_animation": "CASTING_ONE_HAND_BUFF"
+    },
+    "water.tidal_wave": {
+      "chant_animation": "CHANTING_TWO_HAND_STOMP",
+      "cast_animation": "CASTING_TWO_HAND_BOW"
+    },
+    "wind.wind_corridor": {
+      "chant_animation": "CHANTING_TWO_HAND_FLYING",
+      "cast_animation": "CASTING_TWO_HAND_FLYING"
     }
   }
 }

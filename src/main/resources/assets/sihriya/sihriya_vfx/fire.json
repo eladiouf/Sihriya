@@ -1,33 +1,317 @@
 {
   "school": "fire",
   "defaults": {
-    "projectile": { "scale": 1.0, "glowIntensity": 1.5, "color1": [1.0, 0.35, 0.05], "color2": [1.0, 0.8, 0.2], "trail": { "particlesPerTick": 3, "particleLifetime": 12 } },
-    "impact": { "burst": { "count": 25, "speed": 0.6 }, "shockwaveRings": 2, "screenShake": true, "screenShakeIntensity": 0.3 },
-    "beam": { "radius": 0.3, "glowIntensity": 1.5, "color1": [1.0, 0.35, 0.05], "color2": [1.0, 0.8, 0.2] }
+    "projectile": {
+      "scale": 1.0,
+      "glowIntensity": 1.5,
+      "color1": [
+        1.0,
+        0.35,
+        0.05
+      ],
+      "color2": [
+        1.0,
+        0.8,
+        0.2
+      ],
+      "trail": {
+        "particlesPerTick": 3,
+        "particleLifetime": 12
+      }
+    },
+    "impact": {
+      "burst": {
+        "count": 25,
+        "speed": 0.6
+      },
+      "shockwaveRings": 2,
+      "screenShake": true,
+      "screenShakeIntensity": 0.3
+    },
+    "beam": {
+      "radius": 0.3,
+      "glowIntensity": 1.5,
+      "color1": [
+        1.0,
+        0.35,
+        0.05
+      ],
+      "color2": [
+        1.0,
+        0.8,
+        0.2
+      ]
+    }
   },
   "overrides": {
-    "fire.fireball": { "projectile": { "scale": 1.5, "glowIntensity": 2.0, "trail": { "particlesPerTick": 5 } } },
-    "fire.fiery_breath": { "impact": { "burst": { "count": 33, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "fire.fire_nova": { "impact": { "burst": { "count": 33, "speed": 0.8 }, "shockwaveRings": 3 } },
-    "fire.blazing_armor": { "impact": { "burst": { "count": 20, "speed": 0.5 } } },
-    "fire.flying_ashes": { "impact": { "burst": { "count": 33, "speed": 0.7 } } },
-    "fire.fire_lance": { "projectile": { "scale": 0.8 }, "impact": { "burst": { "count": 30 } } },
-    "fire.minor_eruption": { "impact": { "burst": { "count": 43, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "fire.flame_dance": { "impact": { "burst": { "speed": 0.5 } } },
-    "fire.comet": { "projectile": { "scale": 2.5, "glowIntensity": 2.5 }, "impact": { "burst": { "count": 60, "speed": 1.0 }, "shockwaveRings": 3, "screenShakeIntensity": 0.8 } },
-    "fire.ash_storm": { "impact": { "burst": { "count": 50, "speed": 0.8 }, "shockwaveRings": 3 } },
-    "fire.fusion": { "impact": { "burst": { "count": 30, "speed": 0.5 } } },
-    "fire.furnace": { "impact": { "burst": { "count": 40, "speed": 0.8 } } },
-    "fire.dragons_breath": { "impact": { "burst": { "count": 40, "speed": 0.8 }, "shockwaveRings": 3 } },
-    "fire.fire_wheel": { "projectile": { "scale": 1.6, "glowIntensity": 1.7 }, "impact": { "burst": { "count": 40, "speed": 0.8 } } },
-    "fire.furnace_heart": { "impact": { "burst": { "count": 30, "speed": 0.5 } } },
-    "fire.meteor_shower": { "impact": { "burst": { "count": 80, "speed": 0.8 }, "shockwaveRings": 4, "screenShakeIntensity": 0.7 } },
-    "fire.piercing_meteor": { "projectile": { "scale": 1.9, "glowIntensity": 1.8 }, "impact": { "burst": { "count": 60, "speed": 0.9 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.7 } },
-    "fire.infernal_pillar": { "impact": { "burst": { "count": 50, "speed": 0.9 }, "shockwaveRings": 3, "screenShakeIntensity": 0.6 } },
-    "fire.infinite_brazier": { "impact": { "burst": { "count": 50, "speed": 0.9 }, "shockwaveRings": 3 } },
-    "fire.summoned_phoenix": { "impact": { "burst": { "count": 60, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "fire.blazing_sun": { "projectile": { "scale": 2.5, "glowIntensity": 2.5, "trail": { "particlesPerTick": 8, "particleLifetime": 20 } }, "impact": { "burst": { "count": 85, "speed": 1.2 }, "shockwaveRings": 4, "screenShake": true, "screenShakeIntensity": 1.0 } },
-    "fire.apocalypse_ignited": { "impact": { "burst": { "count": 100, "speed": 1.2 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
-    "fire.wall_of_flames": { "beam": { "radius": 0.5 } }
+    "fire.fireball": {
+      "projectile": {
+        "scale": 1.5,
+        "glowIntensity": 2.0,
+        "trail": {
+          "particlesPerTick": 5
+        }
+      }
+    },
+    "fire.fiery_breath": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.fire_nova": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.blazing_armor": {
+      "impact": {
+        "burst": {
+          "count": 20,
+          "speed": 0.5
+        }
+      }
+    },
+    "fire.flying_ashes": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.7
+        }
+      }
+    },
+    "fire.fire_lance": {
+      "projectile": {
+        "scale": 0.8
+      },
+      "impact": {
+        "burst": {
+          "count": 30
+        }
+      }
+    },
+    "fire.minor_eruption": {
+      "impact": {
+        "burst": {
+          "count": 43,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.flame_dance": {
+      "impact": {
+        "burst": {
+          "speed": 0.5
+        }
+      }
+    },
+    "fire.comet": {
+      "projectile": {
+        "scale": 2.5,
+        "glowIntensity": 2.5
+      },
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 1.0
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.8
+      }
+    },
+    "fire.ash_storm": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.fusion": {
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.5
+        }
+      }
+    },
+    "fire.furnace": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.8
+        }
+      }
+    },
+    "fire.dragons_breath": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.fire_wheel": {
+      "projectile": {
+        "scale": 1.6,
+        "glowIntensity": 1.7
+      },
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.8
+        }
+      }
+    },
+    "fire.furnace_heart": {
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.5
+        }
+      }
+    },
+    "fire.meteor_shower": {
+      "impact": {
+        "burst": {
+          "count": 80,
+          "speed": 0.8
+        },
+        "shockwaveRings": 4,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "fire.piercing_meteor": {
+      "projectile": {
+        "scale": 1.9,
+        "glowIntensity": 1.8
+      },
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.9
+        },
+        "shockwaveRings": 3,
+        "screenShake": true,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "fire.infernal_pillar": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.9
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.6
+      }
+    },
+    "fire.infinite_brazier": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.9
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.summoned_phoenix": {
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "fire.blazing_sun": {
+      "projectile": {
+        "scale": 2.5,
+        "glowIntensity": 2.5,
+        "trail": {
+          "particlesPerTick": 8,
+          "particleLifetime": 20
+        }
+      },
+      "impact": {
+        "burst": {
+          "count": 85,
+          "speed": 1.2
+        },
+        "shockwaveRings": 4,
+        "screenShake": true,
+        "screenShakeIntensity": 1.0
+      }
+    },
+    "fire.apocalypse_ignited": {
+      "impact": {
+        "burst": {
+          "count": 100,
+          "speed": 1.2
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.0
+      }
+    },
+    "fire.wall_of_flames": {
+      "beam": {
+        "radius": 0.5
+      }
+    },
+    "fire.spark": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "fire.living_torch": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "fire.dancing_embers": {
+      "impact": {
+        "burst": {
+          "count": 14,
+          "speed": 0.3
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "fire.fire_piston_strike": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "fire.brands_mark": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    }
   }
 }

@@ -1,33 +1,310 @@
 {
   "school": "ice",
   "defaults": {
-    "projectile": { "scale": 1.0, "glowIntensity": 1.4, "color1": [0.5, 0.8, 1.0], "color2": [0.75, 0.9, 1.0], "trail": { "particlesPerTick": 3, "particleLifetime": 12, "spread": 0.08 } },
-    "impact": { "burst": { "count": 25, "speed": 0.5 }, "shockwaveRings": 2 },
-    "beam": { "radius": 0.3, "glowIntensity": 1.4, "color1": [0.5, 0.8, 1.0], "color2": [0.75, 0.9, 1.0] }
+    "projectile": {
+      "scale": 1.0,
+      "glowIntensity": 1.4,
+      "color1": [
+        0.5,
+        0.8,
+        1.0
+      ],
+      "color2": [
+        0.75,
+        0.9,
+        1.0
+      ],
+      "trail": {
+        "particlesPerTick": 3,
+        "particleLifetime": 12,
+        "spread": 0.08
+      }
+    },
+    "impact": {
+      "burst": {
+        "count": 25,
+        "speed": 0.5
+      },
+      "shockwaveRings": 2
+    },
+    "beam": {
+      "radius": 0.3,
+      "glowIntensity": 1.4,
+      "color1": [
+        0.5,
+        0.8,
+        1.0
+      ],
+      "color2": [
+        0.75,
+        0.9,
+        1.0
+      ]
+    }
   },
   "overrides": {
-    "ice.ice_arrow": { "projectile": { "scale": 0.7, "glowIntensity": 1.8 } },
-    "ice.ice_prison": { "impact": { "burst": { "count": 33, "speed": 0.6 }, "shockwaveRings": 3 }, "beam": { "radius": 0.5 } },
-    "ice.frost_armor": { "impact": { "burst": { "count": 20 } } },
-    "ice.stalactites": { "impact": { "burst": { "count": 33, "speed": 0.6 }, "shockwaveRings": 3 } },
-    "ice.frost_steps": { "impact": { "burst": { "speed": 0.4 } } },
-    "ice.blizzard": { "impact": { "burst": { "count": 45, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "ice.freeze": { "impact": { "burst": { "count": 40, "speed": 0.7 }, "shockwaveRings": 3 } },
-    "ice.ice_wall": { "impact": { "burst": { "count": 40, "speed": 0.7 }, "shockwaveRings": 3 }, "beam": { "radius": 0.5 } },
-    "ice.frozen_heart": { "impact": { "burst": { "count": 30 } } },
-    "ice.frost_crystal": { "impact": { "burst": { "count": 33, "speed": 0.6 } } },
-    "ice.iceberg_lance": { "projectile": { "scale": 0.8 }, "impact": { "burst": { "count": 30, "speed": 0.6 } } },
-    "ice.rapid_cooling": { "impact": { "burst": { "count": 33, "speed": 0.6 } } },
-    "ice.ice_thorns": { "impact": { "burst": { "count": 30, "speed": 0.4 } } },
-    "ice.cold_room": { "impact": { "burst": { "count": 40, "speed": 0.7 } } },
-    "ice.hail_wall": { "impact": { "burst": { "count": 40, "speed": 0.7 }, "shockwaveRings": 3 }, "beam": { "radius": 0.5 } },
-    "ice.frost_link": { "projectile": { "scale": 1.2, "glowIntensity": 1.6 }, "impact": { "burst": { "count": 40, "speed": 0.6 }, "shockwaveRings": 3 } },
-    "ice.frozen_heart_v2": { "impact": { "burst": { "count": 30 } } },
-    "ice.frostbite_storm": { "impact": { "burst": { "count": 50, "speed": 0.6 }, "shockwaveRings": 3, "screenShake": true, "screenShakeIntensity": 0.5 } },
-    "ice.glacial_avalanche": { "impact": { "burst": { "count": 60, "speed": 0.8 }, "shockwaveRings": 3, "screenShakeIntensity": 0.7 } },
-    "ice.diamond_prison": { "projectile": { "scale": 1.5, "glowIntensity": 1.7 }, "impact": { "burst": { "count": 60, "speed": 0.8 }, "shockwaveRings": 3 } },
-    "ice.absolute_zero": { "impact": { "burst": { "count": 50, "speed": 0.8 }, "shockwaveRings": 4, "screenShake": true, "screenShakeIntensity": 0.7 } },
-    "ice.ice_age": { "impact": { "burst": { "count": 90, "speed": 1.0 }, "shockwaveRings": 5, "screenShakeIntensity": 1.0 } },
-    "ice.eternal_winter": { "impact": { "burst": { "count": 100, "speed": 1.1 }, "shockwaveRings": 5, "screenShakeIntensity": 1.1 } }
+    "ice.ice_arrow": {
+      "projectile": {
+        "scale": 0.7,
+        "glowIntensity": 1.8
+      }
+    },
+    "ice.ice_prison": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.6
+        },
+        "shockwaveRings": 3
+      },
+      "beam": {
+        "radius": 0.5
+      }
+    },
+    "ice.frost_armor": {
+      "impact": {
+        "burst": {
+          "count": 20
+        }
+      }
+    },
+    "ice.stalactites": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.6
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "ice.frost_steps": {
+      "impact": {
+        "burst": {
+          "speed": 0.4
+        }
+      }
+    },
+    "ice.blizzard": {
+      "impact": {
+        "burst": {
+          "count": 45,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "ice.freeze": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "ice.ice_wall": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      },
+      "beam": {
+        "radius": 0.5
+      }
+    },
+    "ice.frozen_heart": {
+      "impact": {
+        "burst": {
+          "count": 30
+        }
+      }
+    },
+    "ice.frost_crystal": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.6
+        }
+      }
+    },
+    "ice.iceberg_lance": {
+      "projectile": {
+        "scale": 0.8
+      },
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.6
+        }
+      }
+    },
+    "ice.rapid_cooling": {
+      "impact": {
+        "burst": {
+          "count": 33,
+          "speed": 0.6
+        }
+      }
+    },
+    "ice.ice_thorns": {
+      "impact": {
+        "burst": {
+          "count": 30,
+          "speed": 0.4
+        }
+      }
+    },
+    "ice.cold_room": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.7
+        }
+      }
+    },
+    "ice.hail_wall": {
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.7
+        },
+        "shockwaveRings": 3
+      },
+      "beam": {
+        "radius": 0.5
+      }
+    },
+    "ice.frost_link": {
+      "projectile": {
+        "scale": 1.2,
+        "glowIntensity": 1.6
+      },
+      "impact": {
+        "burst": {
+          "count": 40,
+          "speed": 0.6
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "ice.frozen_heart_v2": {
+      "impact": {
+        "burst": {
+          "count": 30
+        }
+      }
+    },
+    "ice.frostbite_storm": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.6
+        },
+        "shockwaveRings": 3,
+        "screenShake": true,
+        "screenShakeIntensity": 0.5
+      }
+    },
+    "ice.glacial_avalanche": {
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "ice.diamond_prison": {
+      "projectile": {
+        "scale": 1.5,
+        "glowIntensity": 1.7
+      },
+      "impact": {
+        "burst": {
+          "count": 60,
+          "speed": 0.8
+        },
+        "shockwaveRings": 3
+      }
+    },
+    "ice.absolute_zero": {
+      "impact": {
+        "burst": {
+          "count": 50,
+          "speed": 0.8
+        },
+        "shockwaveRings": 4,
+        "screenShake": true,
+        "screenShakeIntensity": 0.7
+      }
+    },
+    "ice.ice_age": {
+      "impact": {
+        "burst": {
+          "count": 90,
+          "speed": 1.0
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.0
+      }
+    },
+    "ice.eternal_winter": {
+      "impact": {
+        "burst": {
+          "count": 100,
+          "speed": 1.1
+        },
+        "shockwaveRings": 5,
+        "screenShakeIntensity": 1.1
+      }
+    },
+    "ice.frost_breath": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "ice.slippery_ground": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "ice.shiver": {
+      "projectile": {
+        "scale": 1.0,
+        "glowIntensity": 1.5,
+        "trail": {
+          "particlesPerTick": 3
+        }
+      }
+    },
+    "ice.ground_frost": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    },
+    "ice.frozen_breath": {
+      "impact": {
+        "burst": {
+          "count": 21,
+          "speed": 0.52
+        },
+        "shockwaveRings": 1
+      }
+    }
   }
 }
